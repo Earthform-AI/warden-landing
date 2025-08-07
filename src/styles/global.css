@@ -1,0 +1,84 @@
+/* Global styles for enhanced visual effects */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Subtle grain effect for the dark sections */
+.bg-black {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* Enhanced hover effects */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Focus states */
+input:focus, textarea:focus, button:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Typography enhancements */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Image hover effects */
+img {
+  transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+/* Enhanced button glow effect */
+.animate-glow {
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.animate-glow:hover {
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Subtle text shadow for better readability */
+h1, h2 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced card hover effects */
+.bg-gray-900:hover, .bg-gray-800:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth animations for page load */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+    animation-fill-mode: both;
+  }
+  
+  .animate-slide-up:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .animate-slide-up:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  .animate-slide-up:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+}

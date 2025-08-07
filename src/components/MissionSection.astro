@@ -1,20 +1,50 @@
----
-// src/components/MissionSection.astro
----
-
 <section class="bg-gray-900 text-white py-20">
-  <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <h2 class="text-3xl font-bold mb-4">The Problem</h2>
-      <p class="opacity-80">
-        Mining is still one of the deadliest jobs on Earth. Gas leaks, collapses, heat, and silence. Too many fathers never come home.
-      </p>
-      <p class="mt-4 opacity-80">
-        We’re not trying to replace the miner — we’re protecting him. Warden is the first system built to shield, warn, and remember.
-      </p>
+  <div class="max-w-5xl mx-auto px-4">
+    <!-- The Problem Section -->
+    <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+        <p class="opacity-80 mb-4">
+          Mining is still one of the deadliest jobs on Earth. Gas leaks, collapses, heat, and silence. Too many fathers never come home.
+        </p>
+        <p class="opacity-80">
+          We're not trying to replace the miner — we're protecting him. Warden is the first system built to shield, warn, and remember.
+        </p>
+      </div>
+      <div>
+        <img src="/hero-image.svg" alt="Warden AI drone operating underground with hazard detection" class="rounded-lg shadow-lg" />
+      </div>
     </div>
-    <div>
-      <img src="/hero-image.svg" alt="Warden AI drone operating underground with hazard detection" class="rounded-lg shadow-lg" />
+    
+    <!-- What We Stand For Section -->
+    <div class="border-t border-gray-700 pt-16">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-6">What We Stand For</h2>
+        <p class="text-xl opacity-80 max-w-3xl mx-auto mb-4">
+          <em>Earthform: Where mining meets healing.</em>
+        </p>
+        <p class="text-lg opacity-70 max-w-3xl mx-auto">
+          We believe technology should heal, protect, and honor both human lives and the earth beneath our feet. This is intelligent stewardship, not just extraction.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+          <div class="text-2xl mb-3">🛡️</div>
+          <h3 class="text-lg font-semibold mb-2">Intelligence</h3>
+          <p class="text-sm opacity-70">AI that sees dangers before humans do, mapping threats with precision and care.</p>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+          <div class="text-2xl mb-3">💚</div>
+          <h3 class="text-lg font-semibold mb-2">Empathy</h3>
+          <p class="text-sm opacity-70">Technology built with respect for the people who risk everything underground.</p>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+          <div class="text-2xl mb-3">🌱</div>
+          <h3 class="text-lg font-semibold mb-2">Healing</h3>
+          <p class="text-sm opacity-70">Responsible extraction that considers nature's future, not just today's needs.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

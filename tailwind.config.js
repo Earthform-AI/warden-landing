@@ -8,7 +8,9 @@ module.exports = {
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
-        'slide-up': 'slideUp 0.8s ease-out'
+        'slide-up': 'slideUp 0.8s ease-out',
+        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate'
       },
       keyframes: {
         fadeIn: {
@@ -18,7 +20,19 @@ module.exports = {
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        pulseSoft: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.02)' }
+        },
+        glow: {
+          '0%': { boxShadow: '0 0 5px rgba(255, 255, 255, 0.2)' },
+          '100%': { boxShadow: '0 0 20px rgba(255, 255, 255, 0.4)' }
         }
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding'
       }
     }
   },
