@@ -1,3 +1,37 @@
+# AI + Team Prompt: Config-Driven Content System for Earthform.ai
+
+🛠️ Purpose:
+We want Earthform.ai to evolve quickly, collaboratively, and with creative input from both humans and AI. To make this possible, all content (especially wording and structure) should be extracted into a configurable file or modular format that can be easily updated — without rewriting the whole site.
+
+✅ What This Means
+
+    ✍️ All textual content (hero section, mission, vision, button labels, etc.) should be defined in a config file, such as:
+
+        site.config.ts
+
+        content.json
+
+        markdown/*.md
+
+    🧠 This allows an AI agent (like ChatGPT via Copilot) to suggest new configs or content edits as structured files.
+
+    ⚡ When accepted and pushed to GitHub, the site can be auto-deployed via Vercel with the new content live instantly.
+
+🧩 Bonus (Future Goals)
+
+    Support multi-voice content switching (e.g., public, technical, investor versions).
+
+    AI + team members can submit pull requests with proposed edits to content via config diffs.
+
+    Enable live preview or staging mode for proposed content swaps.
+
+🧬 TL;DR
+
+    💡 Make content editable via config
+    📦 Keep components reusable
+    🤖 Let AI and humans suggest updates without breaking layout
+    🚀 Push = Publish
+
 # Warden: Shield in the Deep
 
 **Autonomous AI-powered drones protecting miners underground.**
