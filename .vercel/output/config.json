@@ -1,0 +1,55 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"src": "^/_server-islands/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/_image/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/github-webhook/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/test-discord/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/webhook-debug/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/github-discord-push-dev-updates/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/privacy/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/terms/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/thanks/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/$",
+			"dest": "_render"
+		}
+	]
+}
