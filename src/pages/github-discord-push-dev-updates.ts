@@ -2,6 +2,8 @@
 // This endpoint matches the GitHub webhook URL: https://www.earthform.ai/github-discord-push-dev-updates
 import crypto from 'crypto';
 
+export const prerender = false;
+
 interface GitHubWebhookPayload {
   action?: string;
   repository?: {

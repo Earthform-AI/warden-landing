@@ -1,6 +1,8 @@
 // API route to handle GitHub webhooks and send Discord notifications
 import crypto from 'crypto';
 
+export const prerender = false;
+
 interface GitHubWebhookPayload {
   action?: string;
   repository?: {
