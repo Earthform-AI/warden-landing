@@ -1,4 +1,5 @@
-// Test endpoint to verify Discord webhook functionality
+// Test endpoint to verify Discord webhook functionality  
+// Testing GitHub webhook integration - should trigger Discord notification
 export async function POST({ request }: { request: Request }) {
   try {
     const discordWebhookUrl = import.meta.env.DISCORD_WEBHOOK_URL;
