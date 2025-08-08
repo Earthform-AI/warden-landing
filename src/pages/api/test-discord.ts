@@ -4,9 +4,9 @@
 // Testing webhook delivery with GitHub ping event
 // SUCCESS: Discord integration confirmed working! ✅
 
-export const prerender = false;
+import type { APIRoute } from 'astro';
 
-export async function POST({ request }: { request: Request }) {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const discordWebhookUrl = import.meta.env.DISCORD_WEBHOOK_URL;
     
@@ -52,8 +52,8 @@ export async function POST({ request }: { request: Request }) {
     console.error('Test webhook error:', error);
     return new Response(`Error: ${error}`, { status: 500 });
   }
-}
+};
 
-export async function GET() {
+export const GET: APIRoute = async () => {
   return new Response('Use POST to send a test Discord message', { status: 405 });
-}
+};

@@ -1,7 +1,6 @@
 // API route to handle GitHub webhooks and send Discord notifications
+import type { APIRoute } from 'astro';
 import crypto from 'crypto';
-
-export const prerender = false;
 
 interface GitHubWebhookPayload {
   action?: string;
@@ -202,7 +201,7 @@ function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any
   };
 }
 
-export async function POST({ request }: { request: Request }) {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const signature = request.headers.get('x-hub-signature-256');
     const event = request.headers.get('x-github-event');
@@ -252,4 +251,4 @@ export async function POST({ request }: { request: Request }) {
     console.error('Webhook error:', error);
     return new Response('Internal server error', { status: 500 });
   }
-}
+};
