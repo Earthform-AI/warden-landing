@@ -1,56 +1,37 @@
+---
+import { ecosystem } from '../site.config';
+---
+
 <section class="bg-black text-white py-20">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold mb-6">The Earthform Ecosystem</h2>
+      <h2 class="text-3xl font-bold mb-6">{ecosystem.heading}</h2>
       <p class="text-xl opacity-80 max-w-3xl mx-auto">
-        Warden is part of a larger vision: a sentient infrastructure for a better planet. Meet the drone family working to protect, rescue, and understand our world.
+        {ecosystem.subtitle}
       </p>
     </div>
     
     <div class="grid md:grid-cols-3 gap-8">
-      <!-- Warden -->
-      <div class="bg-gray-900 p-8 rounded-lg text-center hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="text-4xl mb-4">🛡️</div>
-        <h3 class="text-xl font-bold mb-3 text-blue-400">Warden</h3>
-        <p class="text-sm opacity-80 mb-4">Defender drones for mines, workers, and high-risk environments</p>
-        <div class="text-xs opacity-60">
-          <div>• Threat detection</div>
-          <div>• Worker protection</div>
-          <div>• Environmental monitoring</div>
+      {ecosystem.drones.map((drone) => (
+        <div class={`bg-gray-900 p-8 rounded-lg text-center hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-xl`}>
+          <div class="text-4xl mb-4">{drone.icon}</div>
+          <h3 class={`text-xl font-bold mb-3 text-${drone.color}-400`}>{drone.name}</h3>
+          <p class="text-sm opacity-80 mb-4">{drone.tagline}</p>
+          <div class="text-xs opacity-60">
+            {drone.features.map((feature) => (
+              <div>• {feature}</div>
+            ))}
+          </div>
         </div>
-      </div>
-      
-      <!-- Hero -->
-      <div class="bg-gray-900 p-8 rounded-lg text-center hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="text-4xl mb-4">🚁</div>
-        <h3 class="text-xl font-bold mb-3 text-green-400">Hero</h3>
-        <p class="text-sm opacity-80 mb-4">Relief drones for search, rescue, and crisis response</p>
-        <div class="text-xs opacity-60">
-          <div>• Emergency response</div>
-          <div>• Search & rescue</div>
-          <div>• Disaster relief</div>
-        </div>
-      </div>
-      
-      <!-- Patriot -->
-      <div class="bg-gray-900 p-8 rounded-lg text-center hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-        <div class="text-4xl mb-4">🌍</div>
-        <h3 class="text-xl font-bold mb-3 text-yellow-400">Patriot</h3>
-        <p class="text-sm opacity-80 mb-4">Survey drones for domestic data collection and mapping</p>
-        <div class="text-xs opacity-60">
-          <div>• Land surveying</div>
-          <div>• Environmental data</div>
-          <div>• Infrastructure monitoring</div>
-        </div>
-      </div>
+      ))}
     </div>
     
     <div class="text-center mt-12">
       <p class="text-sm opacity-60 italic mb-4">
-        All powered by EarthformOS: the neural platform connecting intelligence, empathy, and healing across our drone ecosystem.
+        {ecosystem.footer.description}
       </p>
       <p class="text-xs opacity-50">
-        A sentient infrastructure for a better planet.
+        {ecosystem.footer.tagline}
       </p>
     </div>
   </div>

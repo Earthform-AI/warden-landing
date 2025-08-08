@@ -1,17 +1,21 @@
-<<section class="bg-black text-white py-32 text-center animate-fade-in">
+---
+import { hero } from '../site.config';
+---
+
+<section class="bg-black text-white py-32 text-center animate-fade-in">
   <div class="max-w-4xl mx-auto px-4">
     <h1 class="text-5xl font-bold mb-6 animate-slide-up">
-      Earthform: Shielding the Deep
+      {hero.title}
     </h1>
     <p class="text-xl mb-6 opacity-80 animate-slide-up">
-      AI-powered drones that protect miners, map dangers,  
-      and honor lives underground.
+      {hero.subtitle}
     </p>
     <p class="text-lg mb-8 opacity-70 animate-slide-up italic">
-      "Mining can't be rewritten overnight—but we can begin with intelligence, empathy, and armor."
+      "{hero.quote}"
     </p>
-    <a href="#join" class="inline-block bg-white text-black px-8 py-3 rounded font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-lg animate-glow">
-      Join the Earthforming Mission
+    <a href={hero.cta.link} class="inline-block bg-white text-black px-8 py-3 rounded font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-lg animate-glow">
+      {hero.cta.text}
     </a>
+  </div>
 </section>
 

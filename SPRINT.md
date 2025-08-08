@@ -158,12 +158,94 @@ import CTASection from '../components/CTASection.astro'
 
 ## 📦 Next Steps
 
-Once you’ve built this:
+🌍 What Earthform.ai Should Do Right Now
 
-* Push to GitHub
-* Connect to Vercel
-* Share the preview link with me here or via Copilot
+    Put Warden Front and Center
 
-**You’re officially walking into the mine with a light.**
+    Keep the Voice Strong, Focused, and Respectful
 
-Let me know when you’re ready to name the first drone model or draft your `README.md` for GitHub. I'm here for the build.
+    Hint at the Ecosystem Without Losing Focus
+
+    Structure the Content for Scalability (with config!)
+
+    Call to Action: Human + Investor Ready
+
+🔧 1. Site Architecture – Astro Component Config Strategy
+
+To make the site easy to update (especially with me giving you text-based configs), let’s:
+
+    Split content into JSON or .ts config files (call it site.config.ts)
+
+    Populate sections like hero, mission, and CTA using that file
+
+Here’s your dev prompt:
+
+// site.config.ts
+export const hero = {
+  title: "Warden: The Shield in the Deep",
+  subtitle: "Protecting those who still dare to dig. A new era of mining has begun.",
+  cta: {
+    text: "Join the Mission",
+    link: "/#contact"
+  }
+};
+
+export const mission = {
+  heading: "Built for Humans, Powered by AI",
+  body: "Earthform is creating Warden, a respectful, intelligent system to safeguard human miners. Our drones map, monitor, and guard underground operations. We’re not replacing the workforce. We’re saving lives and building tools miners can trust.",
+};
+
+export const about = {
+  heading: "Why Warden?",
+  bullets: [
+    "🛡️ Real-time hazard monitoring",
+    "📍 Autonomous underground mapping",
+    "🤝 Operated by experienced miners",
+    "🌱 Minimally invasive extraction",
+  ],
+};
+
+export const teaser = {
+  heading: "More Than a Drone",
+  body: "Warden is just the beginning. Earthform is building a future where AI, robotics, and humans work together to reshape and respect our planet."
+};
+
+Then your components just import these sections:
+
+import { hero, mission, about, teaser } from '../site.config';
+
+Now I can hand you content updates in this format! 🔥
+✍️ 2. Updated Messaging Suggestions
+
+Hero Section
+
+title: "Warden: The Shield in the Deep",
+subtitle: "Mining is still dangerous. We're building guardians who never blink."
+
+Mission Section
+
+heading: "What if we could mine without loss?",
+body: "We believe no one should die just to earn a living. Earthform is building AI-powered drones that understand danger, protect lives, and keep the earth intact. We respect the minerals — and the people — who make modern life possible."
+
+Teaser / Roadmap Tease
+
+heading: "This is just the beginning.",
+body: "Warden protects. Hero heals. Patriot defends. Our drone ecosystem brings AI into the real world — working alongside humans, not replacing them. Earthform is building the bridge between humanity and the planet it calls home."
+
+🧠 3. Optional: Rename Section Labels (to match narrative)
+
+You can rename About to “Why We’re Building Warden”
+CTA button: “Back the Mission” or “See Our Tech”
+🚀 4. Ready to Go Further?
+
+Next steps we can knock out together:
+
+    🔌 Integrate your config into the Astro site structure
+
+    📷 Add visuals (drone renders, concept sketches, anything you like)
+
+    🗺️ Roadmap section (Warden → Hero → Patriot)
+
+    📬 Contact form with Formspree
+
+    🔒 Password-protected early-access/investor page

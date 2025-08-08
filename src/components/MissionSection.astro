@@ -1,3 +1,7 @@
+---
+import { mission } from '../site.config';
+---
+
 <section class="bg-gray-900 text-white py-20 relative overflow-hidden">
   <!-- Subtle background pattern for depth -->
   <div class="absolute inset-0 opacity-5">
@@ -9,44 +13,36 @@
     <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
       <div class="space-y-6">
         <div class="inline-flex items-center gap-2 px-3 py-1 bg-red-900/30 rounded-full text-red-300 text-sm font-medium mb-2">
-          ⚠️ The Reality Underground
+          {mission.problem.tagline}
         </div>
         <h2 class="text-4xl font-bold mb-6 leading-tight">
-          Every 30 seconds, a miner's life hangs in the balance
+          {mission.problem.heading}
         </h2>
         
         <!-- Statistics block for impact -->
         <div class="grid grid-cols-2 gap-4 py-6 px-4 bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-red-400">15,000+</div>
-            <div class="text-xs opacity-70">mining deaths yearly</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-orange-400">60%</div>
-            <div class="text-xs opacity-70">preventable incidents</div>
-          </div>
+          {mission.problem.stats.map((stat) => (
+            <div class="text-center">
+              <div class={`text-2xl font-bold text-${stat.color}-400`}>{stat.number}</div>
+              <div class="text-xs opacity-70">{stat.label}</div>
+            </div>
+          ))}
         </div>
         
         <div class="space-y-4">
-          <p class="text-lg opacity-90 leading-relaxed">
-            <span class="text-red-300 font-semibold">Gas leaks.</span> 
-            <span class="text-orange-300 font-semibold">Collapses.</span> 
-            <span class="text-yellow-300 font-semibold">Heat.</span> 
-            <span class="text-gray-300 font-semibold">Silence.</span>
-          </p>
-          <p class="text-lg opacity-80 leading-relaxed">
-            Too many fathers, mothers, sons, and daughters never come home. Behind every statistic is a family waiting at the kitchen table.
-          </p>
+          {mission.problem.description.map((paragraph) => (
+            <p class="text-lg opacity-90 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
           
           <!-- Emotional bridge to solution -->
           <div class="pt-4 border-t border-gray-700/50">
             <p class="text-xl font-medium text-blue-300 italic leading-relaxed">
-              "We're not trying to replace the miner — we're becoming their guardian angel in the deep."
+              "{mission.problem.quote}"
             </p>
             <p class="text-base opacity-80 mt-3">
-              Warden is the first AI system built to <span class="text-green-300 font-semibold">shield</span>, 
-              <span class="text-yellow-300 font-semibold">warn</span>, and 
-              <span class="text-blue-300 font-semibold">remember</span> — before danger strikes.
+              {mission.problem.solution}
             </p>
           </div>
         </div>
@@ -71,24 +67,23 @@
       <!-- Section intro with animated elements -->
       <div class="text-center mb-16">
         <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-900/30 rounded-full text-green-300 text-sm font-medium mb-6">
-          🌱 Our Philosophy
+          {mission.philosophy.tagline}
         </div>
         
         <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent">
-          What We Stand For
+          {mission.philosophy.heading}
         </h2>
         
         <!-- Core tagline with emphasis -->
         <div class="relative mb-8">
           <p class="text-2xl font-light max-w-2xl mx-auto leading-relaxed">
-            <span class="text-blue-300 italic font-serif">"Earthform: Where mining meets healing."</span>
+            <span class="text-blue-300 italic font-serif">"{mission.philosophy.subtitle}"</span>
           </p>
           <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent"></div>
         </div>
         
         <p class="text-lg opacity-80 max-w-3xl mx-auto leading-relaxed">
-          We believe technology should heal, protect, and honor both human lives and the earth beneath our feet. 
-          This is <span class="text-green-300 font-semibold">intelligent stewardship</span>, not just extraction.
+          {mission.philosophy.description}
         </p>
         
         <!-- Journey narrative -->
@@ -130,123 +125,45 @@
       
       <!-- Enhanced value proposition cards -->
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Intelligence Card -->
-        <div class="group relative">
-          <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/50 to-purple-600/50 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-          <div class="relative p-8 bg-gray-800 rounded-lg border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105">
-            <div class="text-center">
-              <!-- Icon with glow effect -->
-              <div class="w-16 h-16 mx-auto mb-6 bg-blue-500/20 rounded-full flex items-center justify-center border-2 border-blue-500/50 group-hover:border-blue-400 group-hover:bg-blue-500/30 transition-all">
-                <span class="text-3xl">🛡️</span>
-              </div>
-              
-              <h3 class="text-xl font-bold mb-4 text-blue-300 group-hover:text-blue-200 transition-colors">
-                Predictive Intelligence
-              </h3>
-              
-              <p class="text-sm opacity-80 mb-6 leading-relaxed">
-                AI that sees dangers before humans do, mapping threats with precision and care. 
-                <span class="text-blue-300">Every shadow, every shift, every breath of gas.</span>
-              </p>
-              
-              <!-- Feature highlights -->
-              <div class="space-y-2 text-xs opacity-60">
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
-                  Real-time threat detection
+        {mission.values.map((value) => (
+          <div class="group relative">
+            <div class={`absolute -inset-1 bg-gradient-to-r from-${value.color}-600/50 to-${value.color === 'blue' ? 'purple' : value.color === 'green' ? 'emerald' : 'orange'}-600/50 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000`}></div>
+            <div class={`relative p-8 bg-gray-800 rounded-lg border border-gray-700/50 hover:border-${value.color}-500/50 transition-all duration-300 hover:transform hover:scale-105`}>
+              <div class="text-center">
+                <!-- Icon with glow effect -->
+                <div class={`w-16 h-16 mx-auto mb-6 bg-${value.color}-500/20 rounded-full flex items-center justify-center border-2 border-${value.color}-500/50 group-hover:border-${value.color}-400 group-hover:bg-${value.color}-500/30 transition-all`}>
+                  <span class="text-3xl">{value.icon}</span>
                 </div>
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
-                  Predictive risk modeling
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
-                  Environmental mapping
+                
+                <h3 class={`text-xl font-bold mb-4 text-${value.color}-300 group-hover:text-${value.color}-200 transition-colors`}>
+                  {value.title}
+                </h3>
+                
+                <p class="text-sm opacity-80 mb-6 leading-relaxed">
+                  {value.description}
+                </p>
+                
+                <!-- Feature highlights -->
+                <div class="space-y-2 text-xs opacity-60">
+                  {value.features.map((feature) => (
+                    <div class="flex items-center justify-center gap-2">
+                      <span class={`w-2 h-2 bg-${value.color}-400 rounded-full`}></span>
+                      {feature}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Empathy Card -->
-        <div class="group relative">
-          <div class="absolute -inset-1 bg-gradient-to-r from-green-600/50 to-emerald-600/50 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-          <div class="relative p-8 bg-gray-800 rounded-lg border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:transform hover:scale-105">
-            <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-6 bg-green-500/20 rounded-full flex items-center justify-center border-2 border-green-500/50 group-hover:border-green-400 group-hover:bg-green-500/30 transition-all">
-                <span class="text-3xl">💚</span>
-              </div>
-              
-              <h3 class="text-xl font-bold mb-4 text-green-300 group-hover:text-green-200 transition-colors">
-                Human-Centered Design
-              </h3>
-              
-              <p class="text-sm opacity-80 mb-6 leading-relaxed">
-                Technology built with respect for the people who risk everything underground. 
-                <span class="text-green-300">Because every miner deserves to come home.</span>
-              </p>
-              
-              <div class="space-y-2 text-xs opacity-60">
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                  Intuitive interfaces
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                  Worker-first design
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                  Cultural sensitivity
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Healing Card -->
-        <div class="group relative">
-          <div class="absolute -inset-1 bg-gradient-to-r from-yellow-600/50 to-orange-600/50 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-          <div class="relative p-8 bg-gray-800 rounded-lg border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 hover:transform hover:scale-105">
-            <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-6 bg-yellow-500/20 rounded-full flex items-center justify-center border-2 border-yellow-500/50 group-hover:border-yellow-400 group-hover:bg-yellow-500/30 transition-all">
-                <span class="text-3xl">🌱</span>
-              </div>
-              
-              <h3 class="text-xl font-bold mb-4 text-yellow-300 group-hover:text-yellow-200 transition-colors">
-                Regenerative Impact
-              </h3>
-              
-              <p class="text-sm opacity-80 mb-6 leading-relaxed">
-                Responsible extraction that considers nature's future, not just today's needs. 
-                <span class="text-yellow-300">Mining that gives back more than it takes.</span>
-              </p>
-              
-              <div class="space-y-2 text-xs opacity-60">
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                  Environmental monitoring
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                  Restoration planning
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                  <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                  Sustainable practices
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
       
       <!-- Closing inspiration -->
       <div class="text-center mt-16 pt-12 border-t border-gray-700/30">
         <p class="text-lg italic opacity-70 max-w-2xl mx-auto">
-          "The earth remembers every scar we make. Let's make sure it also remembers how we chose to heal."
+          "{mission.philosophy.quote}"
         </p>
-        <p class="text-sm opacity-50 mt-4">— The Earthform Mission</p>
+        <p class="text-sm opacity-50 mt-4">{mission.philosophy.attribution}</p>
       </div>
     </div>
   </div>

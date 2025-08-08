@@ -1,18 +1,18 @@
 ---
-// src/components/CTASection.astro
+import { cta } from '../site.config';
 ---
 
 <section id="join" class="bg-white text-black py-24 text-center">
   <div class="max-w-3xl mx-auto px-4">
-    <h2 class="text-4xl font-bold mb-6">Help Us Build Earthform</h2>
+    <h2 class="text-4xl font-bold mb-6">{cta.heading}</h2>
     <p class="text-lg mb-8 opacity-80">
-      We're looking for engineers, miners, researchers, storytellers, and believers. Join the movement to bring intelligence, empathy, and healing underground.
+      {cta.subtitle}
     </p>
-    <form action="https://formspree.io/f/mdkdpgvn" method="POST" class="flex flex-col gap-4 max-w-md mx-auto">
-      <input type="email" name="email" placeholder="Your email" required class="p-3 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all" />
-      <textarea name="message" placeholder="Tell us how you'd like to help the Earthforming mission..." rows="4" class="p-3 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all"></textarea>
+    <form action={cta.form.action} method="POST" class="flex flex-col gap-4 max-w-md mx-auto">
+      <input type="email" name="email" placeholder={cta.form.emailPlaceholder} required class="p-3 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all" />
+      <textarea name="message" placeholder={cta.form.messagePlaceholder} rows="4" class="p-3 border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all"></textarea>
       <button type="submit" class="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 shadow-lg">
-        Join the Earthforming Mission
+        {cta.form.submitText}
       </button>
     </form>
   </div>
