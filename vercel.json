@@ -1,0 +1,27 @@
+{
+  "functions": {
+    "src/pages/api/github-webhook.ts": {
+      "runtime": "nodejs20.x"
+    },
+    "src/pages/api/test-discord.ts": {
+      "runtime": "nodejs20.x"
+    },
+    "src/pages/github-discord-push-dev-updates.ts": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/github-webhook",
+      "dest": "/src/pages/api/github-webhook.ts"
+    },
+    {
+      "src": "/api/test-discord", 
+      "dest": "/src/pages/api/test-discord.ts"
+    },
+    {
+      "src": "/github-discord-push-dev-updates",
+      "dest": "/src/pages/github-discord-push-dev-updates.ts"
+    }
+  ]
+}
