@@ -1,5 +1,5 @@
 ---
-import { mission } from '../site.config';
+import { mission, meta } from '../site.config';
 ---
 
 <section class="bg-gray-900 text-white py-20 relative overflow-hidden">
@@ -50,7 +50,7 @@ import { mission } from '../site.config';
       
       <div class="relative group">
         <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-green-500/20 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000"></div>
-        <img src="/hero-image.svg" alt="Warden AI drone operating underground with hazard detection" class="relative rounded-lg shadow-2xl border border-gray-700/50 group-hover:scale-105 transition-transform duration-500" />
+        <img src={meta.images.hero.src} alt={meta.images.hero.alt} class="relative rounded-lg shadow-2xl border border-gray-700/50 group-hover:scale-105 transition-transform duration-500" />
         
         <!-- Floating info cards for immersion -->
         <div class="absolute -top-4 -right-4 bg-green-500/90 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-sm font-medium shadow-lg border border-green-400/50">

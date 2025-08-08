@@ -3,7 +3,8 @@ import HeroSection from '../components/HeroSection.astro'
 import MissionSection from '../components/MissionSection.astro'
 import EcosystemSection from '../components/EcosystemSection.astro'
 import CTASection from '../components/CTASection.astro'
-import { meta } from '../site.config'
+import { meta, footer, nav } from '../site.config'
+import Analytics from '@vercel/analytics/astro'
 ---
 
 <html lang="en">
@@ -34,5 +35,14 @@ import { meta } from '../site.config'
     <MissionSection />
     <EcosystemSection />
     <CTASection />
+    <Analytics />
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link: { label: string; href: string }) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
   </body>
 </html>

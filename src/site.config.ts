@@ -119,6 +119,15 @@ export const ecosystem = {
   }
 };
 
+export const nav = {
+  links: [
+    { label: "Home", href: "#" },
+    { label: "Mission", href: "#mission" },
+    { label: "Ecosystem", href: "#ecosystem" },
+    { label: "Join", href: "#join" }
+  ]
+};
+
 export const cta = {
   heading: "Help Us Build Earthform",
   subtitle: "We're looking for engineers, miners, researchers, builders, and believers. Join the movement to bring intelligence and protection underground.",
@@ -128,6 +137,14 @@ export const cta = {
     submitText: "Join the Earthforming Mission",
     action: "https://formspree.io/f/mdkdpgvn"
   }
+};
+
+export const footer = {
+  text: "© 2025 Earthform. All rights reserved.",
+  links: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" }
+  ]
 };
 
 export const meta = {
@@ -145,5 +162,51 @@ export const meta = {
   twitter: {
     title: "Earthform | Shielding the Deep",
     description: "AI-powered drones that protect miners, map dangers, and honor lives underground. Join the Earthforming mission."
+  },
+
+  images: {
+    hero: {
+      src: "/hero-image.svg",
+      alt: "Warden AI drone operating underground with hazard detection"
+    },
+    favicon: {
+      src: "/favicon.svg",
+      alt: "Earthform logo icon"
+    }
   }
+};
+
+// Customization for /thanks page
+export const thanks_hero = {
+  icon: "🛡️",
+  title: "You Just Joined the Earthforming Mission",
+  subtitle: "In a world that buries its problems, you chose to rise.",
+  description: "Our team has received your message — and you’re officially part of a growing force that protects what matters. We’ll be in touch soon. Until then, keep your eyes on the Earth… and your heart with the miners.",
+  image: {
+    src: "/hero-image.svg",
+    alt: "Warden drone with glowing eyes"
+  }
+};
+
+export const thanks_mission = {
+  heading: "What Happens Next?",
+  steps: [
+    {
+      title: "Review",
+      description: "Our team will review your submission and reach out if we need more info."
+    },
+    {
+      title: "Connect",
+      description: "You’ll receive an invitation to join our Discord and community channels."
+    },
+    {
+      title: "Collaborate",
+      description: "Get early access to updates, events, and opportunities to contribute."
+    }
+  ]
+};
+
+export const thanks_next = {
+  discord: "https://discord.gg/earthform",
+  footer: "Want to help more? Share our mission or invite others to join. Together, we build a safer future."
 };
