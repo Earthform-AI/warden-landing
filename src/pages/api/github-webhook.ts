@@ -202,23 +202,7 @@ function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any
   };
 }
 
-export async function ALL({ request }: { request: Request }) {
-  // Handle both POST and OPTIONS requests
-  if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, X-GitHub-Event, X-Hub-Signature-256, X-Hub-Signature',
-      },
-    });
-  }
-
-  if (request.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 });
-  }
-
+export async function POST({ request }: { request: Request }) {
   try {
     const signature = request.headers.get('x-hub-signature-256');
     const event = request.headers.get('x-github-event');
@@ -262,20 +246,10 @@ export async function ALL({ request }: { request: Request }) {
       return new Response('Discord notification failed', { status: 500 });
     }
 
-    return new Response('Webhook processed successfully', { 
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      }
-    });
+    return new Response('Webhook processed successfully', { status: 200 });
     
   } catch (error) {
     console.error('Webhook error:', error);
-    return new Response('Internal server error', { 
-      status: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      }
-    });
+    return new Response('Internal server error', { status: 500 });
   }
 }
