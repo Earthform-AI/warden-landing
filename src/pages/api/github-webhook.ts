@@ -2,6 +2,8 @@
 import type { APIRoute } from 'astro';
 import crypto from 'crypto';
 
+export const prerender = false;
+
 interface GitHubWebhookPayload {
   action?: string;
   repository?: {

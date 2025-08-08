@@ -1,5 +1,6 @@
 export { renderers } from '../../renderers.mjs';
 
+const prerender = false;
 const POST = async ({ request }) => {
   try {
     const discordWebhookUrl = "https://discord.com/api/webhooks/1403444603440594944/0Z-yULrPBcvKETofq6AZQx5DK6HUluKPE6hpvqZjBGzMabCfeayPrZD-QfN0Slyao2xS";
@@ -47,7 +48,8 @@ const GET = async () => {
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   GET,
-  POST
+  POST,
+  prerender
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const page = () => _page;

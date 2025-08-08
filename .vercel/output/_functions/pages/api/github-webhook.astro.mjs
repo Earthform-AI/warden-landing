@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 export { renderers } from '../../renderers.mjs';
 
+const prerender = false;
 const DISCORD_COLORS = {
   PUSH: 65280,
   // Green
@@ -151,7 +152,8 @@ const POST = async ({ request }) => {
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  POST
+  POST,
+  prerender
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const page = () => _page;
