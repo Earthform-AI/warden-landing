@@ -1,6 +1,7 @@
 // Test endpoint to verify Discord webhook functionality  
 // Testing GitHub webhook integration - should trigger Discord notification
 // Updated: Testing with Vercel URL instead of custom domain
+// Testing webhook delivery with GitHub ping event
 export async function POST({ request }: { request: Request }) {
   try {
     const discordWebhookUrl = import.meta.env.DISCORD_WEBHOOK_URL;
