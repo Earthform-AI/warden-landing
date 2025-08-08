@@ -124,6 +124,7 @@ export const nav = {
     { label: "Home", href: "#" },
     { label: "Mission", href: "#mission" },
     { label: "Ecosystem", href: "#ecosystem" },
+    { label: "Community", href: "#community" },
     { label: "Join", href: "#join" }
   ]
 };
@@ -139,9 +140,38 @@ export const cta = {
   }
 };
 
+export const community = {
+  heading: "Join the Earthform Community",
+  subtitle: "Connect with builders, dreamers, and protectors who believe in a future where humanity and Earth coexist with respect.",
+  description: "Our Discord is where the mission comes alive. Share ideas, get updates, and be part of the conversation that's shaping the future of intelligent stewardship.",
+  discord: {
+    link: "https://discord.gg/tMK9S68bjQ",
+    text: "Join Discord Community",
+    subtitle: "Where earthforms unite to build tomorrow"
+  },
+  values: [
+    {
+      icon: "💬",
+      title: "Real Conversations",
+      description: "No corporate speak. Real talk about the challenges and opportunities ahead."
+    },
+    {
+      icon: "🔬",
+      title: "Early Access",
+      description: "First look at developments, demos, and opportunities to contribute."
+    },
+    {
+      icon: "🤝",
+      title: "Human-First",
+      description: "A community where being human isn't just okay—it's the whole point."
+    }
+  ]
+};
+
 export const footer = {
   text: "© 2025 Earthform. All rights reserved.",
   links: [
+    { label: "Discord Community", href: "https://discord.gg/tMK9S68bjQ" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" }
   ]
@@ -207,6 +237,6 @@ export const thanks_mission = {
 };
 
 export const thanks_next = {
-  discord: "https://discord.gg/earthform",
+  discord: "https://discord.gg/tMK9S68bjQ",
   footer: "Want to help more? Share our mission or invite others to join. Together, we build a safer future."
 };

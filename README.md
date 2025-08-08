@@ -51,6 +51,7 @@ This is the official landing page for the Warden project, built with:
 - **Astro** - Modern static site generator
 - **Tailwind CSS** - Utility-first CSS framework
 - **Formspree** - Form handling service
+- **Discord Integration** - Automatic GitHub webhook notifications
 
 ```text
 warden-landing/
@@ -62,15 +63,31 @@ warden-landing/
 │   │   ├── MissionSection.astro
 │   │   └── CTASection.astro
 │   ├── pages/
+│   │   ├── api/
+│   │   │   ├── github-webhook.ts     # GitHub webhook handler
+│   │   │   └── test-discord.ts       # Discord test endpoint
 │   │   └── index.astro
-│   └── styles/
-│       └── global.css
+│   ├── styles/
+│   │   └── global.css
+│   └── site.config.ts               # Centralized content configuration
 ├── package.json
 ├── astro.config.mjs
-└── tailwind.config.js
+├── tailwind.config.js
+└── DISCORD_WEBHOOK_SETUP.md        # Setup guide for Discord integration
 ```
 
-## 🛠️ Development
+## � Discord Integration
+
+The project includes automatic Discord notifications for GitHub activity:
+
+- **Push notifications** - New commits and their messages
+- **Pull request updates** - When PRs are opened, merged, or closed
+- **Release announcements** - New version releases with notes
+- **Customizable formatting** - Branded messages with Warden theming
+
+See [`DISCORD_WEBHOOK_SETUP.md`](./DISCORD_WEBHOOK_SETUP.md) for complete setup instructions.
+
+## �🛠️ Development
 
 ### Prerequisites
 - Node.js 18+ 

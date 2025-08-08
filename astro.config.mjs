@@ -4,5 +4,13 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()]
+  integrations: [tailwind()],
+  server: {
+    // For development
+    host: true
+  },
+  // Add redirects for custom webhook URLs
+  redirects: {
+    '/github-discord-push-dev-updates': '/api/github-webhook'
+  }
 });
