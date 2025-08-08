@@ -15,9 +15,5 @@ export default defineConfig({
   server: {
     // For development
     host: true
-  },
-  // Add redirects for custom webhook URLs
-  redirects: {
-    '/github-discord-push-dev-updates': '/api/github-webhook'
   }
 });
