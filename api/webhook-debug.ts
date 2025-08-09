@@ -8,9 +8,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const headers = req.headers as Record<string, string | string[]>;
     let body: string;
+
     const raw = (req as any).rawBody;
     if (raw) {
       body = raw.toString();
+
     } else if (req.body) {
       body = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
     } else {
