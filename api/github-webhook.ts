@@ -1,8 +1,5 @@
-// API route to handle GitHub webhooks and send Discord notifications
-import type { APIRoute } from 'astro';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import crypto from 'crypto';
-
-export const prerender = false;
 
 interface GitHubWebhookPayload {
   action?: string;
@@ -74,24 +71,22 @@ interface DiscordEmbed {
 }
 
 const DISCORD_COLORS = {
-  PUSH: 0x00ff00,      // Green
-  PR_OPENED: 0x0099ff,  // Blue  
-  PR_MERGED: 0x8b5cf6,  // Purple
-  RELEASE: 0xffd700,    // Gold
-  ISSUE: 0xff4500,      // Orange
-  DEFAULT: 0x36393f     // Discord gray
+  PUSH: 0x00ff00,
+  PR_OPENED: 0x0099ff,
+  PR_MERGED: 0x8b5cf6,
+  RELEASE: 0xffd700,
+  ISSUE: 0xff4500,
+  DEFAULT: 0x36393f
 };
 
 function verifySignature(payload: string, signature: string, secret: string): boolean {
   if (!secret) {
-    return true; // Skip verification if no secret set
+    return true;
   }
-  
   const expectedSignature = crypto
     .createHmac('sha256', secret)
     .update(payload)
     .digest('hex');
-    
   return crypto.timingSafeEqual(
     Buffer.from(`sha256=${expectedSignature}`, 'utf8'),
     Buffer.from(signature, 'utf8')
@@ -99,7 +94,6 @@ function verifySignature(payload: string, signature: string, secret: string): bo
 }
 
 function formatCommitMessage(message: string): string {
-  // Limit commit message length and format for Discord
   const lines = message.split('\n');
   const title = lines[0];
   return title.length > 72 ? `${title.substring(0, 69)}...` : title;
@@ -116,32 +110,25 @@ function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any
         const branch = payload.ref?.replace('refs/heads/', '') || 'main';
         const commitCount = payload.commits.length;
         const pusher = payload.pusher?.name || payload.head_commit?.author?.name || 'Unknown';
-        
         embeds.push({
           title: `🚀 ${commitCount} new commit${commitCount > 1 ? 's' : ''} to ${branch}`,
           description: `**${pusher}** pushed to **${repoName}**`,
           color: DISCORD_COLORS.PUSH,
           url: repoUrl,
-          fields: payload.commits.slice(0, 5).map(commit => ({
-            name: `[\`${commit.id.substring(0, 7)}\`](${commit.url})`,
-            value: formatCommitMessage(commit.message),
-            inline: false
+          fields: payload.commits.slice(0, 5).map(c => ({
+            name: formatCommitMessage(c.message),
+            value: `[View commit](${c.url})`
           })),
-          footer: {
-            text: commitCount > 5 ? `...and ${commitCount - 5} more commits` : 'Earthform DevUpdate'
-          },
+          footer: { text: `${repoName} • Earthform DevUpdate` },
           timestamp: new Date().toISOString()
         });
       }
       break;
-
     case 'pull_request':
       if (payload.pull_request && payload.action) {
         const { pull_request: pr, action } = payload;
-        
         let title = '';
         let color = DISCORD_COLORS.DEFAULT;
-        
         if (action === 'opened') {
           title = `📋 New Pull Request #${pr.number}`;
           color = DISCORD_COLORS.PR_OPENED;
@@ -152,27 +139,21 @@ function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any
           title = `❌ Pull Request #${pr.number} Closed`;
           color = DISCORD_COLORS.DEFAULT;
         } else {
-          // Skip other PR actions for now
           return null;
         }
-
         embeds.push({
           title,
           description: `**[${pr.title}](${pr.html_url})**\nby ${pr.user.login}`,
           color,
           url: pr.html_url,
-          footer: {
-            text: `${repoName} • Earthform DevUpdate`
-          },
+          footer: { text: `${repoName} • Earthform DevUpdate` },
           timestamp: new Date().toISOString()
         });
       }
       break;
-
     case 'release':
       if (payload.release && payload.action === 'published') {
         const { release } = payload;
-        
         embeds.push({
           title: `🏷️ New Release: ${release.tag_name}`,
           description: `**[${release.name}](${release.html_url})**\nreleased by ${release.author.login}`,
@@ -183,19 +164,14 @@ function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any
             value: release.body.length > 500 ? `${release.body.substring(0, 497)}...` : release.body,
             inline: false
           }] : [],
-          footer: {
-            text: `${repoName} • Earthform DevUpdate`
-          },
+          footer: { text: `${repoName} • Earthform DevUpdate` },
           timestamp: new Date().toISOString()
         });
       }
       break;
-
     default:
-      // Skip unsupported events
       return null;
   }
-
   return {
     embeds,
     username: 'Warden DevBot',
@@ -203,54 +179,46 @@ function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any
   };
 }
 
-export const POST: APIRoute = async ({ request }) => {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    const signature = request.headers.get('x-hub-signature-256');
-    const event = request.headers.get('x-github-event');
-    const body = await request.text();
-    
-    // Verify webhook signature if secret is configured
-    const secret = import.meta.env.GITHUB_WEBHOOK_SECRET;
+    const signature = req.headers['x-hub-signature-256'] as string | undefined;
+    const event = req.headers['x-github-event'] as string | undefined;
+    const body = req.rawBody ? req.rawBody.toString() : JSON.stringify(req.body || '');
+
+    const secret = process.env.GITHUB_WEBHOOK_SECRET || '';
     if (secret && signature && !verifySignature(body, signature, secret)) {
-      return new Response('Unauthorized', { status: 401 });
+      res.status(401).send('Unauthorized');
+      return;
     }
-
     if (!event) {
-      return new Response('Missing event header', { status: 400 });
+      res.status(400).send('Missing event header');
+      return;
     }
-
     const payload: GitHubWebhookPayload = JSON.parse(body);
     const discordPayload = createDiscordPayload(event, payload);
-    
     if (!discordPayload) {
-      // Event type not supported or action not interesting
-      return new Response('Event ignored', { status: 200 });
+      res.status(200).send('Event ignored');
+      return;
     }
-
-    // Send to Discord
-    const discordWebhookUrl = import.meta.env.DISCORD_WEBHOOK_URL;
+    const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL;
     if (!discordWebhookUrl) {
       console.error('DISCORD_WEBHOOK_URL not configured');
-      return new Response('Discord webhook not configured', { status: 500 });
+      res.status(500).send('Discord webhook not configured');
+      return;
     }
-
     const response = await fetch(discordWebhookUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(discordPayload),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(discordPayload)
     });
-
     if (!response.ok) {
       console.error('Discord webhook failed:', response.status, await response.text());
-      return new Response('Discord notification failed', { status: 500 });
+      res.status(500).send('Discord notification failed');
+      return;
     }
-
-    return new Response('Webhook processed successfully', { status: 200 });
-    
+    res.status(200).send('Webhook processed successfully');
   } catch (error) {
     console.error('Webhook error:', error);
-    return new Response('Internal server error', { status: 500 });
+    res.status(500).send('Internal server error');
   }
-};
+}
