@@ -45,6 +45,38 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   );
 };
 
+// Advanced Tech Loading Animation
+export const TechLoader: React.FC<{ size?: 'sm' | 'md' | 'lg' }> = ({ size = 'md' }) => {
+  const sizeClasses = {
+    sm: 'w-8 h-8',
+    md: 'w-12 h-12',
+    lg: 'w-16 h-16'
+  };
+
+  return (
+    <div className={`relative ${sizeClasses[size]} mx-auto`}>
+      {[0, 1, 2].map((i) => (
+        <motion.div
+          key={i}
+          className={`absolute inset-0 border-2 border-transparent rounded-full ${
+            i === 0 ? 'border-t-blue-500' : 
+            i === 1 ? 'border-r-green-500' : 
+            'border-b-purple-500'
+          }`}
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 2 + i * 0.5,
+            repeat: Infinity,
+            ease: 'linear',
+            delay: i * 0.2
+          }}
+        />
+      ))}
+      <div className="absolute inset-2 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-full" />
+    </div>
+  );
+};
+
 interface TechCardProps {
   children: React.ReactNode;
   className?: string;
@@ -155,6 +187,8 @@ interface TechButtonProps {
   href?: string;
   className?: string;
   variant?: 'primary' | 'secondary' | 'tech';
+  type?: 'button' | 'submit' | 'reset';
+  [key: string]: any; // Allow any additional props
 }
 
 export const TechButton: React.FC<TechButtonProps> = ({
@@ -162,7 +196,9 @@ export const TechButton: React.FC<TechButtonProps> = ({
   onClick,
   href,
   className = '',
-  variant = 'primary'
+  variant = 'primary',
+  type,
+  ...rest
 }) => {
   const baseClasses = "relative overflow-hidden font-semibold transition-all duration-200";
   
@@ -173,7 +209,7 @@ export const TechButton: React.FC<TechButtonProps> = ({
   };
 
   const Component = href ? motion.a : motion.button;
-  const props = href ? { href } : { onClick };
+  const props = href ? { href, ...rest } : { onClick, type, ...rest };
 
   return (
     <Component
@@ -191,5 +227,126 @@ export const TechButton: React.FC<TechButtonProps> = ({
       />
       <span className="relative z-10">{children}</span>
     </Component>
+  );
+};
+
+// Advanced Matrix Code Effect
+export const MatrixCode: React.FC<{ className?: string }> = ({ className = '' }) => {
+  const [streams, setStreams] = React.useState<string[]>([]);
+
+  React.useEffect(() => {
+    const chars = '0123456789ABCDEF';
+    const newStreams = Array.from({ length: 20 }, () => 
+      Array.from({ length: 15 }, () => chars[Math.floor(Math.random() * chars.length)]).join('')
+    );
+    setStreams(newStreams);
+  }, []);
+
+  return (
+    <div className={`absolute inset-0 overflow-hidden opacity-10 pointer-events-none ${className}`}>
+      {streams.map((stream, i) => (
+        <motion.div
+          key={i}
+          className="absolute font-mono text-xs text-green-500"
+          style={{ 
+            left: `${(i * 5) % 100}%`,
+            top: `-100px`
+          }}
+          animate={{ y: ['0vh', '120vh'] }}
+          transition={{
+            duration: 3 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 5,
+            ease: 'linear'
+          }}
+        >
+          {stream.split('').map((char, j) => (
+            <motion.div
+              key={j}
+              initial={{ opacity: 1 }}
+              animate={{ 
+                opacity: [1, 0.5, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                delay: j * 0.1,
+                repeat: Infinity
+              }}
+            >
+              {char}
+            </motion.div>
+          ))}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// Holographic Border Effect
+export const HoloBorder: React.FC<{ 
+  children: React.ReactNode;
+  className?: string;
+  intensity?: 'low' | 'medium' | 'high';
+}> = ({ children, className = '', intensity = 'medium' }) => {
+  const intensityMap = {
+    low: 'opacity-30',
+    medium: 'opacity-50',
+    high: 'opacity-70'
+  };
+
+  return (
+    <div className={`relative ${className}`}>
+      {/* Animated border */}
+      <motion.div
+        className={`absolute inset-0 rounded-lg ${intensityMap[intensity]}`}
+        style={{
+          background: 'linear-gradient(45deg, transparent 49%, cyan 50%, cyan 51%, transparent 52%)',
+          backgroundSize: '20px 20px'
+        }}
+        animate={{
+          backgroundPosition: ['0px 0px', '40px 40px']
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: 'linear'
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10">
+        {children}
+      </div>
+    </div>
+  );
+};
+
+// Particle System Background
+export const ParticleField: React.FC<{ particleCount?: number }> = ({ particleCount = 30 }) => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {Array.from({ length: particleCount }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 bg-blue-500/40 rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            x: [0, Math.random() * 100 - 50],
+            y: [0, Math.random() * 100 - 50],
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0]
+          }}
+          transition={{
+            duration: 3 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 3,
+            ease: 'easeInOut'
+          }}
+        />
+      ))}
+    </div>
   );
 };

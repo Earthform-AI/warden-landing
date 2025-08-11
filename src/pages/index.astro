@@ -5,7 +5,13 @@ import EcosystemSection from '../components/EcosystemSection.astro'
 import CommunitySection from '../components/CommunitySection.astro'
 import CTASection from '../components/CTASection.astro'
 import { TechNavigation } from '../components/TechNavigation.tsx'
-import { meta, footer, nav } from '../site.config'
+import { TechShowcase } from '../components/TechShowcase.tsx'
+import { AdvancedRoadmapNav } from '../components/AdvancedRoadmapNav.tsx'
+import { ScrollProgressBar } from '../components/ScrollDrivenComponents.tsx'
+import { EnhancedHeroSection } from '../components/EnhancedHeroSectionV2.tsx'
+import { EnhancedCTASection } from '../components/EnhancedCTASection.tsx'
+import { ScrolltellingMissionSection, defaultMissionStories } from '../components/ScrolltellingMissionSection.tsx'
+import { meta, footer, nav, cta } from '../site.config'
 import Analytics from '@vercel/analytics/astro'
 ---
 
@@ -34,14 +40,84 @@ import Analytics from '@vercel/analytics/astro'
     <link rel="canonical" href={meta.url} />
   </head>
   <body class="font-sans bg-black text-white">
+    <!-- Scroll Progress Bar -->
+    <ScrollProgressBar client:load />
+    
     <TechNavigation links={nav.links} client:load />
-    <div style="padding-top: 64px;"> <!-- Offset for fixed navigation -->
-      <HeroSection />
-      <MissionSection />
-      <EcosystemSection />
-      <CommunitySection />
-      <CTASection />
-    </div>
+    
+    <!-- Main Content with Scroll Snap -->
+    <main class="pt-16"> <!-- Offset for fixed navigation -->
+      <!-- Hero Section -->
+      <section class="scroll-snap-section min-h-screen">
+        <EnhancedHeroSection 
+          title="Warden: The Shield in the Deep"
+          subtitle="Mining is still dangerous. We're building guardians who never blink."
+          quote="Mining can't be rewritten overnight—but we can begin with intelligence, respect, and armor."
+          cta={{
+            text: "Join the Mission",
+            link: "#join"
+          }}
+          client:load 
+        />
+      </section>
+      
+      <!-- Tech Showcase Section -->
+      <section class="py-20 bg-gradient-to-br from-black via-gray-900 to-black scroll-snap-section min-h-screen flex items-center">
+        <div class="max-w-6xl mx-auto px-4 w-full">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent mb-4 tracking-wide">
+              Advanced AI Systems Online
+            </h2>
+            <p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed tracking-normal">
+              Real-time monitoring of our AI infrastructure demonstrates the sophisticated technology powering the future of intelligent stewardship.
+            </p>
+          </div>
+          <TechShowcase client:load />
+        </div>
+      </section>
+
+      <!-- Interactive Roadmap Navigation -->
+      <section class="py-20 bg-gradient-to-br from-gray-900 via-black to-blue-900/20 scroll-snap-section min-h-screen flex items-center">
+        <div class="max-w-6xl mx-auto px-4 w-full">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-4 tracking-wide">
+              Navigate Our Mission
+            </h2>
+            <p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed tracking-normal">
+              Explore our carefully planned roadmap from underground mining safety to planetary AI stewardship.
+            </p>
+          </div>
+          <AdvancedRoadmapNav client:load />
+        </div>
+      </section>
+      
+      <!-- Scrollytelling Mission Section -->
+      <section class="scroll-snap-section min-h-screen">
+        <ScrolltellingMissionSection stories={defaultMissionStories} client:load />
+      </section>
+      
+      <!-- Ecosystem Section -->
+      <section class="scroll-snap-section min-h-screen flex items-center">
+        <EcosystemSection />
+      </section>
+      
+      <!-- Community Section -->
+      <section class="scroll-snap-section min-h-screen flex items-center">
+        <CommunitySection />
+      </section>
+      
+      <!-- Enhanced CTA Section -->
+      <section class="scroll-snap-section min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-black to-blue-900/20">
+        <div class="w-full">
+          <EnhancedCTASection
+            heading={cta.heading}
+            subtitle={cta.subtitle}
+            form={cta.form}
+            client:load
+          />
+        </div>
+      </section>
+    </main>
     <Analytics />
     <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
       <div>{footer.text}</div>

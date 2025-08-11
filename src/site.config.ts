@@ -124,9 +124,9 @@ export const nav = {
     { label: "Home", href: "/" },
     { label: "Mission", href: "/mission" },
     { label: "Roadmap", href: "/mission#roadmap" },
-    { label: "Ecosystem", href: "#ecosystem" },
-    { label: "Community", href: "#community" },
-    { label: "Join", href: "#join" }
+    { label: "Ecosystem", href: "/#ecosystem" },
+    { label: "Community", href: "/#community" },
+    { label: "Join", href: "/#join" }
   ]
 };
 

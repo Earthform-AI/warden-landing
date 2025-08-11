@@ -1,18 +1,125 @@
 /* Global styles for enhanced visual effects */
 html {
   scroll-behavior: smooth;
+  background: #000000;
+  color: #ffffff;
+  /* Enable hardware acceleration for smooth scrolling */
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-/* Subtle grain effect for the dark sections */
+/* Improved Scroll Snap Configuration */
+body {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 80px; /* Account for fixed navigation */
+  background: linear-gradient(135deg, #000000 0%, #0f172a 30%, #1e293b 70%, #000000 100%);
+  background-attachment: fixed;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.01em; /* Improve text spacing */
+  word-spacing: 0.05em; /* Add proper word spacing */
+}
+
+.scroll-snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  min-height: 100vh; /* Ensure sections fill viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling for better UX */
+@media (prefers-reduced-motion: no-preference) {
+  html, body {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Disable scroll snap on smaller screens for better mobile experience */
+@media (max-width: 768px) {
+  body {
+    scroll-snap-type: none;
+  }
+  
+  .scroll-snap-section {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+}
+
+/* Essential styling for dark theme */
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1e293b;
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --border-color: #374151;
+  --accent-color: #3b82f6;
+  --accent-secondary: #10b981;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glow-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Component styling */
+.nav-glass {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Card components with consistent dark styling */
+.theme-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Subtle grain effect for dark sections */
 .bg-black {
   background-image: 
     radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);
   background-size: 20px 20px;
 }
 
+/* Tech grid pattern animation */
+@keyframes tech-grid {
+  0% { opacity: 0.1; transform: translateX(0) translateY(0); }
+  50% { opacity: 0.3; transform: translateX(10px) translateY(5px); }
+  100% { opacity: 0.1; transform: translateX(0) translateY(0); }
+}
+
+.tech-grid-animation {
+  animation: tech-grid 8s ease-in-out infinite;
+}
+
 /* Enhanced hover effects */
 .hover\:scale-105:hover {
   transform: scale(1.05);
+}
+
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+/* Tech glow effects */
+.tech-glow {
+  box-shadow: 
+    0 0 20px rgba(59, 130, 246, 0.3),
+    0 0 40px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.tech-glow:hover {
+  box-shadow: 
+    0 0 30px rgba(59, 130, 246, 0.4),
+    0 0 60px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Focus states */
@@ -29,6 +136,25 @@ a, button, input, textarea {
 /* Typography enhancements */
 h1, h2, h3 {
   letter-spacing: -0.02em;
+  word-spacing: 0.1em; /* Improve word spacing in headings */
+}
+
+/* Improve text rendering across all text elements */
+p, span, div {
+  letter-spacing: 0.01em;
+  word-spacing: 0.05em;
+}
+
+/* Ensure proper spacing in gradient text */
+.bg-clip-text {
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.1em !important;
+}
+
+/* Font-mono elements need different spacing */
+.font-mono {
+  letter-spacing: 0.05em;
+  word-spacing: 0.2em;
 }
 
 /* Image hover effects */
@@ -47,6 +173,61 @@ img:hover {
 
 .animate-glow:hover {
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Custom scrollbar for tech aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3b82f6, #10b981);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2563eb, #059669);
+}
+
+/* Pulse animation for status indicators */
+@keyframes tech-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.tech-pulse {
+  animation: tech-pulse 2s ease-in-out infinite;
+}
+
+/* Data stream animation */
+@keyframes data-stream {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.data-stream {
+  animation: data-stream 8s linear infinite;
+}
+
+/* Holographic text effect */
+.holographic-text {
+  background: linear-gradient(45deg, #00d4ff, #5b86e5, #36d1dc, #5b86e5);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: holographic 3s ease-in-out infinite;
+}
+
+@keyframes holographic {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* Subtle text shadow for better readability */
