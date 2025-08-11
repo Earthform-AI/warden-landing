@@ -25,75 +25,411 @@ import { missionCopy } from '../mission.config';
     <link rel="canonical" href={meta.url + "/mission"} />
   </head>
   <body class="font-sans bg-black text-white">
-    <main class="min-h-screen py-16 px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{missionCopy.title}</h1>
+    <!-- Hero Section with Atmospheric Background -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <!-- Animated Background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-blue-900 opacity-90"></div>
+      <div class="absolute inset-0">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.1) 1px, transparent 0); background-size: 40px 40px; animation: pulse 4s ease-in-out infinite;"></div>
+      </div>
+      
+      <!-- Floating Elements -->
+      <div class="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+      <div class="absolute top-40 right-20 w-1 h-1 bg-green-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-32 left-20 w-3 h-3 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+      
+      <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-6 py-3 bg-blue-900/40 backdrop-blur-sm rounded-full text-blue-300 text-sm font-medium mb-8 border border-blue-500/30">
+          🚀 Life's Work
         </div>
-
-        <div class="prose prose-invert max-w-none space-y-6">
-          <h2>{missionCopy.why.heading}</h2>
-          {missionCopy.why.paragraphs.map((p) => <p>{p}</p>)}
-          <blockquote><p>{missionCopy.why.quote}</p></blockquote>
-          {missionCopy.why.afterQuote.map((p) => <p>{p}</p>)}
-
-          <h2>{missionCopy.problem.heading}</h2>
-          <p>{missionCopy.problem.intro}</p>
-          <ul>
-            {missionCopy.problem.bullets.map((item) => <li>{item}</li>)}
-          </ul>
-          <p>{missionCopy.problem.closing}</p>
-
-          <h2>{missionCopy.vision.heading}</h2>
-          <p set:html={missionCopy.vision.intro}></p>
-          <ul>
-            {missionCopy.vision.bullets.map((item) => <li set:html={item}></li>)}
-          </ul>
-          <p>{missionCopy.vision.closing}</p>
-
-          <h2>{missionCopy.philosophy.heading}</h2>
-          <p>{missionCopy.philosophy.intro}</p>
-          <ol>
-            {missionCopy.philosophy.numbered.map((item) => (
-              <li><strong>{item.title}</strong> — {item.text}</li>
-            ))}
-          </ol>
-
-          <h2>{missionCopy.ecosystem.heading}</h2>
-          {missionCopy.ecosystem.items.map((item) => (
-            <p><strong>{item.name}</strong> — {item.description}</p>
-          ))}
-          <p set:html={missionCopy.ecosystem.closing}></p>
-
-          <h2>{missionCopy.laborEconomy.heading}</h2>
-          <p set:html={missionCopy.laborEconomy.intro}></p>
-          <ul>
-            {missionCopy.laborEconomy.bullets.map((item) => <li set:html={item}></li>)}
-          </ul>
-          <p>{missionCopy.laborEconomy.closing}</p>
-
-          <h2>{missionCopy.pathForward.heading}</h2>
-          <p>{missionCopy.pathForward.intro}</p>
-          {missionCopy.pathForward.stages.map((stage) => (
-            <>
-              <h3 set:html={stage.subheading}></h3>
-              <ul>
-                {stage.bullets.map((item) => <li>{item}</li>)}
-              </ul>
-            </>
-          ))}
-
-          <h2>{missionCopy.promise.heading}</h2>
-          {missionCopy.promise.paragraphs.map((p) => <p>{p}</p>)}
-          <p class="mt-8">
-            <a href={missionCopy.promise.cta.join.href} class="text-blue-400 hover:text-blue-300 underline">{missionCopy.promise.cta.join.text}</a>
-            {' '}·{' '}
-            <a href={missionCopy.promise.cta.discord.href} class="text-blue-400 hover:text-blue-300 underline">{missionCopy.promise.cta.discord.text}</a>
-          </p>
+        <h1 class="text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
+          {missionCopy.title}
+        </h1>
+        <p class="text-xl md:text-2xl font-light opacity-90 max-w-3xl mx-auto leading-relaxed mb-12">
+          Building companions that care, a labor economy that benefits everyone, and the evolution of thought itself.
+        </p>
+        
+        <!-- Scroll indicator -->
+        <div class="animate-bounce mt-16">
+          <svg class="w-6 h-6 mx-auto text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
         </div>
       </div>
+    </section>
+
+    <main class="relative">
+      <!-- Why I'm Building This -->
+      <section class="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 3px 3px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 60px 60px;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative">
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+              <div class="inline-flex items-center gap-2 px-4 py-2 bg-purple-900/30 rounded-full text-purple-300 text-sm font-medium">
+                💡 Personal Journey
+              </div>
+              
+              <h2 class="text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+                {missionCopy.why.heading}
+              </h2>
+              
+              <div class="space-y-6 text-lg leading-relaxed">
+                {missionCopy.why.paragraphs.map((p, index) => (
+                  <p class="opacity-90" style={`animation-delay: ${index * 0.1}s`}>{p}</p>
+                ))}
+              </div>
+              
+              <div class="relative my-12">
+                <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg blur"></div>
+                <blockquote class="relative bg-gray-800/50 backdrop-blur-sm border-l-4 border-blue-400 p-8 rounded-r-lg">
+                  <p class="text-2xl font-light italic text-blue-200 leading-relaxed">
+                    "{missionCopy.why.quote}"
+                  </p>
+                  <footer class="text-sm opacity-70 mt-4">— My Father</footer>
+                </blockquote>
+              </div>
+            </div>
+            
+            <!-- Visual Element -->
+            <div class="relative group">
+              <div class="absolute -inset-8 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-green-500/20 rounded-lg blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+              <div class="relative bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:scale-105 transition-all duration-500">
+                <div class="text-6xl mb-6 text-center">🤖</div>
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    <span class="text-sm opacity-80">Neural Assembly Language</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-blue-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                    <span class="text-sm opacity-80">Cooperative Intelligence</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                    <span class="text-sm opacity-80">Shared Consciousness</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Continuation of the story -->
+          <div class="mt-16 max-w-4xl mx-auto space-y-6 text-lg leading-relaxed opacity-90">
+            {missionCopy.why.afterQuote.map((p, index) => (
+              <p class={index === missionCopy.why.afterQuote.length - 1 ? "text-xl font-medium text-blue-200" : ""}>{p}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- The Problem Section -->
+      <section class="py-20 bg-gradient-to-br from-red-900/20 via-black to-gray-900 relative">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-900/40 rounded-full text-red-300 text-sm font-medium mb-6">
+              ⚠️ The Reality
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-red-200 bg-clip-text text-transparent">
+              {missionCopy.problem.heading}
+            </h2>
+            <p class="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
+              {missionCopy.problem.intro}
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-3 gap-8 mb-12">
+            {missionCopy.problem.bullets.map((bullet, index) => (
+              <div class="group relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
+                <div class="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 p-8 rounded-lg hover:scale-105 transition-all duration-300">
+                  <div class="text-3xl mb-4 text-red-400">⚡</div>
+                  <p class="text-lg leading-relaxed">{bullet}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="text-center">
+            <p class="text-xl font-medium text-orange-200 max-w-3xl mx-auto leading-relaxed">
+              {missionCopy.problem.closing}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Vision Section -->
+      <section class="py-20 bg-gradient-to-br from-green-900/20 via-black to-blue-900/20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 4px 4px, rgba(34, 197, 94, 0.2) 1px, transparent 0); background-size: 80px 80px;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative">
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-900/40 rounded-full text-green-300 text-sm font-medium mb-6">
+              🌱 The Future
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white via-green-200 to-blue-200 bg-clip-text text-transparent">
+              {missionCopy.vision.heading}
+            </h2>
+            <p class="text-xl opacity-90 max-w-4xl mx-auto leading-relaxed" set:html={missionCopy.vision.intro}></p>
+          </div>
+          
+          <div class="space-y-8 max-w-4xl mx-auto">
+            {missionCopy.vision.bullets.map((bullet, index) => (
+              <div class="group relative">
+                <div class="absolute -inset-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-500"></div>
+                <div class="relative flex items-start gap-6 bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 p-8 rounded-lg hover:scale-102 transition-all duration-300">
+                  <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center text-sm font-bold text-black">
+                    {index + 1}
+                  </div>
+                  <p class="text-lg leading-relaxed" set:html={bullet}></p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="text-center mt-16">
+            <p class="text-2xl font-medium text-green-200 max-w-3xl mx-auto leading-relaxed">
+              {missionCopy.vision.closing}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Philosophy Section -->
+      <section class="py-20 bg-gradient-to-br from-purple-900/20 via-black to-gray-900 relative">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-purple-900/40 rounded-full text-purple-300 text-sm font-medium mb-6">
+              🧠 Core Values
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              {missionCopy.philosophy.heading}
+            </h2>
+            <p class="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
+              {missionCopy.philosophy.intro}
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            {missionCopy.philosophy.numbered.map((item, index) => (
+              <div class="group relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
+                <div class="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 p-8 rounded-lg text-center hover:scale-105 transition-all duration-300">
+                  <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-2xl font-bold text-black mx-auto mb-6">
+                    {index + 1}
+                  </div>
+                  <h3 class="text-2xl font-bold mb-4 text-purple-300">{item.title}</h3>
+                  <p class="text-lg leading-relaxed opacity-90">{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Ecosystem Section -->
+      <section class="py-20 bg-gradient-to-br from-blue-900/20 via-black to-green-900/20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 3px 3px, rgba(59, 130, 246, 0.15) 1px, transparent 0); background-size: 50px 50px;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative">
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/40 rounded-full text-blue-300 text-sm font-medium mb-6">
+              🤖 The Family
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent">
+              {missionCopy.ecosystem.heading}
+            </h2>
+          </div>
+          
+          <div class="space-y-12">
+            {missionCopy.ecosystem.items.map((item, index) => {
+              const colors = ['blue', 'green', 'yellow'];
+              const icons = ['🛡️', '🤖', '🌍'];
+              const color = colors[index];
+              const icon = icons[index];
+              
+              return (
+                <div class={`group relative ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                  <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                    <div class="space-y-6">
+                      <div class={`inline-flex items-center gap-3 px-4 py-2 bg-${color}-900/40 rounded-full text-${color}-300 text-lg font-medium`}>
+                        <span class="text-2xl">{icon}</span>
+                        {item.name}
+                      </div>
+                      <p class="text-xl leading-relaxed opacity-90">{item.description}</p>
+                    </div>
+                    
+                    <div class="relative group mt-8 lg:mt-0">
+                      <div class={`absolute -inset-4 bg-gradient-to-r from-${color}-500/20 to-${color === 'blue' ? 'purple' : color === 'green' ? 'emerald' : 'orange'}-500/20 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-500`}></div>
+                      <div class="relative bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
+                        <div class="text-6xl text-center mb-4">{icon}</div>
+                        <div class={`text-center text-2xl font-bold text-${color}-300 mb-4`}>{item.name}</div>
+                        <div class="space-y-2">
+                          <div class={`h-2 bg-${color}-400/30 rounded-full overflow-hidden`}>
+                            <div class={`h-full bg-${color}-400 rounded-full animate-pulse`} style={`width: ${80 + index * 5}%`}></div>
+                          </div>
+                          <div class="text-sm opacity-70 text-center">Development Progress</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          
+          <div class="text-center mt-16">
+            <div class="relative inline-block">
+              <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-green-500/20 to-purple-500/20 rounded-lg blur"></div>
+              <div class="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 p-8 rounded-lg">
+                <p class="text-xl font-medium leading-relaxed" set:html={missionCopy.ecosystem.closing}></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Labor Economy Section -->
+      <section class="py-20 bg-gradient-to-br from-yellow-900/20 via-black to-orange-900/20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-900/40 rounded-full text-yellow-300 text-sm font-medium mb-6">
+              💰 Economic Model
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white via-yellow-200 to-orange-200 bg-clip-text text-transparent">
+              {missionCopy.laborEconomy.heading}
+            </h2>
+            <p class="text-xl opacity-90 max-w-4xl mx-auto leading-relaxed" set:html={missionCopy.laborEconomy.intro}></p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {missionCopy.laborEconomy.bullets.map((bullet, index) => (
+              <div class="group relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
+                <div class="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 p-6 rounded-lg hover:scale-105 transition-all duration-300">
+                  <div class="text-2xl mb-4 text-yellow-400">⚡</div>
+                  <p class="leading-relaxed" set:html={bullet}></p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="text-center">
+            <p class="text-xl font-medium text-yellow-200 max-w-4xl mx-auto leading-relaxed">
+              {missionCopy.laborEconomy.closing}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Path Forward Section -->
+      <section class="py-20 bg-gradient-to-br from-indigo-900/20 via-black to-purple-900/20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-900/40 rounded-full text-indigo-300 text-sm font-medium mb-6">
+              🛤️ The Journey
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
+              {missionCopy.pathForward.heading}
+            </h2>
+            <p class="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
+              {missionCopy.pathForward.intro}
+            </p>
+          </div>
+          
+          <div class="space-y-12">
+            {missionCopy.pathForward.stages.map((stage, index) => (
+              <div class="relative">
+                <div class="flex items-start gap-8">
+                  <div class="flex-shrink-0">
+                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center text-2xl font-bold text-black">
+                      {index + 1}
+                    </div>
+                    {index < missionCopy.pathForward.stages.length - 1 && (
+                      <div class="w-px h-20 bg-gradient-to-b from-indigo-400 to-transparent mx-8 mt-4"></div>
+                    )}
+                  </div>
+                  
+                  <div class="flex-1">
+                    <h3 class="text-2xl font-bold mb-6 text-indigo-300" set:html={stage.subheading}></h3>
+                    <ul class="space-y-3">
+                      {stage.bullets.map((bullet) => (
+                        <li class="flex items-start gap-3">
+                          <div class="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
+                          <span class="text-lg opacity-90" set:html={bullet}></span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Promise/CTA Section -->
+      <section class="py-24 bg-gradient-to-br from-gray-900 via-black to-blue-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 30px 30px; animation: pulse 6s ease-in-out infinite;"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative">
+          <div class="inline-flex items-center gap-2 px-6 py-3 bg-blue-900/40 backdrop-blur-sm rounded-full text-blue-300 text-sm font-medium mb-8 border border-blue-500/30">
+            💝 A Personal Commitment
+          </div>
+          
+          <h2 class="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+            {missionCopy.promise.heading}
+          </h2>
+          
+          <div class="space-y-8 text-xl leading-relaxed mb-16">
+            {missionCopy.promise.paragraphs.map((p, index) => (
+              <p class={index === 0 ? "text-2xl font-medium text-blue-200" : "opacity-90"}>{p}</p>
+            ))}
+          </div>
+          
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div class="relative group">
+              <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+              <a 
+                href={missionCopy.promise.cta.join.href}
+                class="relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 shadow-2xl hover:scale-105 text-lg"
+              >
+                <span class="text-2xl">🚀</span>
+                {missionCopy.promise.cta.join.text}
+              </a>
+            </div>
+            
+            <a 
+              href={missionCopy.promise.cta.discord.href}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 border border-gray-600 hover:border-gray-500 text-lg hover:scale-105"
+            >
+              <span class="text-2xl">💬</span>
+              {missionCopy.promise.cta.discord.text}
+            </a>
+          </div>
+          
+          <div class="mt-16 pt-12 border-t border-gray-700/30">
+            <p class="text-lg italic opacity-70 max-w-2xl mx-auto">
+              "This is not my next project. This is my life's work."
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
+    
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
       <div>{footer.text}</div>
       <nav class="mt-2 flex justify-center gap-4">
         {footer.links.map((link: { label: string; href: string }) => (
