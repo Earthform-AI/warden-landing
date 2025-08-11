@@ -46,9 +46,11 @@ Warden represents the next generation of underground safety technology, combinin
 
 ## 🚀 Project Structure
 
-This is the official landing page for the Warden project, built with:
+# Warden Landing
 
-- **Astro** - Modern static site generator
+This is the landing page for the Warden project built with Astro.
+
+<!-- Test commit for Discord webhook integration -->
 - **Tailwind CSS** - Utility-first CSS framework
 - **Formspree** - Form handling service
 - **Discord Integration** - Automatic GitHub webhook notifications
