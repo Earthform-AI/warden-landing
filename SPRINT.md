@@ -230,7 +230,7 @@ body: "We believe no one should die just to earn a living. Earthform is building
 Teaser / Roadmap Tease
 
 heading: "This is just the beginning.",
-body: "Warden protects. Hero heals. Patriot defends. Our drone ecosystem brings AI into the real world — working alongside humans, not replacing them. Earthform is building the bridge between humanity and the planet it calls home."
+body: "Warden protects. Steward cares. Patriot defends. Our drone ecosystem brings AI into the real world — working alongside humans, not replacing them. Earthform is building the bridge between humanity and the planet it calls home."
 
 🧠 3. Optional: Rename Section Labels (to match narrative)
 
@@ -244,7 +244,7 @@ Next steps we can knock out together:
 
     📷 Add visuals (drone renders, concept sketches, anything you like)
 
-    🗺️ Roadmap section (Warden → Hero → Patriot)
+    🗺️ Roadmap section (Warden → Steward → Patriot)
 
     📬 Contact form with Formspree
 

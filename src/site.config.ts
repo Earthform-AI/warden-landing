@@ -66,7 +66,7 @@ export const mission = {
       description: "A commitment to those who walked before — and those who walk now",
       features: [
         "Legacy-aware design",
-        "Heroic intent embedded",
+        "Stewardship intent embedded",
         "Built for future generations"
       ]
     }
@@ -75,7 +75,7 @@ export const mission = {
 
 export const ecosystem = {
   heading: "The Earthform Ecosystem",
-  subtitle: "Warden is the first guardian in a coming family of AI drones. Hero and Patriot are next. Together, they form a sentient infrastructure for a better planet.",
+  subtitle: "Warden is the first guardian in a coming family of AI drones. Steward and Patriot are next. Together, they form a sentient infrastructure for a better planet.",
 
   drones: [
     {
@@ -90,14 +90,14 @@ export const ecosystem = {
       ]
     },
     {
-      name: "Hero",
-      icon: "🚁", 
+      name: "Steward",
+      icon: "🤖",
       color: "green",
-      tagline: "Relief drones for search, rescue, and frontline humanitarian aid",
+      tagline: "Companion drones for daily care, emergencies, and data stewardship",
       features: [
+        "Daily assistance",
         "Emergency response",
-        "Search & rescue",
-        "Disaster relief"
+        "Data-driven income"
       ]
     },
     {
@@ -122,7 +122,7 @@ export const ecosystem = {
 export const nav = {
   links: [
     { label: "Home", href: "#" },
-    { label: "Mission", href: "#mission" },
+    { label: "Mission", href: "/mission" },
     { label: "Ecosystem", href: "#ecosystem" },
     { label: "Community", href: "#community" },
     { label: "Join", href: "#join" }
