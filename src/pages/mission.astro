@@ -1,0 +1,105 @@
+---
+import { meta, footer } from '../site.config';
+import { missionCopy } from '../mission.config';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Mission | Earthform</title>
+    <meta name="description" content="Earthform Mission - Why we're building companions that care and a labor economy that benefits everyone." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Mission | Earthform" />
+    <meta property="og:description" content="Why we're building companions that care and a labor economy that benefits everyone." />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="The Mission | Earthform" />
+    <meta property="twitter:description" content="Why we're building companions that care and a labor economy that benefits everyone." />
+    <!-- Additional SEO -->
+    <meta name="keywords" content="earthform mission, ai stewardship, safety drones, labor token" />
+    <meta name="author" content={meta.author} />
+    <link rel="canonical" href={meta.url + "/mission"} />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <main class="min-h-screen py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{missionCopy.title}</h1>
+        </div>
+
+        <div class="prose prose-invert max-w-none space-y-6">
+          <h2>{missionCopy.why.heading}</h2>
+          {missionCopy.why.paragraphs.map((p) => <p>{p}</p>)}
+          <blockquote><p>{missionCopy.why.quote}</p></blockquote>
+          {missionCopy.why.afterQuote.map((p) => <p>{p}</p>)}
+
+          <h2>{missionCopy.problem.heading}</h2>
+          <p>{missionCopy.problem.intro}</p>
+          <ul>
+            {missionCopy.problem.bullets.map((item) => <li>{item}</li>)}
+          </ul>
+          <p>{missionCopy.problem.closing}</p>
+
+          <h2>{missionCopy.vision.heading}</h2>
+          <p set:html={missionCopy.vision.intro}></p>
+          <ul>
+            {missionCopy.vision.bullets.map((item) => <li set:html={item}></li>)}
+          </ul>
+          <p>{missionCopy.vision.closing}</p>
+
+          <h2>{missionCopy.philosophy.heading}</h2>
+          <p>{missionCopy.philosophy.intro}</p>
+          <ol>
+            {missionCopy.philosophy.numbered.map((item) => (
+              <li><strong>{item.title}</strong> — {item.text}</li>
+            ))}
+          </ol>
+
+          <h2>{missionCopy.ecosystem.heading}</h2>
+          {missionCopy.ecosystem.items.map((item) => (
+            <p><strong>{item.name}</strong> — {item.description}</p>
+          ))}
+          <p set:html={missionCopy.ecosystem.closing}></p>
+
+          <h2>{missionCopy.laborEconomy.heading}</h2>
+          <p set:html={missionCopy.laborEconomy.intro}></p>
+          <ul>
+            {missionCopy.laborEconomy.bullets.map((item) => <li set:html={item}></li>)}
+          </ul>
+          <p>{missionCopy.laborEconomy.closing}</p>
+
+          <h2>{missionCopy.pathForward.heading}</h2>
+          <p>{missionCopy.pathForward.intro}</p>
+          {missionCopy.pathForward.stages.map((stage) => (
+            <>
+              <h3 set:html={stage.subheading}></h3>
+              <ul>
+                {stage.bullets.map((item) => <li>{item}</li>)}
+              </ul>
+            </>
+          ))}
+
+          <h2>{missionCopy.promise.heading}</h2>
+          {missionCopy.promise.paragraphs.map((p) => <p>{p}</p>)}
+          <p class="mt-8">
+            <a href={missionCopy.promise.cta.join.href} class="text-blue-400 hover:text-blue-300 underline">{missionCopy.promise.cta.join.text}</a>
+            {' '}·{' '}
+            <a href={missionCopy.promise.cta.discord.href} class="text-blue-400 hover:text-blue-300 underline">{missionCopy.promise.cta.discord.text}</a>
+          </p>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link: { label: string; href: string }) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
+  </body>
+</html>

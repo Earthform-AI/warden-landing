@@ -95,7 +95,7 @@ export const missionAlternative = {
 // Enhanced version with roadmap tease from SPRINT:
 export const ecosystemWithRoadmap = {
   heading: "This is just the beginning.",
-  subtitle: "Warden protects. Hero heals. Patriot defends. Our drone ecosystem brings AI into the real world — working alongside humans, not replacing them.",
+  subtitle: "Warden protects. Steward cares. Patriot defends. Our drone ecosystem brings AI into the real world — working alongside humans, not replacing them.",
   
   drones: [
     {
@@ -110,14 +110,14 @@ export const ecosystemWithRoadmap = {
       ]
     },
     {
-      name: "Hero",
-      icon: "🚁",
-      color: "green", 
-      tagline: "Heals: Relief drones for search, rescue, and crisis response",
+      name: "Steward",
+      icon: "🤖",
+      color: "green",
+      tagline: "Cares: Companion drones for daily assistance and crisis response",
       features: [
+        "Daily assistance",
         "Emergency response",
-        "Search & rescue", 
-        "Disaster relief"
+        "Data stewardship"
       ]
     },
     {
