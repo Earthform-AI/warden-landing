@@ -1,4 +1,8 @@
 /* Global styles for enhanced visual effects */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
   background: #000000;
@@ -23,7 +27,8 @@ body {
 .scroll-snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
-  min-height: 100vh; /* Ensure sections fill viewport */
+  height: 100vh; /* Ensure sections fill viewport without extra space */
+  overflow-y: auto; /* Allow internal scrolling when content exceeds viewport */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,9 +49,10 @@ body {
   body {
     scroll-snap-type: none;
   }
-  
+
   .scroll-snap-section {
-    min-height: auto;
+    height: auto;
+    overflow: visible;
     padding: 2rem 0;
   }
 }

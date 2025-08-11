@@ -164,7 +164,7 @@ export const ScrolltellingMissionSection: React.FC<ScrolltellingMissionSectionPr
   }, [stories.length]);
 
   return (
-    <section className="relative bg-gradient-to-br from-black via-gray-900 to-black min-h-screen py-20">
+    <section className="relative bg-gradient-to-br from-black via-gray-900 to-black min-h-screen h-full py-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
