@@ -23,7 +23,8 @@ body {
 .scroll-snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
-  min-height: 100vh; /* Ensure sections fill viewport */
+  height: 100vh; /* Ensure sections fill viewport without extra space */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,9 +45,9 @@ body {
   body {
     scroll-snap-type: none;
   }
-  
+
   .scroll-snap-section {
-    min-height: auto;
+    height: auto;
     padding: 2rem 0;
   }
 }
