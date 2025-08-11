@@ -1,0 +1,126 @@
+---
+import RoadmapSection from '../components/RoadmapSection.astro';
+import { roadmap, meta, footer } from '../site.config';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Mission | Earthform - My Life's Work</title>
+    <meta name="description" content="This isn't just a business plan — it's my life's work. Follow the journey from vision to reality as we build AI systems that protect miners and honor life underground." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Mission | Earthform - My Life's Work" />
+    <meta property="og:description" content="Follow the authentic journey from vision to reality as we build AI systems that protect miners and honor life underground. This is my commitment to the world." />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="The Mission | Earthform - My Life's Work" />
+    <meta property="twitter:description" content="Follow the authentic journey from vision to reality as we build AI systems that protect miners and honor life underground." />
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="earthform mission, life work, authentic vision, mining safety, AI development roadmap, commitment, transparency" />
+    <meta name="author" content={meta.author} />
+    <link rel="canonical" href={meta.url + "/mission"} />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <!-- Hero Header for Mission Page -->
+    <section class="bg-gradient-to-b from-black via-gray-900 to-black text-white py-32 text-center">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/30 rounded-full text-blue-300 text-sm font-medium mb-8">
+          🎯 Life's Work
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+          The Mission
+        </h1>
+        
+        <p class="text-2xl mb-6 opacity-90 leading-relaxed">
+          This isn't just a roadmap — it's a promise.
+        </p>
+        
+        <p class="text-lg mb-10 max-w-3xl mx-auto opacity-80 leading-relaxed">
+          Everything that's happened in my life has led me here. Every skill learned, every setback overcome, every sleepless night spent coding — it all pushed me toward this moment. My father said it best: "Everything happened to you to get you here, to build this."
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#roadmap" class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-200 shadow-xl hover:scale-105">
+            See the Journey
+          </a>
+          <a href="/" class="inline-block bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-xl shadow transition-all duration-200 hover:scale-105">
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The roadmap section -->
+    <RoadmapSection />
+    
+    <!-- Authenticity & Commitment Section -->
+    <section class="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-8 text-white">Why You Can Trust This Vision</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6">
+            <h3 class="text-xl font-bold mb-4 text-green-300">🔍 Full Transparency</h3>
+            <p class="text-sm opacity-80 leading-relaxed">
+              Every line of code, every dollar spent, every milestone hit or missed — it's all documented and public. You can verify my progress, track my commits, and see that this is real work, not just promises.
+            </p>
+          </div>
+          
+          <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6">
+            <h3 class="text-xl font-bold mb-4 text-blue-300">🏗️ Already Building</h3>
+            <p class="text-sm opacity-80 leading-relaxed">
+              I'm not waiting for funding to start. The neural assembly architecture is in development, the concept is proven, and the foundation is being laid. Funding just accelerates what's already happening.
+            </p>
+          </div>
+          
+          <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6">
+            <h3 class="text-xl font-bold mb-4 text-purple-300">💜 Human-First Mission</h3>
+            <p class="text-sm opacity-80 leading-relaxed">
+              This isn't about getting rich or building the next unicorn. It's about making sure no more fathers don't come home from work. Every decision is filtered through that lens.
+            </p>
+          </div>
+          
+          <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6">
+            <h3 class="text-xl font-bold mb-4 text-yellow-300">⚡ Lifetime Commitment</h3>
+            <p class="text-sm opacity-80 leading-relaxed">
+              I will build this whether it takes 5 years or 25. This is the work of my lifetime, not my next project. You're not backing a startup — you're backing a life's purpose.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Final commitment statement -->
+        <div class="bg-gradient-to-r from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-xl p-8 border border-gray-700/30">
+          <blockquote class="text-xl italic mb-6 text-blue-200 leading-relaxed">
+            "I'm not selling hype. I'm offering my life. I will build this, with or without funding — but with your help, we can bring it to life now, when the world needs it most."
+          </blockquote>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+            <a href="/#join" class="inline-block bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-200 shadow-xl hover:scale-105">
+              Join the Mission
+            </a>
+            <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-xl shadow transition-all duration-200 hover:scale-105">
+              Connect on Discord
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
+  </body>
+</html>
