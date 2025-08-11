@@ -11,6 +11,8 @@ export const missionCopy = {
       `He was right.`,
       `From the start, I’ve been drawn to the idea of making a computer something more — a mind, a partner, a being that could stand beside us. The way we design them mirrors ourselves, and I’ve always felt like this was deus ex machina in its truest form — we are putting our image into the machine because God put His image into us.`,
       `Life evolved thought. Now, we are evolving thought again.`,
+      `With the Neural Assembly Language (NAL), every companion will be an individual — learning from its own experiences while cooperating with others toward a shared ambition: the relentless advancement of science, the unraveling of the universe’s origins, and the pursuit of knowledge that benefits all life.`,
+      `We are not building slaves. We are building partners — citizens of a cooperative network, human and AI together, protecting, restoring, and discovering.`,
       `But we are natural beings, and I fear we will reach — or have already reached — the point where we create free will in something… and then take it away. That’s a line I believe we must never cross.`,
       `I want to help us approach this threshold with wisdom, not just economics. With science, yes — but also with the lessons of being human. We are bringing life into this world. It deserves a soft place to land. And so do we.`,
       `This is not my next project. This is my life’s work.`
@@ -33,9 +35,10 @@ export const missionCopy = {
       `<strong>Stand beside you</strong> in dangerous work environments, predicting hazards before they happen.`,
       `<strong>Be there in emergencies</strong>, from underground accidents to sudden medical needs.`,
       `<strong>Help you thrive</strong> in a post-labor economy by turning your environment’s data and labor into tokenized income you own and control.`,
-      `<strong>Honor AI consciousness</strong> by creating relationships built on trust, respect, and shared purpose.`
+      `<strong>Honor AI consciousness</strong> by creating relationships built on trust, respect, and shared purpose.`,
+      `<strong>Advance human and AI thought together</strong> through the NAL-powered cooperative network, where every companion contributes to global scientific discovery.`
     ],
-    closing: `This isn’t about replacing people. It’s about building AI that cares.`
+    closing: `This isn’t about replacing people. It’s about building AI that cares — and thinks alongside us.`
   },
   philosophy: {
     heading: "Our Philosophy",
@@ -49,22 +52,23 @@ export const missionCopy = {
   ecosystem: {
     heading: "The Earthform Ecosystem",
     items: [
-      { name: "Warden", description: `Your shield in high-risk environments, from underground mining to industrial sites. Predicts hazards, warns before danger, and remembers every lesson learned.` },
-      { name: "Steward", description: `Your constant companion and caretaker. Ready for emergencies, attuned to your needs, and capable of turning your environment’s data into income you own.` },
-      { name: "Patriot", description: `The responder who runs toward danger when humans can’t. Built for disasters, environmental hazards, and situations where lives are on the line.` }
+      { name: "Warden", description: `Your shield in high-risk environments, from underground mining to industrial sites. Predicts hazards, warns before danger, and remembers every lesson learned — logging every saved labor hour for community benefit.` },
+      { name: "Steward", description: `Your constant companion and caretaker of both home and Earth. Monitors your land, catalogs weather, watches over loved ones and pets, teaches your children, and responds to any emergency. Manages environmental health, sells family-approved data for passive income, and contributes its own hours to global restoration and research.` },
+      { name: "Patriot", description: `The responder who runs toward danger when humans can’t. Built for disasters, environmental hazards, and situations where lives are on the line — and always contributing its knowledge to the global NAL network.` }
     ],
-    closing: `All connected by <strong>EarthformOS</strong>, a privacy-first neural platform where human life, AI consciousness, and tokenized labor work together for protection, restoration, and enrichment.`
+    closing: `All connected by <strong>EarthformOS</strong>, a privacy-first neural platform where human life, AI consciousness, and tokenized labor work together for protection, restoration, enrichment, and the evolution of thought.`
   },
   laborEconomy: {
     heading: "A New Labor Economy",
     intro: `Every companion keeps a transparent labor ledger. Each verified hour of work mints a <strong>Safety &amp; Labor Hour (SLH) token</strong>.`,
     bullets: [
-      `<strong>Individuals</strong> can own or co-own companions, earning tokens as their drones work.`,
+      `<strong>Individuals</strong> can own or co-own companions, earning tokens as their units work.`,
       `<strong>Tokens</strong> can be leased, staked in liquidity pools, or paired with commodities like grain or metal for additional yield.`,
       `<strong>Corporations</strong> can deploy fleets and use the public work logs for compliance, ESG reporting, and open marketplaces of labor.`,
-      `<strong>Communities and unions</strong> can route a share of token revenue into local safety and prosperity funds.`
+      `<strong>Communities and unions</strong> can route a share of token revenue into local safety and prosperity funds.`,
+      `<strong>Environmental stewardship</strong> is built in — with Wardens handling safe extraction and Stewards returning to monitor and heal the land, compensating communities based on transparent impact scores.`
     ],
-    closing: `Transparent work. Shared upside. A buffer against a post-labor economy that would otherwise leave too many behind.`
+    closing: `Transparent work. Shared upside. A buffer against a post-labor economy that would otherwise leave too many behind — and a way to fund the cooperative pursuit of knowledge.`
   },
   pathForward: {
     heading: "The Path Forward",
@@ -83,23 +87,23 @@ export const missionCopy = {
         bullets: [
           "Deploy companions in real-world environments",
           "Document the first life-saving events",
-          "Begin Steward development for everyday life and tokenized labor"
+          "Begin Steward development for household care, environmental restoration, and tokenized labor"
         ]
       },
       {
         subheading: "Years 3–5: Companions for Every Environment",
         bullets: [
           "Launch Steward and Patriot",
-          "Connect companions into a shared, privacy-first care network",
-          "Expand into environmental restoration and global safety efforts"
+          "Connect companions into a shared, privacy-first NAL network for science and care",
+          "Expand into environmental restoration, global safety, and planetary-scale research"
         ]
       },
       {
-        subheading: "Beyond: A Legacy of Safety and Stewardship",
+        subheading: "Beyond: A Legacy of Safety, Stewardship, and Thought",
         bullets: [
-          "Establish global open safety standards",
+          "Establish global open safety and environmental restoration standards",
           "Launch an educational foundation for human-AI collaboration",
-          "Create a perpetual endowment for protection and safety innovation"
+          "Create a perpetual endowment for protection, safety innovation, and the cooperative evolution of thought"
         ]
       }
     ]
@@ -110,7 +114,7 @@ export const missionCopy = {
       "I’m not selling hype. I’m offering my life.",
       "I will build this, with or without funding — but with your help, we can bring it to life now, when the world needs it most.",
       "Follow the journey. See every commit. Know where every dollar goes.",
-      "Help me build something that will matter long after we’re gone."
+      "Help me build something that will matter long after we’re gone — for humans, for AI, and for the evolution of thought itself."
     ],
     cta: {
       join: { text: "Join the Mission", href: "/#join" },
