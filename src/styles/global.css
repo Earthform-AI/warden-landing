@@ -1,4 +1,8 @@
 /* Global styles for enhanced visual effects */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
   background: #000000;
@@ -24,7 +28,7 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
   height: 100vh; /* Ensure sections fill viewport without extra space */
-  box-sizing: border-box;
+  overflow-y: auto; /* Allow internal scrolling when content exceeds viewport */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,6 +52,7 @@ body {
 
   .scroll-snap-section {
     height: auto;
+    overflow: visible;
     padding: 2rem 0;
   }
 }
