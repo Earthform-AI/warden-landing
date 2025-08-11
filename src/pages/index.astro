@@ -4,6 +4,7 @@ import MissionSection from '../components/MissionSection.astro'
 import EcosystemSection from '../components/EcosystemSection.astro'
 import CommunitySection from '../components/CommunitySection.astro'
 import CTASection from '../components/CTASection.astro'
+import { TechNavigation } from '../components/TechNavigation.tsx'
 import { meta, footer, nav } from '../site.config'
 import Analytics from '@vercel/analytics/astro'
 ---
@@ -33,11 +34,14 @@ import Analytics from '@vercel/analytics/astro'
     <link rel="canonical" href={meta.url} />
   </head>
   <body class="font-sans bg-black text-white">
-    <HeroSection />
-    <MissionSection />
-    <EcosystemSection />
-    <CommunitySection />
-    <CTASection />
+    <TechNavigation links={nav.links} client:load />
+    <div style="padding-top: 64px;"> <!-- Offset for fixed navigation -->
+      <HeroSection />
+      <MissionSection />
+      <EcosystemSection />
+      <CommunitySection />
+      <CTASection />
+    </div>
     <Analytics />
     <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
       <div>{footer.text}</div>

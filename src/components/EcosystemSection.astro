@@ -1,38 +1,12 @@
 ---
 import { ecosystem } from '../site.config';
+import { EnhancedEcosystemSection } from './EnhancedEcosystemSection.tsx';
 ---
 
-<section class="bg-black text-white py-20">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold mb-6">{ecosystem.heading}</h2>
-      <p class="text-xl opacity-80 max-w-3xl mx-auto">
-        {ecosystem.subtitle}
-      </p>
-    </div>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      {ecosystem.drones.map((drone) => (
-        <div class={`bg-gray-900 p-8 rounded-lg text-center hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-xl`}>
-          <div class="text-4xl mb-4">{drone.icon}</div>
-          <h3 class={`text-xl font-bold mb-3 text-${drone.color}-400`}>{drone.name}</h3>
-          <p class="text-sm opacity-80 mb-4">{drone.tagline}</p>
-          <div class="text-xs opacity-60">
-            {drone.features.map((feature) => (
-              <div>• {feature}</div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-    
-    <div class="text-center mt-12">
-      <p class="text-sm opacity-60 italic mb-4">
-        {ecosystem.footer.description}
-      </p>
-      <p class="text-xs opacity-50">
-        {ecosystem.footer.tagline}
-      </p>
-    </div>
-  </div>
-</section>
+<EnhancedEcosystemSection 
+  heading={ecosystem.heading}
+  subtitle={ecosystem.subtitle}
+  drones={ecosystem.drones}
+  footer={ecosystem.footer}
+  client:load 
+/>

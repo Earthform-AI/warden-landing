@@ -121,8 +121,9 @@ export const ecosystem = {
 
 export const nav = {
   links: [
-    { label: "Home", href: "#" },
+    { label: "Home", href: "/" },
     { label: "Mission", href: "/mission" },
+    { label: "Roadmap", href: "/mission#roadmap" },
     { label: "Ecosystem", href: "#ecosystem" },
     { label: "Community", href: "#community" },
     { label: "Join", href: "#join" }

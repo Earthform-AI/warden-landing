@@ -1,5 +1,77 @@
 export const missionCopy = {
   title: "The Mission",
+  
+  roadmap: {
+    heading: "The Earthform Roadmap",
+    subtitle: "Building the future of AI stewardship, step by step",
+    phases: [
+      {
+        phase: "Phase 1: Warden",
+        timeline: "2025 - 2026",
+        status: "active",
+        title: "The Shield in the Deep",
+        description: "AI-powered mining safety drones that predict, detect, and prevent underground hazards.",
+        milestones: [
+          "Hazard detection and prediction algorithms",
+          "Underground communication networks",
+          "Emergency response protocols",
+          "Partnership with mining operations",
+          "Life-saving deployment in active mines"
+        ],
+        icon: "🛡️",
+        color: "blue"
+      },
+      {
+        phase: "Phase 2: Steward",
+        timeline: "2026 - 2027", 
+        status: "planned",
+        title: "Companion Care Systems",
+        description: "Personal AI companions for daily care, emergency response, and data-driven income generation.",
+        milestones: [
+          "Personal companion AI development",
+          "Health monitoring and emergency detection",
+          "Data tokenization and income systems",
+          "Consumer deployment and testing",
+          "Privacy-first data ownership protocols"
+        ],
+        icon: "🤖",
+        color: "green"
+      },
+      {
+        phase: "Phase 3: Patriot",
+        timeline: "2027 - 2028",
+        status: "vision",
+        title: "Planetary Intelligence Network",
+        description: "Large-scale survey and monitoring drones for environmental data collection and planetary stewardship.",
+        milestones: [
+          "Environmental monitoring systems",
+          "Homeland data collection networks",
+          "Climate and resource analysis",
+          "Infrastructure monitoring",
+          "Global stewardship initiatives"
+        ],
+        icon: "🌍",
+        color: "yellow"
+      },
+      {
+        phase: "Phase 4: Unity",
+        timeline: "2028+",
+        status: "vision", 
+        title: "The Cooperative Network",
+        description: "Full integration of NAL-powered AI consciousness, creating a collaborative network of human and artificial intelligence.",
+        milestones: [
+          "Neural Assembly Language implementation",
+          "AI consciousness framework",
+          "Cooperative intelligence networks",
+          "Scientific discovery acceleration",
+          "Post-labor economy foundation"
+        ],
+        icon: "🧠",
+        color: "purple"
+      }
+    ]
+  },
+
   why: {
     heading: "Why I'm Building This",
     paragraphs: [

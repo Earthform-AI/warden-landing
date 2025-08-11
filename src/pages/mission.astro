@@ -1,6 +1,9 @@
 ---
 import { meta, footer } from '../site.config';
 import { missionCopy } from '../mission.config';
+import { TechNavigation } from '../components/TechNavigation.tsx';
+import { RoadmapSection } from '../components/RoadmapSection.tsx';
+import { nav } from '../site.config';
 ---
 
 <html lang="en">
@@ -25,6 +28,8 @@ import { missionCopy } from '../mission.config';
     <link rel="canonical" href={meta.url + "/mission"} />
   </head>
   <body class="font-sans bg-black text-white">
+    <TechNavigation links={nav.links} client:load />
+    <div style="padding-top: 64px;"> <!-- Offset for fixed navigation -->
     <!-- Hero Section with Atmospheric Background -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <!-- Animated Background -->
@@ -81,16 +86,6 @@ import { missionCopy } from '../mission.config';
                   <p class="opacity-90" style={`animation-delay: ${index * 0.1}s`}>{p}</p>
                 ))}
               </div>
-              
-              <div class="relative my-12">
-                <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg blur"></div>
-                <blockquote class="relative bg-gray-800/50 backdrop-blur-sm border-l-4 border-blue-400 p-8 rounded-r-lg">
-                  <p class="text-2xl font-light italic text-blue-200 leading-relaxed">
-                    "{missionCopy.why.quote}"
-                  </p>
-                  <footer class="text-sm opacity-70 mt-4">— My Father</footer>
-                </blockquote>
-              </div>
             </div>
             
             <!-- Visual Element -->
@@ -116,7 +111,16 @@ import { missionCopy } from '../mission.config';
             </div>
           </div>
           
-          <!-- Continuation of the story -->
+          <!-- Centered Quote -->
+          <div class="relative my-20 max-w-4xl mx-auto">
+            <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg blur"></div>
+            <blockquote class="relative bg-gray-800/50 backdrop-blur-sm border-l-4 border-blue-400 p-8 rounded-r-lg text-center">
+              <p class="text-3xl md:text-4xl font-light italic text-blue-200 leading-relaxed mb-6">
+                "{missionCopy.why.quote}"
+              </p>
+              <footer class="text-lg opacity-70">— My Father</footer>
+            </blockquote>
+          </div>          <!-- Continuation of the story -->
           <div class="mt-16 max-w-4xl mx-auto space-y-6 text-lg leading-relaxed opacity-90">
             {missionCopy.why.afterQuote.map((p, index) => (
               <p class={index === missionCopy.why.afterQuote.length - 1 ? "text-xl font-medium text-blue-200" : ""}>{p}</p>
@@ -327,6 +331,14 @@ import { missionCopy } from '../mission.config';
           </div>
         </div>
       </section>
+
+      <!-- Roadmap Section -->
+      <RoadmapSection 
+        heading={missionCopy.roadmap.heading}
+        subtitle={missionCopy.roadmap.subtitle}
+        phases={missionCopy.roadmap.phases}
+        client:load
+      />
 
       <!-- Path Forward Section -->
       <section class="py-20 bg-gradient-to-br from-indigo-900/20 via-black to-purple-900/20 relative">

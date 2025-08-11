@@ -1,21 +1,13 @@
 ---
 import { hero } from '../site.config';
+import { EnhancedHeroSection } from './EnhancedHeroSection.tsx';
 ---
 
-<section class="bg-black text-white py-32 text-center animate-fade-in">
-  <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-5xl font-bold mb-6 animate-slide-up">
-      {hero.title}
-    </h1>
-    <p class="text-xl mb-6 opacity-80 animate-slide-up">
-      {hero.subtitle}
-    </p>
-    <p class="text-lg mb-8 opacity-70 animate-slide-up italic">
-      "{hero.quote}"
-    </p>
-    <a href={hero.cta.link} class="inline-block bg-white text-black px-8 py-3 rounded font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-lg animate-glow">
-      {hero.cta.text}
-    </a>
-  </div>
-</section>
+<EnhancedHeroSection 
+  title={hero.title}
+  subtitle={hero.subtitle}
+  quote={hero.quote}
+  cta={hero.cta}
+  client:load 
+/>
 
