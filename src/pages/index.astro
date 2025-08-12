@@ -11,6 +11,7 @@ import { ScrollProgressBar } from '../components/ScrollDrivenComponents.tsx'
 import { EnhancedHeroSection } from '../components/EnhancedHeroSectionV2.tsx'
 import { EnhancedCTASection } from '../components/EnhancedCTASection.tsx'
 import { ScrolltellingMissionSection, defaultMissionStories } from '../components/ScrolltellingMissionSection.tsx'
+import { InviteNominateSection } from '../components/InviteNominateSection.tsx'
 import { meta, footer, nav, cta } from '../site.config'
 import Analytics from '@vercel/analytics/astro'
 ---
@@ -104,6 +105,11 @@ import Analytics from '@vercel/analytics/astro'
       <!-- Community Section -->
       <section class="scroll-snap-section min-h-screen flex items-center">
         <CommunitySection />
+      </section>
+      
+      <!-- Invite + Nominate Program Section -->
+      <section class="scroll-snap-section min-h-screen">
+        <InviteNominateSection client:load />
       </section>
       
       <!-- Enhanced CTA Section -->
