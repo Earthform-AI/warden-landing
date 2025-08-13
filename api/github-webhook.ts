@@ -80,6 +80,29 @@ interface GitHubWebhookPayload {
     html_url: string;
     user: {
       login: string;
+      avatar_url: string;
+    };
+    category: {
+      name: string;
+      emoji: string;
+      description: string;
+    };
+    answer_html_url?: string;
+    answer_chosen_at?: string;
+    answer_chosen_by?: {
+      login: string;
+    };
+    upvote_count?: number;
+    comments?: {
+      total_count: number;
+    };
+  };
+  comment?: {
+    body: string;
+    html_url: string;
+    user: {
+      login: string;
+      avatar_url: string;
     };
   };
   sender?: {
@@ -127,7 +150,20 @@ const DISCORD_COLORS = {
   STAR: 0xffa500,
   FORK: 0x36393f,
   DISCUSSION: 0x7c3aed,
+  DISCUSSION_ANSWERED: 0x10b981,
+  DISCUSSION_COMMENT: 0x6366f1,
   DEFAULT: 0x36393f
+};
+
+// Multi-channel Discord webhook routing
+const DISCUSSION_CHANNEL_WEBHOOKS = {
+  'Ideas': process.env.DISCORD_IDEAS_WEBHOOK,
+  'Q&A': process.env.DISCORD_QA_WEBHOOK,
+  'Show and Tell': process.env.DISCORD_SHOWCASE_WEBHOOK,
+  'Mining Safety Research': process.env.DISCORD_RESEARCH_WEBHOOK,
+  'Neural Assembly Language': process.env.DISCORD_NAL_WEBHOOK,
+  'Warden Development': process.env.DISCORD_WARDEN_DEV_WEBHOOK,
+  'Community Missions': process.env.DISCORD_MISSIONS_WEBHOOK
 };
 
 function verifySignature(payload: string, signature: string, secret: string): boolean {
@@ -150,10 +186,11 @@ function formatCommitMessage(message: string): string {
   return title.length > 72 ? `${title.substring(0, 69)}...` : title;
 }
 
-function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any {
+function createDiscordPayload(event: string, payload: GitHubWebhookPayload): { payload: any, webhookUrl?: string } | null {
   const embeds: DiscordEmbed[] = [];
   const repoName = payload.repository?.name || 'warden-landing';
   const repoUrl = payload.repository?.html_url || '';
+  let webhookUrl: string | undefined;
 
   switch (event) {
     case 'push':
@@ -350,18 +387,106 @@ function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any
       }
       break;
     case 'discussion':
-      if (payload.discussion && payload.action === 'created') {
-        const { discussion } = payload;
+      if (payload.discussion) {
+        const { discussion, action } = payload;
+        
+        // Route to appropriate Discord channel based on category
+        if (discussion.category?.name) {
+          webhookUrl = DISCUSSION_CHANNEL_WEBHOOKS[discussion.category.name as keyof typeof DISCUSSION_CHANNEL_WEBHOOKS];
+        }
+        
+        if (action === 'created') {
+          const categoryEmoji = discussion.category?.emoji || '💭';
+          const categoryName = discussion.category?.name || 'General';
+          
+          embeds.push({
+            title: `${categoryEmoji} New Discussion: ${discussion.title}`,
+            description: `**[Join the conversation](${discussion.html_url})**\nStarted by ${discussion.user.login} in **${categoryName}**`,
+            color: DISCORD_COLORS.DISCUSSION,
+            url: discussion.html_url,
+            author: discussion.user.avatar_url ? {
+              name: discussion.user.login,
+              icon_url: discussion.user.avatar_url
+            } : undefined,
+            fields: [
+              {
+                name: '📂 Category',
+                value: `${categoryEmoji} ${categoryName}`,
+                inline: true
+              },
+              ...(discussion.upvote_count !== undefined ? [{
+                name: '👍 Upvotes',
+                value: discussion.upvote_count.toString(),
+                inline: true
+              }] : []),
+              ...(discussion.comments?.total_count !== undefined ? [{
+                name: '💬 Comments',
+                value: discussion.comments.total_count.toString(),
+                inline: true
+              }] : []),
+              ...(discussion.body ? [{
+                name: '💭 Preview',
+                value: discussion.body.length > 300 ? `${discussion.body.substring(0, 297)}...` : discussion.body,
+                inline: false
+              }] : [])
+            ],
+            footer: { text: `${repoName} • Community Discussion` },
+            timestamp: new Date().toISOString()
+          });
+        } else if (action === 'answered' && discussion.answer_html_url) {
+          embeds.push({
+            title: `✅ Discussion Answered: ${discussion.title}`,
+            description: `**[View Answer](${discussion.answer_html_url})**\n${discussion.answer_chosen_by?.login ? `Answer chosen by ${discussion.answer_chosen_by.login}` : 'Answer marked as helpful'}`,
+            color: DISCORD_COLORS.DISCUSSION_ANSWERED,
+            url: discussion.answer_html_url,
+            fields: [
+              {
+                name: '📂 Category',
+                value: `${discussion.category?.emoji || '💭'} ${discussion.category?.name || 'General'}`,
+                inline: true
+              },
+              {
+                name: '🎯 Status',
+                value: 'Resolved',
+                inline: true
+              }
+            ],
+            footer: { text: `${repoName} • Problem Solved!` },
+            timestamp: new Date().toISOString()
+          });
+        }
+      }
+      break;
+    case 'discussion_comment':
+      if (payload.discussion && payload.comment && payload.action === 'created') {
+        const { discussion, comment } = payload;
+        
+        // Route to appropriate Discord channel based on category
+        if (discussion.category?.name) {
+          webhookUrl = DISCUSSION_CHANNEL_WEBHOOKS[discussion.category.name as keyof typeof DISCUSSION_CHANNEL_WEBHOOKS];
+        }
+        
         embeds.push({
-          title: `💬 New Discussion Started`,
-          description: `**[${discussion.title}](${discussion.html_url})**\nby ${discussion.user.login}`,
-          color: DISCORD_COLORS.DISCUSSION,
-          url: discussion.html_url,
-          fields: discussion.body ? [{
-            name: '💭 Topic',
-            value: discussion.body.length > 200 ? `${discussion.body.substring(0, 197)}...` : discussion.body,
-            inline: false
-          }] : [],
+          title: `💬 New Comment on: ${discussion.title}`,
+          description: `**[View Comment](${comment.html_url})**\nby ${comment.user.login}`,
+          color: DISCORD_COLORS.DISCUSSION_COMMENT,
+          url: comment.html_url,
+          author: comment.user.avatar_url ? {
+            name: comment.user.login,
+            icon_url: comment.user.avatar_url
+          } : undefined,
+          fields: [
+            {
+              name: '📂 Category',
+              value: `${discussion.category?.emoji || '💭'} ${discussion.category?.name || 'General'}`,
+              inline: true
+            },
+            ...(comment.body ? [{
+              name: '💬 Comment',
+              value: comment.body.length > 400 ? `${comment.body.substring(0, 397)}...` : comment.body,
+              inline: false
+            }] : [])
+          ],
           footer: { text: `${repoName} • Community Discussion` },
           timestamp: new Date().toISOString()
         });
@@ -371,9 +496,12 @@ function createDiscordPayload(event: string, payload: GitHubWebhookPayload): any
       return null;
   }
   return {
-    embeds,
-    username: 'Warden DevBot',
-    avatar_url: 'https://warden-landing.vercel.app/favicon.svg'
+    payload: {
+      embeds,
+      username: 'Warden DevBot',
+      avatar_url: 'https://warden-landing.vercel.app/favicon.svg'
+    },
+    webhookUrl
   };
 }
 
@@ -402,21 +530,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return;
     }
     const payload: GitHubWebhookPayload = JSON.parse(body);
-    const discordPayload = createDiscordPayload(event, payload);
-    if (!discordPayload) {
+    const result = createDiscordPayload(event, payload);
+    if (!result) {
       res.status(200).send('Event ignored');
       return;
     }
-    const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL;
-    if (!discordWebhookUrl) {
-      console.error('DISCORD_WEBHOOK_URL not configured');
+    
+    // Use category-specific webhook if available, otherwise fall back to main webhook
+    const targetWebhookUrl = result.webhookUrl || process.env.DISCORD_WEBHOOK_URL;
+    if (!targetWebhookUrl) {
+      console.error('No Discord webhook configured for this event');
       res.status(500).send('Discord webhook not configured');
       return;
     }
-    const response = await fetch(discordWebhookUrl, {
+    
+    const response = await fetch(targetWebhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(discordPayload)
+      body: JSON.stringify(result.payload)
     });
     if (!response.ok) {
       console.error('Discord webhook failed:', response.status, await response.text());

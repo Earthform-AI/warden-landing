@@ -12,6 +12,7 @@ import { EnhancedHeroSection } from '../components/EnhancedHeroSectionV2.tsx'
 import { EnhancedCTASection } from '../components/EnhancedCTASection.tsx'
 import { ScrolltellingMissionSection, defaultMissionStories } from '../components/ScrolltellingMissionSection.tsx'
 import { InviteNominateSection } from '../components/InviteNominateSection.tsx'
+import CommunitySpotlight from '../components/CommunitySpotlight.tsx'
 import { meta, footer, nav, cta } from '../site.config'
 import Analytics from '@vercel/analytics/astro'
 ---
@@ -105,6 +106,13 @@ import Analytics from '@vercel/analytics/astro'
       <!-- Community Section -->
       <section class="scroll-snap-section min-h-screen flex items-center">
         <CommunitySection />
+      </section>
+      
+      <!-- Community Spotlight Section -->
+      <section class="py-20 bg-gradient-to-br from-black via-gray-900 to-blue-900/10">
+        <div class="max-w-6xl mx-auto px-4">
+          <CommunitySpotlight client:load />
+        </div>
       </section>
       
       <!-- Invite + Nominate Program Section -->
