@@ -245,15 +245,47 @@ export const InviteNominateSection: React.FC = () => {
                   </ul>
 
                   {/* Sponsorship Tiers */}
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <h4 className="text-lg font-semibold text-blue-300 mb-3">Sponsorship Tiers</h4>
                     {inviteNominate.forms.sponsor.tiers.map((tier, index) => (
-                      <div key={index} className="bg-gray-800/30 rounded-lg p-4 border border-blue-500/20">
+                      <div 
+                        key={index} 
+                        className={`bg-gray-800/30 rounded-lg p-4 border transition-all duration-200 ${
+                          tier.popular 
+                            ? 'border-green-400/60 bg-green-900/10' 
+                            : 'border-blue-500/20 hover:border-blue-400/40'
+                        }`}
+                      >
                         <div className="flex justify-between items-start mb-2">
-                          <span className="font-semibold text-blue-300">{tier.name}</span>
-                          <span className="text-lg font-bold text-white">{tier.amount}</span>
+                          <div className="flex items-center gap-2">
+                            <span className="font-semibold text-blue-300">{tier.name}</span>
+                            {tier.popular && (
+                              <span className="px-2 py-1 text-xs bg-green-600 text-white rounded-full">
+                                Most Popular
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-right">
+                            <span className="text-lg font-bold text-white">{tier.amount}</span>
+                            {tier.period && <span className="text-sm text-gray-400">{tier.period}</span>}
+                          </div>
                         </div>
-                        <p className="text-sm text-gray-400">{tier.description}</p>
+                        <p className="text-sm text-gray-400 mb-3">{tier.description}</p>
+                        {tier.includes && (
+                          <ul className="text-xs text-gray-500 space-y-1 mb-2">
+                            {tier.includes.map((feature, i) => (
+                              <li key={i} className="flex items-start gap-1">
+                                <span className="text-green-400 mt-0.5">✓</span>
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {tier.impact && (
+                          <p className="text-xs text-blue-300 italic border-t border-gray-700/50 pt-2 mt-2">
+                            Expected Impact: {tier.impact}
+                          </p>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -293,7 +325,9 @@ export const InviteNominateSection: React.FC = () => {
                     >
                       <option value="">Select Sponsorship Tier</option>
                       {inviteNominate.forms.sponsor.tiers.map((tier, index) => (
-                        <option key={index} value={tier.name}>{tier.name} - {tier.amount}</option>
+                        <option key={index} value={tier.name}>
+                          {tier.name} - {tier.amount}{tier.period || ''}
+                        </option>
                       ))}
                     </select>
                     <input
@@ -347,35 +381,106 @@ export const InviteNominateSection: React.FC = () => {
               </div>
 
               {/* Impact Stories Grid */}
-              <div className="grid md:grid-cols-3 gap-6">
-                {inviteNominate.showcase.stories.map((story, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all duration-200"
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h5 className="font-bold text-white mb-1">{story.name}</h5>
-                        <p className="text-sm text-green-300">{story.role}</p>
+              {inviteNominate.showcase.stories.length > 0 ? (
+                <div className="grid md:grid-cols-3 gap-6">
+                  {inviteNominate.showcase.stories.map((story, index) => (
+                    <motion.div
+                      key={story.id || index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className={`rounded-xl p-6 border transition-all duration-200 ${
+                        story.verified === false || story.isPlaceholder
+                          ? 'bg-gradient-to-br from-yellow-900/10 to-orange-900/10 border-yellow-500/20 hover:border-yellow-400/40'
+                          : 'bg-gradient-to-br from-green-900/20 to-blue-900/20 border-green-500/20 hover:border-green-400/40'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <h5 className="font-bold text-white">{story.name}</h5>
+                            {story.verified === true && (
+                              <span className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center" title="Verified Impact">
+                                <span className="text-white text-xs">✓</span>
+                              </span>
+                            )}
+                            {(story.verified === false || story.isPlaceholder) && (
+                              <span className="px-1.5 py-0.5 text-xs bg-yellow-600/20 text-yellow-300 rounded border border-yellow-500/30" title="Example - Not verified">
+                                Example
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm text-green-300">{story.role}</p>
+                          {story.organization && (
+                            <p className="text-xs text-gray-400">{story.organization}</p>
+                          )}
+                        </div>
+                        <span className="text-xs text-gray-400 whitespace-nowrap">{story.date}</span>
                       </div>
-                      <span className="text-xs text-gray-400 whitespace-nowrap">{story.date}</span>
+                      
+                      <div className="mb-4">
+                        <p className="text-xs text-blue-300 font-medium mb-2">Tools Provided:</p>
+                        <p className="text-sm text-gray-300">
+                          {Array.isArray(story.tools) ? story.tools.join(' + ') : story.tools}
+                        </p>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <p className="text-xs text-green-300 font-medium mb-2">Impact:</p>
+                        <p className="text-sm text-gray-300 leading-relaxed">{story.impact}</p>
+                      </div>
+
+                      {story.metrics && (
+                        <div className="border-t border-gray-700/50 pt-3 mt-4">
+                          <p className="text-xs text-purple-300 font-medium mb-2">Quantified Results:</p>
+                          <div className="space-y-1">
+                            {story.metrics.quantifiedImpact && (
+                              <p className="text-xs text-gray-400">• {story.metrics.quantifiedImpact}</p>
+                            )}
+                            {story.metrics.reachNumbers && (
+                              <p className="text-xs text-gray-400">• Reached: {story.metrics.reachNumbers.toLocaleString()} people</p>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                // Coming Soon Message
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center max-w-2xl mx-auto"
+                >
+                  <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-2xl p-8 border border-purple-500/20">
+                    <h4 className="text-2xl font-bold text-white mb-3">
+                      {inviteNominate.testimonialsConfig.fallbackMessage.title}
+                    </h4>
+                    <p className="text-gray-300 mb-4 leading-relaxed">
+                      {inviteNominate.testimonialsConfig.fallbackMessage.subtitle}
+                    </p>
+                    <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                      {inviteNominate.testimonialsConfig.fallbackMessage.description}
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                      <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200">
+                        {inviteNominate.testimonialsConfig.fallbackMessage.cta}
+                      </button>
+                      <span className="text-sm text-gray-500">
+                        {inviteNominate.testimonialsConfig.fallbackMessage.timeline}
+                      </span>
                     </div>
                     
-                    <div className="mb-4">
-                      <p className="text-xs text-blue-300 font-medium mb-2">Tools Provided:</p>
-                      <p className="text-sm text-gray-300">{story.tools}</p>
+                    <div className="mt-6 pt-6 border-t border-gray-700/50">
+                      <p className="text-xs text-gray-500">
+                        Last updated: {inviteNominate.testimonialsConfig.lastUpdated.toLocaleDateString()}
+                      </p>
                     </div>
-                    
-                    <div>
-                      <p className="text-xs text-green-300 font-medium mb-2">Impact:</p>
-                      <p className="text-sm text-gray-300 leading-relaxed">{story.impact}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+                </motion.div>
+              )}
 
               {/* Call to Action */}
               <div className="text-center mt-12">
