@@ -1,0 +1,32 @@
+name: Sourcery Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, develop]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  sourcery:
+    runs-on: ubuntu-latest
+    name: Sourcery Code Review
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Run Sourcery
+        uses: sourcery-ai/action@v1
+        with:
+          # Use string values instead of boolean to avoid input errors
+          token: ${{ secrets.GITHUB_TOKEN }}
+          check: "true"
+          in_place: "false"  
+          verbose: "true"

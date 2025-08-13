@@ -1,0 +1,26 @@
+# Sourcery configuration for Warden Landing Page
+# This file customizes Sourcery's behavior for TypeScript/Astro projects
+
+# Code quality settings
+quality:
+  # Minimum quality threshold for suggestions (1-5 scale)
+  threshold: 3.0
+  
+# GitHub integration settings
+github:
+  # Request reviews on PRs
+  request_review: author
+  
+  # Only comment on changed lines
+  sourcery_branch: main
+
+# File patterns to ignore during analysis
+ignore:
+  - "node_modules/**"
+  - "dist/**" 
+  - ".astro/**"
+  - "**/*.d.ts"
+  - "public/**"
+  - ".vercel/**"
+  - ".vscode/**"
+  - "*.config.*"
