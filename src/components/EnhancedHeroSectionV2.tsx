@@ -143,9 +143,10 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                   <div className="text-center group">
                     <div className="relative p-4 rounded-xl bg-red-900/20 hover:bg-red-900/30 transition-all duration-300">
                       <div className="text-3xl font-bold text-red-400">
-                        <AnimatedCounter end={15000} duration={2} suffix="+" />
+                        <AnimatedCounter end={28} duration={2} />
                       </div>
-                      <div className="text-sm text-gray-300">Mining deaths yearly</div>
+                      <div className="text-sm text-gray-300">US mining fatalities 2024</div>
+                      <div className="text-xs text-gray-400">MSHA verified</div>
                       <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-red-500/20 to-red-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
                     </div>
                   </div>
@@ -161,9 +162,10 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                   <div className="text-center group">
                     <div className="relative p-4 rounded-xl bg-orange-900/20 hover:bg-orange-900/30 transition-all duration-300">
                       <div className="text-3xl font-bold text-orange-400">
-                        <AnimatedCounter end={60} duration={2} suffix="%" />
+                        <AnimatedCounter end={2.29} duration={2} precision={2} />
                       </div>
-                      <div className="text-sm text-gray-300">Preventable incidents</div>
+                      <div className="text-sm text-gray-300">ICMM TRIFR per 1M hours</div>
+                      <div className="text-xs text-gray-400">Global industry data</div>
                       <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-orange-500/20 to-orange-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
                     </div>
                   </div>
@@ -182,9 +184,28 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                         <AnimatedCounter end={24} duration={2} suffix="/7" />
                       </div>
                       <div className="text-sm text-gray-300">AI Monitoring</div>
+                      <div className="text-xs text-gray-400">Continuous protection</div>
                       <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-green-500/20 to-green-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
                     </div>
                   </div>
+                </motion.div>
+              </div>
+            </AnimatedSection>
+
+            {/* Data transparency note */}
+            <AnimatedSection direction="up" delay={0.8}>
+              <div className="flex justify-center mb-8">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-blue-900/20 border border-blue-700/30 rounded-lg px-4 py-2"
+                >
+                  <a href="/research" className="text-xs text-blue-300 hover:text-blue-200 transition-colors flex items-center gap-2">
+                    <span>📊</span>
+                    <span>All statistics verified from official sources</span>
+                    <span>→</span>
+                  </a>
                 </motion.div>
               </div>
             </AnimatedSection>
