@@ -126,6 +126,7 @@ export const nav = {
     { label: "Roadmap", href: "/mission#roadmap" },
     { label: "Ecosystem", href: "/#ecosystem" },
     { label: "Community", href: "/#community" },
+    { label: "AI Program", href: "/#invite-nominate" },
     { label: "Join", href: "/#join" }
   ]
 };
@@ -240,4 +241,116 @@ export const thanks_mission = {
 export const thanks_next = {
   discord: "https://discord.gg/tMK9S68bjQ",
   footer: "Want to help more? Share our mission or invite others to join. Together, we build a safer future."
+};
+
+// Warden Invite + Nominate Program Configuration
+export const inviteNominate = {
+  heading: "Warden Invite + Nominate Program",
+  tagline: "AI is the new superpower. Let's make sure the right people get it.",
+  subtitle: "Equipping good actors with AI tools to keep making a difference in the world.",
+  description: "Not everyone has the means to run at today's pace. Some people have already proven they give without taking — they make open-source contributions, teach, share, create, or support others without expectation of reward. These are the people we want to equip with AI tools.",
+  
+  mission: {
+    title: "AI Tools for Good Actors",
+    content: "Heroes often don't put themselves forward. We trust the community to recognize and nominate those who've earned it. This program is invite + nomination only because we believe in elevating those who've already shown they use their abilities to help others."
+  },
+
+  sections: {
+    nominate: {
+      title: "Nominate Someone",
+      icon: "🎯",
+      description: "Know someone who makes a difference? Nominate them for AI tools that will amplify their impact.",
+      features: [
+        "Open to all contributors: coders, artists, educators, researchers",
+        "Focus on those who give without expectation",
+        "Community-driven recognition"
+      ],
+      cta: "Submit Nomination"
+    },
+    sponsor: {
+      title: "Sponsor Good Actors",
+      icon: "🤝",
+      description: "Fund AI access for people who use their abilities to help others and create positive impact.",
+      features: [
+        "Direct funding of AI subscriptions",
+        "Monthly impact updates from recipients", 
+        "Alumni network for sustained giving"
+      ],
+      cta: "Become a Sponsor"
+    },
+    impact: {
+      title: "Impact Showcase",
+      icon: "⭐",
+      description: "See how AI tools are amplifying the work of good actors around the world.",
+      features: [
+        "Monthly recipient updates",
+        "Real project outcomes",
+        "Community success stories"
+      ],
+      cta: "View Impact Stories"
+    }
+  },
+
+  forms: {
+    nominate: {
+      action: "https://formspree.io/f/mdkdpgvn",
+      fields: {
+        nominatorName: "Your Name",
+        nominatorEmail: "Your Email", 
+        nomineeName: "Nominee's Name",
+        nomineeEmail: "Nominee's Email",
+        background: "Tell us about their background and contributions",
+        examples: "Examples of their work helping others",
+        aiHelp: "How would AI tools help amplify their impact?",
+        relationship: "Your relationship to the nominee"
+      },
+      submitText: "Submit Nomination"
+    },
+    sponsor: {
+      action: "https://formspree.io/f/mdkdpgvn",
+      fields: {
+        name: "Your Name",
+        email: "Your Email",
+        organization: "Organization (optional)",
+        tier: "Sponsorship Tier",
+        commitment: "Monthly Commitment",
+        motivation: "What motivates you to sponsor good actors?"
+      },
+      tiers: [
+        { name: "Supporter", amount: "$25", description: "1 month of basic AI tools for one recipient" },
+        { name: "Advocate", amount: "$50", description: "2 months of premium AI tools for one recipient" },
+        { name: "Champion", amount: "$100", description: "AI tools for multiple recipients" },
+        { name: "Custom", amount: "Custom", description: "Work with us on a tailored sponsorship" }
+      ],
+      submitText: "Start Sponsorship"
+    }
+  },
+
+  showcase: {
+    heading: "Recent Impact Stories",
+    subtitle: "See how AI tools are amplifying good work around the world",
+    stories: [
+      {
+        name: "Sarah Chen",
+        role: "Open Source Educator",
+        tools: "GitHub Copilot + ChatGPT Pro",
+        impact: "Created 12 coding tutorials that reached 50K+ developers, with AI helping generate examples and explanations in multiple programming languages.",
+        date: "December 2024"
+      },
+      {
+        name: "Marcus Rodriguez",
+        role: "Community Organizer",
+        tools: "Stable Diffusion + AI Writing",
+        impact: "Produced educational materials for underserved communities, using AI to create engaging visuals and translate content into 5 languages.",
+        date: "November 2024"
+      },
+      {
+        name: "Dr. Aisha Patel",
+        role: "Research Advocate",
+        tools: "ChatGPT Pro + Research Tools",
+        impact: "Published 3 open-access papers on climate adaptation, with AI accelerating literature review and data analysis workflows.",
+        date: "October 2024"
+      }
+    ]
+  }
 };
