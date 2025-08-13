@@ -319,40 +319,125 @@ export const inviteNominate = {
         motivation: "What motivates you to sponsor good actors?"
       },
       tiers: [
-        { name: "Supporter", amount: "$25", description: "1 month of basic AI tools for one recipient" },
-        { name: "Advocate", amount: "$50", description: "2 months of premium AI tools for one recipient" },
-        { name: "Champion", amount: "$100", description: "AI tools for multiple recipients" },
-        { name: "Custom", amount: "Custom", description: "Work with us on a tailored sponsorship" }
+        { 
+          name: "AI Starter", 
+          amount: "$29", 
+          period: "/month",
+          description: "ChatGPT Plus for 1 recipient",
+          includes: ["Monthly ChatGPT Plus subscription", "Quarterly impact updates", "Community recognition"],
+          impact: "Accelerates 1 creator's workflow by ~20%",
+          stripePriceId: "price_ai_starter_monthly",
+          popular: false
+        },
+        { 
+          name: "AI Amplifier", 
+          amount: "$89", 
+          period: "/month",
+          description: "Premium AI toolkit for 1-2 recipients", 
+          includes: ["ChatGPT Plus + GitHub Copilot + Claude Pro", "Monthly impact reports with metrics", "Direct recipient communication", "Priority matching with high-impact creators"],
+          impact: "Enables 2 creators to expand their reach by ~3x",
+          stripePriceId: "price_ai_amplifier_monthly",
+          popular: true
+        },
+        { 
+          name: "AI Ecosystem", 
+          amount: "$199", 
+          period: "/month",
+          description: "Full AI suite for 3-5 recipients",
+          includes: ["Complete AI toolkit access", "Bi-weekly detailed impact reports", "Video updates from recipients", "Annual impact assessment meeting", "Early access to new AI tools"],
+          impact: "Powers 5 creators to achieve 10x amplified impact",
+          stripePriceId: "price_ai_ecosystem_monthly", 
+          popular: false
+        },
+        { 
+          name: "Custom Partnership", 
+          amount: "Let's Talk", 
+          period: "",
+          description: "Tailored sponsorship for organizations",
+          includes: ["Custom recipient matching", "Branded impact reporting", "Dedicated account management", "Flexible payment terms"],
+          impact: "Scale impact across your community or organization",
+          stripePriceId: null,
+          popular: false
+        }
       ],
       submitText: "Start Sponsorship"
+    }
+  },
+
+  // Testimonials Management System
+  testimonialsConfig: {
+    displayMode: 'coming-soon' as 'real' | 'placeholder' | 'mixed' | 'coming-soon',
+    minimumRealTestimonials: 3,
+    lastUpdated: new Date('2024-12-20'),
+    fallbackMessage: {
+      title: "Real Impact Stories Coming Soon",
+      subtitle: "We're collecting verified testimonials from our AI tool recipients. Check back in early 2025 for real impact data.",
+      description: "Every story will be verified, with measurable outcomes from real people whose work we've helped amplify. No placeholder content — just genuine impact from the AI tools our community has sponsored.",
+      cta: "Be notified when real stories are available",
+      timeline: "Expected: Early 2025"
     }
   },
 
   showcase: {
     heading: "Recent Impact Stories",
     subtitle: "See how AI tools are amplifying good work around the world",
-    stories: [
+    // Real testimonials (currently empty - will be populated from API/database)
+    realStories: [
+      // This will be populated by API call or database query
+      // Format: { id, name, role, tools, impact, date, verified: true, metrics?: {...} }
+    ],
+    // Placeholder testimonials (kept for development/fallback)
+    placeholderStories: [
       {
         name: "Sarah Chen",
         role: "Open Source Educator",
         tools: "GitHub Copilot + ChatGPT Pro",
         impact: "Created 12 coding tutorials that reached 50K+ developers, with AI helping generate examples and explanations in multiple programming languages.",
-        date: "December 2024"
+        date: "December 2024",
+        verified: false,
+        isPlaceholder: true
       },
       {
         name: "Marcus Rodriguez",
         role: "Community Organizer",
         tools: "Stable Diffusion + AI Writing",
         impact: "Produced educational materials for underserved communities, using AI to create engaging visuals and translate content into 5 languages.",
-        date: "November 2024"
+        date: "November 2024",
+        verified: false,
+        isPlaceholder: true
       },
       {
         name: "Dr. Aisha Patel",
         role: "Research Advocate",
         tools: "ChatGPT Pro + Research Tools",
         impact: "Published 3 open-access papers on climate adaptation, with AI accelerating literature review and data analysis workflows.",
-        date: "October 2024"
+        date: "October 2024",
+        verified: false,
+        isPlaceholder: true
       }
-    ]
+    ],
+    // Computed property for display
+    get stories() {
+      const config = inviteNominate.testimonialsConfig;
+      
+      if (config.displayMode === 'coming-soon') {
+        return []; // Empty array triggers coming soon message
+      }
+      
+      if (config.displayMode === 'real' && this.realStories.length >= config.minimumRealTestimonials) {
+        return this.realStories;
+      }
+      
+      if (config.displayMode === 'placeholder') {
+        return this.placeholderStories;
+      }
+      
+      if (config.displayMode === 'mixed') {
+        return [...this.realStories, ...this.placeholderStories.slice(0, Math.max(0, 3 - this.realStories.length))];
+      }
+      
+      // Default fallback: show placeholders if no real stories, otherwise show real
+      return this.realStories.length > 0 ? this.realStories : this.placeholderStories;
+    }
   }
 };
