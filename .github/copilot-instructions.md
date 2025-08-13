@@ -40,27 +40,39 @@
 
 ### Development Workflow
 
+#### Install Dependencies (First Time Setup)
+```bash
+npm install
+```
+- **NEVER CANCEL**: Takes ~90 seconds. Set timeout to 120+ seconds.
+- **Expected behavior**: Shows 6 security vulnerabilities (2 moderate, 4 high) - this is normal
+- **Dependencies affected**: esbuild, path-to-regexp, undici (acceptable for development)
+- **Real timing**: ~75 seconds measured (1m15s)
+
 #### Start Development Server
 ```bash
 npm run dev
 ```
 - **URL**: http://localhost:4321
 - **Behavior**: Hot reload enabled, file watching active
-- **Performance**: Initial start ~400ms, file changes reload in <100ms
+- **Performance**: Initial start ~450ms, file changes reload in <100ms
 - **Expected issues**: None - this command always works
+- **NEVER CANCEL**: Server starts quickly but allow 30+ seconds for initial setup
 
 #### Build for Production
 ```bash
 npm run build
 ```
-- **Output**: `dist/` directory (server build)
-- **Build time**: ~4-6 seconds
+- **Output**: `dist/` directory (server build) + `.vercel/output/` (deployment files)
+- **NEVER CANCEL**: Takes ~10 seconds. Set timeout to 60+ seconds for safety.
+- **Real timing**: ~7.3 seconds measured
 - **Adapter**: @astrojs/vercel (configured for Vercel deployment)
 - **Expected warnings**: Node.js 18 deprecation warning (harmless)
 - **Success indicators**: 
   - "Building server entrypoints... ✓ Completed"
   - "prerendering static routes ✓ Completed"
   - Shows bundle sizes for client assets
+  - Creates `.vercel/output/_functions/` directory
 
 #### Preview Built Site
 ```bash
@@ -71,10 +83,15 @@ npm run preview
 - **Workaround**: Use `npm run dev` for local testing or deploy to Vercel staging
 
 ### Validation Steps
-1. **Development server test**: `npm run dev` should start without errors
-2. **Build validation**: `npm run build` should complete successfully
+1. **Development server test**: `npm run dev` should start without errors in ~450ms
+2. **Build validation**: `npm run build` should complete successfully in ~7-10 seconds
 3. **File watching**: Edit any file in `src/` and verify hot reload works
-4. **API endpoints**: Test `/api/test-discord` and `/api/github-webhook` if Discord integration needed
+4. **API endpoints**: Test GitHub webhook at `/github-discord-push-dev-updates` (returns "GitHub to Discord webhook endpoint is active. Use POST to send webhooks.")
+5. **Manual validation**: Always test these scenarios after making changes:
+   - Navigate to http://localhost:4321/ - homepage should load with hero section, stats, and all interactive elements
+   - Navigate to http://localhost:4321/mission - mission page should load with roadmap and full content
+   - Check that content from `src/site.config.ts` and `src/mission.config.ts` renders correctly
+   - Test form submissions if Formspree is configured
 
 ## Project Architecture & Layout
 
@@ -140,11 +157,17 @@ warden-landing/
 
 ## Critical Dependencies & Gotchas
 
+### Timing Expectations & "NEVER CANCEL" Commands
+- **`npm install`**: 75-90 seconds - NEVER CANCEL. Set timeout to 120+ seconds.
+- **`npm run build`**: 7-10 seconds - NEVER CANCEL. Set timeout to 60+ seconds.
+- **`npm run dev`**: <1 second start time - but allow 30+ seconds timeout for safety.
+
 ### Known Issues & Workarounds
 1. **Preview command fails**: Use `npm run dev` instead of `npm run preview`
 2. **Node version mismatch**: Package.json requires Node 20.x but works on 18.x
 3. **Security vulnerabilities**: 6 known issues in dependencies (non-blocking for development)
 4. **Build warnings**: Vercel adapter shows Node.js 18 deprecation warnings (harmless)
+5. **API endpoints**: Only `/github-discord-push-dev-updates` works in dev mode (not `/api/*` paths)
 
 ### Environment Variables (Required for Full Functionality)
 ```env
@@ -160,13 +183,21 @@ NODE_ENV=production
 4. **For API changes**: Modify files in `api/` directory
 
 ### Testing Checklist
-- [ ] `npm install` completes without blocking errors
-- [ ] `npm run dev` starts development server
-- [ ] `npm run build` completes successfully
-- [ ] Homepage loads at http://localhost:4321
-- [ ] Content config changes reflect in UI
+- [ ] `npm install` completes without blocking errors (expect 6 security warnings - normal)
+- [ ] `npm run dev` starts development server in <1 second
+- [ ] `npm run build` completes successfully in ~7-10 seconds  
+- [ ] Homepage loads at http://localhost:4321 with all sections visible
+- [ ] Mission page loads at http://localhost:4321/mission with full roadmap content
+- [ ] GitHub webhook endpoint responds at `/github-discord-push-dev-updates`
+- [ ] Content config changes in `src/site.config.ts` reflect immediately in UI (with hot reload)
 - [ ] Form submissions work (if Formspree configured)
 - [ ] Discord webhooks work (if environment variables set)
+
+### No Linting/Testing Framework
+- **No unit tests**: Repository does not include Jest, Vitest, or other test frameworks
+- **No explicit linting**: No ESLint, Prettier config (only Sourcery.ai for code reviews)  
+- **No CI/CD tests**: Only Sourcery.ai workflow in `.github/workflows/sourcery.yml`
+- **Quality assurance**: Use manual validation scenarios above
 
 ## Key Files Content Summary
 
