@@ -126,21 +126,35 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
             <div className="flex flex-wrap justify-center gap-8 mb-12">
               <div className="text-center">
                 <div className="text-3xl font-bold text-red-400">
-                  <AnimatedCounter end={15000} duration={2} suffix="+" />
+                  <AnimatedCounter end={28} duration={2} />
                 </div>
-                <div className="text-sm opacity-70">Mining deaths yearly</div>
+                <div className="text-sm opacity-70">US mining fatalities 2024</div>
+                <div className="text-xs opacity-50">MSHA verified</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-orange-400">
-                  <AnimatedCounter end={60} duration={2} suffix="%" />
+                  <AnimatedCounter end={2.29} duration={2} precision={2} />
                 </div>
-                <div className="text-sm opacity-70">Preventable incidents</div>
+                <div className="text-sm opacity-70">ICMM TRIFR per 1M hours</div>
+                <div className="text-xs opacity-50">Global industry data</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-green-400">
                   <AnimatedCounter end={24} duration={2} suffix="/7" />
                 </div>
                 <div className="text-sm opacity-70">AI Monitoring</div>
+                <div className="text-xs opacity-50">Continuous protection</div>
+              </div>
+            </div>
+            
+            {/* Data transparency note */}
+            <div className="flex justify-center mb-8">
+              <div className="bg-blue-900/20 border border-blue-700/30 rounded-lg px-4 py-2">
+                <a href="/research" className="text-xs text-blue-300 hover:text-blue-200 transition-colors flex items-center gap-2">
+                  <span>📊</span>
+                  <span>All statistics verified from official sources</span>
+                  <span>→</span>
+                </a>
               </div>
             </div>
           </AnimatedSection>

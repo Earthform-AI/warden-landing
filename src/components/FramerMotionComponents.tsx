@@ -120,12 +120,14 @@ interface CounterProps {
   end: number;
   duration?: number;
   suffix?: string;
+  precision?: number;
 }
 
 export const AnimatedCounter: React.FC<CounterProps> = ({ 
   end, 
   duration = 2, 
-  suffix = '' 
+  suffix = '',
+  precision = 0 
 }) => {
   const [count, setCount] = React.useState(0);
 
@@ -133,7 +135,9 @@ export const AnimatedCounter: React.FC<CounterProps> = ({
     const timer = setInterval(() => {
       setCount(prev => {
         if (prev < end) {
-          return Math.min(prev + Math.ceil(end / (duration * 60)), end);
+          const increment = end / (duration * 60);
+          const newValue = prev + increment;
+          return Math.min(newValue, end);
         }
         return prev;
       });
@@ -142,13 +146,15 @@ export const AnimatedCounter: React.FC<CounterProps> = ({
     return () => clearInterval(timer);
   }, [end, duration]);
 
+  const displayValue = precision > 0 ? count.toFixed(precision) : Math.floor(count);
+
   return (
     <motion.span
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
     >
-      {count.toLocaleString()}{suffix}
+      {displayValue}{suffix}
     </motion.span>
   );
 };

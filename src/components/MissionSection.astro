@@ -20,13 +20,24 @@ import { mission, meta } from '../site.config';
         </h2>
         
         <!-- Statistics block for impact -->
-        <div class="grid grid-cols-2 gap-4 py-6 px-4 bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50">
+        <div class="grid grid-cols-1 gap-4 py-6 px-4 bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700/50">
           {mission.problem.stats.map((stat) => (
             <div class="text-center">
-              <div class={`text-2xl font-bold text-${stat.color}-400`}>{stat.number}</div>
-              <div class="text-xs opacity-70">{stat.label}</div>
+              <div class={`text-3xl font-bold text-${stat.color}-400`}>{stat.number}</div>
+              <div class="text-sm opacity-80 mb-1">{stat.label}</div>
+              <div class="text-xs opacity-50 text-gray-400">Source: {stat.source}</div>
             </div>
           ))}
+        </div>
+        
+        <!-- Research context -->
+        <div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-4">
+          <p class="text-sm text-blue-200 mb-2">
+            <span class="font-medium">📊 Data transparency:</span> {mission.problem.context}
+          </p>
+          <a href="/research" class="text-xs text-blue-300 hover:text-blue-200 underline transition-colors">
+            View complete research methodology →
+          </a>
         </div>
         
         <div class="space-y-4">

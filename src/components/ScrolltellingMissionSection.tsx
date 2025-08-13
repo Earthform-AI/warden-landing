@@ -23,14 +23,14 @@ export const defaultMissionStories: MissionStory[] = [
   {
     id: 'problem',
     title: 'The Underground Reality',
-    subtitle: 'Every 15 minutes, a mining accident occurs somewhere in the world',
-    description: 'Despite decades of safety improvements, mining remains one of the most dangerous professions. Workers face cave-ins, gas explosions, equipment failures, and countless unseen hazards that current technology cannot predict or prevent.',
+    subtitle: 'Mining remains one of the most dangerous occupations worldwide',
+    description: 'Despite progress in safety technology, mining workers still face significant risks. Official data from MSHA shows 28 fatalities in US mining in 2024, while ICMM member companies globally recorded 42 fatalities. Current technology often cannot predict or prevent these incidents.',
     icon: '⚠️',
     gradient: 'from-red-500 to-orange-500',
     stats: [
-      { label: 'Mining Deaths Annually', value: '2,000+' },
-      { label: 'Injuries Per Year', value: '50,000+' },
-      { label: 'Near Misses Daily', value: '1,000+' }
+      { label: 'US Mining Fatalities 2024', value: '28', source: 'MSHA' },
+      { label: 'ICMM Global Fatalities 2024', value: '42', source: 'ICMM' },
+      { label: 'US Fatal Injury Rate 2023', value: '16.9/100K', source: 'BLS' }
     ]
   },
   {

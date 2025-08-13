@@ -14,17 +14,18 @@ export const hero = {
 export const mission = {
   problem: {
     tagline: "⚠️ The Reality Underground",
-    heading: "Every 30 seconds, a miner's life hangs in the balance",
+    heading: "Mining remains one of the most dangerous occupations worldwide",
     stats: [
-      { number: "15,000+", label: "mining deaths yearly", color: "red" },
-      { number: "60%", label: "preventable incidents", color: "orange" }
+      { number: "28", label: "US mining fatalities in 2024 (MSHA)", color: "red", source: "MSHA Daily Fatality Report" },
+      { number: "2.29", label: "global TRIFR per 1M hours (ICMM 2024)", color: "orange", source: "ICMM Safety Data" }
     ],
     description: [
       "Gas leaks. Collapses. Heat. Silence.",
-      "Too many fathers, mothers, sons, and daughters never come home. Behind every statistic is a family waiting at the kitchen table."
+      "Behind every verified statistic is a family waiting at the kitchen table. Even with progress, mining workers face risks that demand our attention and protection."
     ],
     quote: "We're not trying to replace the miner — we're becoming their shield in the deep.",
-    solution: "Warden is the first AI system built to shield, warn, and remember — before danger strikes."
+    solution: "Warden is the first AI system built to shield, warn, and remember — before danger strikes.",
+    context: "Based on official 2024 data from MSHA (US) and ICMM (global mining companies representing ~1/3 of industry)."
   },
 
   philosophy: {
@@ -123,6 +124,7 @@ export const nav = {
   links: [
     { label: "Home", href: "/" },
     { label: "Mission", href: "/mission" },
+    { label: "Research", href: "/research" },
     { label: "Roadmap", href: "/mission#roadmap" },
     { label: "Ecosystem", href: "/#ecosystem" },
     { label: "Community", href: "/#community" },
