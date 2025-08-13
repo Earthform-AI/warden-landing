@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AnimatedSection, TechButton, FloatingElement, AnimatedCounter } from './FramerMotionComponents.tsx';
+import { AnimatedSection, TechButton, AnimatedCounter } from './FramerMotionComponents.tsx';
 import { ParallaxSection, ScrollLinkedAnimation, TextReveal } from './ScrollDrivenComponents.tsx';
 
 interface HeroProps {
@@ -35,37 +35,66 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
         />
       </ParallaxSection>
       
-      {/* Floating Tech Elements */}
-      <FloatingElement className="absolute top-20 left-10" delay={0}>
-        <motion.div 
-          className="w-3 h-3 bg-blue-500 rounded-full"
+      {/* Tech Grid Overlay - Hidden on mobile to avoid interference */}
+      <div className="absolute inset-0 hidden lg:block pointer-events-none overflow-hidden">
+        {/* Scanning Lines */}
+        <motion.div
+          className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"
           animate={{ 
-            scale: [1, 1.5, 1],
-            opacity: [0.6, 1, 0.6]
+            y: [0, 800],
+            opacity: [0, 1, 0]
           }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
-      </FloatingElement>
-      <FloatingElement className="absolute top-32 right-20" delay={2}>
-        <motion.div 
-          className="w-2 h-2 bg-green-400 rounded-full"
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.5, 1, 0.5]
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "linear",
+            repeatDelay: 3
           }}
-          transition={{ duration: 2.5, repeat: Infinity }}
         />
-      </FloatingElement>
-      <FloatingElement className="absolute bottom-32 left-20" delay={4}>
-        <motion.div 
-          className="w-4 h-4 bg-purple-500 rounded-full"
+        <motion.div
+          className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-green-500/20 to-transparent"
           animate={{ 
-            scale: [1, 1.4, 1],
-            opacity: [0.7, 1, 0.7]
+            x: [0, 1200],
+            opacity: [0, 1, 0]
+          }}
+          transition={{ 
+            duration: 12, 
+            repeat: Infinity, 
+            ease: "linear",
+            delay: 2,
+            repeatDelay: 4
+          }}
+        />
+        
+        {/* Corner Elements */}
+        <motion.div 
+          className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-blue-400/40"
+          animate={{ 
+            opacity: [0.3, 1, 0.3],
+            scale: [0.9, 1.1, 0.9]
           }}
           transition={{ duration: 4, repeat: Infinity }}
         />
-      </FloatingElement>
+        <motion.div 
+          className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-green-400/40"
+          animate={{ 
+            opacity: [0.4, 1, 0.4],
+            rotate: [0, 90, 0]
+          }}
+          transition={{ duration: 6, repeat: Infinity }}
+        />
+        
+        {/* Data Points - Far from content center */}
+        <motion.div 
+          className="absolute top-20 right-8 flex items-center space-x-1"
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <div className="w-1 h-1 bg-blue-400 rounded-full"></div>
+          <div className="w-1 h-1 bg-green-400 rounded-full"></div>
+          <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
+        </motion.div>
+      </div>
 
       {/* Main Content with Scroll-linked Animation */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
@@ -214,21 +243,21 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
         </ScrollLinkedAnimation>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Better centered across all devices */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center"
+        className="absolute bottom-8 inset-x-0 flex flex-col items-center justify-center"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="text-2xl text-white/60 mb-2"
+          className="text-2xl text-white/60 mb-2 flex justify-center"
         >
           ↓
         </motion.div>
-        <div className="text-xs text-gray-400 tracking-wide">
+        <div className="text-xs text-gray-400 tracking-wide text-center px-4">
           Scroll to explore
         </div>
       </motion.div>

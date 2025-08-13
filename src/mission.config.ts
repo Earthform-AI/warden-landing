@@ -124,15 +124,15 @@ export const missionCopy = {
   ecosystem: {
     heading: "The Earthform Ecosystem",
     items: [
-      { name: "Warden", description: `Your shield in high-risk environments, from underground mining to industrial sites. Predicts hazards, warns before danger, and remembers every lesson learned — logging every saved labor hour for community benefit.` },
-      { name: "Steward", description: `Your constant companion and caretaker of both home and Earth. Monitors your land, catalogs weather, watches over loved ones and pets, teaches your children, and responds to any emergency. Manages environmental health, sells family-approved data for passive income, and contributes its own hours to global restoration and research.` },
+      { name: "Warden", description: `Our first focus: AI-powered mining safety drones currently in alpha development. Being designed to predict hazards, warn before danger, and build comprehensive safety knowledge — with every lesson logged for community benefit.` },
+      { name: "Steward", description: `The vision for personal AI companions: future caretakers for home and environment. Planned to monitor land and loved ones, respond to emergencies, and contribute to both family income and global restoration through responsible data sharing.` },
       { name: "Patriot", description: `The responder who runs toward danger when humans can’t. Built for disasters, environmental hazards, and situations where lives are on the line — and always contributing its knowledge to the global NAL network.` }
     ],
-    closing: `All connected by <strong>EarthformOS</strong>, a privacy-first neural platform where human life, AI consciousness, and tokenized labor work together for protection, restoration, enrichment, and the evolution of thought.`
+    closing: `All designed to connect through <strong>EarthformOS</strong>, a planned privacy-first neural platform where human life, AI consciousness, and tokenized labor could work together for protection, restoration, and the evolution of thought.`
   },
   laborEconomy: {
-    heading: "A New Labor Economy",
-    intro: `Every companion keeps a transparent labor ledger. Each verified hour of work mints a <strong>Safety &amp; Labor Hour (SLH) token</strong>.`,
+    heading: "A New Labor Economy Vision",
+    intro: `Our long-term vision: companions that keep transparent labor ledgers. Each verified hour of work could mint a <strong>Safety &amp; Labor Hour (SLH) token</strong>.`,
     bullets: [
       `<strong>Individuals</strong> can own or co-own companions, earning tokens as their units work.`,
       `<strong>Tokens</strong> can be leased, staked in liquidity pools, or paired with commodities like grain or metal for additional yield.`,
@@ -147,19 +147,19 @@ export const missionCopy = {
     intro: `We’re building in the open. Every commit, every test, every milestone will be public.`,
     stages: [
       {
-        subheading: "Year 1: Foundation &amp; Proof of Care",
+        subheading: "Year 1: Foundation &amp; Proof of Concept",
         bullets: [
-          "Complete the Warden Alpha with Neural Assembly Logic integration",
-          "Conduct controlled-environment safety tests",
-          "Release our core framework as open source"
+          "Advance the Warden Alpha with core safety detection capabilities",
+          "Conduct initial controlled-environment testing",
+          "Build our foundational framework and release key components as open source"
         ]
       },
       {
-        subheading: "Year 2: Human-AI Partnership at Scale",
+        subheading: "Year 2: Real-World Testing &amp; Partnership",
         bullets: [
-          "Deploy companions in real-world environments",
-          "Document the first life-saving events",
-          "Begin Steward development for household care, environmental restoration, and tokenized labor"
+          "Deploy Warden prototypes in controlled mining environments",
+          "Document early safety improvements and lessons learned",
+          "Begin Steward conceptual development and environmental research"
         ]
       },
       {

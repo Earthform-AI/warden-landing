@@ -1,0 +1,192 @@
+{
+  "version": "1.0",
+  "title": "Mining Safety Baselines",
+  "description": "This file contains safety baseline metrics for mining operations, including incidence rates, fatalities, and TRIFR. Units vary by source: MSHA incidence rates are per 200,000 hours; ICMM TRIFR is per 1,000,000 hours; BLS fatal injury rates are per 100,000 full-time equivalent (FTE) workers. Use care when comparing rates across sources; convert to a common basis (e.g., per 1,000,000 hours) when presenting combined charts.",
+
+  "meta": {
+    "generated_on": "2025-08-13",
+    "currency": null,
+    "notes": [
+      "Units vary by source: MSHA incidence rates are per 200,000 hours; ICMM TRIFR is per 1,000,000 hours; BLS fatal injury rates are per 100,000 full-time equivalent (FTE) workers.",
+      "MSHA Jan\u2013Sep 2024 figures are labeled 'PRELIMINARY' by MSHA and may be revised.",
+      "ICMM covers member companies (~one\u2011third of global mining); figures are not global totals for the entire mining industry.",
+      "Use care when comparing rates across sources; convert to a common basis (e.g., per 1,000,000 hours) when presenting combined charts."
+    ]
+  },
+  "definitions": {
+    "incidence_rate_per_200k_hours": "Number of recordable injuries and illnesses per 200,000 employee hours worked. (MSHA definition)",
+    "TRIFR_per_1M_hours": "Total Recordable Injury Frequency Rate: recordable injuries per 1,000,000 hours worked. (ICMM definition)",
+    "fatal_injury_rate_per_100k_FTE": "Annual workplace fatal injury rate per 100,000 full-time equivalent workers. (BLS CFOI)",
+    "NFDL": "Nonfatal injuries with days lost (lost time).",
+    "NDL": "Nonfatal injuries with no days lost (no lost time)."
+  },
+  "metrics": [
+    {
+      "id": "us_msha_fatalities_2024",
+      "title": "US mining fatalities (MSHA-regulated) \u2014 2024",
+      "scope": "United States, MSHA-regulated mining (coal + metal/nonmetal)",
+      "segment": "All mining",
+      "metric_name": "annual_fatalities",
+      "value": 28,
+      "unit": "fatalities",
+      "basis": "count",
+      "period": "Calendar year 2024 (final per MSHA daily fatality compilation)",
+      "source": {
+        "name": "MSHA Daily Fatality Report (Combined Chart)",
+        "url": "https://www.msha.gov/data-and-reports/fatality-reports/daily-fatality-report"
+      },
+      "method_notes": "Tally as shown on MSHA 'Daily Fatality Report' combined chart; shows END OF YEAR TOTAL."
+    },
+    {
+      "id": "us_msha_fatalities_2023",
+      "title": "US mining fatalities (MSHA-regulated) \u2014 2023",
+      "scope": "United States, MSHA-regulated mining (coal + metal/nonmetal)",
+      "segment": "All mining",
+      "metric_name": "annual_fatalities",
+      "value": 40,
+      "unit": "fatalities",
+      "basis": "count",
+      "period": "Calendar year 2023 (final per MSHA daily fatality compilation)",
+      "source": {
+        "name": "MSHA Daily Fatality Report (Combined Chart)",
+        "url": "https://www.msha.gov/data-and-reports/fatality-reports/daily-fatality-report"
+      },
+      "method_notes": "Tally as shown on MSHA 'Daily Fatality Report' combined chart; shows END OF YEAR TOTAL."
+    },
+    {
+      "id": "us_msha_incidence_coal_2024_q1_q3",
+      "title": "US coal mining incidence rate \u2014 Jan\u2013Sep 2024 (prelim)",
+      "scope": "United States, coal mining (operators)",
+      "segment": "Coal (all coal types and work locations)",
+      "metric_name": "all_occurrences_incidence_rate",
+      "value": 3.047,
+      "unit": "incidents per 200,000 hours",
+      "basis": "per_200k_hours",
+      "period": "Jan\u2013Sep 2024 (PRELIMINARY)",
+      "source": {
+        "name": "MSHA Quarterly Part 50 \u2014 Table 1 (Coal)",
+        "url": "https://arlweb.msha.gov/STATS/PART50/WQ/2024/table1.pdf"
+      },
+      "method_notes": "Use the 'TOTAL, ALL COAL' row, 'ALL OCCURRENCES \u2014 ALL INCIDENT RATES' column."
+    },
+    {
+      "id": "us_msha_incidence_mnm_2024_q1_q3",
+      "title": "US metal/nonmetal mining incidence rate \u2014 Jan\u2013Sep 2024 (prelim)",
+      "scope": "United States, metal/nonmetal mining (operators)",
+      "segment": "All mines, mills and shops (M/NM)",
+      "metric_name": "all_occurrences_incidence_rate",
+      "value": 1.912,
+      "unit": "incidents per 200,000 hours",
+      "basis": "per_200k_hours",
+      "period": "Jan\u2013Sep 2024 (PRELIMINARY)",
+      "source": {
+        "name": "MSHA Quarterly Part 50 \u2014 Table 2 (M/NM)",
+        "url": "https://arlweb.msha.gov/STATS/PART50/WQ/2024/table2.pdf"
+      },
+      "method_notes": "Use 'TOTAL, ALL MINES, MILLS AND SHOPS' row, 'ALL OCCURRENCES \u2014 ALL INCIDENT RATES'."
+    },
+    {
+      "id": "us_msha_incidence_mnm_by_segment_2024_q1_q3",
+      "title": "US M/NM incidence rates by segment \u2014 Jan\u2013Sep 2024 (prelim)",
+      "scope": "United States, metal/nonmetal mining (operators)",
+      "segment": "By mineral segment",
+      "metric_name": "all_occurrences_incidence_rate",
+      "value_detail": {
+        "metal": 1.866,
+        "nonmetal": 1.883,
+        "stone": 2.063,
+        "sand_and_gravel": 1.675
+      },
+      "unit": "incidents per 200,000 hours",
+      "basis": "per_200k_hours",
+      "period": "Jan\u2013Sep 2024 (PRELIMINARY)",
+      "source": {
+        "name": "MSHA Quarterly Part 50 \u2014 Table 2 (M/NM)",
+        "url": "https://arlweb.msha.gov/STATS/PART50/WQ/2024/table2.pdf"
+      },
+      "method_notes": "Use 'ALL MINES, MILLS AND SHOPS' rows for each mineral type, 'ALL OCCURRENCES \u2014 ALL INCIDENT RATES'."
+    },
+    {
+      "id": "us_bls_cfoi_naics21_rate_2023",
+      "title": "US fatal injury rate \u2014 Mining, Quarrying, and Oil & Gas (NAICS 21), 2023",
+      "scope": "United States, private industry sector (NAICS 21)",
+      "segment": "Mining, quarrying, and oil & gas extraction",
+      "metric_name": "fatal_injury_rate",
+      "value": 16.9,
+      "unit": "fatalities per 100,000 FTE workers",
+      "basis": "per_100k_FTE",
+      "period": "Calendar year 2023",
+      "source": {
+        "name": "BLS CFOI: Number and rate of fatal work injuries, by private industry sector (table)",
+        "url": "https://www.bls.gov/charts/census-of-fatal-occupational-injuries/number-and-rate-of-fatal-work-injuries-by-industry.htm"
+      },
+      "method_notes": "Use 2023 table for 'Mining, quarrying, and oil and gas extraction' row; also shows count=113."
+    },
+    {
+      "id": "icmm_fatalities_2024",
+      "title": "ICMM member companies \u2014 fatalities in 2024",
+      "scope": "ICMM member companies (global)",
+      "segment": "All member operations",
+      "metric_name": "annual_fatalities",
+      "value": 42,
+      "unit": "fatalities",
+      "basis": "count",
+      "period": "Calendar year 2024",
+      "source": {
+        "name": "ICMM: 2024 safety performance (news)",
+        "url": "https://www.icmm.com/en-gb/news/2025/2024-safety-performance"
+      },
+      "method_notes": "ICMM reports 42 fatalities in 2024 vs 36 in 2023; members represent ~1/3 of global mining industry."
+    },
+    {
+      "id": "icmm_trifr_2024",
+      "title": "ICMM member companies \u2014 TRIFR in 2024",
+      "scope": "ICMM member companies (global)",
+      "segment": "All member operations",
+      "metric_name": "TRIFR",
+      "value": 2.29,
+      "unit": "recordables per 1,000,000 hours worked",
+      "basis": "per_1M_hours",
+      "period": "Calendar year 2024",
+      "source": {
+        "name": "ICMM Benchmarking 2024 safety data",
+        "url": "https://www.icmm.com/en-gb/research/health-safety/benchmarking-2024-safety-data"
+      },
+      "method_notes": "ICMM states 2024 had the lowest recorded TRIFR (2.29) alongside higher hours worked."
+    },
+    {
+      "id": "icmm_2024_hazard_breakdown_headlines",
+      "title": "ICMM 2024 fatalities \u2014 selected hazard and geography highlights",
+      "scope": "ICMM member companies (global)",
+      "segment": "All member operations",
+      "metric_name": "narrative_highlights",
+      "value_detail": {
+        "mobile_equipment_transportation_fatalities": 9,
+        "fall_of_ground_fatalities": 5,
+        "highest_country_total": {
+          "country": "South Africa",
+          "fatalities": 15
+        }
+      },
+      "unit": "counts",
+      "basis": "count",
+      "period": "Calendar year 2024",
+      "source": {
+        "name": "International Mining (trade press) summary of ICMM 2024 report",
+        "url": "https://im-mining.com/2025/07/10/icmm-revises-critical-control-management-guidance-following-fatality-rise-at-member-operations/"
+      },
+      "method_notes": "Useful context extracted from an industry publication summarizing ICMM\u2019s 2024 report."
+    }
+  ],
+  "conversion_helpers": {
+    "per_200k_hours_to_per_1M_hours": "Multiply by 5. Example: 1.912 per 200k hours \u2248 9.56 per 1,000,000 hours.",
+    "per_1M_hours_to_per_200k_hours": "Divide by 5.",
+    "per_100k_FTE_to_per_1M_hours": "Not directly convertible without hours-per-FTE assumption; avoid converting."
+  },
+  "suggested_claim_text": [
+    "In the US, MSHA recorded 28 mining fatalities in 2024, down from 40 in 2023. (source: MSHA)",
+    "Among ICMM member companies, there were 42 fatalities in 2024 and a TRIFR of 2.29 per 1,000,000 hours worked. (source: ICMM)",
+    "In BLS data for 2023, the Mining, Quarrying, and Oil & Gas sector\u2019s fatal work injury rate was 16.9 per 100,000 FTE workers (113 deaths). (source: BLS CFOI)",
+    "MSHA preliminary Jan\u2013Sep 2024 incidence rates were ~3.05 per 200,000 hours for coal and ~1.91 per 200,000 hours across metal/nonmetal mines, mills, and shops. (source: MSHA Part 50)"
+  ]
+}

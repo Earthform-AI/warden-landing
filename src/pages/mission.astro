@@ -38,14 +38,31 @@ import { nav } from '../site.config';
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.1) 1px, transparent 0); background-size: 40px 40px; animation: pulse 4s ease-in-out infinite;"></div>
       </div>
       
-      <!-- Floating Elements -->
-      <div class="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-      <div class="absolute top-40 right-20 w-1 h-1 bg-green-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-      <div class="absolute bottom-32 left-20 w-3 h-3 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+      <!-- Tech Grid Overlay - Hidden on mobile to avoid interference -->
+      <div class="absolute inset-0 hidden lg:block pointer-events-none overflow-hidden">
+        <!-- Scanning Lines -->
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent animate-pulse" style="animation-duration: 8s;"></div>
+        <div class="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-green-500/20 to-transparent animate-pulse" style="animation-duration: 12s; animation-delay: 2s;"></div>
+        
+        <!-- Corner Elements -->
+        <div class="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-blue-400/40 animate-pulse" style="animation-duration: 4s;"></div>
+        <div class="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-green-400/40 animate-pulse" style="animation-duration: 6s;"></div>
+        
+        <!-- Data Points - Far from content center -->
+        <div class="absolute top-20 right-8 flex items-center space-x-1 animate-pulse" style="animation-duration: 3s;">
+          <div class="w-1 h-1 bg-blue-400 rounded-full"></div>
+          <div class="w-1 h-1 bg-green-400 rounded-full"></div>
+          <div class="w-1 h-1 bg-purple-400 rounded-full"></div>
+        </div>
+      </div>
       
       <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-6 py-3 bg-blue-900/40 backdrop-blur-sm rounded-full text-blue-300 text-sm font-medium mb-8 border border-blue-500/30">
+        <div class="inline-flex items-center gap-2 px-6 py-3 bg-blue-900/40 backdrop-blur-sm rounded-full text-blue-300 text-sm font-medium mb-4 border border-blue-500/30">
           🚀 Life's Work
+        </div>
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900/60 backdrop-blur-sm rounded-full text-gray-300 text-xs font-medium mb-8 border border-gray-600/30">
+          <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+          Warden Alpha • Steward Pre-Alpha • Building the Future
         </div>
         <h1 class="text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
           {missionCopy.title}
@@ -275,10 +292,30 @@ import { nav } from '../site.config';
                         <div class="text-6xl text-center mb-4">{icon}</div>
                         <div class={`text-center text-2xl font-bold text-${color}-300 mb-4`}>{item.name}</div>
                         <div class="space-y-2">
-                          <div class={`h-2 bg-${color}-400/30 rounded-full overflow-hidden`}>
-                            <div class={`h-full bg-${color}-400 rounded-full animate-pulse`} style={`width: ${80 + index * 5}%`}></div>
+                          {/* Development Stage Indicator */}
+                          <div class="text-center mb-3">
+                            {index === 0 && (
+                              <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-900/40 rounded-full text-blue-300 text-sm font-medium">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                                Alpha Development
+                              </div>
+                            )}
+                            {index === 1 && (
+                              <div class="inline-flex items-center gap-2 px-3 py-1 bg-gray-900/40 rounded-full text-gray-400 text-sm font-medium">
+                                <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
+                                Pre-Alpha Concept
+                              </div>
+                            )}
+                            {index === 2 && (
+                              <div class="inline-flex items-center gap-2 px-3 py-1 bg-gray-900/40 rounded-full text-gray-400 text-sm font-medium">
+                                <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
+                                Future Vision
+                              </div>
+                            )}
                           </div>
-                          <div class="text-sm opacity-70 text-center">Development Progress</div>
+                          <div class="text-sm opacity-70 text-center">
+                            {index === 0 ? "Active development with safety testing" : index === 1 ? "Research & design phase" : "Long-term roadmap goal"}
+                          </div>
                         </div>
                       </div>
                     </div>

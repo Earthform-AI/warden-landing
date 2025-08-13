@@ -23,10 +23,208 @@ import { thanks_hero, thanks_mission, thanks_next, meta, footer } from '../site.
     <meta name="keywords" content={meta.keywords} />
     <meta name="author" content={meta.author} />
     <link rel="canonical" href={meta.url} />
+    
+    <style>
+      /* Achievement notification styles */
+      .achievement-notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #0891b2, #0ea5e9);
+        border: 2px solid #06b6d4;
+        border-radius: 4px;
+        padding: 16px 20px;
+        box-shadow: 
+          0 10px 25px rgba(14, 165, 233, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+        animation: achievementSlide 0.8s ease-out, achievementGlow 2s ease-in-out infinite;
+        max-width: 320px;
+        font-family: 'Courier New', monospace;
+      }
+      
+      @keyframes achievementSlide {
+        0% { transform: translateX(400px) scale(0.8); opacity: 0; }
+        100% { transform: translateX(0) scale(1); opacity: 1; }
+      }
+      
+      @keyframes achievementGlow {
+        0%, 100% { 
+          box-shadow: 
+            0 10px 25px rgba(14, 165, 233, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        50% { 
+          box-shadow: 
+            0 15px 35px rgba(14, 165, 233, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+      }
+      
+      /* Confetti animation */
+      .confetti {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(45deg, #0ea5e9, #06b6d4);
+        animation: confetti-fall 3s linear infinite;
+        z-index: 999;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      }
+      
+      .confetti:nth-child(2) { background: linear-gradient(45deg, #06b6d4, #0891b2); animation-delay: 0.1s; left: 10%; }
+      .confetti:nth-child(3) { background: linear-gradient(45deg, #10b981, #059669); animation-delay: 0.2s; left: 20%; }
+      .confetti:nth-child(4) { background: linear-gradient(45deg, #0ea5e9, #0284c7); animation-delay: 0.3s; left: 30%; }
+      .confetti:nth-child(5) { background: linear-gradient(45deg, #06b6d4, #0891b2); animation-delay: 0.4s; left: 40%; }
+      .confetti:nth-child(6) { background: linear-gradient(45deg, #10b981, #059669); animation-delay: 0.5s; left: 50%; }
+      .confetti:nth-child(7) { background: linear-gradient(45deg, #0ea5e9, #0284c7); animation-delay: 0.6s; left: 60%; }
+      .confetti:nth-child(8) { background: linear-gradient(45deg, #06b6d4, #0891b2); animation-delay: 0.7s; left: 70%; }
+      .confetti:nth-child(9) { background: linear-gradient(45deg, #10b981, #059669); animation-delay: 0.8s; left: 80%; }
+      .confetti:nth-child(10) { background: linear-gradient(45deg, #0ea5e9, #0284c7); animation-delay: 0.9s; left: 90%; }
+      
+      @keyframes confetti-fall {
+        0% { 
+          top: -10px; 
+          transform: rotateZ(0deg) rotateY(0deg); 
+          opacity: 1; 
+        }
+        100% { 
+          top: 100vh; 
+          transform: rotateZ(720deg) rotateY(360deg); 
+          opacity: 0; 
+        }
+      }
+      
+      /* Progress ring animation */
+      .progress-ring {
+        transform: rotate(-90deg);
+        width: 80px;
+        height: 80px;
+        filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.3));
+      }
+      
+      .progress-ring-circle {
+        fill: transparent;
+        stroke: #374151;
+        stroke-width: 6;
+        r: 34;
+        cx: 40;
+        cy: 40;
+      }
+      
+      .progress-ring-progress {
+        fill: transparent;
+        stroke: url(#progress-gradient);
+        stroke-width: 6;
+        stroke-linecap: round;
+        r: 34;
+        cx: 40;
+        cy: 40;
+        stroke-dasharray: 213.6;
+        stroke-dashoffset: 42.7;
+        animation: progress-fill 2s ease-out 0.5s forwards;
+      }
+      
+      @keyframes progress-fill {
+        from { stroke-dashoffset: 213.6; }
+        to { stroke-dashoffset: 42.7; }
+      }
+      
+      /* Badge styles */
+      .member-badge {
+        background: linear-gradient(135deg, #0c4a6e, #0ea5e9);
+        border: 2px solid #06b6d4;
+        animation: badgeGlow 3s ease-in-out infinite;
+        font-family: 'Courier New', monospace;
+      }
+      
+      @keyframes badgeGlow {
+        0%, 100% { 
+          box-shadow: 
+            0 0 20px rgba(6, 182, 212, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        50% { 
+          box-shadow: 
+            0 0 30px rgba(6, 182, 212, 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+      }
+      
+      /* Stats counter animation */
+      .stat-number {
+        animation: countUp 2s ease-out forwards;
+      }
+      
+      @keyframes countUp {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+      
+      /* Enhanced button hover */
+      .cta-button {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.8s;
+      }
+      
+      .cta-button:hover::before {
+        left: 100%;
+      }
+      
+      @media (max-width: 768px) {
+        .achievement-notification {
+          top: 10px;
+          right: 10px;
+          left: 10px;
+          max-width: none;
+        }
+      }
+    </style>
   </head>
   <body class="font-sans bg-black text-white">
+    <!-- Achievement Notification -->
+    <div class="achievement-notification" id="achievement">
+      <div class="flex items-center gap-3">
+        <div class="text-2xl">◉</div>
+        <div>
+          <div class="font-bold text-white font-mono">GUARDIAN PROTOCOL ACTIVE</div>
+          <div class="text-sm text-green-100 font-mono">Access Granted</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Confetti particles -->
+    <div class="confetti" style="left: 5%;"></div>
+    <div class="confetti" style="left: 15%;"></div>
+    <div class="confetti" style="left: 25%;"></div>
+    <div class="confetti" style="left: 35%;"></div>
+    <div class="confetti" style="left: 45%;"></div>
+    <div class="confetti" style="left: 55%;"></div>
+    <div class="confetti" style="left: 65%;"></div>
+    <div class="confetti" style="left: 75%;"></div>
+    <div class="confetti" style="left: 85%;"></div>
+    <div class="confetti" style="left: 95%;"></div>
+    
     <main>
       <section class="min-h-screen flex flex-col items-center justify-center bg-black text-white py-24 px-4 text-center animate-fade-in">
+        <!-- Member Badge -->
+        <div class="member-badge rounded-full px-6 py-2 mb-6 text-sm font-bold flex items-center gap-2 animate-slide-up">
+          <span class="text-cyan-300">◉</span>
+          <span>GUARDIAN-ID: #1247</span>
+          <span class="text-cyan-300">◉</span>
+        </div>
+        
         <div class="animate-slide-up">
           <h1 class="text-5xl md:text-6xl font-extrabold mb-8 flex items-center justify-center gap-3 tracking-tight animate-glow">
             <span class="animate-pulse">{thanks_hero.icon}</span>
@@ -39,28 +237,110 @@ import { thanks_hero, thanks_mission, thanks_next, meta, footer } from '../site.
             {thanks_hero.description}
           </p>
         </div>
-        <div class="relative mb-10 animate-slide-up">
-          <img src={thanks_hero.image.src} alt={thanks_hero.image.alt} class="mx-auto w-72 md:w-96 drop-shadow-2xl animate-pulse" style="filter: brightness(1.2) contrast(1.1);" />
-          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-            <div class="w-32 h-32 rounded-full bg-green-400 opacity-30 blur-2xl animate-pulse"></div>
+        
+        <!-- Progress Ring and Stats -->
+        <div class="flex items-center gap-8 mb-8 animate-slide-up">
+          <div class="text-center">
+            <svg class="progress-ring">
+              <defs>
+                <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#0ea5e9"/>
+                  <stop offset="100%" style="stop-color:#06b6d4"/>
+                </linearGradient>
+              </defs>
+              <circle class="progress-ring-circle"></circle>
+              <circle class="progress-ring-progress"></circle>
+            </svg>
+            <div class="text-xs text-gray-400 mt-2 font-mono">PROTOCOL</div>
+            <div class="text-lg font-bold text-cyan-400 font-mono">v0.8.0</div>
+          </div>
+          <div class="text-center">
+            <div class="stat-number text-3xl font-bold text-green-400 font-mono" data-stat="guardians">1,247</div>
+            <div class="text-xs text-gray-400 font-mono">GUARDIANS ENLISTED</div>
+          </div>
+          <div class="text-center">
+            <div class="stat-number text-3xl font-bold text-orange-400 font-mono" data-stat="development">73</div>
+            <div class="text-xs text-gray-400 font-mono">DAYS IN DEVELOPMENT</div>
           </div>
         </div>
-        <div class="bg-gray-900 bg-opacity-80 rounded-xl p-8 max-w-xl mx-auto mb-10 shadow-2xl animate-slide-up">
-          <h2 class="text-2xl font-bold mb-4 text-green-400">{thanks_mission.heading}</h2>
-          <ol class="list-decimal list-inside text-left space-y-2 text-lg">
-            {thanks_mission.steps.map((step) => (
-              <li><span class="font-semibold text-white">{step.title}:</span> {step.description}</li>
+        
+        <div class="relative mb-10 animate-slide-up">
+          <img src={thanks_hero.image.src} alt={thanks_hero.image.alt} class="mx-auto w-72 md:w-96 drop-shadow-2xl animate-pulse" style="filter: brightness(1.2) contrast(1.1) hue-rotate(15deg);" />
+          <!-- Enhanced tech corners with sci-fi styling -->
+          <div class="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-cyan-400/80 animate-pulse tech-pulse">
+            <div class="absolute -top-1 -right-1 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+          </div>
+          <div class="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-blue-400/80 animate-pulse tech-pulse" style="animation-delay: 1s;">
+            <div class="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+          </div>
+          <div class="absolute -top-2 -left-4 w-4 h-4 bg-gradient-to-r from-green-400/40 to-cyan-400/40 animate-pulse tech-pulse" style="animation-delay: 2s; clip-path: polygon(0 0, 100% 50%, 0 100%);"></div>
+          <div class="absolute -bottom-2 -right-4 w-3 h-3 bg-gradient-to-r from-purple-400/40 to-pink-400/40 animate-pulse tech-pulse" style="animation-delay: 1.5s; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+          
+          <!-- Scanning lines effect -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent animate-pulse" style="animation-delay: 3s;"></div>
+            <div class="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-400/30 to-transparent animate-pulse" style="animation-delay: 4s;"></div>
+          </div>
+        </div>
+        <div class="bg-gray-900 bg-opacity-80 rounded-xl p-8 max-w-xl mx-auto mb-10 shadow-2xl animate-slide-up border border-cyan-500/20">
+          <div class="flex items-center justify-center gap-2 mb-6">
+            <h2 class="text-2xl font-bold text-cyan-400 font-mono">&gt; {thanks_mission.heading}</h2>
+            <div class="w-6 h-6 bg-cyan-500 rounded-sm flex items-center justify-center animate-pulse">
+              <span class="text-xs text-black font-bold font-mono">✓</span>
+            </div>
+          </div>
+          <ol class="list-none text-left space-y-3 text-lg font-mono">
+            {thanks_mission.steps.map((step, index) => (
+              <li class="flex items-start gap-3 animate-slide-up" style={`animation-delay: ${0.2 + index * 0.1}s`}>
+                <span class="flex-shrink-0 w-8 h-6 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 rounded flex items-center justify-center text-xs font-bold text-cyan-400 mt-1 font-mono">
+                  {(index + 1).toString().padStart(2, '0')}
+                </span>
+                <div>
+                  <span class="font-semibold text-cyan-300">[{step.title.toUpperCase()}]:</span> 
+                  <span class="text-gray-300 ml-2">{step.description}</span>
+                </div>
+              </li>
             ))}
           </ol>
         </div>
         <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 animate-slide-up">
-          <a href={thanks_next.discord} target="_blank" rel="noopener" class="inline-block bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white font-bold py-3 px-8 rounded-xl transition-all duration-200 shadow-xl animate-glow">
-            Join our Discord
+          <a href={thanks_next.discord} target="_blank" rel="noopener" class="cta-button inline-block bg-gradient-to-r from-cyan-600 to-blue-500 hover:from-cyan-700 hover:to-blue-600 text-white font-bold py-4 px-10 rounded-lg transition-all duration-200 shadow-xl animate-glow hover:scale-105 hover:shadow-2xl font-mono">
+            <span class="flex items-center gap-2">
+              <span>⟨</span>
+              CONNECT TO NETWORK
+              <span>⟩</span>
+            </span>
           </a>
-          <a href="/" class="inline-block bg-gray-800 text-white px-8 py-3 rounded-xl shadow hover:bg-gray-900 transition-all animate-glow">Back to Home</a>
+          <a href="/" class="cta-button inline-block bg-gray-800 text-white px-10 py-4 rounded-lg shadow hover:bg-gray-700 transition-all animate-glow hover:scale-105 font-mono">
+            <span class="flex items-center gap-2">
+              <span>⟨</span>
+              RETURN TO BASE
+              <span>⟩</span>
+            </span>
+          </a>
         </div>
-        <div class="mt-8 text-sm text-gray-400 animate-fade-in">
-          <span>{thanks_next.footer}</span>
+        
+        <!-- Special rewards section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto animate-slide-up">
+          <div class="bg-gradient-to-r from-cyan-600/20 to-blue-600/20 border border-cyan-500/30 rounded-lg p-4 text-center">
+            <div class="text-2xl mb-2">⟨⟩</div>
+            <div class="text-sm font-bold text-cyan-300 font-mono">BETA ACCESS</div>
+            <div class="text-xs text-gray-400 font-mono">Early protocol testing</div>
+          </div>
+          <div class="bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-500/30 rounded-lg p-4 text-center">
+            <div class="text-2xl mb-2">◦◉◦</div>
+            <div class="text-sm font-bold text-green-300 font-mono">GUARDIAN RANK</div>
+            <div class="text-xs text-gray-400 font-mono">Priority status</div>
+          </div>
+          <div class="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 rounded-lg p-4 text-center">
+            <div class="text-2xl mb-2">◈◇◈</div>
+            <div class="text-sm font-bold text-purple-300 font-mono">DEV INSIGHTS</div>
+            <div class="text-xs text-gray-400 font-mono">Behind the shield</div>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-sm text-gray-400 animate-fade-in font-mono">
+          <span>◉ {thanks_next.footer}</span>
         </div>
       </section>
     </main>
@@ -72,5 +352,126 @@ import { thanks_hero, thanks_mission, thanks_next, meta, footer } from '../site.
         ))}
       </nav>
     </footer>
+    
+    <script>
+      // Achievement notification interaction
+      document.addEventListener('DOMContentLoaded', function() {
+        const achievement = document.getElementById('achievement');
+        
+        if (achievement) {
+          // Auto-hide achievement after 8 seconds
+          setTimeout(() => {
+            achievement.style.transform = 'translateX(400px)';
+            achievement.style.opacity = '0';
+          }, 8000);
+          
+          // Click to dismiss
+          achievement.addEventListener('click', function() {
+            achievement.style.transform = 'translateX(400px)';
+            achievement.style.opacity = '0';
+          });
+        }
+        
+        // Optional: Play celebration sound (requires user interaction first)
+        // Uncomment if you want to add audio feedback
+        /*
+        if (achievement) {
+          achievement.addEventListener('click', function() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(523, audioContext.currentTime); // C5
+            oscillator.frequency.setValueAtTime(659, audioContext.currentTime + 0.1); // E5
+            oscillator.frequency.setValueAtTime(784, audioContext.currentTime + 0.2); // G5
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+          });
+        }
+        */
+        
+        // Animate counter numbers
+        function animateCounter(element: HTMLElement, target: number, duration: number = 2000) {
+          const start = 0;
+          const increment = target / (duration / 16);
+          let current = start;
+          
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            
+            if (target > 1000) {
+              element.textContent = (current / 1000).toFixed(1) + 'K+';
+            } else {
+              element.textContent = Math.floor(current).toLocaleString();
+            }
+          }, 16);
+        }
+        
+        // Animate the stats counters
+        setTimeout(() => {
+          const guardianCounter = document.querySelector('[data-stat="guardians"]') as HTMLElement;
+          const developmentCounter = document.querySelector('[data-stat="development"]') as HTMLElement;
+          
+          if (guardianCounter) animateCounter(guardianCounter, 1247);
+          if (developmentCounter) animateCounter(developmentCounter, 73);
+        }, 1000);
+      });
+      
+      // Add sparkle effects on mouse move
+      document.addEventListener('mousemove', function(e) {
+        if (Math.random() > 0.98) { // Make sparkles even more rare and special
+          const sparkle = document.createElement('div');
+          sparkle.style.position = 'fixed';
+          sparkle.style.left = e.clientX + 'px';
+          sparkle.style.top = e.clientY + 'px';
+          sparkle.style.width = '3px';
+          sparkle.style.height = '3px';
+          sparkle.style.background = 'linear-gradient(45deg, #06b6d4, #0ea5e9)';
+          sparkle.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+          sparkle.style.pointerEvents = 'none';
+          sparkle.style.zIndex = '1001';
+          sparkle.style.animation = 'sparkle 0.8s ease-out forwards';
+          
+          document.body.appendChild(sparkle);
+          
+          setTimeout(() => {
+            document.body.removeChild(sparkle);
+          }, 800);
+        }
+      });
+      
+      // Add sparkle animation CSS
+      const sparkleCSS = `
+        @keyframes sparkle {
+          0% { 
+            transform: scale(0) rotate(0deg);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1) rotate(180deg);
+            opacity: 1;
+          }
+          100% { 
+            transform: scale(0) rotate(360deg);
+            opacity: 0;
+          }
+        }
+      `;
+      
+      const style = document.createElement('style');
+      style.textContent = sparkleCSS;
+      document.head.appendChild(style);
+    </script>
   </body>
 </html>
