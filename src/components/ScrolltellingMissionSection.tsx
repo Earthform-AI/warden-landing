@@ -35,15 +35,15 @@ export const defaultMissionStories: MissionStory[] = [
   },
   {
     id: 'vision',
-    title: 'A Guardian That Never Sleeps',
-    subtitle: 'AI-powered protection that monitors every breath, every vibration, every change',
-    description: 'Warden drones patrol underground tunnels 24/7, using advanced sensors and predictive AI to detect hazards before they become deadly. They communicate with miners, coordinate emergency responses, and learn from every situation to become smarter guardians.',
+    title: 'A Guardian in Development',
+    subtitle: 'AI-powered protection targeting advanced hazard detection capabilities',
+    description: 'Warden drones are being developed to patrol underground tunnels 24/7, using advanced sensors and predictive AI to detect hazards before they become deadly. Our goal is to achieve 99%+ detection accuracy as we progress from alpha to deployment.',
     icon: '🛡️',
     gradient: 'from-blue-500 to-cyan-500',
     stats: [
-      { label: 'Hazard Detection', value: '99.7%' },
-      { label: 'Response Time', value: '<30s' },
-      { label: 'Lives Protected', value: '∞' }
+      { label: 'Target Detection Rate', value: '99%+' },
+      { label: 'Target Response Time', value: '<30s' },
+      { label: 'Development Status', value: 'Alpha' }
     ]
   },
   {

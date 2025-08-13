@@ -45,19 +45,19 @@ export const TechShowcase: React.FC = () => {
   }, []);
 
   const techMetrics: TechMetric[] = [
-    { label: "UPTIME", value: "99.97", unit: "%", color: "green", animate: true },
-    { label: "LATENCY", value: "23", unit: "ms", color: "blue", animate: true },
-    { label: "LOAD", value: systemLoad.toString(), unit: "%", color: "purple", animate: true },
-    { label: "NODES", value: activeConnections.toString(), unit: "", color: "yellow", animate: true },
+    { label: "TARGET UPTIME", value: "99.9", unit: "%", color: "green", animate: true },
+    { label: "TARGET LATENCY", value: "<30", unit: "ms", color: "blue", animate: true },
+    { label: "DEV PROGRESS", value: systemLoad.toString(), unit: "%", color: "purple", animate: true },
+    { label: "TEST NODES", value: activeConnections.toString(), unit: "", color: "yellow", animate: true },
   ];
 
   const codeSnippets = [
     "initializing neural_assembly_logic...",
-    "scanning underground_environment...",
-    "threat_detection: ACTIVE",
-    "miner_safety_protocols: ENABLED",
-    "ai_companion_status: ONLINE",
-    "earthform_os: OPERATIONAL"
+    "scanning test_environment...",
+    "threat_detection: IN DEVELOPMENT",
+    "miner_safety_protocols: ALPHA TESTING",
+    "ai_companion_status: PROTOTYPE",
+    "earthform_os: IN DEVELOPMENT"
   ];
 
   const [currentCodeIndex, setCurrentCodeIndex] = useState(0);

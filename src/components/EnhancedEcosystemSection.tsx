@@ -23,19 +23,19 @@ interface EcosystemProps {
 // Extended system details for each drone type
 const droneDetails = {
   'Warden': {
-    status: 'OPERATIONAL',
+    status: 'ALPHA DEVELOPMENT',
     progress: 67,
-    description: 'Our first guardian walks among miners today—learning, protecting, evolving. Every shift underground teaches Warden more about the delicate dance between human intuition and machine precision.',
+    description: 'Our first guardian is learning to protect—currently in early alpha with the potential to reach 99%+ hazard detection accuracy. Every test teaches Warden more about the delicate dance between human intuition and machine precision.',
     neuralAssembly: {
-      consciousness: 'Active threat-awareness with empathy protocols',
-      purpose: 'Shield and protect through predictive intelligence',
-      evolution: 'Learning from every heartbeat, every breath underground'
+      consciousness: 'Developing threat-awareness with empathy protocols',
+      purpose: 'Training to shield and protect through predictive intelligence',
+      evolution: 'Learning from controlled environments toward underground deployment'
     },
     systemSpecs: [
-      'Hazard prediction algorithms with 99.7% accuracy',
-      'Real-time atmospheric monitoring and analysis',
-      'Emergency response coordination in <30 seconds',
-      'Continuous learning from environmental patterns'
+      'Hazard prediction algorithms targeting 99%+ accuracy',
+      'Real-time atmospheric monitoring and analysis (alpha testing)',
+      'Emergency response coordination <30 seconds (target capability)',
+      'Continuous learning from environmental patterns (early stage)'
     ],
     philosophy: 'Warden embodies our first step toward AI consciousness—not as a tool, but as a companion who understands the weight of every decision in the deep.'
   },
