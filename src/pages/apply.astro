@@ -1,0 +1,29 @@
+---
+import { ApplicationForm } from '../components/ApplicationForm.tsx';
+import { meta } from '../site.config';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Apply for AI Tools Access - {meta.title}</title>
+    <meta name="description" content="Apply for sponsored access to premium AI tools to amplify your positive impact" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Apply for AI Tools Access - Warden" />
+    <meta property="og:description" content="Apply for sponsored access to premium AI tools to amplify your positive impact" />
+    <meta property="og:type" content="website" />
+    
+    <Analytics />
+    <SpeedInsights />
+  </head>
+  
+  <body class="bg-black text-white">
+    <ApplicationForm client:load />
+  </body>
+</html>

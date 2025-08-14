@@ -97,7 +97,7 @@ export const InviteNominateSection: React.FC = () => {
             {Object.entries(inviteNominate.sections).map(([key, section]) => (
               <button
                 key={key}
-                onClick={() => setActiveTab(key as 'nominate' | 'sponsor' | 'impact')}
+                onClick={() => setActiveTab(key as 'nominate' | 'apply' | 'sponsor' | 'impact')}
                 className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
                   activeTab === key
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
@@ -219,6 +219,44 @@ export const InviteNominateSection: React.FC = () => {
                       {isSubmitting ? 'Submitting...' : inviteNominate.forms.nominate.submitText}
                     </button>
                   </form>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'apply' && (
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center">
+                {/* Info Panel */}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-4 text-green-300">
+                    {inviteNominate.sections.apply.title}
+                  </h3>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    {inviteNominate.sections.apply.description}
+                  </p>
+                  <ul className="space-y-3 mb-8 max-w-2xl mx-auto">
+                    {inviteNominate.sections.apply.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3 text-left">
+                        <span className="text-green-400 text-lg">✓</span>
+                        <span className="text-gray-300">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Call to Action */}
+                <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-2xl p-8 border border-green-500/20">
+                  <h4 className="text-xl font-semibold mb-4 text-green-300">Ready to Apply?</h4>
+                  <p className="text-gray-300 mb-6">
+                    Complete our application form to showcase your impact and connect with potential sponsors.
+                  </p>
+                  <a
+                    href="/apply"
+                    className="inline-block bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200"
+                  >
+                    {inviteNominate.sections.apply.cta} →
+                  </a>
                 </div>
               </div>
             </div>
@@ -349,10 +387,21 @@ export const InviteNominateSection: React.FC = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
                     >
                       {isSubmitting ? 'Submitting...' : inviteNominate.forms.sponsor.submitText}
                     </button>
+                    
+                    {/* Sponsor Dashboard Link */}
+                    <div className="text-center pt-4 border-t border-gray-700/50">
+                      <p className="text-sm text-gray-400 mb-3">Already a sponsor?</p>
+                      <a
+                        href="/sponsor-dashboard"
+                        className="inline-block bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
+                      >
+                        Access Sponsor Dashboard →
+                      </a>
+                    </div>
                   </form>
                 </div>
               </div>
