@@ -17,6 +17,7 @@
     "@astrojs/vercel": "^8.2.5",
     "@vercel/analytics": "^1.5.0",
     "@vercel/node": "^5.3.11",
+    "@vercel/speed-insights": "^1.2.0",
     "astro": "^5.12.8",
     "framer-motion": "^12.23.12",
     "react": "^19.1.1",

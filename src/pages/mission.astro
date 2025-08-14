@@ -4,6 +4,8 @@ import { missionCopy } from '../mission.config';
 import { TechNavigation } from '../components/TechNavigation.tsx';
 import { RoadmapSection } from '../components/RoadmapSection.tsx';
 import { nav } from '../site.config';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 ---
 
 <html lang="en">
@@ -476,6 +478,8 @@ import { nav } from '../site.config';
         </div>
       </section>
     </main>
+    <Analytics />
+    <SpeedInsights />
     
     <!-- Footer -->
     <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
