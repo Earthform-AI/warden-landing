@@ -1,5 +1,7 @@
 ---
 import { meta, footer } from '../site.config';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 ---
 
 <html lang="en">
@@ -86,6 +88,8 @@ import { meta, footer } from '../site.config';
         </div>
       </div>
     </main>
+    <Analytics />
+    <SpeedInsights />
 
     <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
       <div>{footer.text}</div>

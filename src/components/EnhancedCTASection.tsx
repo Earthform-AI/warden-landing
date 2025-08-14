@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedSection, TechButton } from './FramerMotionComponents.tsx';
+import { trackFormSubmission } from '../utils/analytics.ts';
 
 interface CTAFormProps {
   emailPlaceholder: string;
@@ -16,6 +17,15 @@ interface CTAProps {
 }
 
 export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form }) => {
+  
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    // Track form submission before default action
+    trackFormSubmission('cta_contact', {
+      form_location: 'homepage_cta',
+      has_message: !!(event.currentTarget.message as HTMLTextAreaElement)?.value?.trim()
+    });
+  };
+
   return (
     <section id="join" className="py-20 bg-gradient-to-br from-gray-900 via-black to-blue-900/20 relative overflow-hidden scroll-snap-section min-h-screen flex items-center">
       {/* Background Pattern */}
@@ -65,6 +75,7 @@ export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form
               <form 
                 action={form.action} 
                 method="POST" 
+                onSubmit={handleFormSubmit}
                 className="relative bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 space-y-6"
               >
                 <input type="hidden" name="_redirect" value="/thanks" />

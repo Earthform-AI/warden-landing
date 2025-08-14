@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { trackNavigation } from '../utils/analytics.ts';
 
 interface NavProps {
   links?: Array<{ label: string; href: string }>;
@@ -8,6 +9,15 @@ interface NavProps {
 export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  const handleNavClick = (href: string, label: string, source: string = 'desktop_nav') => {
+    trackNavigation(href, source);
+  };
+
+  const handleMobileNavClick = (href: string, label: string) => {
+    handleNavClick(href, label, 'mobile_nav');
+    setIsMenuOpen(false);
+  };
 
   // Handle hydration
   useEffect(() => {
@@ -64,6 +74,7 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
               <motion.a
                 key={link.href}
                 href={link.href}
+                onClick={() => handleNavClick(link.href, link.label)}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
@@ -200,7 +211,7 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => handleMobileNavClick(link.href, link.label)}
                     className="block text-sm font-medium transition-all duration-200 p-3 rounded-lg text-gray-300 hover:text-cyan-300 hover:bg-gray-800/50"
                   >
                     {link.label}

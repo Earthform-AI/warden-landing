@@ -1,5 +1,7 @@
 ---
 import { meta, footer } from '../site.config';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 // Import the mining safety baseline data
 const baselineDataUrl = '/earthform_mining_safety_baselines.json';
@@ -265,6 +267,8 @@ const baselineDataUrl = '/earthform_mining_safety_baselines.json';
         </div>
       </div>
     </main>
+    <Analytics />
+    <SpeedInsights />
 
     <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
       <div>{footer.text}</div>

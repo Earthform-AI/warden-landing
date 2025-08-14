@@ -15,6 +15,7 @@ import { InviteNominateSection } from '../components/InviteNominateSection.tsx'
 import CommunitySpotlight from '../components/CommunitySpotlight.tsx'
 import { meta, footer, nav, cta } from '../site.config'
 import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro'
 ---
 
 <html lang="en">
@@ -133,6 +134,7 @@ import Analytics from '@vercel/analytics/astro'
       </section>
     </main>
     <Analytics />
+    <SpeedInsights />
     <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
       <div>{footer.text}</div>
       <nav class="mt-2 flex justify-center gap-4">

@@ -1,6 +1,8 @@
 
 ---
 import { thanks_hero, thanks_mission, thanks_next, meta, footer } from '../site.config';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 ---
 
 <html lang="en">
@@ -473,5 +475,7 @@ import { thanks_hero, thanks_mission, thanks_next, meta, footer } from '../site.
       style.textContent = sparkleCSS;
       document.head.appendChild(style);
     </script>
+    <Analytics />
+    <SpeedInsights />
   </body>
 </html>
