@@ -269,12 +269,24 @@ export const inviteNominate = {
       ],
       cta: "Submit Nomination"
     },
+    apply: {
+      title: "Apply for AI Tools",
+      icon: "🚀",
+      description: "Already making a positive impact? Apply directly for sponsored AI tools access.",
+      features: [
+        "Direct application for AI tools access",
+        "Perfect for active contributors",
+        "Show your impact to potential sponsors"
+      ],
+      cta: "Apply Now"
+    },
     sponsor: {
       title: "Sponsor Good Actors",
       icon: "🤝",
       description: "Fund AI access for people who use their abilities to help others and create positive impact.",
       features: [
         "Direct funding of AI subscriptions",
+        "Browse and select specific applicants",
         "Monthly impact updates from recipients", 
         "Alumni network for sustained giving"
       ],
