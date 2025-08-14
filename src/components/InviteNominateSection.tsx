@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { inviteNominate } from '../site.config';
+import { EnhancedTestimonials } from './EnhancedTestimonials';
+import { EnhancedSponsorshipSelector } from './EnhancedSponsorshipSelector';
 
 interface FormData {
   [key: string]: string;

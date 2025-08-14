@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import type { Applicant, Sponsor } from '../utils/supabase';
+import { sponsorshipTiers, calculateImpactProjections } from '../config/sponsorship.config';
 
 interface SponsorDashboardProps {
   sponsorEmail?: string;
@@ -10,11 +11,11 @@ interface ExtendedApplicant extends Applicant {
   isSelected?: boolean;
 }
 
-const TIER_CONFIGS = {
-  'AI Starter': { maxApplicants: 1, monthlyAmount: 29 },
-  'AI Amplifier': { maxApplicants: 2, monthlyAmount: 89 },
-  'AI Ecosystem': { maxApplicants: 5, monthlyAmount: 199 }
-};
+// Convert enhanced tier configuration to legacy format for compatibility
+const TIER_CONFIGS = sponsorshipTiers.reduce((acc, tier) => {
+  acc[tier.name] = { maxApplicants: tier.maxRecipients, monthlyAmount: tier.amount };
+  return acc;
+}, {} as Record<string, { maxApplicants: number; monthlyAmount: number }>);
 
 export const SponsorDashboard: React.FC<SponsorDashboardProps> = ({ sponsorEmail }) => {
   const [sponsor, setSponsor] = useState<Sponsor | null>(null);
