@@ -128,8 +128,8 @@ export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form
               whileHover={{ scale: 1.05 }}
               className="bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-lg p-4"
             >
-              <div className="text-2xl font-bold text-blue-400">1,000+</div>
-              <div className="text-sm text-gray-300">Community Members</div>
+              <div className="text-2xl font-bold text-blue-400">Day 1</div>
+              <div className="text-sm text-gray-300">Growing Community</div>
             </motion.div>
             
             <motion.div
