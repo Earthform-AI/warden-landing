@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { aiToolsCatalog } from '../config/sponsorship.config';
 
 interface ApplicationFormData {
   name: string;
@@ -12,13 +13,9 @@ interface ApplicationFormData {
   linkedin_url: string;
 }
 
+// Enhanced AI tools options from sponsorship configuration
 const AI_TOOLS_OPTIONS = [
-  'ChatGPT Plus',
-  'GitHub Copilot',
-  'Claude Pro',
-  'Midjourney',
-  'Perplexity Pro',
-  'Cursor Pro',
+  ...Object.keys(aiToolsCatalog),
   'Other (specify in background)'
 ];
 

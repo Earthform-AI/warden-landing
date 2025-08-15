@@ -1,0 +1,257 @@
+---
+import { EnhancedSponsorshipSelector } from '../components/EnhancedSponsorshipSelector.tsx';
+import { EnhancedTestimonials } from '../components/EnhancedTestimonials.tsx';
+import { meta } from '../site.config';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Enhanced AI Sponsorship Program - {meta.title}</title>
+    <meta name="description" content="Sponsor AI tools for good actors with real impact tracking and transparent reporting" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Enhanced AI Sponsorship Program - Warden" />
+    <meta property="og:description" content="Sponsor AI tools for good actors with real impact tracking and transparent reporting" />
+    <meta property="og:type" content="website" />
+    
+    <Analytics />
+    <SpeedInsights />
+  </head>
+  
+  <body class="bg-black text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">
+          Warden
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="/apply" class="text-gray-300 hover:text-white transition-colors">Apply</a>
+          <a href="/sponsor-dashboard" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+      <!-- Hero Section -->
+      <section class="py-20 bg-gradient-to-br from-blue-900/20 via-black to-purple-900/20">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/30 rounded-full text-blue-300 text-sm font-medium mb-8">
+            🚀 Enhanced AI Access Program
+          </div>
+          
+          <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
+            Real AI Sponsorship
+          </h1>
+          
+          <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
+            Move beyond placeholder content. Sponsor AI tools for verified good actors with transparent impact tracking and measurable outcomes.
+          </p>
+          
+          <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center">
+            <div class="space-y-2">
+              <div class="text-3xl font-bold text-blue-400">Real People</div>
+              <div class="text-gray-400">Verified applicants with genuine projects</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-3xl font-bold text-green-400">Real Impact</div>
+              <div class="text-gray-400">Measurable outcomes and transparent reporting</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-3xl font-bold text-purple-400">Real System</div>
+              <div class="text-gray-400">Actual payment processing and recipient management</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Enhanced Sponsorship Selector -->
+      <section class="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4">
+          <EnhancedSponsorshipSelector 
+            showPaymentIntegration={true}
+            client:load 
+          />
+        </div>
+      </section>
+
+      <!-- Impact Stories Section -->
+      <section class="py-20 bg-gradient-to-br from-gray-900/50 via-black to-blue-900/20">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-900/30 rounded-full text-green-300 text-sm font-medium mb-6">
+              📊 Impact Evidence
+            </div>
+            
+            <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Real Impact Stories
+            </h2>
+            
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+              See how AI tool sponsorships are creating measurable positive impact. Every story is verified with concrete outcomes.
+            </p>
+          </div>
+          
+          <EnhancedTestimonials 
+            maxDisplay={6} 
+            showFallback={true}
+            client:load 
+          />
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section class="py-20 bg-gradient-to-br from-black via-gray-900 to-purple-900/20">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-6 text-white">
+              How Enhanced Sponsorship Works
+            </h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+              A complete system for matching sponsors with recipients and tracking real impact
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center space-y-4">
+              <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto text-2xl text-white font-bold">
+                1
+              </div>
+              <h3 class="text-xl font-semibold text-white">Select Tier</h3>
+              <p class="text-gray-400">Choose your sponsorship level with realistic pricing based on actual AI tool costs</p>
+            </div>
+
+            <div class="text-center space-y-4">
+              <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mx-auto text-2xl text-white font-bold">
+                2
+              </div>
+              <h3 class="text-xl font-semibold text-white">Secure Payment</h3>
+              <p class="text-gray-400">Set up recurring payments through Stripe with full transparency and control</p>
+            </div>
+
+            <div class="text-center space-y-4">
+              <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto text-2xl text-white font-bold">
+                3
+              </div>
+              <h3 class="text-xl font-semibold text-white">Match Recipients</h3>
+              <p class="text-gray-400">Browse verified applicants and select who to sponsor based on their projects and needs</p>
+            </div>
+
+            <div class="text-center space-y-4">
+              <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto text-2xl text-white font-bold">
+                4
+              </div>
+              <h3 class="text-xl font-semibold text-white">Track Impact</h3>
+              <p class="text-gray-400">Receive regular reports with quantified outcomes and direct updates from recipients</p>
+            </div>
+          </div>
+
+          <!-- Features comparison -->
+          <div class="mt-20">
+            <h3 class="text-2xl font-bold text-center mb-12 text-white">
+              Enhanced vs. Traditional Sponsorship
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-red-900/20 border border-red-500/20 rounded-2xl p-8">
+                <h4 class="text-xl font-semibold text-red-300 mb-4">❌ Traditional Approach</h4>
+                <ul class="space-y-3 text-gray-400">
+                  <li>• Placeholder testimonials</li>
+                  <li>• No payment integration</li>
+                  <li>• Manual recipient management</li>
+                  <li>• Vague impact reporting</li>
+                  <li>• No verification system</li>
+                  <li>• Limited transparency</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-900/20 border border-green-500/20 rounded-2xl p-8">
+                <h4 class="text-xl font-semibold text-green-300 mb-4">✅ Enhanced System</h4>
+                <ul class="space-y-3 text-gray-400">
+                  <li>• Real verified testimonials</li>
+                  <li>• Stripe payment processing</li>
+                  <li>• Automated recipient matching</li>
+                  <li>• Quantified impact metrics</li>
+                  <li>• Verification workflows</li>
+                  <li>• Full transparency & control</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Development Status -->
+      <section class="py-20 bg-gradient-to-br from-gray-900 via-black to-blue-900/20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <div class="bg-yellow-900/20 border border-yellow-500/20 rounded-2xl p-8">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-900/30 rounded-full text-yellow-300 text-sm font-medium mb-6">
+              🚧 Development Update
+            </div>
+            
+            <h3 class="text-2xl font-bold text-white mb-4">
+              System Status: Active Development
+            </h3>
+            
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              The enhanced AI sponsorship system is being actively implemented. Key infrastructure is in place, with payment processing and recipient management being finalized.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6 text-left">
+              <div class="space-y-2">
+                <h4 class="font-semibold text-green-300">✅ Completed</h4>
+                <ul class="text-sm text-gray-400 space-y-1">
+                  <li>• Database schema & APIs</li>
+                  <li>• Application & sponsor dashboards</li>
+                  <li>• Impact tracking framework</li>
+                  <li>• Enhanced UI components</li>
+                  <li>• Testimonial management</li>
+                </ul>
+              </div>
+              
+              <div class="space-y-2">
+                <h4 class="font-semibold text-blue-300">🔄 In Progress</h4>
+                <ul class="text-sm text-gray-400 space-y-1">
+                  <li>• Stripe integration setup</li>
+                  <li>• Supabase deployment</li>
+                  <li>• Email notification system</li>
+                  <li>• Admin verification tools</li>
+                  <li>• Real testimonial collection</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-700/50">
+              <p class="text-sm text-gray-400">
+                Interested in the enhanced sponsorship program? 
+                <a href="mailto:sponsors@earthform.ai" class="text-blue-400 hover:text-blue-300 underline">
+                  Contact us for early access
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
+      <div class="max-w-6xl mx-auto px-4">
+        <p>&copy; 2024 Earthform AI. Building responsible AI systems for a better world.</p>
+        <div class="flex justify-center gap-6 mt-4">
+          <a href="/privacy" class="hover:text-white transition-colors">Privacy</a>
+          <a href="/terms" class="hover:text-white transition-colors">Terms</a>
+          <a href="mailto:hello@earthform.ai" class="hover:text-white transition-colors">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

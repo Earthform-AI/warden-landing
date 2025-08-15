@@ -1,40 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { supabase, type ImpactReport } from '../src/utils/supabase';
+import type { RealTestimonial } from '../src/config/testimonials.config';
 
-// Example API endpoint for managing real testimonials
-// This would typically connect to a database in production
-
-interface RealTestimonial {
-  id: string;
-  name: string;
-  role: string;
-  organization?: string;
-  tools: string[];
-  impact: string;
-  metrics?: {
-    quantifiedImpact: string;
-    reachNumbers: number;
-    timeframe: string;
-  };
-  verification: {
-    status: 'verified' | 'pending' | 'placeholder';
-    method: 'interview' | 'documentation' | 'referral';
-    verifiedBy: string;
-    verifiedDate?: Date;
-  };
-  consent: {
-    publicUse: boolean;
-    contactable: boolean;
-    updatesConsent: boolean;
-  };
-  date: Date;
-  lastUpdated: Date;
-  verified: boolean;
-}
-
-// Mock data - in production this would come from a database
-const mockRealTestimonials: RealTestimonial[] = [
-  // Currently empty - will be populated as real testimonials are collected
-];
+// Enhanced API endpoint for managing real testimonials with Supabase integration
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Set CORS headers
@@ -51,58 +19,107 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     switch (req.method) {
       case 'GET':
         // Return verified testimonials for public display
-        const verifiedTestimonials = mockRealTestimonials.filter(
-          t => t.verification.status === 'verified' && t.consent.publicUse
-        );
+        const { data: testimonials, error: fetchError } = await supabase
+          .from('testimonials')
+          .select('*')
+          .eq('verification->>status', 'verified')
+          .eq('consent->>publicUse', true)
+          .order('created_at', { ascending: false });
+
+        if (fetchError) {
+          console.error('Supabase fetch error:', fetchError);
+          res.status(500).json({ error: 'Failed to fetch testimonials' });
+          return;
+        }
         
         res.status(200).json({
-          testimonials: verifiedTestimonials,
-          count: verifiedTestimonials.length,
+          testimonials,
+          count: testimonials.length,
           lastUpdated: new Date().toISOString()
         });
         break;
 
       case 'POST':
-        // Submit new testimonial (would require authentication in production)
+        // Submit new testimonial for verification
         const newTestimonial = req.body as Partial<RealTestimonial>;
         
-        // Basic validation
-        if (!newTestimonial.name || !newTestimonial.impact) {
-          res.status(400).json({ error: 'Name and impact are required' });
+        // Enhanced validation
+        if (!newTestimonial.name || !newTestimonial.impact || !newTestimonial.tools?.length) {
+          res.status(400).json({ 
+            error: 'Name, impact, and tools are required',
+            required: ['name', 'impact', 'tools']
+          });
           return;
         }
 
-        // In production, this would save to database
-        const testimonial: RealTestimonial = {
-          id: Math.random().toString(36).substr(2, 9),
+        // Prepare testimonial data for database insertion
+        const testimonialData = {
           name: newTestimonial.name,
           role: newTestimonial.role || '',
           organization: newTestimonial.organization,
-          tools: newTestimonial.tools || [],
+          tools: newTestimonial.tools,
           impact: newTestimonial.impact,
-          metrics: newTestimonial.metrics,
+          metrics: newTestimonial.metrics || {},
           verification: {
             status: 'pending',
             method: 'documentation',
             verifiedBy: 'system',
+            verifiedDate: null
           },
           consent: {
-            publicUse: true,
-            contactable: false,
-            updatesConsent: false,
-            ...newTestimonial.consent
-          },
-          date: new Date(),
-          lastUpdated: new Date(),
-          verified: false
+            publicUse: newTestimonial.consent?.publicUse ?? false,
+            contactable: newTestimonial.consent?.contactable ?? false,
+            updatesConsent: newTestimonial.consent?.updatesConsent ?? false
+          }
         };
 
-        mockRealTestimonials.push(testimonial);
+        const { data: insertedTestimonial, error: insertError } = await supabase
+          .from('testimonials')
+          .insert(testimonialData)
+          .select()
+          .single();
+
+        if (insertError) {
+          console.error('Supabase insert error:', insertError);
+          res.status(500).json({ error: 'Failed to submit testimonial' });
+          return;
+        }
         
         res.status(201).json({
           message: 'Testimonial submitted for review',
-          id: testimonial.id,
+          id: insertedTestimonial.id,
           status: 'pending'
+        });
+        break;
+
+      case 'PUT':
+        // Update testimonial verification status (admin only)
+        const { id, verification } = req.body;
+        
+        if (!id || !verification) {
+          res.status(400).json({ error: 'ID and verification data required' });
+          return;
+        }
+
+        const { data: updatedTestimonial, error: updateError } = await supabase
+          .from('testimonials')
+          .update({ 
+            verification,
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', id)
+          .select()
+          .single();
+
+        if (updateError) {
+          console.error('Supabase update error:', updateError);
+          res.status(500).json({ error: 'Failed to update testimonial' });
+          return;
+        }
+
+        res.status(200).json({
+          message: 'Testimonial updated successfully',
+          testimonial: updatedTestimonial
         });
         break;
 
