@@ -62,3 +62,17 @@ export interface ImpactReport {
   narrative: string;
   created_at: string;
 }
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role?: string;
+  organization?: string;
+  tools?: string[];
+  impact: string;
+  metrics?: Record<string, any>;
+  verification: Record<string, any>;
+  consent: Record<string, any>;
+  created_at: string;
+  updated_at: string;
+}

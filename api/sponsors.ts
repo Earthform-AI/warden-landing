@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { supabase, type Sponsor, type Sponsorship } from '../../src/utils/supabase';
+import { supabase, type Sponsor, type Sponsorship } from '../src/utils/supabase';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
