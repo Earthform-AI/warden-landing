@@ -21,6 +21,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "astro": "^5.12.8",
     "framer-motion": "^12.23.12",
+  "tweetnacl": "^1.0.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwindcss": "^3.4.17"
