@@ -94,7 +94,7 @@ export const EnhancedEcosystemSection: React.FC<EcosystemProps> = ({
   };
 
   return (
-    <section id="ecosystem" className="bg-black text-white py-20 relative overflow-hidden min-h-screen">
+  <section id="ecosystem" className="bg-black text-white py-20 relative overflow-hidden min-h-screen w-full">
       {/* Tech Grid Background */}
       <div className="absolute inset-0 opacity-5">
         <motion.div 

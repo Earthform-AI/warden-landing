@@ -1,4 +1,15 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+// Discord Interactions Endpoint (Edge Runtime with signature verification)
+// Converts previous Node-style handler to Edge to reliably access raw body for
+// Ed25519 signature verification required by Discord.
+// Env vars used:
+// - DISCORD_PUBLIC_KEY (required)
+// - DISCORD_APPLICATION_ID (optional for future command registration)
+// - VERCEL_URL (auto) for internal fetch fallbacks
+// - Any others referenced by downstream API calls.
+
+export const config = { runtime: 'edge' };
+
+import nacl from 'tweetnacl';
 
 interface DiscordInteraction {
   type: number;
@@ -46,13 +57,13 @@ interface DiscordResponse {
 const INTERACTION_TYPES = {
   PING: 1,
   APPLICATION_COMMAND: 2
-};
+} as const;
 
 const RESPONSE_TYPES = {
   PONG: 1,
   CHANNEL_MESSAGE_WITH_SOURCE: 4,
   DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE: 5
-};
+} as const;
 
 const COMMANDS = {
   'warden-status': {
@@ -309,7 +320,7 @@ const COMMANDS = {
         const data = await response.json();
 
         if (data.success && data.digest) {
-          const digest = data.digest;
+          const { digest } = data;
           return {
             type: RESPONSE_TYPES.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
@@ -366,43 +377,93 @@ const COMMANDS = {
   }
 };
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
+function json(data: any, status = 200): Response {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
+
+function hexToUint8Array(hex: string): Uint8Array {
+  if (hex.startsWith('0x')) {
+    hex = hex.slice(2);
+  }
+  const arr = new Uint8Array(hex.length / 2);
+  for (let i = 0; i < hex.length; i += 2) {
+    arr[i / 2] = parseInt(hex.substring(i, i + 2), 16);
+  }
+  return arr;
+}
+
+async function verifyRequest(request: Request, rawBody: string): Promise<boolean> {
+  const signature = request.headers.get('x-signature-ed25519');
+  const timestamp = request.headers.get('x-signature-timestamp');
+  const publicKey = process.env.DISCORD_PUBLIC_KEY;
+
+  if (!signature || !timestamp || !publicKey) {
+    return false;
   }
 
   try {
-    const interaction: DiscordInteraction = req.body;
+    const message = new TextEncoder().encode(timestamp + rawBody);
+    const sig = hexToUint8Array(signature);
+    const pubKey = hexToUint8Array(publicKey);
+    return nacl.sign.detached.verify(message, sig, pubKey);
+  } catch (e) {
+    console.error('Signature verification error', e);
+    return false;
+  }
+}
 
-    // Handle ping
+export default async function handler(req: Request): Promise<Response> {
+  if (req.method !== 'POST') {
+    return json({ error: 'Method not allowed' }, 405);
+  }
+
+  let rawBody: string;
+  try {
+    rawBody = await req.text();
+  } catch {
+    return json({ error: 'Unable to read body' }, 400);
+  }
+
+  // Verify Discord signature (mandatory for endpoint validation)
+  const valid = await verifyRequest(req, rawBody);
+  if (!valid) {
+    return json({ error: 'Bad signature' }, 401);
+  }
+
+  let interaction: DiscordInteraction;
+  try {
+    interaction = JSON.parse(rawBody);
+  } catch {
+    return json({ error: 'Invalid JSON' }, 400);
+  }
+
+  try {
     if (interaction.type === INTERACTION_TYPES.PING) {
-      return res.json({ type: RESPONSE_TYPES.PONG });
+      return json({ type: RESPONSE_TYPES.PONG });
     }
 
-    // Handle slash commands
     if (interaction.type === INTERACTION_TYPES.APPLICATION_COMMAND) {
       const commandName = interaction.data?.name;
-      
       if (!commandName || !COMMANDS[commandName as keyof typeof COMMANDS]) {
-        return res.json({
+        return json({
           type: RESPONSE_TYPES.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
             content: '❌ Unknown command. Available commands: `/warden-status`, `/contribute`, `/neural-asm`, `/roadmap`, `/achievements`, `/weekly-digest`',
-            flags: 64 // Ephemeral
+            flags: 64
           }
         });
       }
-
       const command = COMMANDS[commandName as keyof typeof COMMANDS];
       const response = await command.handler(interaction);
-      return res.json(response);
+      return json(response);
     }
 
-    // Unknown interaction type
-    res.status(400).json({ error: 'Unknown interaction type' });
+    return json({ error: 'Unknown interaction type' }, 400);
   } catch (error) {
     console.error('Discord bot error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return json({ error: 'Internal server error' }, 500);
   }
 }
