@@ -28,7 +28,7 @@
 
 - [ ] **Basic Bot Command Framework**
   ```typescript
-  // /api/discord-bot.ts
+  // /src/pages/discord-bot.ts
   !warden-status    // Latest project updates
   !contribute      // How to get involved  
   !neural-asm      // Learn about the language
@@ -200,8 +200,8 @@
 
 ### **New API Endpoints**
 ```typescript
-/api/discord-bot.ts        // Bot command handler
-/api/community-stats.ts    // Member engagement metrics
+/src/pages/discord-bot.ts        // Bot command handler
+/src/pages/community-stats.ts    // Member engagement metrics
 /api/content-generator.ts  // Automated content creation
 /api/social-publisher.ts   // Multi-platform publishing
 /api/achievement-tracker.ts // Gamification system
@@ -248,7 +248,7 @@
 
 ### **Immediate (Next 48 hours)**
 1. Set up Discord bot application
-2. Create basic bot framework in `/api/discord-bot.ts`
+2. Create basic bot framework in `/src/pages/discord-bot.ts`
 3. Design community roles & channel structure
 4. Plan first week's command implementations
 

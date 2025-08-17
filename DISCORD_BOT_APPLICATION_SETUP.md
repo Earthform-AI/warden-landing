@@ -8,7 +8,7 @@ When configuring your Discord application at https://discord.com/developers/appl
 
 ### 🔗 Interactions Endpoint URL
 ```
-https://warden-landing.vercel.app/api/discord-bot
+https://warden-landing.vercel.app/discord-bot
 ```
 **Purpose**: This endpoint receives interactions via HTTP POSTs rather than over Gateway with a bot user. It handles all slash commands and bot interactions.
 
@@ -82,13 +82,13 @@ The bot supports these slash commands:
    
    **GET request (Discord verification)**:
    ```bash
-   curl -X GET https://warden-landing.vercel.app/api/discord-bot
+   curl -X GET https://warden-landing.vercel.app/discord-bot
    ```
    Should return endpoint status and available commands.
    
    **POST request (Interaction handling)**:
    ```bash
-   curl -X POST https://warden-landing.vercel.app/api/discord-bot \
+   curl -X POST https://warden-landing.vercel.app/discord-bot \
      -H "Content-Type: application/json" \
      -d '{"type": 1}'
    ```
