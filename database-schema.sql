@@ -25,9 +25,11 @@ CREATE TABLE sponsors (
   organization VARCHAR(255),
   tier VARCHAR(50) NOT NULL,
   monthly_commitment DECIMAL(10,2) NOT NULL,
+  motivation TEXT,
   sponsored_applicants UUID[] DEFAULT '{}',
+  stripe_customer_id VARCHAR(255),
   stripe_subscription_id VARCHAR(255),
-  status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'paused', 'cancelled')),
+  status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'paused', 'cancelled', 'inactive', 'canceling')),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -39,9 +41,21 @@ CREATE TABLE sponsorships (
   applicant_id UUID NOT NULL REFERENCES applicants(id) ON DELETE CASCADE,
   ai_tools_provided TEXT[] NOT NULL DEFAULT '{}',
   monthly_amount DECIMAL(10,2) NOT NULL,
-  status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'paused', 'completed')),
+  status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'paused', 'completed', 'ended')),
   start_date TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   end_date TIMESTAMP WITH TIME ZONE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Sponsor payments table - tracks Stripe payment history
+CREATE TABLE sponsor_payments (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  sponsor_id UUID REFERENCES sponsors(id) ON DELETE CASCADE,
+  stripe_invoice_id VARCHAR(255) NOT NULL,
+  amount DECIMAL(10,2) NOT NULL,
+  status VARCHAR(20) NOT NULL CHECK (status IN ('succeeded', 'failed', 'pending')),
+  payment_date TIMESTAMP WITH TIME ZONE NOT NULL,
+  failure_reason TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
@@ -75,9 +89,13 @@ CREATE INDEX idx_applicants_status ON applicants(application_status);
 CREATE INDEX idx_applicants_email ON applicants(email);
 CREATE INDEX idx_sponsors_email ON sponsors(email);
 CREATE INDEX idx_sponsors_status ON sponsors(status);
+CREATE INDEX idx_sponsors_stripe_customer ON sponsors(stripe_customer_id);
+CREATE INDEX idx_sponsors_stripe_subscription ON sponsors(stripe_subscription_id);
 CREATE INDEX idx_sponsorships_sponsor_id ON sponsorships(sponsor_id);
 CREATE INDEX idx_sponsorships_applicant_id ON sponsorships(applicant_id);
 CREATE INDEX idx_sponsorships_status ON sponsorships(status);
+CREATE INDEX idx_sponsor_payments_sponsor_id ON sponsor_payments(sponsor_id);
+CREATE INDEX idx_sponsor_payments_stripe_invoice ON sponsor_payments(stripe_invoice_id);
 
 -- Add foreign key constraint for applicant sponsor_id
 ALTER TABLE applicants ADD CONSTRAINT fk_applicants_sponsor FOREIGN KEY (sponsor_id) REFERENCES sponsors(id);

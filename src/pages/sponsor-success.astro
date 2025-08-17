@@ -1,0 +1,141 @@
+---
+import { meta } from '../site.config';
+---
+
+<html lang="en">
+  <head>
+    <title>Sponsorship Success | Earthform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Thank you for becoming a sponsor! Your support helps provide AI tools to creators who need them most." />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sponsorship Success | Earthform" />
+    <meta property="og:description" content="Thank you for becoming a sponsor! Your support helps provide AI tools to creators who need them most." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={meta.url + "/sponsor-success"} />
+    <meta property="og:image" content={meta.url + "/og-image.png"} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Sponsorship Success | Earthform" />
+    <meta property="twitter:description" content="Thank you for becoming a sponsor! Your support helps provide AI tools to creators who need them most." />
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="sponsorship success, AI tools, creator support, earthform" />
+    <meta name="author" content={meta.author} />
+    <link rel="canonical" href={meta.url + "/sponsor-success"} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <main class="min-h-screen flex items-center justify-center py-16 px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <!-- Success Animation -->
+        <div class="mb-8">
+          <div class="w-24 h-24 mx-auto bg-green-500 rounded-full flex items-center justify-center animate-pulse">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Header -->
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-white">
+          🎉 Welcome to the <span class="text-green-400">Impact Squad</span>!
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Thank you for becoming a sponsor! Your support will directly provide AI tools to creators who use their abilities to help others.
+        </p>
+
+        <!-- What Happens Next -->
+        <div class="bg-gray-900 rounded-2xl p-8 mb-8 text-left">
+          <h2 class="text-2xl font-bold text-green-400 mb-6 text-center">What happens next?</h2>
+          
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">1</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-2">Application Review</h3>
+                <p class="text-gray-300">We'll review approved applicants and match you with creators whose impact aligns with your sponsorship tier.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">2</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-2">Welcome Email</h3>
+                <p class="text-gray-300">You'll receive a welcome email with your sponsor dashboard access and information about your matched creators.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">3</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-2">Regular Updates</h3>
+                <p class="text-gray-300">Your sponsored creators will provide regular impact updates so you can see the difference your support is making.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">✓</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-2">Manage Subscription</h3>
+                <p class="text-gray-300">You can manage your subscription, update payment methods, or pause sponsorship anytime through your dashboard.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/sponsor-dashboard" 
+            class="bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25"
+          >
+            View Sponsor Dashboard
+          </a>
+          
+          <a 
+            href="/" 
+            class="border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105"
+          >
+            Return to Homepage
+          </a>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="mt-12 p-6 bg-gray-900 rounded-xl">
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Questions about your sponsorship? Email us at 
+            <a href="mailto:sponsors@earthform.ai" class="text-green-400 hover:text-green-300 underline">sponsors@earthform.ai</a>
+            or visit our 
+            <a href="/sponsor-dashboard" class="text-green-400 hover:text-green-300 underline">sponsor dashboard</a>
+            for support.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Session ID handling script -->
+    <script>
+      // Extract session_id from URL if present and store for dashboard use
+      const urlParams = new URLSearchParams(window.location.search);
+      const sessionId = urlParams.get('session_id');
+      if (sessionId) {
+        localStorage.setItem('stripeSessionId', sessionId);
+        // Clean up URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    </script>
+  </body>
+</html>

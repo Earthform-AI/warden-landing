@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { supabase, type Sponsor, type Sponsorship } from '../../src/utils/supabase';
+import { supabase, type Applicant } from '../utils/supabase';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -7,14 +7,16 @@ export const POST: APIRoute = async ({ request }) => {
     const { 
       name, 
       email, 
-      organization,
-      tier,
-      monthly_commitment,
-      motivation
+      background, 
+      contributions, 
+      ai_tools_needed,
+      github_url,
+      portfolio_url,
+      linkedin_url
     } = body;
 
     // Validate required fields
-    if (!name || !email || !tier || !monthly_commitment) {
+    if (!name || !email || !background || !contributions || !ai_tools_needed?.length) {
       return new Response(
         JSON.stringify({ error: 'Missing required fields' }),
         { 
@@ -24,16 +26,16 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Check if sponsor already exists
+    // Check if applicant already exists
     const { data: existing } = await supabase
-      .from('sponsors')
+      .from('applicants')
       .select('id')
       .eq('email', email)
       .single();
 
     if (existing) {
       return new Response(
-        JSON.stringify({ error: 'Sponsor account already exists for this email' }),
+        JSON.stringify({ error: 'Application already exists for this email' }),
         { 
           status: 409,
           headers: { 'Content-Type': 'application/json' }
@@ -41,17 +43,21 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Create new sponsor
+    // Create new applicant
     const { data, error } = await supabase
-      .from('sponsors')
+      .from('applicants')
       .insert({
         name,
         email,
-        organization,
-        tier,
-        monthly_commitment: parseFloat(monthly_commitment),
-        sponsored_applicants: [],
-        status: 'active'
+        profile: {
+          background,
+          contributions,
+          github_url,
+          portfolio_url,
+          linkedin_url
+        },
+        ai_tools_needed,
+        application_status: 'pending'
       })
       .select()
       .single();
@@ -59,7 +65,7 @@ export const POST: APIRoute = async ({ request }) => {
     if (error) {
       console.error('Supabase error:', error);
       return new Response(
-        JSON.stringify({ error: 'Failed to create sponsor account' }),
+        JSON.stringify({ error: 'Failed to create application' }),
         { 
           status: 500,
           headers: { 'Content-Type': 'application/json' }
@@ -69,8 +75,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(
       JSON.stringify({ 
-        message: 'Sponsor account created successfully',
-        sponsor_id: data.id
+        message: 'Application submitted successfully',
+        applicant_id: data.id
       }),
       { 
         status: 201,
@@ -92,43 +98,29 @@ export const POST: APIRoute = async ({ request }) => {
 
 export const GET: APIRoute = async ({ url }) => {
   try {
-    const sponsor_email = url.searchParams.get('email');
+    const status = url.searchParams.get('status') || 'pending';
+    const limit = parseInt(url.searchParams.get('limit') || '50');
     
-    if (!sponsor_email) {
-      return new Response(
-        JSON.stringify({ error: 'Email parameter required' }),
-        { 
-          status: 400,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
-    }
-
     const { data, error } = await supabase
-      .from('sponsors')
-      .select(`
-        *,
-        sponsorships:sponsorships(
-          *,
-          applicant:applicants(*)
-        )
-      `)
-      .eq('email', sponsor_email)
-      .single();
+      .from('applicants')
+      .select('*')
+      .eq('application_status', status)
+      .order('created_at', { ascending: false })
+      .limit(limit);
 
     if (error) {
       console.error('Supabase error:', error);
       return new Response(
-        JSON.stringify({ error: 'Sponsor not found' }),
+        JSON.stringify({ error: 'Failed to fetch applicants' }),
         { 
-          status: 404,
+          status: 500,
           headers: { 'Content-Type': 'application/json' }
         }
       );
     }
 
     return new Response(
-      JSON.stringify({ sponsor: data }),
+      JSON.stringify({ applicants: data }),
       { 
         status: 200,
         headers: { 'Content-Type': 'application/json' }
