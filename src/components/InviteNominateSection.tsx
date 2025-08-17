@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { inviteNominate } from '../site.config';
+import { StripeCheckout } from './StripeCheckout';
 
 interface FormData {
   [key: string]: string;
@@ -263,147 +264,46 @@ export const InviteNominateSection: React.FC = () => {
           )}
 
           {activeTab === 'sponsor' && (
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                {/* Info Panel */}
-                <div>
-                  <h3 className="text-2xl font-bold mb-4 text-blue-300">
-                    {inviteNominate.sections.sponsor.title}
-                  </h3>
-                  <p className="text-gray-300 mb-6 leading-relaxed">
-                    {inviteNominate.sections.sponsor.description}
-                  </p>
-                  <ul className="space-y-3 mb-8">
-                    {inviteNominate.sections.sponsor.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <span className="text-green-400 text-lg">✓</span>
-                        <span className="text-gray-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold mb-4 text-blue-300">
+                  {inviteNominate.sections.sponsor.title}
+                </h3>
+                <p className="text-gray-300 mb-6 leading-relaxed max-w-3xl mx-auto">
+                  {inviteNominate.sections.sponsor.description}
+                </p>
+                <ul className="flex flex-wrap justify-center gap-6 mb-8 max-w-4xl mx-auto">
+                  {inviteNominate.sections.sponsor.features.map((feature, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <span className="text-green-400 text-lg">✓</span>
+                      <span className="text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                  {/* Sponsorship Tiers */}
-                  <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-blue-300 mb-3">Sponsorship Tiers</h4>
-                    {inviteNominate.forms.sponsor.tiers.map((tier, index) => (
-                      <div 
-                        key={index} 
-                        className={`bg-gray-800/30 rounded-lg p-4 border transition-all duration-200 ${
-                          tier.popular 
-                            ? 'border-green-400/60 bg-green-900/10' 
-                            : 'border-blue-500/20 hover:border-blue-400/40'
-                        }`}
-                      >
-                        <div className="flex justify-between items-start mb-2">
-                          <div className="flex items-center gap-2">
-                            <span className="font-semibold text-blue-300">{tier.name}</span>
-                            {tier.popular && (
-                              <span className="px-2 py-1 text-xs bg-green-600 text-white rounded-full">
-                                Most Popular
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-right">
-                            <span className="text-lg font-bold text-white">{tier.amount}</span>
-                            {tier.period && <span className="text-sm text-gray-400">{tier.period}</span>}
-                          </div>
-                        </div>
-                        <p className="text-sm text-gray-400 mb-3">{tier.description}</p>
-                        {tier.includes && (
-                          <ul className="text-xs text-gray-500 space-y-1 mb-2">
-                            {tier.includes.map((feature, i) => (
-                              <li key={i} className="flex items-start gap-1">
-                                <span className="text-green-400 mt-0.5">✓</span>
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {tier.impact && (
-                          <p className="text-xs text-blue-300 italic border-t border-gray-700/50 pt-2 mt-2">
-                            Expected Impact: {tier.impact}
-                          </p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              {/* Stripe Checkout Component */}
+              <StripeCheckout 
+                tiers={inviteNominate.forms.sponsor.tiers.filter(tier => tier.stripePriceId !== null)}
+                onSuccess={(data) => {
+                  console.log('Sponsorship checkout successful:', data);
+                  // Success handling is done by Stripe redirect
+                }}
+                onError={(error) => {
+                  console.error('Sponsorship checkout error:', error);
+                  // You could show a toast notification here
+                }}
+              />
 
-                {/* Sponsor Form */}
-                <div className="bg-gray-900/30 rounded-xl p-6 border border-blue-500/20">
-                  <form onSubmit={(e) => handleFormSubmit(e, 'sponsor')} className="space-y-4">
-                    <input
-                      type="text"
-                      placeholder={inviteNominate.forms.sponsor.fields.name}
-                      value={sponsorForm.name || ''}
-                      onChange={(e) => updateForm('sponsor', 'name', e.target.value)}
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                    <input
-                      type="email"
-                      placeholder={inviteNominate.forms.sponsor.fields.email}
-                      value={sponsorForm.email || ''}
-                      onChange={(e) => updateForm('sponsor', 'email', e.target.value)}
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                    <input
-                      type="text"
-                      placeholder={inviteNominate.forms.sponsor.fields.organization}
-                      value={sponsorForm.organization || ''}
-                      onChange={(e) => updateForm('sponsor', 'organization', e.target.value)}
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                    <select
-                      value={sponsorForm.tier || ''}
-                      onChange={(e) => updateForm('sponsor', 'tier', e.target.value)}
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    >
-                      <option value="">Select Sponsorship Tier</option>
-                      {inviteNominate.forms.sponsor.tiers.map((tier, index) => (
-                        <option key={index} value={tier.name}>
-                          {tier.name} - {tier.amount}{tier.period || ''}
-                        </option>
-                      ))}
-                    </select>
-                    <input
-                      type="text"
-                      placeholder={inviteNominate.forms.sponsor.fields.commitment}
-                      value={sponsorForm.commitment || ''}
-                      onChange={(e) => updateForm('sponsor', 'commitment', e.target.value)}
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                    <textarea
-                      placeholder={inviteNominate.forms.sponsor.fields.motivation}
-                      value={sponsorForm.motivation || ''}
-                      onChange={(e) => updateForm('sponsor', 'motivation', e.target.value)}
-                      rows={4}
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                      required
-                    />
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
-                    >
-                      {isSubmitting ? 'Submitting...' : inviteNominate.forms.sponsor.submitText}
-                    </button>
-                    
-                    {/* Sponsor Dashboard Link */}
-                    <div className="text-center pt-4 border-t border-gray-700/50">
-                      <p className="text-sm text-gray-400 mb-3">Already a sponsor?</p>
-                      <a
-                        href="/sponsor-dashboard"
-                        className="inline-block bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
-                      >
-                        Access Sponsor Dashboard →
-                      </a>
-                    </div>
-                  </form>
-                </div>
+              {/* Sponsor Dashboard Link */}
+              <div className="text-center mt-12 pt-8 border-t border-gray-700/50">
+                <p className="text-gray-400 mb-4">Already a sponsor?</p>
+                <a
+                  href="/sponsor-dashboard"
+                  className="inline-block bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+                >
+                  Access Sponsor Dashboard →
+                </a>
               </div>
             </div>
           )}
