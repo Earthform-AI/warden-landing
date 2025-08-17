@@ -79,6 +79,14 @@ The bot supports these slash commands:
 ## Testing the Setup
 
 1. **Test Interactions Endpoint**:
+   
+   **GET request (Discord verification)**:
+   ```bash
+   curl -X GET https://warden-landing.vercel.app/api/discord-bot
+   ```
+   Should return endpoint status and available commands.
+   
+   **POST request (Interaction handling)**:
    ```bash
    curl -X POST https://warden-landing.vercel.app/api/discord-bot \
      -H "Content-Type: application/json" \
