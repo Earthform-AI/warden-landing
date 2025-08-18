@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 
-// Initialize Stripe
+// Initialize Stripe using Astro public env (import.meta.env)
+// Fall back to legacy process.env.* for compatibility if needed (e.g., in tests)
 const stripePromise = loadStripe(
-  process.env.PUBLIC_STRIPE_PUBLISHABLE_KEY || 
+  (import.meta as any).env?.PUBLIC_STRIPE_PUBLISHABLE_KEY ||
+  process.env.PUBLIC_STRIPE_PUBLISHABLE_KEY ||
+  process.env.STRIPE_PUBLISHABLE_KEY ||
   'pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK'
 );
 

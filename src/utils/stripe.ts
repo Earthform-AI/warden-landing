@@ -1,13 +1,23 @@
 import Stripe from 'stripe';
 
-// Initialize Stripe with secret key
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+// Validate required secret key early to fail fast in misconfigured deploys
+const secretKey = process.env.STRIPE_SECRET_KEY;
+if (!secretKey) {
+  // Throwing here prevents silent fallback to hard-coded test keys
+  throw new Error('[stripe] Missing STRIPE_SECRET_KEY env variable');
+}
+
+export const stripe = new Stripe(secretKey, {
   apiVersion: '2024-12-18.acacia',
 });
 
-// Stripe configuration constants
+// Unified publishable key resolution: prefer PUBLIC_ (Astro client exposure), then legacy name
+const publishableKey = process.env.PUBLIC_STRIPE_PUBLISHABLE_KEY
+  || process.env.STRIPE_PUBLISHABLE_KEY
+  || 'pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK';
+
 export const STRIPE_CONFIG = {
-  publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK',
+  publishableKey,
   webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
   currency: 'usd',
 } as const;

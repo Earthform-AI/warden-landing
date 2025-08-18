@@ -3,8 +3,10 @@ import type { APIRoute } from 'astro';
 export const GET: APIRoute = async ({ request }) => {
   try {
     // Test environment variables
-    const hasStripeSecret = !!process.env.STRIPE_SECRET_KEY;
-    const hasStripePublishable = !!process.env.STRIPE_PUBLISHABLE_KEY;
+  const hasStripeSecret = !!process.env.STRIPE_SECRET_KEY;
+  const hasPublicPublishable = !!process.env.PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  const hasLegacyPublishable = !!process.env.STRIPE_PUBLISHABLE_KEY;
+  const hasStripePublishable = hasPublicPublishable || hasLegacyPublishable;
     const hasWebhookSecret = !!process.env.STRIPE_WEBHOOK_SECRET;
     
     // Test Stripe SDK import
@@ -22,6 +24,8 @@ export const GET: APIRoute = async ({ request }) => {
         environment: {
           hasStripeSecret,
           hasStripePublishable,
+          hasPublicPublishable,
+          hasLegacyPublishable,
           hasWebhookSecret,
           stripeImportSuccess
         },
@@ -31,9 +35,11 @@ export const GET: APIRoute = async ({ request }) => {
           manageSubscription: '/api/manage-subscription'
         },
         testPublishableKey: 'pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK',
-        message: hasStripeSecret 
-          ? 'Stripe integration ready!' 
-          : 'Add STRIPE_SECRET_KEY environment variable to complete setup',
+        message: hasStripeSecret && hasStripePublishable
+          ? 'Stripe integration ready!'
+          : !hasStripeSecret
+            ? 'Add STRIPE_SECRET_KEY environment variable to complete setup'
+            : 'Add PUBLIC_STRIPE_PUBLISHABLE_KEY (or STRIPE_PUBLISHABLE_KEY) to expose publishable key',
         timestamp: new Date().toISOString()
       }),
       { 
