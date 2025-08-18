@@ -367,6 +367,17 @@ const COMMANDS = {
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Handle GET requests for Discord endpoint verification
+  if (req.method === 'GET') {
+    res.status(200).json({ 
+      status: 'active',
+      message: 'Discord interactions endpoint is ready',
+      supported_commands: Object.keys(COMMANDS),
+      timestamp: new Date().toISOString()
+    });
+    return;
+  }
+
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
