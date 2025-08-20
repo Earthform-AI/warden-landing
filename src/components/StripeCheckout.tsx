@@ -95,7 +95,7 @@ export const StripeCheckout: React.FC<StripeCheckoutProps> = ({
       }
 
       // Create checkout session
-      const response = await fetch('/api/create-sponsorship-checkout', {
+  const response = await fetch('/create-sponsorship-checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -30,9 +30,9 @@ export const GET: APIRoute = async ({ request }) => {
           stripeImportSuccess
         },
         endpoints: {
-          createCheckout: '/api/create-sponsorship-checkout',
-          stripeWebhook: '/api/stripe-webhook',
-          manageSubscription: '/api/manage-subscription'
+          createCheckout: '/create-sponsorship-checkout',
+          stripeWebhook: '/stripe-webhook',
+          manageSubscription: '/manage-subscription'
         },
         testPublishableKey: 'pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK',
         message: hasStripeSecret && hasStripePublishable

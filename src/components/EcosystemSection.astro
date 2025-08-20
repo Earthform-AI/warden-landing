@@ -3,10 +3,12 @@ import { ecosystem } from '../site.config';
 import { EnhancedEcosystemSection } from './EnhancedEcosystemSection.tsx';
 ---
 
-<EnhancedEcosystemSection 
-  heading={ecosystem.heading}
-  subtitle={ecosystem.subtitle}
-  drones={ecosystem.drones}
-  footer={ecosystem.footer}
-  client:load 
-/>
+<div class="max-w-6xl mx-auto px-4 w-full">
+  <EnhancedEcosystemSection 
+    heading={ecosystem.heading}
+    subtitle={ecosystem.subtitle}
+    drones={ecosystem.drones}
+    footer={ecosystem.footer}
+    client:load 
+  />
+</div>
