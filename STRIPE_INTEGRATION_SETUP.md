@@ -14,8 +14,7 @@ STRIPE_SECRET_KEY=sk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUh
 STRIPE_PUBLISHABLE_KEY=pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK
 STRIPE_WEBHOOK_SECRET=whsec_YOUR_WEBHOOK_SECRET_HERE
 
-# Public Environment Variables (accessible in frontend)
-PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK
+# (Publishable key is retrieved server-side via /stripe-publishable-key; no PUBLIC_ env var needed)
 ```
 
 ## Where to Place Your Secret Key
@@ -41,7 +40,7 @@ PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCp
 4. Add each variable with the corresponding value:
    - `STRIPE_SECRET_KEY`: Your secret key starting with `sk_test_` or `sk_live_`
    - `STRIPE_WEBHOOK_SECRET`: Your webhook secret starting with `whsec_`
-   - `PUBLIC_STRIPE_PUBLISHABLE_KEY`: `pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK`
+   - `STRIPE_PUBLISHABLE_KEY`: Your publishable key (pk_test_ or pk_live_)
 
 ### For Other Platforms
 
@@ -89,7 +88,7 @@ curl -X POST https://your-domain.com/api/create-sponsorship-checkout \
 2. Navigate to the sponsorship section
 3. Fill out the form and select a tier
 4. Click "Start Sponsorship with Stripe"
-5. You should be redirected to Stripe Checkout
+5. Client fetches publishable key from `/stripe-publishable-key` and redirects to Stripe Checkout
 
 ### 3. Test Webhooks
 

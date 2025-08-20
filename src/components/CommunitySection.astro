@@ -47,7 +47,8 @@ import { community } from '../site.config';
     </div>
     
     <!-- Community values -->
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="flex justify-center">
+      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto">
       {community.values.map((value) => (
         <div class="group relative">
           <div class="absolute -inset-2 bg-gradient-to-r from-blue-500/10 to-green-500/10 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
@@ -58,6 +59,8 @@ import { community } from '../site.config';
           </div>
         </div>
       ))}
+      </div>
+    </div>
     </div>
     
     <!-- Call to action reinforcement -->

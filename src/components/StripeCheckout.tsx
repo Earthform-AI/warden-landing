@@ -1,14 +1,31 @@
 import React, { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe, type Stripe as StripeJs } from '@stripe/stripe-js';
 
-// Initialize Stripe using Astro public env (import.meta.env)
-// Fall back to legacy process.env.* for compatibility if needed (e.g., in tests)
-const stripePromise = loadStripe(
-  (import.meta as any).env?.PUBLIC_STRIPE_PUBLISHABLE_KEY ||
-  process.env.PUBLIC_STRIPE_PUBLISHABLE_KEY ||
-  process.env.STRIPE_PUBLISHABLE_KEY ||
-  'pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK'
-);
+// Lazy-initialize Stripe via server-provided publishable key (no PUBLIC_* env exposure)
+let stripePromise: Promise<StripeJs | null> | null = null;
+let cachedKey: string | null = null;
+
+async function getStripeClient(): Promise<StripeJs | null> {
+  if (stripePromise) {
+    return stripePromise;
+  }
+  try {
+    const res = await fetch('/stripe-publishable-key');
+    if (!res.ok) {
+      throw new Error('Failed to retrieve Stripe key');
+    }
+    const { publishableKey } = await res.json();
+    if (!publishableKey) {
+      throw new Error('Stripe publishable key missing (server)');
+    }
+    cachedKey = publishableKey;
+    stripePromise = loadStripe(publishableKey);
+    return stripePromise;
+  } catch (e) {
+    console.error('[StripeCheckout] Unable to init Stripe:', e);
+    return null;
+  }
+}
 
 interface SponsorshipTier {
   name: string;
@@ -89,9 +106,9 @@ export const StripeCheckout: React.FC<StripeCheckoutProps> = ({
     setLoading(true);
     
     try {
-      const stripe = await stripePromise;
+  const stripe = await getStripeClient();
       if (!stripe) {
-        throw new Error('Stripe failed to load');
+        throw new Error('Stripe failed to load (missing publishable key).');
       }
 
       // Create checkout session
@@ -110,16 +127,27 @@ export const StripeCheckout: React.FC<StripeCheckoutProps> = ({
         }),
       });
 
-      const data = await response.json();
+  const data = await response.json();
 
       if (!response.ok) {
         throw new Error(data.error || 'Failed to create checkout session');
       }
 
+      // Detect potential mode mismatch before redirect
+      const sessionId: string | undefined = data.sessionId;
+      if (!sessionId) {
+        throw new Error('Missing sessionId from server response.');
+      }
+
+  const rawPublishableKey = cachedKey;
+  const keyPrefix = rawPublishableKey?.startsWith('pk_live_') ? 'live' : rawPublishableKey?.startsWith('pk_test_') ? 'test' : 'unknown';
+      const sessionPrefix = sessionId.startsWith('cs_live_') ? 'live' : sessionId.startsWith('cs_test_') ? 'test' : 'unknown';
+      if (keyPrefix !== 'unknown' && sessionPrefix !== 'unknown' && keyPrefix !== sessionPrefix) {
+        throw new Error(`Stripe mode mismatch: session is '${sessionPrefix}' but publishable key is '${keyPrefix}'. Ensure both keys are from the same (test/live) mode.`);
+      }
+
       // Redirect to Stripe Checkout
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: data.sessionId,
-      });
+      const { error } = await stripe.redirectToCheckout({ sessionId });
 
       if (error) {
         throw new Error(error.message || 'Failed to redirect to checkout');
@@ -128,9 +156,9 @@ export const StripeCheckout: React.FC<StripeCheckoutProps> = ({
       onSuccess?.(data);
 
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
-      setErrors({ submit: errorMessage });
-      onError?.(errorMessage);
+  const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+  setErrors(prev => ({ ...prev, submit: errorMessage }));
+  onError?.(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -274,8 +302,19 @@ export const StripeCheckout: React.FC<StripeCheckoutProps> = ({
         )}
 
         {errors.submit && (
-          <div className="mt-6 p-4 bg-red-900/20 border border-red-400/30 rounded-xl">
-            <p className="text-red-400 text-sm">{errors.submit}</p>
+          <div className="mt-6 p-4 bg-red-900/25 border border-red-400/40 rounded-xl text-left space-y-2">
+            <p className="text-red-400 text-sm font-medium">{errors.submit}</p>
+            {/* Mode mismatch guidance */}
+            {errors.submit.includes('mode mismatch') && (
+              <ul className="text-xs text-red-300 list-disc ml-4 space-y-1">
+                <li>Use matching key pairs: pk_test_* with sk_test_* OR pk_live_* with sk_live_*.</li>
+                <li>Ensure STRIPE_PUBLISHABLE_KEY & STRIPE_SECRET_KEY share the same mode.</li>
+                <li>Redeploy after updating environment variables.</li>
+              </ul>
+            )}
+            {errors.submit.includes('publishable key missing') && (
+              <p className="text-xs text-red-300">Add STRIPE_PUBLISHABLE_KEY to environment & redeploy.</p>
+            )}
           </div>
         )}
 

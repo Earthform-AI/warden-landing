@@ -8,19 +8,25 @@ if (!secretKey) {
 }
 
 export const stripe = new Stripe(secretKey, {
-  apiVersion: '2024-12-18.acacia',
+  // Use a valid, pinned API version (update deliberately after reviewing changelog)
+  apiVersion: '2025-07-30.basil',
 });
 
-// Unified publishable key resolution: prefer PUBLIC_ (Astro client exposure), then legacy name
-const publishableKey = process.env.PUBLIC_STRIPE_PUBLISHABLE_KEY
-  || process.env.STRIPE_PUBLISHABLE_KEY
-  || 'pk_test_51Rx5XR2clwzbiEGjZa6BAhBaUGzCbReNNbebtwPCpk8HMpb7UUaUhaxZbO2w1QYYSrqayJYD8YdgiWrShndZunZO00v1pK50BK';
+// Publishable key: use only STRIPE_PUBLISHABLE_KEY (no PUBLIC_ variant anymore)
+const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY || '';
 
 export const STRIPE_CONFIG = {
   publishableKey,
   webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
   currency: 'usd',
 } as const;
+
+export function getPublishableKey() {
+  if (!publishableKey) {
+    console.warn('[stripe] Missing STRIPE_PUBLISHABLE_KEY (publishable)');
+  }
+  return publishableKey;
+}
 
 // Sponsorship tier configurations matching site.config.ts
 export const SPONSORSHIP_TIERS = {

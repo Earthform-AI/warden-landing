@@ -12,16 +12,14 @@ const OPTIONAL_SERVER_VARS = [
   'DISCORD_WEBHOOK_URL',
 ];
 
-const PUBLIC_VARS = [
-  'PUBLIC_STRIPE_PUBLISHABLE_KEY'
-];
+const PUBLIC_VARS: string[] = []; // No public Stripe vars; publishable key served via API
 
 export const GET: APIRoute = async () => {
   const summarize = (names: string[]) => names.map(name => ({ name, present: !!process.env[name] }));
   return new Response(JSON.stringify({
     server: summarize(REQUIRED_SERVER_VARS),
     optional: summarize(OPTIONAL_SERVER_VARS),
-    public: summarize(PUBLIC_VARS),
+  public: summarize(PUBLIC_VARS),
     allPresent: REQUIRED_SERVER_VARS.every(n => !!process.env[n])
   }), {
     status: 200,
