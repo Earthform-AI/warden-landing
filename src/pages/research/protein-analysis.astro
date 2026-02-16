@@ -9,13 +9,13 @@ import SpeedInsights from '@vercel/speed-insights/astro';
   <head>
     <meta charset="utf-8" />
     <title>Spectral Protein Structure Analysis | Earthform Research</title>
-    <meta name="description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 4.49× allosteric enrichment, 92% archetype classification. Experiments D77–D111." />
+    <meta name="description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 4.49× allosteric enrichment, 100% archetype classification. Experiments D77–D111." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Spectral Protein Structure Analysis | Earthform Research" />
-    <meta property="og:description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 92% archetype classification." />
+    <meta property="og:description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 100% archetype classification." />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Spectral Protein Structure Analysis" />
     <meta name="keywords" content="IBP-ENM, protein domains, spectral decomposition, graph Laplacian, Fiedler vector, CATH, DynDom, structural biology" />
@@ -65,8 +65,8 @@ import SpeedInsights from '@vercel/speed-insights/astro';
               <p class="text-sm text-gray-400">Allosteric site<br/>enrichment</p>
             </div>
             <div>
-              <p class="text-3xl font-bold text-green-300">92%</p>
-              <p class="text-sm text-gray-400">Archetype<br/>classification</p>
+              <p class="text-3xl font-bold text-green-300">100%</p>
+              <p class="text-sm text-gray-400">Archetype<br/>classification (12/12)</p>
             </div>
           </div>
         </div>
@@ -170,8 +170,8 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 
             <!-- D109: Thermodynamic Band -->
             <div class="border-l-2 border-lime-500 pl-6 relative">
-              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-lime-500 animate-pulse"></div>
-              <h3 class="text-lg font-bold text-lime-200 mb-2">D109: The Thermodynamic Band ⭐</h3>
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-lime-500"></div>
+              <h3 class="text-lg font-bold text-lime-200 mb-2">D109: The Thermodynamic Band</h3>
               <p class="text-sm text-lime-400/60 mb-3">7 Fano-Mapped Instruments · 83% Accuracy</p>
               <p class="text-gray-300 leading-relaxed mb-3">
                 The eigenvalue spectrum λ₁...λₙ encodes the full vibrational partition function:
@@ -236,20 +236,33 @@ import SpeedInsights from '@vercel/speed-insights/astro';
             </div>
 
             <!-- D111: Multi-Mode Hinge -->
-            <div class="border-l-2 border-green-600 pl-6 relative">
-              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-600"></div>
-              <h3 class="text-lg font-bold text-green-200 mb-2">D111: Multi-Mode Hinge Detection</h3>
-              <p class="text-sm text-green-400/60 mb-3">Modes 2–5 Reveal Hidden Dynamics</p>
+            <div class="border-l-2 border-emerald-400 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-400 animate-pulse"></div>
+              <h3 class="text-lg font-bold text-emerald-200 mb-2">D111: Multi-Mode Hinge Detection ⭐</h3>
+              <p class="text-sm text-emerald-400/60 mb-3">Modes 2–5 Reveal Hidden Dynamics · 100% Accuracy</p>
               <p class="text-gray-300 leading-relaxed mb-3">
                 T4 lysozyme looks allosteric in mode 1 — its IPR is 0.0165 (threshold: 0.025), well
                 below the enzyme cutoff. But modes 2–5 tell a different story. Higher-mode amplitude
                 still concentrates at the catalytic cleft.
               </p>
-              <p class="text-gray-300 leading-relaxed">
-                Enzymes consistently show hinge_R₂₋₅ &gt; 1.0 (higher modes amplify the catalytic hinge),
-                while allosteric proteins show hinge_R ≤ 1.0 (mode 1 exhausts the hinge). This
-                multi-mode analysis extends the spectral framework deeper into the eigenvalue spectrum,
-                targeting 100% classification.
+              <p class="text-gray-300 leading-relaxed mb-3">
+                The key observable: <strong class="text-white">hinge occupation ratio</strong> (hinge_R₂₋₅).
+                Enzymes show hinge_R &gt; 1.0 — higher modes amplify the catalytic hinge.
+                Allosteric proteins show hinge_R ≤ 1.0 — mode 1 exhausts the hinge.
+                T4 lysozyme: hinge_R = 1.091 (enzyme). AdK: hinge_R = 0.952 (allosteric). One number,
+                one clean physical story.
+              </p>
+              <div class="bg-emerald-900/20 rounded-lg p-4 border border-emerald-700/30 mb-3">
+                <p class="text-sm text-gray-300">
+                  <span class="text-emerald-400 font-mono font-bold">D110 → D111:</span> <strong class="text-emerald-200">92% → 100% accuracy (12/12)</strong><br/>
+                  <span class="text-emerald-400 font-mono font-bold">Progression:</span> <strong class="text-gray-400">17%</strong> (D108) → <strong class="text-gray-300">83%</strong> (D109) → <strong class="text-gray-200">92%</strong> (D110) → <strong class="text-emerald-200">100%</strong> (D111)<br/>
+                  <span class="text-emerald-400 font-mono font-bold">Zero regressions:</span> all 11 previously-correct proteins remain correct.<br/>
+                  <span class="text-gray-500 italic">5/5 enzyme, 2/2 barrel, 3/3 allosteric/dumbbell/globin. 0 false barrel.</span>
+                </p>
+              </div>
+              <p class="text-gray-400 text-sm">
+                The full framework is formalized as the <code class="text-emerald-300 bg-gray-800 px-1.5 py-0.5 rounded text-xs">ibp_enm</code>
+                Python package — 6 modules, 50 passing tests, clean public API.
               </p>
             </div>
           </div>
@@ -279,16 +292,23 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 
         <!-- Notebooks -->
         <section class="mb-16 bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50">
-          <h2 class="text-xl font-bold text-green-200 mb-4">Visualizations</h2>
+          <h2 class="text-xl font-bold text-green-200 mb-4">Software & Visualizations</h2>
           <p class="text-gray-300 leading-relaxed mb-4">
-            Our Jupyter notebooks include <strong class="text-white">protein B-factor correlation plots</strong>
+            The framework is implemented as <code class="text-green-300 bg-gray-800 px-1.5 py-0.5 rounded text-xs">ibp_enm</code>
+            — a Python package with 6 modules (<strong class="text-white">thermodynamics</strong>,
+            <strong class="text-white">carving</strong>, <strong class="text-white">archetypes</strong>,
+            <strong class="text-white">instruments</strong>, <strong class="text-white">synthesis</strong>,
+            <strong class="text-white">band</strong>) and 50 passing tests. The synthesis pipeline
+            progresses from MetaFickBalancer → EnzymeLensSynthesis → HingeLensSynthesis, each layer
+            adding a post-hoc lens for finer-grained classification.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Jupyter notebooks include <strong class="text-white">protein B-factor correlation plots</strong>
             benchmarked against 200 PDB structures, spectral gap conservation plots across conformational
-            pairs, and domain boundary overlays on 3D protein structures. The
-            <code class="text-green-300 bg-gray-800 px-1.5 py-0.5 rounded text-xs">ibp_enm_benchmark.ipynb</code>
-            notebook contains the core benchmark suite.
+            pairs, and domain boundary overlays on 3D protein structures.
           </p>
           <p class="text-gray-400 text-sm italic">
-            These will be published alongside the code.
+            Code and notebooks will be published alongside the paper.
           </p>
         </section>
 
@@ -309,7 +329,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
             <a href="/research/algebraic-repair" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
               <span class="text-2xl mb-2 block">🎬</span>
               <p class="text-sm text-yellow-300 font-medium">Algebraic Repair</p>
-              <p class="text-xs text-gray-400">Spectral surgery is conceptually similar to the repair engine's automorphism search</p>
+              <p class="text-xs text-gray-400">Spectral surgery and repair both search for structure-preserving transforms — one on protein graphs, the other on video frames</p>
             </a>
           </div>
         </section>
