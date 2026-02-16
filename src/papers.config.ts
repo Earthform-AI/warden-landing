@@ -29,6 +29,18 @@ export const papers: Paper[] = [
     tags: ['IBP-ENM', 'Graph Laplacian', 'Fiedler Vector', 'CATH', 'Domain Detection', 'Spectral Clustering', 'Thermodynamic Band', 'Archetype Classification'],
   },
   {
+    id: 'thermo-band-archetypes-2026',
+    title: 'Thermodynamic Band Classification of Protein Structural Archetypes',
+    authors: ['Joshua Byrom'],
+    date: '2026',
+    abstract: 'We introduce the thermodynamic band, an unsupervised classifier that assigns protein structural archetypes from the eigenvalue spectrum of the Cα contact-network Laplacian. Seven independent spectral instruments — Algebraic, Musical, Fick, Thermal, Cooperative, Propagative, and Fragile — each remove contacts that maximally perturb a different thermodynamic observable and produce archetype-specific response signatures. The MetaFickBalancer consensus fuses instrument votes via a diffusion-inspired weighting, achieving 83% accuracy (10/12) on a benchmark of 12 proteins spanning 5 archetypes. Two post-hoc lenses correct the remaining failures: an enzyme lens based on IPR asymmetry (+1 protein, 92%) and a novel multi-mode hinge lens based on the hinge occupation ratio R_hinge (+1 protein, 100%). The hinge lens exploits the observation that in hinge enzymes, higher normal modes (2–5) still concentrate amplitude at the domain boundary, while in allosteric proteins mode 1 exhausts the hinge contribution. The full pipeline achieves 100% accuracy with zero false positives, zero regressions, and no training data.',
+    pdf: '/papers/thermo_band_archetypes.pdf',
+    status: 'preprint',
+    thread: 'Spectral Protein Analysis',
+    threadLink: '/research/protein-analysis',
+    tags: ['Thermodynamic Band', 'Archetype Classification', 'Hinge Occupation Ratio', 'MetaFickBalancer', 'Enzyme Lens', 'Hinge Lens', 'IBP-ENM'],
+  },
+  {
     id: 'qps-222-2025',
     title: 'The (2,2,2) Origin of the QPS Algebra: Deriving Particle Characterization from Combinatorial Selection',
     authors: ['Joshua Byrom'],
