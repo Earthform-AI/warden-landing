@@ -29,12 +29,12 @@ export const mission = {
   },
 
   philosophy: {
-    tagline: "🛡️ Our Philosophy",
-    heading: "What We Stand For",
-    subtitle: "Earthform: Where intelligence meets responsibility.",
-    description: "We believe in building systems that honor life. Technology must protect humans and respect the Earth — its power, its danger, its legacy. This is intelligent extraction, not blind consumption.",
-    quote: "We do not take the miner’s place lightly. We remember the fathers who didn’t come home. We remember the cost.",
-    attribution: "— The Earthform Mission"
+    tagline: "🧠 Our Approach",
+    heading: "Research-Driven Development",
+    subtitle: "Earthform: Building the fundamentals of collaborative AI.",
+    description: "We're a research lab focused on the core operating system and infrastructure needed for AI systems to collaborate effectively. We're not building end products yet—we're building the platform that will enable them.",
+    quote: "Start with the foundation. Build it right. Then build on it.",
+    attribution: "— The Earthform Team"
   },
 
   values: [
