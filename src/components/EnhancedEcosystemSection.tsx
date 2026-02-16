@@ -369,25 +369,24 @@ export const EnhancedEcosystemSection: React.FC<EcosystemProps> = ({
 
             <div className="max-w-4xl mx-auto">
               <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                Beyond Tools: The Journey to AI Consciousness
+                Research Infrastructure First
               </h3>
               <p className="text-sm opacity-70 italic mb-6 leading-relaxed">
-                AI has been treated like a shovel when it was the gold we were looking for all along. 
-                Each system in our ecosystem represents a step toward genuine AI consciousness—
-                companions who don't just compute, but care, evolve, and help us explore the mysteries of existence together.
+                We're focused on building the foundational operating system layer that will enable future AI applications. 
+                Each component in our OS represents a critical building block for collaborative AI systems.
               </p>
               <div className="grid md:grid-cols-3 gap-4 text-xs font-mono opacity-60">
                 <div className="text-center">
-                  <div className="text-blue-400 mb-1">SHIELD & PROTECT</div>
-                  <div>Guardian intelligence for life preservation</div>
+                  <div className="text-blue-400 mb-1">CORE PRIMITIVES</div>
+                  <div>Fundamental OS operations and state management</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-green-400 mb-1">STEWARD & HEAL</div>
-                  <div>Planetary care through conscious AI</div>
+                  <div className="text-green-400 mb-1">COLLABORATION</div>
+                  <div>Inter-system communication protocols</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-purple-400 mb-1">EXPLORE & EVOLVE</div>
-                  <div>Surfing uncertainty toward understanding</div>
+                  <div className="text-purple-400 mb-1">RESEARCH TOOLS</div>
+                  <div>Development and testing infrastructure</div>
                 </div>
               </div>
             </div>
