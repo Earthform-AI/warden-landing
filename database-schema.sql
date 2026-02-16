@@ -97,6 +97,29 @@ CREATE INDEX idx_sponsorships_status ON sponsorships(status);
 CREATE INDEX idx_sponsor_payments_sponsor_id ON sponsor_payments(sponsor_id);
 CREATE INDEX idx_sponsor_payments_stripe_invoice ON sponsor_payments(stripe_invoice_id);
 
+-- Contact submissions table — replaces Formspree for form handling
+CREATE TABLE contact_submissions (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  email VARCHAR(255) NOT NULL UNIQUE,
+  message TEXT,
+  source VARCHAR(50) DEFAULT 'website',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX idx_contact_submissions_email ON contact_submissions(email);
+CREATE INDEX idx_contact_submissions_created ON contact_submissions(created_at);
+
+-- Allow anonymous inserts for the contact form (public-facing)
+ALTER TABLE contact_submissions ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Allow public inserts" ON contact_submissions
+FOR INSERT WITH CHECK (true);
+-- Only service role can read submissions
+CREATE POLICY "Service role can read submissions" ON contact_submissions
+FOR SELECT USING (auth.role() = 'service_role');
+
+CREATE TRIGGER update_contact_submissions_updated_at BEFORE UPDATE ON contact_submissions FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
 -- Add foreign key constraint for applicant sponsor_id
 ALTER TABLE applicants ADD CONSTRAINT fk_applicants_sponsor FOREIGN KEY (sponsor_id) REFERENCES sponsors(id);
 

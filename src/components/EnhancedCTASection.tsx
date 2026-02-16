@@ -17,13 +17,42 @@ interface CTAProps {
 }
 
 export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form }) => {
-  
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // Track form submission before default action
+  const [status, setStatus] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = React.useState('');
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus('submitting');
+    setErrorMsg('');
+
+    const formEl = event.currentTarget;
+    const email = (formEl.email as HTMLInputElement).value.trim();
+    const message = (formEl.message as HTMLTextAreaElement).value.trim();
+
     trackFormSubmission('cta_contact', {
       form_location: 'homepage_cta',
-      has_message: !!(event.currentTarget.message as HTMLTextAreaElement)?.value?.trim()
+      has_message: !!message
     });
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, message }),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        formEl.reset();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg(data.error || 'Something went wrong. Please try again.');
+        setStatus('error');
+      }
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.');
+      setStatus('error');
+    }
   };
 
   return (
@@ -78,7 +107,16 @@ export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form
                 onSubmit={handleFormSubmit}
                 className="relative bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 space-y-6"
               >
-                <input type="hidden" name="_redirect" value="/thanks" />
+                {status === 'success' && (
+                  <div className="bg-green-900/50 border border-green-500/50 rounded-lg p-4 text-green-200 text-center">
+                    ✓ You're on the list. We'll be in touch when we publish.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="bg-red-900/50 border border-red-500/50 rounded-lg p-4 text-red-200 text-center">
+                    {errorMsg}
+                  </div>
+                )}
                 
                 <div className="space-y-4">
                   <div>
@@ -104,10 +142,11 @@ export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form
                 <TechButton
                   type="submit"
                   variant="primary"
-                  className="w-full py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white transition-all duration-300 hover:scale-105 shadow-xl"
+                  disabled={status === 'submitting' || status === 'success'}
+                  className="w-full py-4 text-lg font-bold rounded-lg bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white transition-all duration-300 hover:scale-105 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   <span className="flex items-center justify-center gap-2">
-                    <span>{form.submitText}</span>
+                    <span>{status === 'submitting' ? 'Sending...' : status === 'success' ? 'Sent ✓' : form.submitText}</span>
                     <motion.span
                       animate={{ x: [0, 4, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
