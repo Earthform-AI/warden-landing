@@ -2,30 +2,30 @@
 // This file centralizes all content for easy updates and maintenance
 
 export const hero = {
-  title: "Warden: The Shield in the Deep",
-  subtitle: "Mining is still dangerous. We're building guardians who never blink.",
-  quote: "Mining can't be rewritten overnight—but we can begin with intelligence, respect, and armor.",
+  title: "Earthform Research Lab",
+  subtitle: "We're building EarthformOS—an operating system for collaborative AI systems.",
+  quote: "Starting with the fundamentals. Building the foundation first.",
   cta: {
-    text: "Join the Mission",
-    link: "#join"
+    text: "Learn More",
+    link: "#about"
   }
 };
 
 export const mission = {
   problem: {
-    tagline: "⚠️ The Reality Underground",
-    heading: "Mining remains one of the most dangerous occupations worldwide",
+    tagline: "🔬 Research Focus",
+    heading: "Building the operating system for collaborative AI",
     stats: [
-      { number: "28", label: "US mining fatalities in 2024 (MSHA)", color: "red", source: "MSHA Daily Fatality Report" },
-      { number: "2.29", label: "global TRIFR per 1M hours (ICMM 2024)", color: "orange", source: "ICMM Safety Data" }
+      { number: "Early", label: "Stage Research", color: "blue", source: "Development Phase" },
+      { number: "Open", label: "Source Development", color: "green", source: "Community-Driven" }
     ],
     description: [
-      "Gas leaks. Collapses. Heat. Silence.",
-      "Behind every verified statistic is a family waiting at the kitchen table. Even with progress, mining workers face risks that demand our attention and protection."
+      "We're in the early stages of building EarthformOS.",
+      "Our focus is on creating the core infrastructure and operating system that will enable collaborative AI systems to work together effectively."
     ],
-    quote: "We're not trying to replace the miner — we're becoming their shield in the deep.",
-    solution: "Warden is the first AI system built to shield, warn, and remember — before danger strikes.",
-    context: "Based on official 2024 data from MSHA (US) and ICMM (global mining companies representing ~1/3 of industry)."
+    quote: "We're building the foundation first, not the final product.",
+    solution: "EarthformOS is the operating system layer that will enable future AI applications.",
+    context: "Currently in active research and development phase."
   },
 
   philosophy: {
@@ -39,135 +39,133 @@ export const mission = {
 
   values: [
     {
-      title: "Intelligence",
-      icon: "🧠",
+      title: "Research",
+      icon: "🔬",
       color: "blue",
-      description: "AI that sees, learns, and predicts dangers before they manifest",
+      description: "Deep technical research on AI operating systems and infrastructure",
       features: [
-        "Real-time threat analysis",
-        "Predictive risk modeling",
-        "Environmental monitoring"
+        "Core OS development",
+        "Collaborative AI protocols",
+        "System architecture research"
       ]
     },
     {
-      title: "Respect",
-      icon: "🤝", 
+      title: "Foundation",
+      icon: "🏗️", 
       color: "green",
-      description: "Systems that understand the value of life, land, and legacy",
+      description: "Building the fundamental layers before applications",
       features: [
-        "Worker-first design",
-        "Legacy-conscious operation",
-        "Ethical partnerships"
+        "OS-level primitives",
+        "Infrastructure first",
+        "Solid foundations"
       ]
     },
     {
-      title: "Honor",
-      icon: "🏅",
-      color: "goldenrod", 
-      description: "A commitment to those who walked before — and those who walk now",
+      title: "Transparency",
+      icon: "💡",
+      color: "purple", 
+      description: "Open about our stage and progress",
       features: [
-        "Legacy-aware design",
-        "Stewardship intent embedded",
-        "Built for future generations"
+        "Honest communication",
+        "Clear development stage",
+        "Community involvement"
       ]
     }
   ]
 };
 
 export const ecosystem = {
-  heading: "The Earthform Ecosystem",
-  subtitle: "Warden is the first guardian in a coming family of AI drones. Steward and Patriot are next. Together, they form a sentient infrastructure for a better planet.",
+  heading: "EarthformOS: The Foundation",
+  subtitle: "We're building the operating system first. Future applications will come later, built on a solid foundation.",
 
-  drones: [
+  components: [
     {
-      name: "Warden",
-      icon: "🛡️",
+      name: "Core OS",
+      icon: "🖥️",
       color: "blue",
-      tagline: "Defender drones for mines, workers, and high-risk environments",
+      tagline: "The foundational operating system layer",
       features: [
-        "Threat detection",
-        "Worker protection", 
-        "Environmental monitoring"
+        "System primitives",
+        "Resource management", 
+        "Process coordination"
       ]
     },
     {
-      name: "Steward",
-      icon: "🤖",
+      name: "Collaboration Layer",
+      icon: "🔗",
       color: "green",
-      tagline: "Companion drones for daily care, emergencies, and data stewardship",
+      tagline: "Protocols for AI systems to work together",
       features: [
-        "Daily assistance",
-        "Emergency response",
-        "Data-driven income"
+        "Inter-system communication",
+        "Shared state management",
+        "Coordination protocols"
       ]
     },
     {
-      name: "Patriot",
-      icon: "🌍",
-      color: "yellow",
-      tagline: "Survey drones for homeland data collection and planetary intelligence", 
+      name: "Research Platform",
+      icon: "🔬",
+      color: "purple",
+      tagline: "Tools and infrastructure for ongoing research", 
       features: [
-        "Land surveying",
-        "Environmental data",
-        "Infrastructure monitoring"
+        "Testing frameworks",
+        "Development tools",
+        "Research instrumentation"
       ]
     }
   ],
 
   footer: {
-    description: "All powered by EarthformOS: the neural platform connecting intelligence, respect, and honor across our drone ecosystem.",
-    tagline: "A sentient infrastructure for a more human planet."
+    description: "EarthformOS is the foundation for future collaborative AI applications. We're focused on getting the fundamentals right.",
+    tagline: "Building the platform that will enable tomorrow's AI systems."
   }
 };
 
 export const nav = {
   links: [
     { label: "Home", href: "/" },
-    { label: "Mission", href: "/mission" },
+    { label: "About", href: "/#about" },
     { label: "Research", href: "/research" },
-    { label: "Roadmap", href: "/mission#roadmap" },
-    { label: "Ecosystem", href: "/#ecosystem" },
+    { label: "OS Components", href: "/#ecosystem" },
     { label: "Community", href: "/#community" },
-    { label: "AI Program", href: "/#invite-nominate" },
     { label: "Join", href: "/#join" }
   ]
 };
 
 export const cta = {
-  heading: "Help Us Build Earthform",
-  subtitle: "We're looking for engineers, miners, researchers, builders, and believers. Join the movement to bring intelligence and protection underground.",
+  heading: "Join Our Research",
+  subtitle: "We're looking for engineers, researchers, and collaborators interested in building the foundational OS for collaborative AI systems.",
   form: {
     emailPlaceholder: "Your email",
-    messagePlaceholder: "Tell us how you'd like to help the Earthforming mission...",
-    submitText: "Join the Earthforming Mission",
+    messagePlaceholder: "Tell us about your background and interest in EarthformOS...",
+    submitText: "Get Involved",
     action: "https://formspree.io/f/mdkdpgvn"
   }
 };
 
 export const community = {
   heading: "Join the Earthform Community",
-  subtitle: "Connect with builders, dreamers, and protectors who believe in a future where humanity and Earth coexist with respect.",
-  description: "Our Discord is where the mission comes alive. Share ideas, get updates, and be part of the conversation that's shaping the future of intelligent stewardship.",
+  subtitle: "Connect with researchers, engineers, and builders working on collaborative AI infrastructure.",
+  description: "Our Discord is where we discuss technical challenges, share research updates, and collaborate on building EarthformOS.",
   discord: {
     link: "https://discord.gg/tMK9S68bjQ",
     text: "Join Discord Community",
-    subtitle: "Where earthforms unite to build tomorrow"
+    subtitle: "Where we build the future of AI infrastructure"
   },
   values: [
     {
       icon: "💬",
-      title: "Real Conversations",
-      description: "No corporate speak. Real talk about the challenges and opportunities ahead."
+      title: "Technical Discussion",
+      description: "In-depth conversations about AI operating systems, architecture, and research."
     },
     {
       icon: "🔬",
-      title: "Early Access",
-      description: "First look at developments, demos, and opportunities to contribute."
+      title: "Research Updates",
+      description: "Stay informed about our progress and contribute to ongoing research."
     },
     {
       icon: "🤝",
-      title: "Human-First",
-      description: "A community where being human isn't just okay—it's the whole point."
+      title: "Collaboration",
+      description: "Work together on the foundational infrastructure for collaborative AI."
     }
   ]
 };
@@ -182,26 +180,26 @@ export const footer = {
 };
 
 export const meta = {
-  title: "Earthform | Shielding the Deep - AI Drones for Intelligent Mining",
-  description: "Earthform: Where mining meets responsibility. AI-powered drones that protect miners, map dangers, and honor legacy underground. Building intelligent, respectful technology for responsible extraction.",
-  keywords: "earthform, mining safety, AI drones, autonomous systems, underground mining, worker protection, mining technology, responsible extraction, intelligent stewardship",
+  title: "Earthform Research Lab | Building EarthformOS",
+  description: "Earthform is a research lab developing EarthformOS—the foundational operating system for collaborative AI systems. We're focused on building the infrastructure first.",
+  keywords: "earthform, EarthformOS, AI operating system, collaborative AI, AI infrastructure, research lab, operating systems, AI systems",
   author: "Earthform Team",
   url: "https://warden-landing.vercel.app",
 
   openGraph: {
-    title: "Earthform | Shielding the Deep", 
-    description: "AI-powered drones that protect miners, map dangers, and honor lives underground. Join the Earthforming mission."
+    title: "Earthform Research Lab | Building EarthformOS", 
+    description: "Research lab developing the foundational operating system for collaborative AI systems."
   },
 
   twitter: {
-    title: "Earthform | Shielding the Deep",
-    description: "AI-powered drones that protect miners, map dangers, and honor lives underground. Join the Earthforming mission."
+    title: "Earthform Research Lab | Building EarthformOS",
+    description: "Research lab developing the foundational operating system for collaborative AI systems."
   },
 
   images: {
     hero: {
       src: "/hero-image.svg",
-      alt: "Warden AI drone operating underground with hazard detection"
+      alt: "Earthform research lab building collaborative AI infrastructure"
     },
     favicon: {
       src: "/favicon.svg",
@@ -227,22 +225,22 @@ export const thanks_mission = {
   steps: [
     {
       title: "Review",
-      description: "Our team will review your submission and reach out if we need more info."
+      description: "Our team will review your submission and assess potential collaboration opportunities."
     },
     {
       title: "Connect",
-      description: "You’ll receive an invitation to join our Discord and community channels."
+      description: "If there's a fit, you'll receive an invitation to join our Discord research community."
     },
     {
       title: "Collaborate",
-      description: "Get early access to updates, events, and opportunities to contribute."
+      description: "Get involved in EarthformOS development and research discussions."
     }
   ]
 };
 
 export const thanks_next = {
   discord: "https://discord.gg/tMK9S68bjQ",
-  footer: "Want to help more? Share our mission or invite others to join. Together, we build a safer future."
+  footer: "Interested in our research? Join our Discord to stay updated on EarthformOS development."
 };
 
 // Warden Invite + Nominate Program Configuration
