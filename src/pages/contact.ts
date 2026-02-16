@@ -68,7 +68,7 @@ export const POST: APIRoute = async ({ request }) => {
         if (!contentType.includes('application/json')) {
           return new Response(null, {
             status: 302,
-            headers: { Location: '/thanks' },
+            headers: { Location: '/' },
           });
         }
         return new Response(JSON.stringify({ success: true, updated: true }), {
@@ -88,7 +88,7 @@ export const POST: APIRoute = async ({ request }) => {
     if (!contentType.includes('application/json')) {
       return new Response(null, {
         status: 302,
-        headers: { Location: '/thanks' },
+        headers: { Location: '/' },
       });
     }
 
