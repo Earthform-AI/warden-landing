@@ -3,8 +3,8 @@
 
 export const hero = {
   title: "Earthform Research Lab",
-  subtitle: "We're building EarthformOS—an operating system for collaborative AI systems.",
-  quote: "Starting with the fundamentals. Building the foundation first.",
+  subtitle: "Developing EarthformOS—a universal architecture for AI systems built on breakthrough research in parsing, identity-based programming, and adaptive protocols.",
+  quote: "From universal parsers to distributed intelligence. Building the foundation for tomorrow's AI.",
   cta: {
     text: "Learn More",
     link: "#about"
@@ -14,109 +14,109 @@ export const hero = {
 export const mission = {
   problem: {
     tagline: "🔬 Research Focus",
-    heading: "Building the operating system for collaborative AI",
+    heading: "Universal architecture for adaptive AI systems",
     stats: [
       { number: "Early", label: "Stage Research", color: "blue", source: "Development Phase" },
       { number: "Open", label: "Source Development", color: "green", source: "Community-Driven" }
     ],
     description: [
-      "We're in the early stages of building EarthformOS.",
-      "Our focus is on creating the core infrastructure and operating system that will enable collaborative AI systems to work together effectively."
+      "We're researching universal architectures that achieve quality results across many contexts.",
+      "Our work spans universal parsing, identity-based programming, protein solver integration, and error-tolerant networking with DNA-like packet structures."
     ],
-    quote: "We're building the foundation first, not the final product.",
-    solution: "EarthformOS is the operating system layer that will enable future AI applications.",
+    quote: "Building architectures that work everywhere—from desktop to distributed systems.",
+    solution: "EarthformOS embodies our most promising architecture designs with intent-based solvers at the core.",
     context: "Currently in active research and development phase."
   },
 
   philosophy: {
     tagline: "🧠 Our Approach",
     heading: "Research-Driven Development",
-    subtitle: "Earthform: Building the fundamentals of collaborative AI.",
-    description: "We're a research lab focused on the core operating system and infrastructure needed for AI systems to collaborate effectively. We're not building end products yet—we're building the platform that will enable them.",
-    quote: "Start with the foundation. Build it right. Then build on it.",
+    subtitle: "Earthform: Universal architectures through rigorous research.",
+    description: "Our research explores universal parsing, NLP integration with protein solvers, and identity-based programming. We're building architectures that accommodate diverse hardware—from desktop equipment to distributed systems—unified by error-tolerant protocols and intent-based solvers.",
+    quote: "Quality results across many contexts. That's the measure of universal architecture.",
     attribution: "— The Earthform Team"
   },
 
   values: [
     {
-      title: "Research",
-      icon: "🔬",
+      title: "Universal Parsing",
+      icon: "🔍",
       color: "blue",
-      description: "Deep technical research on AI operating systems and infrastructure",
+      description: "Research into universal parsers that bridge language and computation",
       features: [
-        "Core OS development",
-        "Collaborative AI protocols",
-        "System architecture research"
+        "NLP language integration",
+        "Protein solver synthesis",
+        "Cross-context parsing"
       ]
     },
     {
-      title: "Foundation",
-      icon: "🏗️", 
+      title: "Identity-Based Programming",
+      icon: "🧬", 
       color: "green",
-      description: "Building the fundamental layers before applications",
+      description: "Novel programming concepts built on identity and intent",
       features: [
-        "OS-level primitives",
-        "Infrastructure first",
-        "Solid foundations"
+        "Intent-based solvers",
+        "Identity primitives",
+        "Adaptive architectures"
       ]
     },
     {
-      title: "Transparency",
-      icon: "💡",
+      title: "Error-Tolerant Networks",
+      icon: "🌐",
       color: "purple", 
-      description: "Open about our stage and progress",
+      description: "DNA-like packet structures for resilient communication",
       features: [
-        "Honest communication",
-        "Clear development stage",
-        "Community involvement"
+        "Biological-inspired protocols",
+        "Self-healing networks",
+        "Distributed resilience"
       ]
     }
   ]
 };
 
 export const ecosystem = {
-  heading: "EarthformOS: The Foundation",
-  subtitle: "We're building the operating system first. Future applications will come later, built on a solid foundation.",
+  heading: "EarthformOS: Universal Architecture",
+  subtitle: "A unified architecture that works across contexts—desktop equipment, distributed systems, and beyond.",
 
   components: [
     {
-      name: "Core OS",
-      icon: "🖥️",
+      name: "Universal Parser",
+      icon: "🔍",
       color: "blue",
-      tagline: "The foundational operating system layer",
+      tagline: "NLP language integrated with protein solver concepts",
       features: [
-        "System primitives",
-        "Resource management", 
-        "Process coordination"
+        "Cross-domain parsing",
+        "Language-computation bridge", 
+        "Adaptive interpretation"
       ]
     },
     {
-      name: "Collaboration Layer",
-      icon: "🔗",
+      name: "Intent-Based Solver",
+      icon: "🧠",
       color: "green",
-      tagline: "Protocols for AI systems to work together",
+      tagline: "Identity-based programming with intent at the core",
       features: [
-        "Inter-system communication",
-        "Shared state management",
-        "Coordination protocols"
+        "Identity primitives",
+        "Intent resolution",
+        "Context-aware execution"
       ]
     },
     {
-      name: "Research Platform",
-      icon: "🔬",
+      name: "DNA-Like Protocol",
+      icon: "🧬",
       color: "purple",
-      tagline: "Tools and infrastructure for ongoing research", 
+      tagline: "Error-tolerant network protocol inspired by biological systems", 
       features: [
-        "Testing frameworks",
-        "Development tools",
-        "Research instrumentation"
+        "Self-healing packets",
+        "Resilient transmission",
+        "Adaptive routing"
       ]
     }
   ],
 
   footer: {
-    description: "EarthformOS is the foundation for future collaborative AI applications. We're focused on getting the fundamentals right.",
-    tagline: "Building the platform that will enable tomorrow's AI systems."
+    description: "EarthformOS synthesizes our research into a universal architecture. From parsing to protocols, built for quality results across many contexts.",
+    tagline: "One architecture. Many applications. Endless possibilities."
   }
 };
 
@@ -133,10 +133,10 @@ export const nav = {
 
 export const cta = {
   heading: "Join Our Research",
-  subtitle: "We're looking for engineers, researchers, and collaborators interested in building the foundational OS for collaborative AI systems.",
+  subtitle: "We're looking for researchers, engineers, and collaborators interested in universal architectures, novel parsing methods, and adaptive AI systems.",
   form: {
     emailPlaceholder: "Your email",
-    messagePlaceholder: "Tell us about your background and interest in EarthformOS...",
+    messagePlaceholder: "Tell us about your background and interest in our research areas...",
     submitText: "Get Involved",
     action: "https://formspree.io/f/mdkdpgvn"
   }
@@ -144,28 +144,28 @@ export const cta = {
 
 export const community = {
   heading: "Join the Earthform Community",
-  subtitle: "Connect with researchers, engineers, and builders working on collaborative AI infrastructure.",
-  description: "Our Discord is where we discuss technical challenges, share research updates, and collaborate on building EarthformOS.",
+  subtitle: "Connect with researchers exploring universal architectures, identity-based programming, and adaptive AI systems.",
+  description: "Our Discord is where we discuss breakthrough research, share findings, and collaborate on pushing the boundaries of what's possible with universal AI architectures.",
   discord: {
     link: "https://discord.gg/tMK9S68bjQ",
     text: "Join Discord Community",
-    subtitle: "Where we build the future of AI infrastructure"
+    subtitle: "Where researchers build universal AI systems"
   },
   values: [
     {
-      icon: "💬",
-      title: "Technical Discussion",
-      description: "In-depth conversations about AI operating systems, architecture, and research."
+      icon: "🔬",
+      title: "Research Discussion",
+      description: "Deep dives into parsing, protein solvers, identity-based programming, and network protocols."
     },
     {
-      icon: "🔬",
+      icon: "📚",
       title: "Research Updates",
-      description: "Stay informed about our progress and contribute to ongoing research."
+      description: "First access to findings, papers, and breakthroughs in universal architecture research."
     },
     {
       icon: "🤝",
       title: "Collaboration",
-      description: "Work together on the foundational infrastructure for collaborative AI."
+      description: "Work together on advancing the state of the art in adaptive AI systems."
     }
   ]
 };
@@ -180,26 +180,26 @@ export const footer = {
 };
 
 export const meta = {
-  title: "Earthform Research Lab | Building EarthformOS",
-  description: "Earthform is a research lab developing EarthformOS—the foundational operating system for collaborative AI systems. We're focused on building the infrastructure first.",
-  keywords: "earthform, EarthformOS, AI operating system, collaborative AI, AI infrastructure, research lab, operating systems, AI systems",
+  title: "Earthform Research Lab | Universal AI Architecture",
+  description: "Earthform is a research lab developing EarthformOS—a universal architecture for AI systems. Exploring universal parsing, identity-based programming, protein solver integration, and DNA-like protocols.",
+  keywords: "earthform, EarthformOS, universal parser, AI architecture, identity-based programming, protein solver, adaptive systems, error-tolerant protocols, research lab",
   author: "Earthform Team",
   url: "https://warden-landing.vercel.app",
 
   openGraph: {
-    title: "Earthform Research Lab | Building EarthformOS", 
-    description: "Research lab developing the foundational operating system for collaborative AI systems."
+    title: "Earthform Research Lab | Universal AI Architecture", 
+    description: "Research lab developing universal architectures for adaptive AI systems through breakthrough parsing, programming, and protocol research."
   },
 
   twitter: {
-    title: "Earthform Research Lab | Building EarthformOS",
-    description: "Research lab developing the foundational operating system for collaborative AI systems."
+    title: "Earthform Research Lab | Universal AI Architecture",
+    description: "Research lab developing universal architectures for adaptive AI systems through breakthrough parsing, programming, and protocol research."
   },
 
   images: {
     hero: {
       src: "/hero-image.svg",
-      alt: "Earthform research lab building collaborative AI infrastructure"
+      alt: "Earthform research lab universal AI architecture"
     },
     favicon: {
       src: "/favicon.svg",
