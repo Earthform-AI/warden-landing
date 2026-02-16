@@ -1,0 +1,233 @@
+---
+import { meta, footer, nav } from '../../site.config';
+import { TechNavigation } from '../../components/TechNavigation.tsx';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
+const threads = [
+  {
+    slug: 'composable-algebra',
+    icon: '🔢',
+    color: 'blue',
+    title: 'Composable Non-Associative Algebra',
+    subtitle: 'Making octonions composable through decision-boundary transforms',
+    experiments: 'D01 – D20',
+    keyResult: '100% navigation success vs 14% with raw multiplication',
+    description: 'We discovered that non-associativity is not a limitation — it\'s a recording medium. The associator encodes which Fano plane boundary you crossed. ComponentTransforms form a fully associative group on top of non-associative octonion multiplication.',
+    tags: ['Octonions', 'Fano Plane', 'PSL(2,7)', 'Group Theory', '8-Layer Architecture'],
+  },
+  {
+    slug: 'protein-analysis',
+    icon: '🧬',
+    color: 'green',
+    title: 'Spectral Protein Structure Analysis',
+    subtitle: 'Unsupervised protein decomposition via graph Laplacian spectroscopy',
+    experiments: 'D77 – D111',
+    keyResult: '78% domain k-accuracy, 4.49× allosteric enrichment, 92% archetype classification',
+    description: 'IBP-ENM: a single spectral decomposition of the protein contact network simultaneously yields domain boundaries, hinge locations, and per-residue structural roles — without any training data. Validated against CATH, DynDom, and literature ground truth.',
+    tags: ['IBP-ENM', 'Spectral Surgery', 'Graph Laplacian', 'Fiedler Vector', 'Structural Biology'],
+  },
+  {
+    slug: 'fano-music',
+    icon: '🎵',
+    color: 'purple',
+    title: 'Fano-Structured Music & Acoustic Protocols',
+    subtitle: '7 notes, 7 triads, 168 harmonic transforms — and file transfer through air',
+    experiments: 'D25 – D47, D63 – D72',
+    keyResult: 'Math-music isomorphism with error correction as jazz, acoustic data transfer at ~2.8 bits/pair',
+    description: 'The Fano plane maps perfectly onto Western music: 7 points become 7 scale degrees, 7 lines become 7 triads, and 168 automorphisms become harmonic transformations. Non-associativity means path history is encoded in the sound — the same chord after different paths sounds different.',
+    tags: ['ChordSpeak', 'Fano Music', 'Acoustic Transfer', 'Heawood Torus', 'Musical DNA'],
+  },
+  {
+    slug: 'algebraic-repair',
+    icon: '🎬',
+    color: 'yellow',
+    title: 'Algebraic Video Repair',
+    subtitle: 'Corruption = misapplied automorphism → repair = inverse group search',
+    experiments: 'Applied research',
+    keyResult: 'Group-theoretic error correction over PSL(2,7) with spatial algebra and belief systems',
+    description: 'If corruption can be modeled as one of the 168 automorphisms of PSL(2,7) applied incorrectly, then repair is simply finding that automorphism and applying its inverse. This reframes error correction from a statistical problem into a group-theoretic search.',
+    tags: ['PSL(2,7)', 'Error Correction', 'Spatial Algebra', 'Belief Algebra', 'Streaming Protocol'],
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Research | Earthform Research Lab</title>
+    <meta name="description" content="Four research threads exploring composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 111+ experiments with real benchmarks." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Research | Earthform Research Lab" />
+    <meta property="og:description" content="Four research threads: composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction." />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Research | Earthform Research Lab" />
+    <meta name="keywords" content="octonion algebra, Fano plane, protein spectral analysis, IBP-ENM, ChordSpeak, algebraic repair, PSL(2,7)" />
+    <meta name="author" content={meta.author} />
+    <link rel="canonical" href={meta.url + "/research"} />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <TechNavigation links={nav.links} client:load />
+    <main class="min-h-screen pt-24 pb-16 px-4">
+      <div class="max-w-6xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center mb-20">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/40 rounded-full text-blue-300 text-sm font-medium mb-6">
+            🔬 111+ Experiments
+          </div>
+          <h1 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent">
+            Research
+          </h1>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Four interconnected lines of inquiry — all emerging from the structure of the Fano plane
+            and its 168 automorphisms. Each experiment is a numbered, self-contained Python script
+            with a hypothesis and measurable results.
+          </p>
+        </div>
+
+        <!-- The Connecting Thread -->
+        <section class="bg-gray-900/60 rounded-2xl p-8 mb-16 border border-gray-700/50 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold mb-4 text-blue-200">The Connecting Thread</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Everything here starts with the <strong class="text-white">Fano plane</strong> PG(2,2) — the smallest finite projective plane.
+            7 points, 7 lines, each point on 3 lines, each line through 3 points. Its automorphism group
+            <strong class="text-white">PSL(2,7)</strong> has exactly 168 elements — the same group that governs
+            octonion multiplication.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            We didn't set out to apply one structure to four domains. The connections emerged from the experiments.
+            The same algebra that makes octonion navigation composable also decomposes proteins, generates music,
+            and corrects errors. The structure is deep enough that it keeps working in contexts we didn't design it for.
+          </p>
+          <p class="text-gray-400 text-sm italic">
+            "We follow the math where it leads. When the same structure solves problems in four different fields,
+            it's telling you something about the structure, not the fields."
+          </p>
+        </section>
+
+        <!-- Research Threads Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          {threads.map((thread) => (
+            <a href={`/research/${thread.slug}`} class="group block">
+              <div class={`relative bg-gray-900/60 rounded-2xl p-8 border border-gray-700/50 hover:border-${thread.color}-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] h-full`}>
+                <!-- Icon & Title -->
+                <div class="flex items-start gap-4 mb-4">
+                  <span class="text-4xl">{thread.icon}</span>
+                  <div>
+                    <h3 class={`text-xl font-bold text-${thread.color}-300 group-hover:text-${thread.color}-200 transition-colors mb-1`}>
+                      {thread.title}
+                    </h3>
+                    <p class="text-sm text-gray-400">{thread.experiments}</p>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <p class="text-gray-300 leading-relaxed mb-4 text-sm">
+                  {thread.description}
+                </p>
+
+                <!-- Key Result -->
+                <div class={`bg-${thread.color}-900/20 border border-${thread.color}-800/30 rounded-lg p-3 mb-4`}>
+                  <p class="text-sm">
+                    <span class={`text-${thread.color}-300 font-medium`}>Key result:</span>
+                    <span class="text-gray-300 ml-1">{thread.keyResult}</span>
+                  </p>
+                </div>
+
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2">
+                  {thread.tags.map((tag: string) => (
+                    <span class="text-xs px-2 py-1 bg-gray-800/80 text-gray-400 rounded-full border border-gray-700/50">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <!-- Read more arrow -->
+                <div class={`absolute bottom-4 right-4 text-${thread.color}-400 opacity-0 group-hover:opacity-100 transition-opacity`}>
+                  <span class="text-lg">→</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <!-- Methodology -->
+        <section class="max-w-4xl mx-auto mb-16">
+          <h2 class="text-2xl font-bold mb-8 text-center text-gray-200">How We Work</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="w-16 h-16 mx-auto mb-4 bg-blue-900/30 rounded-full flex items-center justify-center border border-blue-700/50">
+                <span class="text-2xl">📝</span>
+              </div>
+              <h3 class="font-bold text-blue-300 mb-2">Hypothesis</h3>
+              <p class="text-sm text-gray-400">Each discovery starts with a specific, testable question. The docstring at the top of every experiment file states exactly what we're testing and why.</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 mx-auto mb-4 bg-green-900/30 rounded-full flex items-center justify-center border border-green-700/50">
+                <span class="text-2xl">⚙️</span>
+              </div>
+              <h3 class="font-bold text-green-300 mb-2">Experiment</h3>
+              <p class="text-sm text-gray-400">Self-contained Python scripts that run the hypothesis. No hidden dependencies, no black boxes. When we benchmark, we use ground truth data from established databases (CATH, DynDom, PDB).</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 mx-auto mb-4 bg-purple-900/30 rounded-full flex items-center justify-center border border-purple-700/50">
+                <span class="text-2xl">📊</span>
+              </div>
+              <h3 class="font-bold text-purple-300 mb-2">Results</h3>
+              <p class="text-sm text-gray-400">Numbers, not narratives. When something works, we report accuracy, p-values, and enrichment ratios. When it doesn't, we say so and explain what we learned.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Notebooks & Visualizations Preview -->
+        <section class="bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50 max-w-4xl mx-auto mb-16">
+          <h2 class="text-2xl font-bold mb-4 text-green-200">Notebooks & Visualizations</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Alongside the discovery scripts, we maintain <strong class="text-white">25+ Jupyter notebooks</strong>
+            with interactive visualizations spanning Fano plane geometry, protein spectral decomposition,
+            3D torus simulations, parallel universe computation, and automorphism orbit plots.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Highlights include a <strong class="text-white">Three.js 3D Heawood Torus</strong> with real-time
+            cross-diffusion simulation, <strong class="text-white">protein B-factor correlation plots</strong>
+            benchmarked against 200 PDB structures, and <strong class="text-white">3D gear visualizations</strong>
+            of parallel universe computation where timeless universes drive their neighbors.
+          </p>
+          <p class="text-gray-400 text-sm italic">
+            These will be published alongside the code when we open-source the research.
+          </p>
+        </section>
+
+        <!-- Status -->
+        <section class="text-center max-w-3xl mx-auto">
+          <div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-6">
+            <h3 class="font-bold text-blue-200 mb-2">Current Status</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              111+ discovery experiments completed. Code is not yet public — we're preparing manuscripts
+              and cleaning the codebase for open-source release. Join our
+              <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline">Discord</a>
+              to follow along, or <a href="/#join" class="text-blue-400 hover:text-blue-300 underline">leave your email</a>
+              to be notified when we publish.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+    <Analytics />
+    <SpeedInsights />
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link: { label: string; href: string }) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
+  </body>
+</html>

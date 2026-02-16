@@ -1,0 +1,423 @@
+---
+import { meta, footer, nav } from '../../site.config';
+import { TechNavigation } from '../../components/TechNavigation.tsx';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Algebraic Video Repair | Earthform Research</title>
+    <meta name="description" content="Corruption = misapplied automorphism. Repair = inverse group search over PSL(2,7). Fano-structured error detection with spatial algebra and belief systems." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Algebraic Video Repair | Earthform Research" />
+    <meta property="og:description" content="Group-theoretic error correction over PSL(2,7). Corruption as misapplied automorphism, repair as inverse search." />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Algebraic Video Repair" />
+    <meta name="keywords" content="PSL(2,7), Fano plane, video repair, error correction, automorphism, spatial algebra, belief algebra, streaming protocol" />
+    <meta name="author" content={meta.author} />
+    <link rel="canonical" href={meta.url + "/research/algebraic-repair"} />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <TechNavigation links={nav.links} client:load />
+    <main class="min-h-screen pt-24 pb-16 px-4">
+      <div class="max-w-4xl mx-auto">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-400">
+          <a href="/research" class="hover:text-white transition-colors">← Research</a>
+          <span class="mx-2">/</span>
+          <span class="text-yellow-300">Algebraic Repair</span>
+        </nav>
+
+        <!-- Header -->
+        <header class="mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-900/40 rounded-full text-yellow-300 text-sm font-medium mb-6">
+            🎬 Applied Research
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-yellow-200 to-amber-200 bg-clip-text text-transparent">
+            Algebraic Video Repair
+          </h1>
+          <p class="text-xl text-gray-300 leading-relaxed">
+            If corruption can be modeled as one of the 168 automorphisms of PSL(2,7)
+            applied incorrectly, then repair is simply finding that automorphism and
+            applying its inverse. Error correction as group theory.
+          </p>
+        </header>
+
+        <!-- Key Results Banner -->
+        <div class="bg-yellow-900/20 border border-yellow-700/30 rounded-xl p-6 mb-16">
+          <div class="grid sm:grid-cols-3 gap-6 text-center">
+            <div>
+              <p class="text-3xl font-bold text-yellow-300">93%</p>
+              <p class="text-sm text-gray-400">Detection rate<br/>(3 errors/block)</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-yellow-300">&lt;2%</p>
+              <p class="text-sm text-gray-400">False positive<br/>rate across all modes</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-yellow-300">168</p>
+              <p class="text-sm text-gray-400">Automorphisms<br/>in the search space</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Idea -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-yellow-200 mb-4">The Central Idea</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Traditional error correction treats corruption as noise — random, statistical,
+            to be smoothed away. We treat corruption as <strong class="text-white">structure</strong>:
+            a valid algebraic transformation applied in the wrong context.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Video macroblocks (16×16 pixels) are mapped to 7-element Fano structures.
+            Each block's 7 features — mean brightness, texture variance, horizontal/vertical/diagonal
+            gradients, and U/V chroma — must satisfy the incidence relations of the Fano plane.
+            When they don't, something changed one of the 7 values.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            The repair engine searches through the 168 automorphisms of PSL(2,7) to find which
+            transformation best explains the corruption, then applies its <strong class="text-white">inverse</strong>.
+            This reframes error correction from a statistical problem into a group-theoretic search.
+          </p>
+        </section>
+
+        <!-- Architecture -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-yellow-200 mb-8">Architecture</h2>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <h3 class="font-bold text-yellow-300 mb-3 flex items-center gap-2">
+                <span class="text-lg">🔍</span> Trouble Detector
+              </h3>
+              <p class="text-sm text-gray-400 leading-relaxed mb-3">
+                Predictive diagnostics. Monitors algebraic signatures at three levels:
+              </p>
+              <ul class="text-sm text-gray-400 space-y-2">
+                <li class="flex gap-2"><span class="text-yellow-400">↓</span> <span><strong class="text-gray-300">Below:</strong> Constraint failures at lower levels first — Fano violations precede Golay violations, like seismic precursors</span></li>
+                <li class="flex gap-2"><span class="text-yellow-400">→</span> <span><strong class="text-gray-300">Same-level:</strong> Automorphism distribution shifts from uniform to clustered — certain transforms become over-represented</span></li>
+                <li class="flex gap-2"><span class="text-yellow-400">↑</span> <span><strong class="text-gray-300">Above:</strong> Invalid configurations form their own emergent "shadow algebra"</span></li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <h3 class="font-bold text-yellow-300 mb-3 flex items-center gap-2">
+                <span class="text-lg">⚡</span> Fano Core
+              </h3>
+              <p class="text-sm text-gray-400 leading-relaxed mb-3">
+                The algebraic backbone. Implements:
+              </p>
+              <ul class="text-sm text-gray-400 space-y-2">
+                <li class="flex gap-2"><span class="text-yellow-400">•</span> <span>7-point, 7-line incidence structure with semantic line labels</span></li>
+                <li class="flex gap-2"><span class="text-yellow-400">•</span> <span>168-element automorphism group PSL(2,7)</span></li>
+                <li class="flex gap-2"><span class="text-yellow-400">•</span> <span>Constraint validation — does a state satisfy all incidence relations?</span></li>
+                <li class="flex gap-2"><span class="text-yellow-400">•</span> <span>Automorphism search — find the transform that maps corrupted → valid</span></li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <h3 class="font-bold text-amber-300 mb-3 flex items-center gap-2">
+                <span class="text-lg">🧠</span> Belief Algebra
+              </h3>
+              <p class="text-sm text-gray-400 leading-relaxed mb-3">
+                A philosophical framework for treating unknowns. The core insight:
+                <em class="text-gray-300">an "error" under constraint C may be a "truth" under a different
+                constraint C'.</em>
+              </p>
+              <div class="overflow-x-auto">
+                <table class="text-xs w-full border-collapse">
+                  <thead>
+                    <tr class="text-left text-gray-500">
+                      <th class="py-1 pr-3 border-b border-gray-700">Stage</th>
+                      <th class="py-1 pr-3 border-b border-gray-700">Attitude</th>
+                      <th class="py-1 border-b border-gray-700">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-gray-400">
+                    <tr><td class="py-1 pr-3 border-b border-gray-800">Fear</td><td class="pr-3 border-b border-gray-800">Unknown = error</td><td class="border-b border-gray-800">Maximum validation</td></tr>
+                    <tr><td class="py-1 pr-3 border-b border-gray-800">Tolerance</td><td class="pr-3 border-b border-gray-800">Unknown = processable</td><td class="border-b border-gray-800">Repair if needed</td></tr>
+                    <tr><td class="py-1 pr-3 border-b border-gray-800">Curiosity</td><td class="pr-3 border-b border-gray-800">Unknown = opportunity</td><td class="border-b border-gray-800">Seek novel patterns</td></tr>
+                    <tr><td class="py-1 pr-3">Wisdom</td><td class="pr-3">Unknown = different truth</td><td>Find the automorphism</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <h3 class="font-bold text-amber-300 mb-3 flex items-center gap-2">
+                <span class="text-lg">🗺️</span> Spatial Algebra
+              </h3>
+              <p class="text-sm text-gray-400 leading-relaxed mb-3">
+                Addresses a weakness found in benchmarks: spatial adjacency scoring was very low
+                (0.03–0.10) because the original mapping used <strong class="text-gray-300">point values</strong>
+                rather than <strong class="text-gray-300">relationships between neighbors</strong>.
+              </p>
+              <p class="text-sm text-gray-400 leading-relaxed">
+                The fix: map <strong class="text-gray-300">gradient directions</strong> to Fano points, not
+                pixel values. 7 Fano points ↔ 7 discrete gradient directions covering [0°, 180°).
+                Fano lines become gradient compatibility rules. Repair changes from "fix a pixel" to
+                "find a compatible gradient pattern" — edge-aware, structure-preserving.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Repair Strategies -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-yellow-200 mb-4">Repair Strategies</h2>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            The repair engine tries strategies in order of algebraic sophistication,
+            falling back to simpler methods when the algebra can't fully solve the problem:
+          </p>
+          <div class="space-y-3">
+            <div class="flex gap-4 items-start bg-gray-900/40 rounded-lg p-4 border border-gray-700/30">
+              <span class="text-yellow-400 font-mono text-sm font-bold shrink-0">1.</span>
+              <div>
+                <p class="text-sm font-medium text-white">Single-error correction</p>
+                <p class="text-xs text-gray-400">Try each of the 7 positions, find a valid Fano state. Fast, handles most common corruption.</p>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start bg-gray-900/40 rounded-lg p-4 border border-gray-700/30">
+              <span class="text-yellow-400 font-mono text-sm font-bold shrink-0">2.</span>
+              <div>
+                <p class="text-sm font-medium text-white">Automorphism search</p>
+                <p class="text-xs text-gray-400">Search the 168 automorphisms for the best mapping from corrupted → valid. The core group-theoretic approach.</p>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start bg-gray-900/40 rounded-lg p-4 border border-gray-700/30">
+              <span class="text-yellow-400 font-mono text-sm font-bold shrink-0">3.</span>
+              <div>
+                <p class="text-sm font-medium text-white">Parallel universes</p>
+                <p class="text-xs text-gray-400">Generate 7 repair candidates and score each. Inspired by the multi-universe computation in the composable algebra thread.</p>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start bg-gray-900/40 rounded-lg p-4 border border-gray-700/30">
+              <span class="text-yellow-400 font-mono text-sm font-bold shrink-0">4.</span>
+              <div>
+                <p class="text-sm font-medium text-white">Neighbor voting</p>
+                <p class="text-xs text-gray-400">Use neighbor consensus for ambiguous cases. Spatial context resolves algebraic ties.</p>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start bg-gray-900/40 rounded-lg p-4 border border-gray-700/30">
+              <span class="text-yellow-400 font-mono text-sm font-bold shrink-0">5.</span>
+              <div>
+                <p class="text-sm font-medium text-white">Interpolation fallback</p>
+                <p class="text-xs text-gray-400">For corruption beyond algebraic recovery. Not every problem has a clean group-theoretic solution.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Corruption Model -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-yellow-200 mb-4">Corruption Model</h2>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            Six corruption types are classified, each mapping to a real-world failure mode:
+          </p>
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <p class="font-medium text-white text-sm mb-1">Single Value</p>
+              <p class="text-xs text-gray-400">Transmission errors — one value changed</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <p class="font-medium text-white text-sm mb-1">Missing Data</p>
+              <p class="text-xs text-gray-400">Dropped packets, bad sectors — data gaps</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <p class="font-medium text-white text-sm mb-1">Transposition</p>
+              <p class="text-xs text-gray-400">Buffer issues — values swapped</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <p class="font-medium text-white text-sm mb-1">Duplication</p>
+              <p class="text-xs text-gray-400">Read errors — repeated data</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <p class="font-medium text-white text-sm mb-1">Burst</p>
+              <p class="text-xs text-gray-400">Physical media damage — contiguous region</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <p class="font-medium text-white text-sm mb-1">Adversarial</p>
+              <p class="text-xs text-gray-400">Intentional corruption — worst case</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Benchmark Results -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-yellow-200 mb-4">Benchmark Results</h2>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            Tested against <em>Knock-Knock</em> (1940) — 139 MB, 10,132 frames, 960×720 H.264.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <h3 class="font-bold text-yellow-300 mb-4">Error Detection Rate</h3>
+              <div class="space-y-3">
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span class="text-gray-400">1 error / block</span>
+                    <span class="text-yellow-300">54%</span>
+                  </div>
+                  <div class="bg-gray-800 rounded-full h-2"><div class="bg-yellow-500/60 h-2 rounded-full" style="width: 54%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span class="text-gray-400">2 errors / block</span>
+                    <span class="text-yellow-300">85%</span>
+                  </div>
+                  <div class="bg-gray-800 rounded-full h-2"><div class="bg-yellow-500/70 h-2 rounded-full" style="width: 85%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span class="text-gray-400">3 errors / block</span>
+                    <span class="text-yellow-300">93%</span>
+                  </div>
+                  <div class="bg-gray-800 rounded-full h-2"><div class="bg-yellow-500 h-2 rounded-full" style="width: 93%"></div></div>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 mt-3">False positive rate: 0–2% across all modes</p>
+            </div>
+
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <h3 class="font-bold text-yellow-300 mb-4">Where Fano Excels</h3>
+              <ul class="text-sm text-gray-400 space-y-3">
+                <li class="flex gap-2">
+                  <span class="text-green-400">✓</span>
+                  <span><strong class="text-gray-300">Block-level detection</strong> — operates where FFmpeg cannot (sub-frame granularity)</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-green-400">✓</span>
+                  <span><strong class="text-gray-300">Near-zero false positives</strong> — algebraic constraints are either satisfied or not</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-green-400">✓</span>
+                  <span><strong class="text-gray-300">Corruption typing</strong> — can distinguish burst from transposition from adversarial</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-yellow-400">~</span>
+                  <span><strong class="text-gray-300">Block repair</strong> — moderate improvement (3.7–6.0% of blocks); FFmpeg better at stream-level recovery</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-gray-900/40 rounded-lg p-6 border border-gray-700/30">
+            <h3 class="font-bold text-white text-sm mb-3">Recommended Pipeline</h3>
+            <div class="flex flex-wrap items-center gap-2 text-sm">
+              <span class="bg-yellow-900/30 text-yellow-300 px-3 py-1 rounded-full border border-yellow-700/30">Fano detection</span>
+              <span class="text-gray-600">→</span>
+              <span class="bg-yellow-900/30 text-yellow-300 px-3 py-1 rounded-full border border-yellow-700/30">Fano single-error repair</span>
+              <span class="text-gray-600">→</span>
+              <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full border border-gray-700/30">FFmpeg transcode</span>
+              <span class="text-gray-600">→</span>
+              <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full border border-gray-700/30">PSNR/SSIM verify</span>
+            </div>
+            <p class="text-xs text-gray-500 mt-3">
+              Fano excels at detection and classification; FFmpeg excels at stream-level recovery.
+              They complement, not replace, each other.
+            </p>
+          </div>
+        </section>
+
+        <!-- The Streaming Protocol -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-yellow-200 mb-4">The Streaming Protocol (ASP)</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            The <strong class="text-white">Algebraic Streaming Protocol</strong> combines three ideas:
+          </p>
+          <div class="space-y-4">
+            <div class="bg-gray-900/60 rounded-lg p-5 border border-gray-700/50">
+              <h3 class="font-bold text-white mb-2">IOP Chain — "Gesture as Proof"</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Each transformation IS a proof. Consecutive transforms compose algebraically:
+                T₁ ∘ T₂ ∘ T₃ = T<sub>combined</sub>. The chain of operations is both the data
+                and the verification that the data is valid.
+              </p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-5 border border-gray-700/50">
+              <h3 class="font-bold text-white mb-2">AVF Codec — Algebraic Video Format</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Video format with built-in repair metadata. Transforms are automorphism indices
+                (8 bits each), and consecutive transforms compose to simpler forms. The compression
+                itself is a Fano-algebraic operation.
+              </p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-5 border border-gray-700/50">
+              <h3 class="font-bold text-white mb-2">Secure vs Vulnerable Fano Lines</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Fano lines are labeled by semantic function — the "secure" tonic line {B,C,E} vs the
+                "risky" tritone line {F,G,B}. These map to protocol paths: high-confidence vs
+                speculative data channels, like TLS confidence levels.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Future Direction -->
+        <section class="mb-16 bg-yellow-900/10 rounded-2xl p-8 border border-yellow-700/20">
+          <h2 class="text-xl font-bold text-yellow-200 mb-4">Strongest Future Direction</h2>
+          <p class="text-gray-300 leading-relaxed">
+            <strong class="text-white">Encoding-time Fano-structured redundancy.</strong> The current
+            approach applies Fano analysis after corruption. The bigger opportunity: add algebraic
+            parity data <em>during encoding</em>, so the Fano structure is part of the file format
+            itself. This would enable true algebraic recovery at decode time, not just detection
+            and partial repair.
+          </p>
+        </section>
+
+        <!-- Connections -->
+        <section class="mb-16 bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50">
+          <h2 class="text-xl font-bold text-gray-200 mb-4">Connections to Other Threads</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <a href="/research/composable-algebra" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🔢</span>
+              <p class="text-sm text-blue-300 font-medium">Composable Algebra</p>
+              <p class="text-xs text-gray-400">Parallel universe repair candidates inspired by multi-universe computation in D57</p>
+            </a>
+            <a href="/research/protein-analysis" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🧬</span>
+              <p class="text-sm text-green-300 font-medium">Protein Analysis</p>
+              <p class="text-xs text-gray-400">Spectral surgery is conceptually similar — remove constraints, observe gap response</p>
+            </a>
+            <a href="/research/fano-music" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🎵</span>
+              <p class="text-sm text-purple-300 font-medium">Fano Music</p>
+              <p class="text-xs text-gray-400">Same Fano error-correction triples power both acoustic and video repair</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="text-center">
+          <div class="bg-yellow-900/20 border border-yellow-700/30 rounded-lg p-6">
+            <p class="text-gray-300 text-sm leading-relaxed">
+              The Fano Repair project is an applied engineering application of the CAExperiments
+              algebra research. Join our
+              <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-yellow-400 hover:text-yellow-300 underline">Discord</a>
+              to discuss, or <a href="/#join" class="text-yellow-400 hover:text-yellow-300 underline">leave your email</a>
+              to be notified when we publish the code.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+    <Analytics />
+    <SpeedInsights />
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link: { label: string; href: string }) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
+  </body>
+</html>

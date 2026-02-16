@@ -1,0 +1,343 @@
+---
+import { meta, footer, nav } from '../../site.config';
+import { TechNavigation } from '../../components/TechNavigation.tsx';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Spectral Protein Structure Analysis | Earthform Research</title>
+    <meta name="description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 4.49× allosteric enrichment, 92% archetype classification. Experiments D77–D111." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Spectral Protein Structure Analysis | Earthform Research" />
+    <meta property="og:description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 92% archetype classification." />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Spectral Protein Structure Analysis" />
+    <meta name="keywords" content="IBP-ENM, protein domains, spectral decomposition, graph Laplacian, Fiedler vector, CATH, DynDom, structural biology" />
+    <meta name="author" content={meta.author} />
+    <link rel="canonical" href={meta.url + "/research/protein-analysis"} />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <TechNavigation links={nav.links} client:load />
+    <main class="min-h-screen pt-24 pb-16 px-4">
+      <div class="max-w-4xl mx-auto">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-400">
+          <a href="/research" class="hover:text-white transition-colors">← Research</a>
+          <span class="mx-2">/</span>
+          <span class="text-green-300">Protein Analysis</span>
+        </nav>
+
+        <!-- Header -->
+        <header class="mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-900/40 rounded-full text-green-300 text-sm font-medium mb-6">
+            🧬 Experiments D77 – D111
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-green-200 to-emerald-200 bg-clip-text text-transparent">
+            Spectral Protein Structure Analysis
+          </h1>
+          <p class="text-xl text-gray-300 leading-relaxed">
+            IBP-ENM: a single spectral decomposition of the protein contact network
+            simultaneously yields domain boundaries, hinge locations, and per-residue
+            structural roles — without any training data.
+          </p>
+        </header>
+
+        <!-- Key Results Banner -->
+        <div class="bg-green-900/20 border border-green-700/30 rounded-xl p-6 mb-16">
+          <div class="grid sm:grid-cols-4 gap-6 text-center">
+            <div>
+              <p class="text-3xl font-bold text-green-300">78%</p>
+              <p class="text-sm text-gray-400">Domain k-accuracy<br/>(36 proteins)</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-green-300">ρ = 0.779</p>
+              <p class="text-sm text-gray-400">Single-state dynamics<br/>prediction</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-green-300">4.49×</p>
+              <p class="text-sm text-gray-400">Allosteric site<br/>enrichment</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-green-300">92%</p>
+              <p class="text-sm text-gray-400">Archetype<br/>classification</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Method -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-green-200 mb-4">The Method: IBP-ENM</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            <strong class="text-white">Iterated Belief Propagation – Elastic Network Model</strong>.
+            Start with a protein's 3D structure from the PDB. Build the contact network (residues
+            within ~8Å). Compute the graph Laplacian. Decompose its spectrum.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            The <strong class="text-white">Fiedler vector</strong> (second-smallest eigenvector) naturally
+            bisects the protein at its weakest structural connection — this is the domain boundary.
+            Recursive spectral clustering with silhouette-based k-selection determines how many
+            domains the protein has, automatically. No training data. No sequence alignment. Just
+            the contact geometry.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            Beyond domains, the full spectrum encodes vibrational modes, hinge dynamics, and
+            per-residue structural importance. Each experiment peels back another layer of
+            what the spectrum knows.
+          </p>
+        </section>
+
+        <!-- Discovery Timeline -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-green-200 mb-8">The Discovery Timeline</h2>
+
+          <div class="space-y-12">
+            <!-- D82: Domain Detection -->
+            <div class="border-l-2 border-green-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-500"></div>
+              <h3 class="text-lg font-bold text-green-200 mb-2">D82: Domain Detection Benchmark</h3>
+              <p class="text-sm text-green-400/60 mb-3">Silhouette-Based k-Selection · 36 Proteins</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Silhouette-based k-selection on NJW-normalized spectral embeddings determines the
+                number of protein domains with 78% accuracy — a <strong class="text-white">7× improvement</strong>
+                over the eigengap heuristic (11%). Validated against CATH ground truth on 36 multi-domain
+                proteins plus 12 single-domain controls (zero false positives).
+              </p>
+              <div class="bg-green-900/30 rounded-lg p-4 border border-green-700/40">
+                <p class="text-sm text-gray-300">
+                  <span class="text-green-400 font-mono font-bold">Silhouette k-accuracy:</span> <strong class="text-green-200">28/36 = 78%</strong><br/>
+                  <span class="text-gray-500 font-mono font-bold">Eigengap k-accuracy:</span> <strong class="text-gray-400">4/36 = 11%</strong><br/>
+                  <span class="text-green-400 font-mono font-bold">Statistical significance:</span> p = 2.85×10⁻⁶ (Wilcoxon)<br/>
+                  <span class="text-green-400 font-mono font-bold">When k is correct:</span> mean ARI = 0.641 = oracle (identical)
+                </p>
+              </div>
+            </div>
+
+            <!-- D92: Dynamics Prediction -->
+            <div class="border-l-2 border-emerald-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-500"></div>
+              <h3 class="text-lg font-bold text-emerald-200 mb-2">D92: Single-State Dynamics Prediction</h3>
+              <p class="text-sm text-emerald-400/60 mb-3">Predicting Motion from a Single Snapshot</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Can we predict how much a protein <em>can</em> move from just one structure?
+                D90 showed the spectral gap λ₂/λ₃ is a near-invariant across conformational states:
+                <strong class="text-white">ρ = +0.779, p = 0.0006</strong>.
+              </p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                This transforms IBP from "a tool that compares two structures" to "a tool that
+                predicts dynamics from one structure." 12 features extracted from a single
+                spectral decomposition — spectral gap, domain asymmetry, hinge fraction, spectral
+                entropy, Fiedler range — are combined into a leave-one-out cross-validated predictor.
+              </p>
+              <div class="bg-emerald-900/20 rounded-lg p-4 border border-emerald-700/30">
+                <p class="text-sm text-gray-300">
+                  <span class="text-emerald-400 font-mono font-bold">Gap conservation:</span> ρ(gap_A, gap_B) = <strong class="text-emerald-200">+0.779</strong>, p = 0.0006<br/>
+                  <span class="text-gray-500 italic">The spectrum "remembers" dynamics even from a single snapshot.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- D96: Allosteric Sites -->
+            <div class="border-l-2 border-teal-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-teal-500"></div>
+              <h3 class="text-lg font-bold text-teal-200 mb-2">D96: Allosteric Site Detection</h3>
+              <p class="text-sm text-teal-400/60 mb-3">Spectral Surgery Finds Real Biology</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                "Spectral surgery" iteratively removes contacts and observes how the spectral gap
+                responds. "Lock" contacts — whose removal maximally drops the gap — cluster at
+                domain boundaries (<strong class="text-white">11× enrichment</strong>) and bridge edges
+                (<strong class="text-white">30×+ enrichment</strong> in T4 lysozyme/DHFR).
+              </p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                But is this biologically meaningful, or graph-theory talking to itself? Fisher's exact
+                test against known functional sites (active sites, hinges, allosteric sites, mutation
+                hotspots) validates the signal:
+              </p>
+              <div class="bg-teal-900/20 rounded-lg p-4 border border-teal-700/30">
+                <p class="text-sm text-gray-300">
+                  <span class="text-teal-400 font-mono font-bold">Allosteric enrichment:</span> <strong class="text-teal-200">4.49×</strong><br/>
+                  <span class="text-teal-400 font-mono font-bold">Verdict:</span> "VALIDATED: algebra finds real biology"<br/>
+                  <span class="text-gray-500 italic">The algebraically important residues are the biologically important ones.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- D109: Thermodynamic Band -->
+            <div class="border-l-2 border-lime-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-lime-500 animate-pulse"></div>
+              <h3 class="text-lg font-bold text-lime-200 mb-2">D109: The Thermodynamic Band ⭐</h3>
+              <p class="text-sm text-lime-400/60 mb-3">7 Fano-Mapped Instruments · 83% Accuracy</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                The eigenvalue spectrum λ₁...λₙ encodes the full vibrational partition function:
+                entropy S<sub>vib</sub>, heat capacity C<sub>v</sub>, Helmholtz free energy F,
+                and mode localization (IPR). Using this, we classify proteins into structural
+                archetypes.
+              </p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                <strong class="text-white">7 independent disturbance modes</strong> — explicitly mapped to
+                Fano points using the semantic labels from D38 (DOING, FEELING, KNOWING, etc.):
+              </p>
+              <div class="overflow-x-auto mb-3">
+                <table class="text-sm w-full border-collapse">
+                  <thead>
+                    <tr class="text-left text-gray-400">
+                      <th class="py-2 pr-4 border-b border-gray-700">Instrument</th>
+                      <th class="py-2 pr-4 border-b border-gray-700">Semantic Label</th>
+                      <th class="py-2 border-b border-gray-700">What It Probes</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-gray-300">
+                    <tr><td class="py-1.5 pr-4 border-b border-gray-800">Algebraic</td><td class="pr-4 border-b border-gray-800">DOING</td><td class="border-b border-gray-800">Max |Δgap| — symmetry breaking</td></tr>
+                    <tr><td class="py-1.5 pr-4 border-b border-gray-800">Musical</td><td class="pr-4 border-b border-gray-800">FEELING</td><td class="border-b border-gray-800">Max mode scatter — resonance</td></tr>
+                    <tr><td class="py-1.5 pr-4 border-b border-gray-800">Fick</td><td class="pr-4 border-b border-gray-800">KNOWING</td><td class="border-b border-gray-800">Fick-balanced — diffusion</td></tr>
+                    <tr><td class="py-1.5 pr-4 border-b border-gray-800">Thermal</td><td class="pr-4 border-b border-gray-800">BEING</td><td class="border-b border-gray-800">Max ΔS<sub>vib</sub> — entropy</td></tr>
+                    <tr><td class="py-1.5 pr-4 border-b border-gray-800">Cooperative</td><td class="pr-4 border-b border-gray-800">WANTING</td><td class="border-b border-gray-800">Max |Δβ| — cooperativity</td></tr>
+                    <tr><td class="py-1.5 pr-4 border-b border-gray-800">Propagative</td><td class="pr-4 border-b border-gray-800">RELATING</td><td class="border-b border-gray-800">Max spatial radius — allosteric reach</td></tr>
+                    <tr><td class="py-1.5 pr-4">Fragile</td><td class="pr-4">BECOMING</td><td>High B-factor edges — thermal soft spots</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="bg-lime-900/20 rounded-lg p-4 border border-lime-700/30">
+                <p class="text-sm text-gray-300">
+                  <span class="text-lime-400 font-mono font-bold">D108 baseline:</span> <strong class="text-gray-400">17% accuracy (2/12)</strong><br/>
+                  <span class="text-lime-400 font-mono font-bold">D109 thermodynamic band:</span> <strong class="text-lime-200">83% accuracy (10/12)</strong><br/>
+                  <span class="text-gray-500 italic">Same Fano structure that organizes music also classifies protein archetypes.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- D110: Enzyme Lens -->
+            <div class="border-l-2 border-green-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-500"></div>
+              <h3 class="text-lg font-bold text-green-200 mb-2">D110: The Enzyme Lens</h3>
+              <p class="text-sm text-green-400/60 mb-3">Asymmetric Entropy Detector · 92% Accuracy</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                D109 missed two enzyme_active proteins — T4 lysozyme and DHFR — predicting them as
+                allosteric. The gap was tiny: DHFR scored allosteric 0.258 vs enzyme 0.240 (Δ = 0.018).
+              </p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Enzymes have <strong class="text-white">localized</strong> active-site dynamics (high IPR in
+                low modes), while allosteric proteins show <strong class="text-white">delocalized</strong>
+                signal propagation. An "enzyme lens" based on IPR and asymmetric entropy redistribution
+                fixes DHFR:
+              </p>
+              <div class="bg-green-900/20 rounded-lg p-4 border border-green-700/30">
+                <p class="text-sm text-gray-300">
+                  <span class="text-green-400 font-mono font-bold">D109 → D110:</span> <strong class="text-green-200">83% → 92% accuracy (11/12)</strong><br/>
+                  <span class="text-gray-500 italic">Sole remaining miss: T4 lysozyme — a "hinge enzyme" whose catalytic cleft sits at the domain boundary.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- D111: Multi-Mode Hinge -->
+            <div class="border-l-2 border-green-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-600"></div>
+              <h3 class="text-lg font-bold text-green-200 mb-2">D111: Multi-Mode Hinge Detection</h3>
+              <p class="text-sm text-green-400/60 mb-3">Modes 2–5 Reveal Hidden Dynamics</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                T4 lysozyme looks allosteric in mode 1 — its IPR is 0.0165 (threshold: 0.025), well
+                below the enzyme cutoff. But modes 2–5 tell a different story. Higher-mode amplitude
+                still concentrates at the catalytic cleft.
+              </p>
+              <p class="text-gray-300 leading-relaxed">
+                Enzymes consistently show hinge_R₂₋₅ &gt; 1.0 (higher modes amplify the catalytic hinge),
+                while allosteric proteins show hinge_R ≤ 1.0 (mode 1 exhausts the hinge). This
+                multi-mode analysis extends the spectral framework deeper into the eigenvalue spectrum,
+                targeting 100% classification.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Validation Against Ground Truth -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-green-200 mb-4">Validation Against Ground Truth</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Everything here is benchmarked against established structural biology databases:
+          </p>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <h3 class="font-bold text-white text-sm mb-2">CATH</h3>
+              <p class="text-xs text-gray-400">Domain boundaries and domain count (k). Our 78% k-accuracy is measured against CATH classifications for 36 multi-domain proteins.</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <h3 class="font-bold text-white text-sm mb-2">DynDom</h3>
+              <p class="text-xs text-gray-400">Hinge residues and conformational changes across paired structures. Used for dynamics prediction validation.</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+              <h3 class="font-bold text-white text-sm mb-2">PDB / UniProt</h3>
+              <p class="text-xs text-gray-400">Functional site annotations, B-factors, active site locations. Fisher's exact test validates spectral surgery against annotated residues.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Notebooks -->
+        <section class="mb-16 bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50">
+          <h2 class="text-xl font-bold text-green-200 mb-4">Visualizations</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Our Jupyter notebooks include <strong class="text-white">protein B-factor correlation plots</strong>
+            benchmarked against 200 PDB structures, spectral gap conservation plots across conformational
+            pairs, and domain boundary overlays on 3D protein structures. The
+            <code class="text-green-300 bg-gray-800 px-1.5 py-0.5 rounded text-xs">ibp_enm_benchmark.ipynb</code>
+            notebook contains the core benchmark suite.
+          </p>
+          <p class="text-gray-400 text-sm italic">
+            These will be published alongside the code.
+          </p>
+        </section>
+
+        <!-- Connections -->
+        <section class="mb-16 bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50">
+          <h2 class="text-xl font-bold text-gray-200 mb-4">Connections to Other Threads</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <a href="/research/composable-algebra" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🔢</span>
+              <p class="text-sm text-blue-300 font-medium">Composable Algebra</p>
+              <p class="text-xs text-gray-400">The 8-layer architecture that the 7 Fano-mapped instruments emerge from</p>
+            </a>
+            <a href="/research/fano-music" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🎵</span>
+              <p class="text-sm text-purple-300 font-medium">Fano Music</p>
+              <p class="text-xs text-gray-400">D109's "Musical" instrument was named for D38's semantic Fano labels</p>
+            </a>
+            <a href="/research/algebraic-repair" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🎬</span>
+              <p class="text-sm text-yellow-300 font-medium">Algebraic Repair</p>
+              <p class="text-xs text-gray-400">Spectral surgery is conceptually similar to the repair engine's automorphism search</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="text-center">
+          <div class="bg-green-900/20 border border-green-700/30 rounded-lg p-6">
+            <p class="text-gray-300 text-sm leading-relaxed">
+              This thread comprises experiments D77 – D111 of the CAExperiments project.
+              Code is not yet public. Join our
+              <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Discord</a>
+              to discuss the structural biology work, or <a href="/#join" class="text-green-400 hover:text-green-300 underline">leave your email</a>
+              to be notified when we publish.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+    <Analytics />
+    <SpeedInsights />
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link: { label: string; href: string }) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
+  </body>
+</html>

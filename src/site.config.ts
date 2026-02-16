@@ -7,7 +7,7 @@ export const hero = {
   quote: "111 experiments. 4 research threads. Real benchmarks, real math, no black boxes.",
   cta: {
     text: "Read Our Research",
-    link: "#research"
+    link: "/research"
   }
 };
 
@@ -134,7 +134,7 @@ export const ecosystem = {
 export const nav = {
   links: [
     { label: "Home", href: "/" },
-    { label: "Research", href: "/#research" },
+    { label: "Research", href: "/research" },
     { label: "Findings", href: "/#ecosystem" },
     { label: "About", href: "/mission" },
     { label: "Community", href: "/#community" },

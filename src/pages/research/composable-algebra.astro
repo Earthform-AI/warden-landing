@@ -1,0 +1,360 @@
+---
+import { meta, footer, nav } from '../../site.config';
+import { TechNavigation } from '../../components/TechNavigation.tsx';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Composable Non-Associative Algebra | Earthform Research</title>
+    <meta name="description" content="Making octonions composable through decision-boundary transforms. 100% navigation success vs 14% with raw multiplication. Experiments D01–D20." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Composable Non-Associative Algebra | Earthform Research" />
+    <meta property="og:description" content="Making octonions composable through decision-boundary transforms. 100% navigation success vs 14% with raw multiplication." />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Composable Non-Associative Algebra" />
+    <meta name="keywords" content="octonions, Fano plane, PSL(2,7), non-associative algebra, composition, group theory" />
+    <meta name="author" content={meta.author} />
+    <link rel="canonical" href={meta.url + "/research/composable-algebra"} />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <TechNavigation links={nav.links} client:load />
+    <main class="min-h-screen pt-24 pb-16 px-4">
+      <div class="max-w-4xl mx-auto">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-400">
+          <a href="/research" class="hover:text-white transition-colors">← Research</a>
+          <span class="mx-2">/</span>
+          <span class="text-blue-300">Composable Algebra</span>
+        </nav>
+
+        <!-- Header -->
+        <header class="mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/40 rounded-full text-blue-300 text-sm font-medium mb-6">
+            🔢 Experiments D01 – D20
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
+            Composable Non-Associative Algebra
+          </h1>
+          <p class="text-xl text-gray-300 leading-relaxed">
+            Making octonions composable through decision-boundary transforms.
+            ComponentTransforms form a fully associative group on top of
+            non-associative octonion multiplication.
+          </p>
+        </header>
+
+        <!-- Key Result Banner -->
+        <div class="bg-blue-900/20 border border-blue-700/30 rounded-xl p-6 mb-16">
+          <div class="grid sm:grid-cols-3 gap-6 text-center">
+            <div>
+              <p class="text-3xl font-bold text-blue-300">~100%</p>
+              <p class="text-sm text-gray-400">Component transform<br/>navigation success</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-gray-500">14%</p>
+              <p class="text-sm text-gray-400">Raw multiplication<br/>navigation success</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-blue-300">8</p>
+              <p class="text-sm text-gray-400">Algebraic layers<br/>unified architecture</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Problem -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-blue-200 mb-4">The Problem</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Octonions are the largest normed division algebra. They extend the progression
+            ℝ → ℂ → ℍ (quaternions) → 𝕆 (octonions), gaining richness at each step but
+            losing algebraic properties. Quaternions lose commutativity. Octonions lose
+            <strong class="text-white">associativity</strong>: <em>(a × b) × c ≠ a × (b × c)</em>.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            This makes octonions notoriously difficult to work with. You can't compose operations
+            freely because the result depends on grouping. Most applied math avoids them entirely.
+            We asked: <em class="text-blue-200">what if the non-associativity isn't a bug, but a recording medium?</em>
+          </p>
+        </section>
+
+        <!-- The Discovery Timeline -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-blue-200 mb-8">The Discovery Timeline</h2>
+
+          <div class="space-y-12">
+            <!-- D01-D03: Failure -->
+            <div class="border-l-2 border-gray-700 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-700"></div>
+              <h3 class="text-lg font-bold text-gray-300 mb-2">D01 – D03: Navigating Blind</h3>
+              <p class="text-sm text-gray-500 mb-3">Experiments 1–3 · Octonion Navigation</p>
+              <p class="text-gray-400 leading-relaxed mb-3">
+                We started by letting the system discover structure from scratch. Feed it random
+                octonion pairs and ask: what operations connect them? Which basis elements appear
+                in successful paths? Do certain Fano lines dominate?
+              </p>
+              <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+                <p class="text-sm text-gray-300">
+                  <span class="text-red-400 font-mono font-bold">D02:</span> Naive navigation success rate = <strong class="text-red-300">0 / 30</strong><br/>
+                  <span class="text-red-400 font-mono font-bold">D03:</span> Arbitrary navigation = <strong class="text-red-300">0 / 50</strong><br/>
+                  <span class="text-gray-500 italic">Fano-line hopping works for pure basis elements, but mixed states are unreachable.</span>
+                </p>
+              </div>
+              <p class="text-gray-400 leading-relaxed mt-3">
+                The hypothesis from D03: decompose problems into basis components, navigate each
+                along Fano lines, then reassemble. This set the stage.
+              </p>
+            </div>
+
+            <!-- D04: Breakthrough -->
+            <div class="border-l-2 border-blue-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-500 animate-pulse"></div>
+              <h3 class="text-lg font-bold text-blue-200 mb-2">D04: The Composer Breakthrough ⭐</h3>
+              <p class="text-sm text-blue-400/60 mb-3">Experiment 4 · Decision Boundary Transforms</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                The key insight: <em class="text-blue-200">"At the decision boundary, we have full knowledge
+                of the operands. We can inject structure-preserving operations that naked multiplication
+                lacks."</em>
+              </p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Component-wise operations avoid cross-term interference. Instead of multiplying whole
+                octonions (which scrambles components through non-associativity), we transform individual
+                basis components independently, then reassemble. The transforms themselves compose
+                associatively.
+              </p>
+              <div class="bg-blue-900/30 rounded-lg p-4 border border-blue-700/40 mb-3">
+                <p class="text-sm text-gray-300">
+                  <span class="text-blue-400 font-mono font-bold">Component transforms:</span> <strong class="text-blue-200">~100% success rate</strong><br/>
+                  <span class="text-gray-500 font-mono font-bold">Standard multiplication:</span> <strong class="text-gray-400">~14% success rate</strong> (100 random trials)<br/>
+                  <span class="text-green-400 font-mono font-bold">Associativity:</span> <strong class="text-green-300">(t₁ ∘ t₂) ∘ t₃ = t₁ ∘ (t₂ ∘ t₃) ✓</strong>
+                </p>
+              </div>
+              <p class="text-gray-400 text-sm italic">
+                "Can we build a composable layer ON TOP of non-associative octonions?" — yes.
+              </p>
+            </div>
+
+            <!-- D08: Communication -->
+            <div class="border-l-2 border-purple-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-purple-600"></div>
+              <h3 class="text-lg font-bold text-purple-200 mb-2">D08: Coach and Explorer</h3>
+              <p class="text-sm text-purple-400/60 mb-3">Experiment 8 · Emergent Communication</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                What if two agents live in different algebraic spaces? The <strong class="text-purple-200">Coach</strong>
+                lives in composition space — associative, global, can see the whole path but can't act.
+                The <strong class="text-purple-200">Explorer</strong> lives in multiplication space — non-associative,
+                local, can act but can't see.
+              </p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                They develop a signal vocabulary: PING, WARMER, COLDER, TARGET, BLOCKED, FOUND,
+                HELP, LEFT, RIGHT, STAY. Communication success rate improves with training. Language
+                patterns emerge — signal→outcome associations form; both layers learn signal meanings.
+              </p>
+              <p class="text-gray-400 text-sm italic">
+                "One sees, one acts, they learn to communicate." — coaching as algebraic bridge.
+              </p>
+            </div>
+
+            <!-- D10: Dual Space -->
+            <div class="border-l-2 border-cyan-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-cyan-600"></div>
+              <h3 class="text-lg font-bold text-cyan-200 mb-2">D10: Transform Space</h3>
+              <p class="text-sm text-cyan-400/60 mb-3">Experiment 10 · Dual-Space Navigation</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Some problems have <em>no</em> multiplication path. (e₁+e₂)→(e₄+e₅) simply can't be
+                reached by multiplying. The solution: navigate in a <em>different representation</em>
+                where composition IS multiplication.
+              </p>
+              <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50 mb-3">
+                <p class="text-sm text-gray-300">
+                  <strong class="text-cyan-300">Octonion space:</strong> state = octonion, move = multiply by eᵢ.
+                  Non-associative. Gets stuck.<br/>
+                  <strong class="text-cyan-300">Transform space:</strong> state = ComponentTransform, move = compose.
+                  <strong class="text-green-300">Associative. Always solvable.</strong>
+                </p>
+              </div>
+              <p class="text-gray-400 text-sm italic">
+                "Like having two maps: one showing roads, one showing flight routes."
+              </p>
+            </div>
+
+            <!-- D15: Algebraic Hierarchy -->
+            <div class="border-l-2 border-green-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-600"></div>
+              <h3 class="text-lg font-bold text-green-200 mb-2">D15: The Algebraic Hierarchy</h3>
+              <p class="text-sm text-green-400/60 mb-3">Experiment 15 · Magmas, Monoids, Groups</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Stepped back to classify what we'd built. Different layers use different algebraic
+                structures because they serve different purposes:
+              </p>
+              <div class="overflow-x-auto mb-3">
+                <table class="text-sm w-full border-collapse">
+                  <thead>
+                    <tr class="text-left text-gray-400">
+                      <th class="py-2 pr-4 border-b border-gray-700">Layer</th>
+                      <th class="py-2 pr-4 border-b border-gray-700">Structure</th>
+                      <th class="py-2 border-b border-gray-700">Properties</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-gray-300">
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">Octonion Multiplication</td><td class="pr-4 border-b border-gray-800">Alternative Algebra</td><td class="border-b border-gray-800">Non-assoc, non-comm</td></tr>
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">Transform Space</td><td class="pr-4 border-b border-gray-800">Permutation Group</td><td class="border-b border-gray-800">Associative, inverses</td></tr>
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">Pattern Library</td><td class="pr-4 border-b border-gray-800">Monoid</td><td class="border-b border-gray-800">Associative, identity</td></tr>
+                    <tr><td class="py-2 pr-4">Collective Consensus</td><td class="pr-4">Commutative Magma</td><td>Comm, non-assoc</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="text-gray-400 text-sm italic">
+                Non-associativity is not a bug — it's a feature. It creates exploration dynamics
+                and hierarchy-dependent consensus.
+              </p>
+            </div>
+
+            <!-- D19: 8-Layer Architecture -->
+            <div class="border-l-2 border-yellow-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-yellow-600"></div>
+              <h3 class="text-lg font-bold text-yellow-200 mb-2">D19: The Complete 8-Layer Architecture</h3>
+              <p class="text-sm text-yellow-400/60 mb-3">Experiment 19 · Fano-Structured Unification</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                8 octonion basis elements → 8 algebraic layers, each providing what the others lack.
+                Layer interactions follow the Fano plane: Layer_i × Layer_j → Layer_k.
+              </p>
+              <div class="overflow-x-auto mb-3">
+                <table class="text-sm w-full border-collapse">
+                  <thead>
+                    <tr class="text-left text-gray-400">
+                      <th class="py-2 pr-4 border-b border-gray-700">Layer</th>
+                      <th class="py-2 pr-4 border-b border-gray-700">Structure</th>
+                      <th class="py-2 border-b border-gray-700">Role</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-gray-300">
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">e₀ Foundation</td><td class="pr-4 border-b border-gray-800">Field (ℝ)</td><td class="border-b border-gray-800">Scalars, grounding</td></tr>
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">e₁ Octonion</td><td class="pr-4 border-b border-gray-800">Moufang Loop</td><td class="border-b border-gray-800">Rich local exploration</td></tr>
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">e₂ Transform</td><td class="pr-4 border-b border-gray-800">Group</td><td class="border-b border-gray-800">Global navigation, always solvable</td></tr>
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">e₃ Pattern</td><td class="pr-4 border-b border-gray-800">Loop</td><td class="border-b border-gray-800">Composable patterns</td></tr>
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">e₄ Coverage</td><td class="pr-4 border-b border-gray-800">Quasigroup</td><td class="border-b border-gray-800">Latin square, division exists</td></tr>
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">e₅ Consensus</td><td class="pr-4 border-b border-gray-800">Commutative Magma</td><td class="border-b border-gray-800">Parallel voting</td></tr>
+                    <tr><td class="py-2 pr-4 border-b border-gray-800">e₆ Permutation</td><td class="pr-4 border-b border-gray-800">Symmetric Group</td><td class="border-b border-gray-800">Frame rotation</td></tr>
+                    <tr><td class="py-2 pr-4">e₇ Zero/Null</td><td class="pr-4">Zero Algebra</td><td>Absorbing states</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="text-gray-300 leading-relaxed">
+                Each layer finds its own identity element through mathematical discovery.
+                Problems route through the appropriate layer. The whole system is JSON-exportable
+                and learns over time.
+              </p>
+            </div>
+
+            <!-- D20: Meta-Architecture -->
+            <div class="border-l-2 border-pink-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-pink-600"></div>
+              <h3 class="text-lg font-bold text-pink-200 mb-2">D20: Meta-Architecture</h3>
+              <p class="text-sm text-pink-400/60 mb-3">Experiment 20 · Architecture as Algebra</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                "What if the architecture IS an octonion?" The entire 8-layer system becomes an
+                algebraic element you can do math on. Two architectures can be added (merge knowledge),
+                multiplied (Fano-guided composition), conjugated, and normed.
+              </p>
+              <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50 mb-3">
+                <p class="text-sm text-gray-300 leading-relaxed">
+                  <strong class="text-pink-300">Cayley-Dickson Hierarchy:</strong><br/>
+                  ℝ →<sup class="text-gray-500">double</sup> ℂ →<sup class="text-gray-500">double</sup> ℍ →<sup class="text-gray-500">double</sup> 𝕆 →<sup class="text-pink-400">innovate</sup> 8-Layer →<sup class="text-gray-500">double</sup> Arch-Octonion →<sup class="text-gray-500">double</sup> 16-layer Sedenion
+                </p>
+                <p class="text-sm text-gray-400 mt-2 italic">
+                  Each doubling adds structure but loses properties. Zero divisors appear at the sedenion level.
+                </p>
+              </div>
+              <p class="text-gray-300 leading-relaxed">
+                The architecture loop at the top means exploration is reversible — knowledge
+                is never lost. A ∘ A⁻¹ = I. "Ctrl-Z for cognition."
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- What We Learned -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-blue-200 mb-4">What We Learned</h2>
+          <div class="space-y-4">
+            <div class="bg-gray-900/60 rounded-lg p-5 border border-gray-700/50">
+              <h3 class="font-bold text-white mb-2">Non-associativity is a recording medium</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                The associator (a×b)×c − a×(b×c) encodes which Fano plane boundary you crossed.
+                Path history is embedded in the algebra. Different routes to the same destination
+                carry different associator signatures.
+              </p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-5 border border-gray-700/50">
+              <h3 class="font-bold text-white mb-2">Decision boundaries are composition points</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Where you have full knowledge of the operands is exactly where you can inject
+                structure-preserving operations. The "ready for math" moment is the gateway to composability.
+              </p>
+            </div>
+            <div class="bg-gray-900/60 rounded-lg p-5 border border-gray-700/50">
+              <h3 class="font-bold text-white mb-2">Algebraic diversity beats uniformity</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Different layers need different algebraic structures. Forcing everything to be a group
+                throws away useful properties. A magma can capture voting dynamics that a group cannot.
+                The hierarchy of structures is the tool, not any single structure.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Connections -->
+        <section class="mb-16 bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50">
+          <h2 class="text-xl font-bold text-gray-200 mb-4">Connections to Other Threads</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <a href="/research/protein-analysis" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🧬</span>
+              <p class="text-sm text-green-300 font-medium">Protein Analysis</p>
+              <p class="text-xs text-gray-400">The 7 disturbance modes in D109 are explicitly mapped to Fano points</p>
+            </a>
+            <a href="/research/fano-music" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🎵</span>
+              <p class="text-sm text-purple-300 font-medium">Fano Music</p>
+              <p class="text-xs text-gray-400">Same 168 automorphisms become harmonic transforms</p>
+            </a>
+            <a href="/research/algebraic-repair" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
+              <span class="text-2xl mb-2 block">🎬</span>
+              <p class="text-sm text-yellow-300 font-medium">Algebraic Repair</p>
+              <p class="text-xs text-gray-400">PSL(2,7) automorphism search for error correction</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="text-center">
+          <div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-6">
+            <p class="text-gray-300 text-sm leading-relaxed">
+              This thread comprises experiments D01 – D20 of the CAExperiments project.
+              Code is not yet public. Join our
+              <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline">Discord</a>
+              to discuss the algebra, or <a href="/#join" class="text-blue-400 hover:text-blue-300 underline">leave your email</a>
+              to be notified when we publish.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+    <Analytics />
+    <SpeedInsights />
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link: { label: string; href: string }) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
+  </body>
+</html>
