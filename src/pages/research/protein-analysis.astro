@@ -75,7 +75,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
         <section class="mb-16">
           <h2 class="text-2xl font-bold text-green-200 mb-4">The Method: IBP-ENM</h2>
           <p class="text-gray-300 leading-relaxed mb-4">
-            <strong class="text-white">Iterated Belief Propagation – Elastic Network Model</strong>.
+            <strong class="text-white">Identity-Based Programming – Elastic Network Model</strong>.
             Start with a protein's 3D structure from the PDB. Build the contact network (residues
             within ~8Å). Compute the graph Laplacian. Decompose its spectrum.
           </p>
@@ -84,12 +84,14 @@ import SpeedInsights from '@vercel/speed-insights/astro';
             bisects the protein at its weakest structural connection — this is the domain boundary.
             Recursive spectral clustering with silhouette-based k-selection determines how many
             domains the protein has, automatically. No training data. No sequence alignment. Just
-            the contact geometry.
+            the contact geometry. The "identity" in IBP: a protein's structural identity is what
+            survives when you disturb it.
           </p>
           <p class="text-gray-300 leading-relaxed">
             Beyond domains, the full spectrum encodes vibrational modes, hinge dynamics, and
-            per-residue structural importance. Each experiment peels back another layer of
-            what the spectrum knows.
+            per-residue structural importance. The core insight from IBP: <em class="text-green-200">the
+            cutting protocol itself identifies the protein</em>. How the spectrum responds to
+            disturbance reveals the protein's structural archetype.
           </p>
         </section>
 
