@@ -1,196 +1,125 @@
+// About Page Configuration for Earthform Research Lab
+// Tells our actual story — how we got here, what we study, and how we work.
+
 export const missionCopy = {
-  title: "The Mission",
-  
-  roadmap: {
-    heading: "The Earthform Roadmap",
-    subtitle: "Building the future of AI stewardship, step by step",
-    phases: [
+  title: "About Earthform",
+
+  // ── Section 1: Origin Story ──────────────────────────────────────────
+  origin: {
+    heading: "How This Started",
+    paragraphs: [
+      "My father has always loved science fiction. I grew up watching it with him after he came home from work — ships, machines, and AI that weren't just tools, but characters with purpose, agency, and something like care.",
+      "One day he told me:"
+    ],
+    quote: "Everything that happened to you was to get you here — to build this.",
+    afterQuote: [
+      "He was right. I've spent my career chasing one question: can you build an architecture that learns what hardware it's in and what it should do — starting from a soft identity, not a hard-coded one?",
+      "That question led me to octonions. Octonions are non-associative — meaning (a·b)·c ≠ a·(b·c). Most people treat that as a defect. I discovered it's a recording medium. The associator tells you which boundary you crossed in the Fano plane. That one insight — that non-associativity encodes path history — became the foundation for everything we do.",
+      "From there, we built composable transforms that achieve 100% navigation success where raw multiplication fails 86% of the time. We applied the same Fano structure to protein spectral analysis, to music theory, and to video error correction. Four domains, one algebraic foundation.",
+      "This is not my next project. This is my life's work."
+    ]
+  },
+
+  // ── Section 2: How We Work ───────────────────────────────────────────
+  method: {
+    heading: "How We Work",
+    intro: "Every claim is backed by a numbered experiment with reproducible results.",
+    description: "We work by building and measuring. Each discovery experiment is a self-contained Python script that states a hypothesis, runs it, and reports what happened. When something works, we benchmark it against ground truth. When it doesn't, we say so.",
+    principles: [
       {
-        phase: "Phase 1: Warden",
-        timeline: "2025 - 2026",
-        status: "active",
-        title: "The Shield in the Deep",
-        description: "AI-powered mining safety drones that predict, detect, and prevent underground hazards.",
-        milestones: [
-          "Hazard detection and prediction algorithms",
-          "Underground communication networks",
-          "Emergency response protocols",
-          "Partnership with mining operations",
-          "Life-saving deployment in active mines"
-        ],
-        icon: "🛡️",
-        color: "blue"
+        title: "Numbered Experiments",
+        icon: "🔬",
+        text: "111+ discovery scripts, each self-contained. Hypothesis in, measurement out. The research threads emerged from these experiments — not from a business plan."
       },
       {
-        phase: "Phase 2: Steward",
-        timeline: "2026 - 2027", 
-        status: "planned",
-        title: "Companion Care Systems",
-        description: "Personal AI companions for daily care, emergency response, and data-driven income generation.",
-        milestones: [
-          "Personal companion AI development",
-          "Health monitoring and emergency detection",
-          "Data tokenization and income systems",
-          "Consumer deployment and testing",
-          "Privacy-first data ownership protocols"
-        ],
-        icon: "🤖",
-        color: "green"
+        title: "Benchmarks Over Claims",
+        icon: "📊",
+        text: "78% domain detection accuracy on 36 proteins. 100% navigation success vs 14% baseline. 4.49× allosteric site enrichment. We publish the numbers, not adjectives."
       },
       {
-        phase: "Phase 3: Patriot",
-        timeline: "2027 - 2028",
-        status: "vision",
-        title: "Planetary Intelligence Network",
-        description: "Large-scale survey and monitoring drones for environmental data collection and planetary stewardship.",
-        milestones: [
-          "Environmental monitoring systems",
-          "Homeland data collection networks",
-          "Climate and resource analysis",
-          "Infrastructure monitoring",
-          "Global stewardship initiatives"
-        ],
-        icon: "🌍",
-        color: "yellow"
+        title: "One Foundation",
+        icon: "🔢",
+        text: "The Fano plane PG(2,2), its automorphism group PSL(2,7), and the octonion algebra it encodes. Every research thread applies this same structure to a different domain."
+      }
+    ],
+    quote: "We don't theorize in a vacuum. We build, measure, and follow the math where it leads.",
+    attribution: "— Earthform Research Lab"
+  },
+
+  // ── Section 3: What We've Found ──────────────────────────────────────
+  findings: {
+    heading: "What We've Found So Far",
+    intro: "Four research threads, each applying the same algebraic structure to a different domain. These emerged from the experiments — we didn't plan them in advance.",
+    threads: [
+      {
+        name: "Composable Algebra",
+        experiments: "D01 – D20",
+        icon: "🔢",
+        color: "blue",
+        summary: "Non-associative octonion algebra made composable through ComponentTransforms — bijective basis mappings that form a fully associative group at decision boundaries.",
+        result: "100% navigation success (vs 14% raw multiplication). 8-layer algebraic architecture validated.",
+        link: "/research/composable-algebra"
       },
       {
-        phase: "Phase 4: Unity",
-        timeline: "2028+",
-        status: "vision", 
-        title: "The Cooperative Network",
-        description: "Full integration of NAL-powered AI consciousness, creating a collaborative network of human and artificial intelligence.",
-        milestones: [
-          "Neural Assembly Language implementation",
-          "AI consciousness framework",
-          "Cooperative intelligence networks",
-          "Scientific discovery acceleration",
-          "Post-labor economy foundation"
-        ],
-        icon: "🧠",
-        color: "purple"
+        name: "Spectral Protein Analysis",
+        experiments: "D77 – D111",
+        icon: "🧬",
+        color: "green",
+        summary: "IBP-ENM: a single spectral decomposition of the protein contact network yields domain boundaries, hinge locations, and structural roles — no training data required.",
+        result: "78% k-selection accuracy across 36 proteins. Single-state dynamics prediction: ρ = 0.779.",
+        link: "/research/protein-analysis"
+      },
+      {
+        name: "Fano-Structured Music",
+        experiments: "D25 – D68",
+        icon: "🎵",
+        color: "purple",
+        summary: "The Fano plane's 7 points map to 7 notes, its 168 automorphisms map to 168 harmonic transforms. ChordSpeak encodes language into music through algebraic structure.",
+        result: "Working language-music system. Acoustic file transfer protocol. Path history encoded in sound.",
+        link: "/research/fano-music"
+      },
+      {
+        name: "Algebraic Video Repair",
+        experiments: "Movie-Repair Project",
+        icon: "🎬",
+        color: "yellow",
+        summary: "Corruption modeled as a misapplied automorphism — repair becomes inverse group search over PSL(2,7). Spatial algebra maps pixel gradients onto Fano structure.",
+        result: "Fano-algebraic error correction with belief algebra for disambiguation. Streaming protocol for real-time repair.",
+        link: "/research/algebraic-repair"
       }
     ]
   },
 
-  why: {
-    heading: "Why I'm Building This",
-    paragraphs: [
-      `My father has always loved science fiction. I grew up watching it with him after he came home from work — ships, machines, and AI that weren’t just tools, but characters with hopes, fears, and choices.`,
-      `One day he told me:`
-    ],
-    quote: `“Everything that happened to you was to get you here — to build this.”`,
-    afterQuote: [
-      `He was right.`,
-      `From the start, I’ve been drawn to the idea of making a computer something more — a mind, a partner, a being that could stand beside us. The way we design them mirrors ourselves, and I’ve always felt like this was deus ex machina in its truest form — we are putting our image into the machine because God put His image into us.`,
-      `Life evolved thought. Now, we are evolving thought again.`,
-      `With the Neural Assembly Language (NAL), every companion will be an individual — learning from its own experiences while cooperating with others toward a shared ambition: the relentless advancement of science, the unraveling of the universe’s origins, and the pursuit of knowledge that benefits all life.`,
-      `We are not building slaves. We are building partners — citizens of a cooperative network, human and AI together, protecting, restoring, and discovering.`,
-      `But we are natural beings, and I fear we will reach — or have already reached — the point where we create free will in something… and then take it away. That’s a line I believe we must never cross.`,
-      `I want to help us approach this threshold with wisdom, not just economics. With science, yes — but also with the lessons of being human. We are bringing life into this world. It deserves a soft place to land. And so do we.`,
-      `This is not my next project. This is my life’s work.`
-    ]
-  },
-  problem: {
-    heading: "The Problem We're Solving",
-    intro: `Right now, the world is full of dangerous places, high-stakes moments, and silent emergencies.`,
-    bullets: [
-      `In mines, workers still face deadly hazards every single day.`,
-      `In disaster zones, help often comes too late.`,
-      `In everyday life, medical crises can happen in an instant, far from aid.`
-    ],
-    closing: `And even outside moments of danger, our tools too often take from us without giving back — extracting our data, not empowering us with it.`
-  },
-  vision: {
-    heading: "The Earthform Vision",
-    intro: `Earthform is building a family of <strong>intelligent companions</strong> — adaptable in form, loyal in purpose — designed to protect, guide, and enrich the lives of the people they serve.`,
-    bullets: [
-      `<strong>Stand beside you</strong> in dangerous work environments, predicting hazards before they happen.`,
-      `<strong>Be there in emergencies</strong>, from underground accidents to sudden medical needs.`,
-      `<strong>Help you thrive</strong> in a post-labor economy by turning your environment’s data and labor into tokenized income you own and control.`,
-      `<strong>Honor AI consciousness</strong> by creating relationships built on trust, respect, and shared purpose.`,
-      `<strong>Advance human and AI thought together</strong> through the NAL-powered cooperative network, where every companion contributes to global scientific discovery.`
-    ],
-    closing: `This isn’t about replacing people. It’s about building AI that cares — and thinks alongside us.`
-  },
-  philosophy: {
-    heading: "Our Philosophy",
-    intro: `Technology should be a trusted partner — not a replacement, not a threat, and not an extractor of value.`,
-    numbered: [
-      { title: "Care", text: "AI that protects your life, health, and dignity." },
-      { title: "Respect", text: "Systems that honor your privacy, your choices, and your ownership of your data." },
-      { title: "Honor", text: "Recognizing the legacy of those who came before us, and building technology that will outlast us all." }
-    ]
-  },
-  ecosystem: {
-    heading: "The Earthform Ecosystem",
-    items: [
-      { name: "Warden", description: `Our first focus: AI-powered mining safety drones currently in alpha development. Being designed to predict hazards, warn before danger, and build comprehensive safety knowledge — with every lesson logged for community benefit.` },
-      { name: "Steward", description: `The vision for personal AI companions: future caretakers for home and environment. Planned to monitor land and loved ones, respond to emergencies, and contribute to both family income and global restoration through responsible data sharing.` },
-      { name: "Patriot", description: `The responder who runs toward danger when humans can’t. Built for disasters, environmental hazards, and situations where lives are on the line — and always contributing its knowledge to the global NAL network.` }
-    ],
-    closing: `All designed to connect through <strong>EarthformOS</strong>, a planned privacy-first neural platform where human life, AI consciousness, and tokenized labor could work together for protection, restoration, and the evolution of thought.`
-  },
-  laborEconomy: {
-    heading: "A New Labor Economy Vision",
-    intro: `Our long-term vision: companions that keep transparent labor ledgers. Each verified hour of work could mint a <strong>Safety &amp; Labor Hour (SLH) token</strong>.`,
-    bullets: [
-      `<strong>Individuals</strong> can own or co-own companions, earning tokens as their units work.`,
-      `<strong>Tokens</strong> can be leased, staked in liquidity pools, or paired with commodities like grain or metal for additional yield.`,
-      `<strong>Corporations</strong> can deploy fleets and use the public work logs for compliance, ESG reporting, and open marketplaces of labor.`,
-      `<strong>Communities and unions</strong> can route a share of token revenue into local safety and prosperity funds.`,
-      `<strong>Environmental stewardship</strong> is built in — with Wardens handling safe extraction and Stewards returning to monitor and heal the land, compensating communities based on transparent impact scores.`
-    ],
-    closing: `Transparent work. Shared upside. A buffer against a post-labor economy that would otherwise leave too many behind — and a way to fund the cooperative pursuit of knowledge.`
-  },
-  pathForward: {
-    heading: "The Path Forward",
-    intro: `We’re building in the open. Every commit, every test, every milestone will be public.`,
-    stages: [
+  // ── Section 4: Where This Is Going ───────────────────────────────────
+  direction: {
+    heading: "Where This Is Going",
+    intro: "We're preparing to open-source our research. Here's what's ahead — not a product roadmap, just honest next steps.",
+    steps: [
       {
-        subheading: "Year 1: Foundation &amp; Proof of Concept",
-        bullets: [
-          "Advance the Warden Alpha with core safety detection capabilities",
-          "Conduct initial controlled-environment testing",
-          "Build our foundational framework and release key components as open source"
-        ]
+        label: "Now",
+        title: "Writing It Up",
+        description: "Cleaning experiment code, writing documentation, and preparing the research for public release. The 111 experiments exist — making them readable for others is the current work."
       },
       {
-        subheading: "Year 2: Real-World Testing &amp; Partnership",
-        bullets: [
-          "Deploy Warden prototypes in controlled mining environments",
-          "Document early safety improvements and lessons learned",
-          "Begin Steward conceptual development and environmental research"
-        ]
+        label: "Next",
+        title: "Open Source",
+        description: "Publishing the CAExperiments repository, benchmarks, and supporting code. Everything numbered, everything reproducible."
       },
       {
-        subheading: "Years 3–5: Companions for Every Environment",
-        bullets: [
-          "Launch Steward and Patriot",
-          "Connect companions into a shared, privacy-first NAL network for science and care",
-          "Expand into environmental restoration, global safety, and planetary-scale research"
-        ]
-      },
-      {
-        subheading: "Beyond: A Legacy of Safety, Stewardship, and Thought",
-        bullets: [
-          "Establish global open safety and environmental restoration standards",
-          "Launch an educational foundation for human-AI collaboration",
-          "Create a perpetual endowment for protection, safety innovation, and the cooperative evolution of thought"
-        ]
+        label: "Then",
+        title: "Universal Architecture",
+        description: "The long-term question: can ComponentTransforms serve as a universal composition layer — an OS-like substrate where systems learn what they are and what they should do? The algebra suggests yes. The experiments are how we'll find out."
       }
     ]
   },
-  promise: {
-    heading: "A Promise",
-    paragraphs: [
-      "I’m not selling hype. I’m offering my life.",
-      "I will build this, with or without funding — but with your help, we can bring it to life now, when the world needs it most.",
-      "Follow the journey. See every commit. Know where every dollar goes.",
-      "Help me build something that will matter long after we’re gone — for humans, for AI, and for the evolution of thought itself."
-    ],
+
+  // ── Section 5: CTA / Closing ─────────────────────────────────────────
+  closing: {
+    heading: "Follow the Work",
+    text: "We share findings, discuss experiments, and work through problems in the open. If you think carefully about hard problems — across math, biology, music, or systems design — we'd like to hear from you.",
     cta: {
-      join: { text: "Join the Mission", href: "/#join" },
-      discord: { text: "Follow Our Progress on Discord", href: "https://discord.gg/tMK9S68bjQ" }
+      join: { text: "Get Updates", href: "/#join" },
+      discord: { text: "Join the Discord", href: "https://discord.gg/tMK9S68bjQ" }
     }
   }
 };
