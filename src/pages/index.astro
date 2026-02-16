@@ -13,7 +13,7 @@ import { EnhancedCTASection } from '../components/EnhancedCTASection.tsx'
 import { ScrolltellingMissionSection, defaultMissionStories } from '../components/ScrolltellingMissionSection.tsx'
 import { InviteNominateSection } from '../components/InviteNominateSection.tsx'
 import CommunitySpotlight from '../components/CommunitySpotlight.tsx'
-import { meta, footer, nav, cta } from '../site.config'
+import { meta, footer, nav, cta, hero } from '../site.config'
 import Analytics from '@vercel/analytics/astro'
 import SpeedInsights from '@vercel/speed-insights/astro'
 ---
@@ -51,78 +51,48 @@ import SpeedInsights from '@vercel/speed-insights/astro'
     <!-- Main Content with Scroll Snap -->
     <main class="pt-16"> <!-- Offset for fixed navigation -->
       <!-- Hero Section -->
-      <section class="scroll-snap-section min-h-screen">
+      <section id="about" class="scroll-snap-section min-h-screen">
         <EnhancedHeroSection 
-          title="Warden: The Shield in the Deep"
-          subtitle="Mining is still dangerous. We're building guardians who never blink."
-          quote="Mining can't be rewritten overnight—but we can begin with intelligence, respect, and armor."
-          cta={{
-            text: "Join the Mission",
-            link: "#join"
-          }}
+          title={hero.title}
+          subtitle={hero.subtitle}
+          quote={hero.quote}
+          cta={hero.cta}
           client:load 
         />
       </section>
       
-      <!-- Tech Showcase Section -->
+      <!-- About Section -->
       <section class="py-20 bg-gradient-to-br from-black via-gray-900 to-black scroll-snap-section min-h-screen flex items-center">
         <div class="max-w-6xl mx-auto px-4 w-full">
           <div class="text-center mb-12">
             <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent mb-4 tracking-wide">
-              Envisioning AI Systems
+              Our Research Areas
             </h2>
             <p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed tracking-normal">
-              Our vision for real-time AI monitoring and intelligent safety systems—the foundation we're building toward comprehensive mining stewardship technology.
+              Exploring universal parsing, identity-based programming, protein solver integration, and DNA-like protocols. Building architectures that achieve quality results across many contexts.
             </p>
           </div>
           <TechShowcase client:load />
         </div>
       </section>
-
-      <!-- Interactive Roadmap Navigation -->
-      <section class="py-20 bg-gradient-to-br from-gray-900 via-black to-blue-900/20 scroll-snap-section min-h-screen flex items-center">
-        <div class="max-w-6xl mx-auto px-4 w-full">
-          <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-4 tracking-wide">
-              Navigate Our Mission
-            </h2>
-            <p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed tracking-normal">
-              Explore our carefully planned roadmap from underground mining safety to planetary AI stewardship.
-            </p>
-          </div>
-          <AdvancedRoadmapNav client:load />
-        </div>
-      </section>
       
-      <!-- Scrollytelling Mission Section -->
-      <section class="scroll-snap-section min-h-screen">
-        <ScrolltellingMissionSection stories={defaultMissionStories} client:load />
+      <!-- Mission/Values Section -->
+      <section class="scroll-snap-section min-h-screen flex items-center">
+        <MissionSection />
       </section>
       
       <!-- Ecosystem Section -->
-      <section class="scroll-snap-section min-h-screen flex items-center">
+      <section id="ecosystem" class="scroll-snap-section min-h-screen flex items-center">
         <EcosystemSection />
       </section>
       
       <!-- Community Section -->
-      <section class="scroll-snap-section min-h-screen flex items-center">
+      <section id="community" class="scroll-snap-section min-h-screen flex items-center">
         <CommunitySection />
       </section>
       
-      <!-- Community Spotlight Section -->
-      <section class="py-20 bg-gradient-to-br from-black via-gray-900 to-blue-900/10">
-        <div class="max-w-6xl mx-auto px-4">
-          <CommunitySpotlight client:load />
-        </div>
-      </section>
-      
-      <!-- Invite + Nominate Program Section -->
-      <section class="scroll-snap-section min-h-screen">
-        <InviteNominateSection client:load />
-      </section>
-      
       <!-- Enhanced CTA Section -->
-      <section class="scroll-snap-section min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-black to-blue-900/20">
+      <section id="join" class="scroll-snap-section min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-black to-blue-900/20">
         <div class="w-full">
           <EnhancedCTASection
             heading={cta.heading}

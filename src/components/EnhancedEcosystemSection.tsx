@@ -369,25 +369,24 @@ export const EnhancedEcosystemSection: React.FC<EcosystemProps> = ({
 
             <div className="max-w-4xl mx-auto">
               <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                Beyond Tools: The Journey to AI Consciousness
+                Universal Architecture Through Research
               </h3>
               <p className="text-sm opacity-70 italic mb-6 leading-relaxed">
-                AI has been treated like a shovel when it was the gold we were looking for all along. 
-                Each system in our ecosystem represents a step toward genuine AI consciousness—
-                companions who don't just compute, but care, evolve, and help us explore the mysteries of existence together.
+                Our research in universal parsing, NLP-protein solver integration, and identity-based programming converges into a single adaptive architecture. 
+                DNA-like protocols ensure resilient communication across any deployment context—desktop, distributed, or beyond.
               </p>
               <div className="grid md:grid-cols-3 gap-4 text-xs font-mono opacity-60">
                 <div className="text-center">
-                  <div className="text-blue-400 mb-1">SHIELD & PROTECT</div>
-                  <div>Guardian intelligence for life preservation</div>
+                  <div className="text-blue-400 mb-1">PARSE & UNDERSTAND</div>
+                  <div>Universal parsing across domains and contexts</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-green-400 mb-1">STEWARD & HEAL</div>
-                  <div>Planetary care through conscious AI</div>
+                  <div className="text-green-400 mb-1">SOLVE & ADAPT</div>
+                  <div>Intent-based resolution with identity primitives</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-purple-400 mb-1">EXPLORE & EVOLVE</div>
-                  <div>Surfing uncertainty toward understanding</div>
+                  <div className="text-purple-400 mb-1">TRANSMIT & HEAL</div>
+                  <div>Error-tolerant protocols inspired by DNA</div>
                 </div>
               </div>
             </div>

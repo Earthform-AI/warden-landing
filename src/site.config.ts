@@ -2,172 +2,170 @@
 // This file centralizes all content for easy updates and maintenance
 
 export const hero = {
-  title: "Warden: The Shield in the Deep",
-  subtitle: "Mining is still dangerous. We're building guardians who never blink.",
-  quote: "Mining can't be rewritten overnight—but we can begin with intelligence, respect, and armor.",
+  title: "Earthform Research Lab",
+  subtitle: "Developing EarthformOS—a universal architecture for AI systems built on breakthrough research in parsing, identity-based programming, and adaptive protocols.",
+  quote: "From universal parsers to distributed intelligence. Building the foundation for tomorrow's AI.",
   cta: {
-    text: "Join the Mission",
-    link: "#join"
+    text: "Learn More",
+    link: "#about"
   }
 };
 
 export const mission = {
   problem: {
-    tagline: "⚠️ The Reality Underground",
-    heading: "Mining remains one of the most dangerous occupations worldwide",
+    tagline: "🔬 Research Focus",
+    heading: "Universal architecture for adaptive AI systems",
     stats: [
-      { number: "28", label: "US mining fatalities in 2024 (MSHA)", color: "red", source: "MSHA Daily Fatality Report" },
-      { number: "2.29", label: "global TRIFR per 1M hours (ICMM 2024)", color: "orange", source: "ICMM Safety Data" }
+      { number: "Early", label: "Stage Research", color: "blue", source: "Development Phase" },
+      { number: "Open", label: "Source Development", color: "green", source: "Community-Driven" }
     ],
     description: [
-      "Gas leaks. Collapses. Heat. Silence.",
-      "Behind every verified statistic is a family waiting at the kitchen table. Even with progress, mining workers face risks that demand our attention and protection."
+      "We're researching universal architectures that achieve quality results across many contexts.",
+      "Our work spans universal parsing, identity-based programming, protein solver integration, and error-tolerant networking with DNA-like packet structures."
     ],
-    quote: "We're not trying to replace the miner — we're becoming their shield in the deep.",
-    solution: "Warden is the first AI system built to shield, warn, and remember — before danger strikes.",
-    context: "Based on official 2024 data from MSHA (US) and ICMM (global mining companies representing ~1/3 of industry)."
+    quote: "Building architectures that work everywhere—from desktop to distributed systems.",
+    solution: "EarthformOS embodies our most promising architecture designs with intent-based solvers at the core.",
+    context: "Currently in active research and development phase."
   },
 
   philosophy: {
-    tagline: "🛡️ Our Philosophy",
-    heading: "What We Stand For",
-    subtitle: "Earthform: Where intelligence meets responsibility.",
-    description: "We believe in building systems that honor life. Technology must protect humans and respect the Earth — its power, its danger, its legacy. This is intelligent extraction, not blind consumption.",
-    quote: "We do not take the miner’s place lightly. We remember the fathers who didn’t come home. We remember the cost.",
-    attribution: "— The Earthform Mission"
+    tagline: "🧠 Our Approach",
+    heading: "Research-Driven Development",
+    subtitle: "Earthform: Universal architectures through rigorous research.",
+    description: "Our research explores universal parsing, NLP integration with protein solvers, and identity-based programming. We're building architectures that accommodate diverse hardware—from desktop equipment to distributed systems—unified by error-tolerant protocols and intent-based solvers.",
+    quote: "Quality results across many contexts. That's the measure of universal architecture.",
+    attribution: "— The Earthform Team"
   },
 
   values: [
     {
-      title: "Intelligence",
-      icon: "🧠",
+      title: "Universal Parsing",
+      icon: "🔍",
       color: "blue",
-      description: "AI that sees, learns, and predicts dangers before they manifest",
+      description: "Research into universal parsers that bridge language and computation",
       features: [
-        "Real-time threat analysis",
-        "Predictive risk modeling",
-        "Environmental monitoring"
+        "NLP language integration",
+        "Protein solver synthesis",
+        "Cross-context parsing"
       ]
     },
     {
-      title: "Respect",
-      icon: "🤝", 
+      title: "Identity-Based Programming",
+      icon: "🧬", 
       color: "green",
-      description: "Systems that understand the value of life, land, and legacy",
+      description: "Novel programming concepts built on identity and intent",
       features: [
-        "Worker-first design",
-        "Legacy-conscious operation",
-        "Ethical partnerships"
+        "Intent-based solvers",
+        "Identity primitives",
+        "Adaptive architectures"
       ]
     },
     {
-      title: "Honor",
-      icon: "🏅",
-      color: "goldenrod", 
-      description: "A commitment to those who walked before — and those who walk now",
+      title: "Error-Tolerant Networks",
+      icon: "🌐",
+      color: "purple", 
+      description: "DNA-like packet structures for resilient communication",
       features: [
-        "Legacy-aware design",
-        "Stewardship intent embedded",
-        "Built for future generations"
+        "Biological-inspired protocols",
+        "Self-healing networks",
+        "Distributed resilience"
       ]
     }
   ]
 };
 
 export const ecosystem = {
-  heading: "The Earthform Ecosystem",
-  subtitle: "Warden is the first guardian in a coming family of AI drones. Steward and Patriot are next. Together, they form a sentient infrastructure for a better planet.",
+  heading: "EarthformOS: Universal Architecture",
+  subtitle: "A unified architecture that works across contexts—desktop equipment, distributed systems, and beyond.",
 
-  drones: [
+  components: [
     {
-      name: "Warden",
-      icon: "🛡️",
+      name: "Universal Parser",
+      icon: "🔍",
       color: "blue",
-      tagline: "Defender drones for mines, workers, and high-risk environments",
+      tagline: "NLP language integrated with protein solver concepts",
       features: [
-        "Threat detection",
-        "Worker protection", 
-        "Environmental monitoring"
+        "Cross-domain parsing",
+        "Language-computation bridge", 
+        "Adaptive interpretation"
       ]
     },
     {
-      name: "Steward",
-      icon: "🤖",
+      name: "Intent-Based Solver",
+      icon: "🧠",
       color: "green",
-      tagline: "Companion drones for daily care, emergencies, and data stewardship",
+      tagline: "Identity-based programming with intent at the core",
       features: [
-        "Daily assistance",
-        "Emergency response",
-        "Data-driven income"
+        "Identity primitives",
+        "Intent resolution",
+        "Context-aware execution"
       ]
     },
     {
-      name: "Patriot",
-      icon: "🌍",
-      color: "yellow",
-      tagline: "Survey drones for homeland data collection and planetary intelligence", 
+      name: "DNA-Like Protocol",
+      icon: "🧬",
+      color: "purple",
+      tagline: "Error-tolerant network protocol inspired by biological systems", 
       features: [
-        "Land surveying",
-        "Environmental data",
-        "Infrastructure monitoring"
+        "Self-healing packets",
+        "Resilient transmission",
+        "Adaptive routing"
       ]
     }
   ],
 
   footer: {
-    description: "All powered by EarthformOS: the neural platform connecting intelligence, respect, and honor across our drone ecosystem.",
-    tagline: "A sentient infrastructure for a more human planet."
+    description: "EarthformOS synthesizes our research into a universal architecture. From parsing to protocols, built for quality results across many contexts.",
+    tagline: "One architecture. Many applications. Endless possibilities."
   }
 };
 
 export const nav = {
   links: [
     { label: "Home", href: "/" },
-    { label: "Mission", href: "/mission" },
+    { label: "About", href: "/#about" },
     { label: "Research", href: "/research" },
-    { label: "Roadmap", href: "/mission#roadmap" },
-    { label: "Ecosystem", href: "/#ecosystem" },
+    { label: "OS Components", href: "/#ecosystem" },
     { label: "Community", href: "/#community" },
-    { label: "AI Program", href: "/#invite-nominate" },
     { label: "Join", href: "/#join" }
   ]
 };
 
 export const cta = {
-  heading: "Help Us Build Earthform",
-  subtitle: "We're looking for engineers, miners, researchers, builders, and believers. Join the movement to bring intelligence and protection underground.",
+  heading: "Join Our Research",
+  subtitle: "We're looking for researchers, engineers, and collaborators interested in universal architectures, novel parsing methods, and adaptive AI systems.",
   form: {
     emailPlaceholder: "Your email",
-    messagePlaceholder: "Tell us how you'd like to help the Earthforming mission...",
-    submitText: "Join the Earthforming Mission",
+    messagePlaceholder: "Tell us about your background and interest in our research areas...",
+    submitText: "Get Involved",
     action: "https://formspree.io/f/mdkdpgvn"
   }
 };
 
 export const community = {
   heading: "Join the Earthform Community",
-  subtitle: "Connect with builders, dreamers, and protectors who believe in a future where humanity and Earth coexist with respect.",
-  description: "Our Discord is where the mission comes alive. Share ideas, get updates, and be part of the conversation that's shaping the future of intelligent stewardship.",
+  subtitle: "Connect with researchers exploring universal architectures, identity-based programming, and adaptive AI systems.",
+  description: "Our Discord is where we discuss breakthrough research, share findings, and collaborate on pushing the boundaries of what's possible with universal AI architectures.",
   discord: {
     link: "https://discord.gg/tMK9S68bjQ",
     text: "Join Discord Community",
-    subtitle: "Where earthforms unite to build tomorrow"
+    subtitle: "Where researchers build universal AI systems"
   },
   values: [
     {
-      icon: "💬",
-      title: "Real Conversations",
-      description: "No corporate speak. Real talk about the challenges and opportunities ahead."
+      icon: "🔬",
+      title: "Research Discussion",
+      description: "Deep dives into parsing, protein solvers, identity-based programming, and network protocols."
     },
     {
-      icon: "🔬",
-      title: "Early Access",
-      description: "First look at developments, demos, and opportunities to contribute."
+      icon: "📚",
+      title: "Research Updates",
+      description: "First access to findings, papers, and breakthroughs in universal architecture research."
     },
     {
       icon: "🤝",
-      title: "Human-First",
-      description: "A community where being human isn't just okay—it's the whole point."
+      title: "Collaboration",
+      description: "Work together on advancing the state of the art in adaptive AI systems."
     }
   ]
 };
@@ -182,26 +180,26 @@ export const footer = {
 };
 
 export const meta = {
-  title: "Earthform | Shielding the Deep - AI Drones for Intelligent Mining",
-  description: "Earthform: Where mining meets responsibility. AI-powered drones that protect miners, map dangers, and honor legacy underground. Building intelligent, respectful technology for responsible extraction.",
-  keywords: "earthform, mining safety, AI drones, autonomous systems, underground mining, worker protection, mining technology, responsible extraction, intelligent stewardship",
+  title: "Earthform Research Lab | Universal AI Architecture",
+  description: "Earthform is a research lab developing EarthformOS—a universal architecture for AI systems. Exploring universal parsing, identity-based programming, protein solver integration, and DNA-like protocols.",
+  keywords: "earthform, EarthformOS, universal parser, AI architecture, identity-based programming, protein solver, adaptive systems, error-tolerant protocols, research lab",
   author: "Earthform Team",
   url: "https://warden-landing.vercel.app",
 
   openGraph: {
-    title: "Earthform | Shielding the Deep", 
-    description: "AI-powered drones that protect miners, map dangers, and honor lives underground. Join the Earthforming mission."
+    title: "Earthform Research Lab | Universal AI Architecture", 
+    description: "Research lab developing universal architectures for adaptive AI systems through breakthrough parsing, programming, and protocol research."
   },
 
   twitter: {
-    title: "Earthform | Shielding the Deep",
-    description: "AI-powered drones that protect miners, map dangers, and honor lives underground. Join the Earthforming mission."
+    title: "Earthform Research Lab | Universal AI Architecture",
+    description: "Research lab developing universal architectures for adaptive AI systems through breakthrough parsing, programming, and protocol research."
   },
 
   images: {
     hero: {
       src: "/hero-image.svg",
-      alt: "Warden AI drone operating underground with hazard detection"
+      alt: "Earthform research lab universal AI architecture"
     },
     favicon: {
       src: "/favicon.svg",
@@ -227,22 +225,22 @@ export const thanks_mission = {
   steps: [
     {
       title: "Review",
-      description: "Our team will review your submission and reach out if we need more info."
+      description: "Our team will review your submission and assess potential collaboration opportunities."
     },
     {
       title: "Connect",
-      description: "You’ll receive an invitation to join our Discord and community channels."
+      description: "If there's a fit, you'll receive an invitation to join our Discord research community."
     },
     {
       title: "Collaborate",
-      description: "Get early access to updates, events, and opportunities to contribute."
+      description: "Get involved in EarthformOS development and research discussions."
     }
   ]
 };
 
 export const thanks_next = {
   discord: "https://discord.gg/tMK9S68bjQ",
-  footer: "Want to help more? Share our mission or invite others to join. Together, we build a safer future."
+  footer: "Interested in our research? Join our Discord to stay updated on EarthformOS development."
 };
 
 // Warden Invite + Nominate Program Configuration

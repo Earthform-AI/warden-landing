@@ -141,13 +141,13 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   <div className="text-center group">
-                    <div className="relative p-4 rounded-xl bg-red-900/20 hover:bg-red-900/30 transition-all duration-300">
-                      <div className="text-3xl font-bold text-red-400">
-                        <AnimatedCounter end={28} duration={2} />
+                    <div className="relative p-4 rounded-xl bg-blue-900/20 hover:bg-blue-900/30 transition-all duration-300">
+                      <div className="text-3xl font-bold text-blue-400">
+                        <span>Alpha</span>
                       </div>
-                      <div className="text-sm text-gray-300">US mining fatalities 2024</div>
-                      <div className="text-xs text-gray-400">MSHA verified</div>
-                      <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-red-500/20 to-red-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                      <div className="text-sm text-gray-300">Development Phase</div>
+                      <div className="text-xs text-gray-400">Active research</div>
+                      <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500/20 to-blue-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
                     </div>
                   </div>
                 </motion.div>
@@ -160,13 +160,13 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
                   <div className="text-center group">
-                    <div className="relative p-4 rounded-xl bg-orange-900/20 hover:bg-orange-900/30 transition-all duration-300">
-                      <div className="text-3xl font-bold text-orange-400">
-                        <AnimatedCounter end={2.29} duration={2} precision={2} />
+                    <div className="relative p-4 rounded-xl bg-green-900/20 hover:bg-green-900/30 transition-all duration-300">
+                      <div className="text-3xl font-bold text-green-400">
+                        <span>Open</span>
                       </div>
-                      <div className="text-sm text-gray-300">ICMM TRIFR per 1M hours</div>
-                      <div className="text-xs text-gray-400">Global industry data</div>
-                      <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-orange-500/20 to-orange-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                      <div className="text-sm text-gray-300">Source Development</div>
+                      <div className="text-xs text-gray-400">Community-driven</div>
+                      <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-green-500/20 to-green-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
                     </div>
                   </div>
                 </motion.div>
@@ -179,20 +179,20 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   <div className="text-center group">
-                    <div className="relative p-4 rounded-xl bg-green-900/20 hover:bg-green-900/30 transition-all duration-300">
-                      <div className="text-3xl font-bold text-green-400">
-                        <AnimatedCounter end={24} duration={2} suffix="/7" />
+                    <div className="relative p-4 rounded-xl bg-purple-900/20 hover:bg-purple-900/30 transition-all duration-300">
+                      <div className="text-3xl font-bold text-purple-400">
+                        <span>Future</span>
                       </div>
-                      <div className="text-sm text-gray-300">AI Monitoring</div>
-                      <div className="text-xs text-gray-400">Continuous protection</div>
-                      <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-green-500/20 to-green-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                      <div className="text-sm text-gray-300">Foundation First</div>
+                      <div className="text-xs text-gray-400">Building the platform</div>
+                      <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-purple-500/20 to-purple-600/20 blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
                     </div>
                   </div>
                 </motion.div>
               </div>
             </AnimatedSection>
 
-            {/* Data transparency note */}
+            {/* Research transparency note */}
             <AnimatedSection direction="up" delay={0.8}>
               <div className="flex justify-center mb-8">
                 <motion.div 
@@ -202,8 +202,8 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                   className="bg-blue-900/20 border border-blue-700/30 rounded-lg px-4 py-2"
                 >
                   <a href="/research" className="text-xs text-blue-300 hover:text-blue-200 transition-colors flex items-center gap-2">
-                    <span>📊</span>
-                    <span>All statistics verified from official sources</span>
+                    <span>🔬</span>
+                    <span>Learn about our research approach</span>
                     <span>→</span>
                   </a>
                 </motion.div>
@@ -248,7 +248,7 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                     transition={{ duration: 2, repeat: Infinity }}
                     className="w-2 h-2 bg-green-500 rounded-full"
                   />
-                  <span className="text-gray-300 tracking-wider">WARDEN.SYS.ONLINE</span>
+                  <span className="text-gray-300 tracking-wider">EARTHFORMOS.RESEARCH</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <motion.div
@@ -256,7 +256,7 @@ export const EnhancedHeroSection: React.FC<HeroProps> = ({ title, subtitle, quot
                     transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                     className="w-2 h-2 bg-blue-500 rounded-full"
                   />
-                  <span className="text-gray-300 tracking-wider">AI.SHIELD.ACTIVE</span>
+                  <span className="text-gray-300 tracking-wider">DEV.ACTIVE</span>
                 </div>
               </div>
             </AnimatedSection>

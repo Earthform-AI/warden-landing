@@ -52,12 +52,12 @@ export const TechShowcase: React.FC = () => {
   ];
 
   const codeSnippets = [
-    "initializing neural_assembly_logic...",
-    "scanning test_environment...",
-    "threat_detection: IN DEVELOPMENT",
-    "miner_safety_protocols: ALPHA TESTING",
-    "ai_companion_status: PROTOTYPE",
-    "earthform_os: IN DEVELOPMENT"
+    "loading universal_parser_core...",
+    "initializing identity_resolver...",
+    "intent_based_solver: IN DEVELOPMENT",
+    "protein_nlp_bridge: RESEARCH PHASE",
+    "dna_protocol_stack: ALPHA TESTING",
+    "adaptive_architecture: ACTIVE"
   ];
 
   const [currentCodeIndex, setCurrentCodeIndex] = useState(0);
@@ -252,10 +252,10 @@ export const TechShowcase: React.FC = () => {
                   'bg-yellow-500'
                 }`} />
                 <div className="text-xs text-gray-500 font-mono">
-                  {index === 0 ? 'WARDEN' :
-                   index === 1 ? 'STEWARD' :
-                   index === 2 ? 'PATRIOT' :
-                   'NEURAL'}
+                  {index === 0 ? 'PARSER' :
+                   index === 1 ? 'SOLVER' :
+                   index === 2 ? 'PROTOCOL' :
+                   'ARCH'}
                 </div>
               </motion.div>
             ))}
