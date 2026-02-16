@@ -64,7 +64,7 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
               transition={{ duration: 2, repeat: Infinity }}
               className="text-xs font-mono mt-1 text-cyan-400"
             >
-              ◦ NEURAL ONLINE
+              ◦ RESEARCH LAB
             </motion.div>
           </motion.div>
 
@@ -107,74 +107,22 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
               </motion.a>
             ))}
 
-            {/* System Status Display */}
+            {/* Research status indicator */}
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.0, type: "spring" }}
-              className="flex items-center space-x-3 px-4 py-2 rounded-xl border bg-gray-900/50 border-gray-700/50 backdrop-blur-sm"
+              className="flex items-center space-x-2 px-3 py-1.5 rounded-lg border bg-gray-900/50 border-gray-700/50 backdrop-blur-sm"
             >
-              {/* System Status Dots */}
-              <div className="flex space-x-1.5">
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.4, 1],
-                    opacity: [0.6, 1, 0.6]
-                  }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
-                  className="w-2 h-2 bg-green-500 rounded-full"
-                />
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.4, 1],
-                    opacity: [0.6, 1, 0.6]
-                  }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
-                  className="w-2 h-2 bg-blue-500 rounded-full"
-                />
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.4, 1],
-                    opacity: [0.6, 1, 0.6]
-                  }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
-                  className="w-2 h-2 bg-purple-500 rounded-full"
-                />
-              </div>
-              
-              {/* Status Text */}
               <motion.div
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-xs font-mono font-semibold text-green-400"
-              >
-                <div className="flex items-center space-x-2">
-                  <span>SYSTEM</span>
-                  <motion.span
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                  >
-                    •
-                  </motion.span>
-                  <span>ONLINE</span>
-                </div>
-              </motion.div>
-
-              {/* CPU-style indicator */}
-              <motion.div
-                className="flex items-center space-x-1"
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <div className="text-xs font-mono text-gray-400">
-                  <motion.div
-                    animate={{ width: ['40%', '80%', '60%', '90%', '55%'] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                    className="h-1 rounded bg-blue-400"
-                    style={{ width: '20px' }}
-                  />
-                </div>
-              </motion.div>
+                animate={{ 
+                  scale: [1, 1.4, 1],
+                  opacity: [0.6, 1, 0.6]
+                }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="w-2 h-2 bg-green-500 rounded-full"
+              />
+              <span className="text-xs font-mono text-gray-400">3 papers</span>
             </motion.div>
           </div>
 
