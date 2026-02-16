@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Earthform Logo Concepts</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #000 0%, #0f172a 30%, #1e293b 70%, #000 100%);
+      color: #e2e8f0;
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #60a5fa, #22d3ee, #4ade80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-bottom: 2.5rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(71, 85, 105, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .card h2 {
+      font-size: 1rem;
+      color: #e2e8f0;
+      margin-bottom: 0.25rem;
+    }
+    .card .desc {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    .previews {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .preview-box {
+      text-align: center;
+    }
+    .preview-box .label {
+      font-size: 0.65rem;
+      color: #64748b;
+      margin-bottom: 4px;
+      font-family: monospace;
+    }
+    .preview-box img {
+      display: block;
+    }
+
+    /* Navbar mockup */
+    .nav-mock {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(0, 0, 0, 1);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .nav-mock img {
+      width: 32px;
+      height: 32px;
+    }
+    .nav-mock .brand {
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-mock .brand-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #60a5fa, #22d3ee, #4ade80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-mock .brand-sub {
+      font-size: 0.55rem;
+      font-family: monospace;
+      color: #22d3ee;
+      opacity: 0.7;
+    }
+    .nav-mock .links {
+      display: flex;
+      gap: 1rem;
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+
+    /* Favicon mock */
+    .favicon-mock {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 4px 8px;
+      margin-top: 0.5rem;
+    }
+    .favicon-mock img {
+      width: 16px;
+      height: 16px;
+    }
+    .favicon-mock .tab-title {
+      font-size: 0.65rem;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Earthform Research Lab — Logo Concepts</h1>
+  <p class="subtitle">5 concepts rooted in the spectral protein analysis research identity</p>
+
+  <div class="grid">
+
+    <!-- Concept 1 -->
+    <div class="card">
+      <h2>1. Fiedler Partition</h2>
+      <p class="desc">A contact network split by the Fiedler vector into two domains. Blue = positive, green = negative eigenvector components. Cyan edges mark the domain boundary. Directly represents the core IBP-ENM technique.</p>
+      <div class="previews">
+        <div class="preview-box">
+          <div class="label">48×48</div>
+          <img src="/logo/concept-1-fiedler.svg" width="48" height="48">
+        </div>
+        <div class="preview-box">
+          <div class="label">32×32</div>
+          <img src="/logo/concept-1-fiedler.svg" width="32" height="32">
+        </div>
+        <div class="preview-box">
+          <div class="label">16×16</div>
+          <img src="/logo/concept-1-fiedler.svg" width="16" height="16">
+        </div>
+        <div class="preview-box">
+          <div class="label">96×96</div>
+          <img src="/logo/concept-1-fiedler.svg" width="96" height="96">
+        </div>
+      </div>
+      <div class="nav-mock">
+        <img src="/logo/concept-1-fiedler.svg">
+        <div class="brand">
+          <span class="brand-name">Earthform</span>
+          <span class="brand-sub">◦ RESEARCH LAB</span>
+        </div>
+        <div class="links">Home &nbsp; Papers &nbsp; Research</div>
+      </div>
+      <div class="favicon-mock">
+        <img src="/logo/concept-1-fiedler.svg">
+        <span class="tab-title">Earthform Research Lab</span>
+      </div>
+    </div>
+
+    <!-- Concept 2 -->
+    <div class="card">
+      <h2>2. Spectral Band</h2>
+      <p class="desc">Seven concentric arcs = the 7 spectral instruments, converging to a central identity point. Eigenvalue spectrum lines above. Represents the thermodynamic band and multi-instrument convergence.</p>
+      <div class="previews">
+        <div class="preview-box">
+          <div class="label">48×48</div>
+          <img src="/logo/concept-2-spectral-band.svg" width="48" height="48">
+        </div>
+        <div class="preview-box">
+          <div class="label">32×32</div>
+          <img src="/logo/concept-2-spectral-band.svg" width="32" height="32">
+        </div>
+        <div class="preview-box">
+          <div class="label">16×16</div>
+          <img src="/logo/concept-2-spectral-band.svg" width="16" height="16">
+        </div>
+        <div class="preview-box">
+          <div class="label">96×96</div>
+          <img src="/logo/concept-2-spectral-band.svg" width="96" height="96">
+        </div>
+      </div>
+      <div class="nav-mock">
+        <img src="/logo/concept-2-spectral-band.svg">
+        <div class="brand">
+          <span class="brand-name">Earthform</span>
+          <span class="brand-sub">◦ RESEARCH LAB</span>
+        </div>
+        <div class="links">Home &nbsp; Papers &nbsp; Research</div>
+      </div>
+      <div class="favicon-mock">
+        <img src="/logo/concept-2-spectral-band.svg">
+        <span class="tab-title">Earthform Research Lab</span>
+      </div>
+    </div>
+
+    <!-- Concept 3 -->
+    <div class="card">
+      <h2>3. Eigenvalue "E"</h2>
+      <p class="desc">Eigenvalue spectrum bars (λ₁ ≤ λ₂ ≤ ...) ascending like a staircase, overlaid with an abstract "E" for Earthform. The Fiedler gap between λ₁ and λ₂ is highlighted. Dual-read: spectrum + letterform.</p>
+      <div class="previews">
+        <div class="preview-box">
+          <div class="label">48×48</div>
+          <img src="/logo/concept-3-eigenvalue-E.svg" width="48" height="48">
+        </div>
+        <div class="preview-box">
+          <div class="label">32×32</div>
+          <img src="/logo/concept-3-eigenvalue-E.svg" width="32" height="32">
+        </div>
+        <div class="preview-box">
+          <div class="label">16×16</div>
+          <img src="/logo/concept-3-eigenvalue-E.svg" width="16" height="16">
+        </div>
+        <div class="preview-box">
+          <div class="label">96×96</div>
+          <img src="/logo/concept-3-eigenvalue-E.svg" width="96" height="96">
+        </div>
+      </div>
+      <div class="nav-mock">
+        <img src="/logo/concept-3-eigenvalue-E.svg">
+        <div class="brand">
+          <span class="brand-name">Earthform</span>
+          <span class="brand-sub">◦ RESEARCH LAB</span>
+        </div>
+        <div class="links">Home &nbsp; Papers &nbsp; Research</div>
+      </div>
+      <div class="favicon-mock">
+        <img src="/logo/concept-3-eigenvalue-E.svg">
+        <span class="tab-title">Earthform Research Lab</span>
+      </div>
+    </div>
+
+    <!-- Concept 4 -->
+    <div class="card">
+      <h2>4. Perturbation Ring</h2>
+      <p class="desc">A circular contact network (12 nodes = 12 benchmark proteins) with one edge "cut" — the perturbation ripples outward as cyan rings. The IBP philosophy: "the cutting protocol identifies the protein."</p>
+      <div class="previews">
+        <div class="preview-box">
+          <div class="label">48×48</div>
+          <img src="/logo/concept-4-perturbation-ring.svg" width="48" height="48">
+        </div>
+        <div class="preview-box">
+          <div class="label">32×32</div>
+          <img src="/logo/concept-4-perturbation-ring.svg" width="32" height="32">
+        </div>
+        <div class="preview-box">
+          <div class="label">16×16</div>
+          <img src="/logo/concept-4-perturbation-ring.svg" width="16" height="16">
+        </div>
+        <div class="preview-box">
+          <div class="label">96×96</div>
+          <img src="/logo/concept-4-perturbation-ring.svg" width="96" height="96">
+        </div>
+      </div>
+      <div class="nav-mock">
+        <img src="/logo/concept-4-perturbation-ring.svg">
+        <div class="brand">
+          <span class="brand-name">Earthform</span>
+          <span class="brand-sub">◦ RESEARCH LAB</span>
+        </div>
+        <div class="links">Home &nbsp; Papers &nbsp; Research</div>
+      </div>
+      <div class="favicon-mock">
+        <img src="/logo/concept-4-perturbation-ring.svg">
+        <span class="tab-title">Earthform Research Lab</span>
+      </div>
+    </div>
+
+    <!-- Concept 5 -->
+    <div class="card">
+      <h2>5. Hinge Lens</h2>
+      <p class="desc">Two protein domain lobes (blue + green) connected at a glowing cyan hinge point — the R_hinge observable. Mode arrows show bending motion. Represents the D111 breakthrough discovery. Clean, biological, instantly recognisable.</p>
+      <div class="previews">
+        <div class="preview-box">
+          <div class="label">48×48</div>
+          <img src="/logo/concept-5-hinge-lens.svg" width="48" height="48">
+        </div>
+        <div class="preview-box">
+          <div class="label">32×32</div>
+          <img src="/logo/concept-5-hinge-lens.svg" width="32" height="32">
+        </div>
+        <div class="preview-box">
+          <div class="label">16×16</div>
+          <img src="/logo/concept-5-hinge-lens.svg" width="16" height="16">
+        </div>
+        <div class="preview-box">
+          <div class="label">96×96</div>
+          <img src="/logo/concept-5-hinge-lens.svg" width="96" height="96">
+        </div>
+      </div>
+      <div class="nav-mock">
+        <img src="/logo/concept-5-hinge-lens.svg">
+        <div class="brand">
+          <span class="brand-name">Earthform</span>
+          <span class="brand-sub">◦ RESEARCH LAB</span>
+        </div>
+        <div class="links">Home &nbsp; Papers &nbsp; Research</div>
+      </div>
+      <div class="favicon-mock">
+        <img src="/logo/concept-5-hinge-lens.svg">
+        <span class="tab-title">Earthform Research Lab</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

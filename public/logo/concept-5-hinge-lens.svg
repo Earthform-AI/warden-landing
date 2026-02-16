@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!--
+    Concept 5: Hinge Lens
+    Two protein-like domain lobes connected at a hinge point.
+    The hinge glows cyan — the R_hinge observable that was
+    the key discovery of D111. Mode displacement arrows show
+    the bending motion. Clean, minimal, instantly recognisable.
+    Represents: hinge detection, domain boundary, the core insight.
+  -->
+  <defs>
+    <linearGradient id="hl-blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="hl-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+    <radialGradient id="hl-hinge-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#22d3ee" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Left domain (blue) — elliptical lobe -->
+  <ellipse cx="16" cy="22" rx="11" ry="14" fill="none" stroke="url(#hl-blue)" stroke-width="1.8" opacity="0.7"/>
+  <!-- Internal structure — a few nodes + edges -->
+  <circle cx="10" cy="18" r="2" fill="#60a5fa" opacity="0.6"/>
+  <circle cx="14" cy="28" r="2" fill="#60a5fa" opacity="0.6"/>
+  <circle cx="18" cy="14" r="1.8" fill="#60a5fa" opacity="0.5"/>
+  <circle cx="11" cy="25" r="1.5" fill="#60a5fa" opacity="0.4"/>
+  <line x1="10" y1="18" x2="14" y2="28" stroke="#60a5fa" stroke-width="0.6" opacity="0.3"/>
+  <line x1="10" y1="18" x2="18" y2="14" stroke="#60a5fa" stroke-width="0.6" opacity="0.3"/>
+  <line x1="14" y1="28" x2="11" y2="25" stroke="#60a5fa" stroke-width="0.6" opacity="0.3"/>
+
+  <!-- Right domain (green) — elliptical lobe -->
+  <ellipse cx="32" cy="26" rx="11" ry="14" fill="none" stroke="url(#hl-green)" stroke-width="1.8" opacity="0.7"/>
+  <!-- Internal structure -->
+  <circle cx="36" cy="22" r="2" fill="#4ade80" opacity="0.6"/>
+  <circle cx="30" cy="32" r="2" fill="#4ade80" opacity="0.6"/>
+  <circle cx="38" cy="30" r="1.8" fill="#4ade80" opacity="0.5"/>
+  <circle cx="34" cy="18" r="1.5" fill="#4ade80" opacity="0.4"/>
+  <line x1="36" y1="22" x2="30" y2="32" stroke="#4ade80" stroke-width="0.6" opacity="0.3"/>
+  <line x1="36" y1="22" x2="38" y2="30" stroke="#4ade80" stroke-width="0.6" opacity="0.3"/>
+  <line x1="30" y1="32" x2="34" y2="18" stroke="#4ade80" stroke-width="0.6" opacity="0.3"/>
+
+  <!-- THE HINGE — where the domains meet -->
+  <!-- Glow -->
+  <circle cx="24" cy="24" r="8" fill="url(#hl-hinge-glow)"/>
+  <!-- Hinge point -->
+  <circle cx="24" cy="24" r="3.5" fill="none" stroke="#22d3ee" stroke-width="2" opacity="0.9"/>
+  <circle cx="24" cy="24" r="1.5" fill="#22d3ee" opacity="0.9"/>
+
+  <!-- Mode arrows — bending motion around hinge -->
+  <!-- Left domain moves up -->
+  <path d="M 10 11 C 8 8 12 6 14 8" stroke="#60a5fa" stroke-width="1" fill="none" opacity="0.5"
+        marker-end="url(#arrowBlue)"/>
+  <!-- Right domain moves down -->
+  <path d="M 38 37 C 40 40 36 42 34 40" stroke="#4ade80" stroke-width="1" fill="none" opacity="0.5"
+        marker-end="url(#arrowGreen)"/>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <path d="M 0 0 L 6 2 L 0 4 Z" fill="#60a5fa" opacity="0.6"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <path d="M 0 0 L 6 2 L 0 4 Z" fill="#4ade80" opacity="0.6"/>
+    </marker>
+  </defs>
+</svg>

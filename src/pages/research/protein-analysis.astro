@@ -36,12 +36,20 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 
         <!-- Header -->
         <header class="mb-16">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-900/40 rounded-full text-green-300 text-sm font-medium mb-6">
-            🧬 Experiments D77 – D111
+          <div class="flex items-start gap-5 mb-6">
+            <div class="flex gap-3 flex-shrink-0 mt-1">
+              <img src="/logo/concept-1-fiedler.svg" alt="Fiedler Partition" width="48" height="48" class="opacity-80" />
+              <img src="/logo/concept-5-hinge-lens.svg" alt="Hinge Lens" width="48" height="48" class="opacity-80" />
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-900/40 rounded-full text-green-300 text-sm font-medium mb-4">
+                🧬 Experiments D77 – D111
+              </div>
+              <h1 class="text-3xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-green-200 to-emerald-200 bg-clip-text text-transparent">
+                Spectral Protein Structure Analysis
+              </h1>
+            </div>
           </div>
-          <h1 class="text-3xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-green-200 to-emerald-200 bg-clip-text text-transparent">
-            Spectral Protein Structure Analysis
-          </h1>
           <p class="text-xl text-gray-300 leading-relaxed">
             IBP-ENM: a single spectral decomposition of the protein contact network
             simultaneously yields domain boundaries, hinge locations, and per-residue
@@ -319,7 +327,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
           <h2 class="text-xl font-bold text-gray-200 mb-4">Connections to Other Threads</h2>
           <div class="grid sm:grid-cols-3 gap-4">
             <a href="/research/composable-algebra" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
-              <span class="text-2xl mb-2 block">🔢</span>
+              <img src="/logo/concept-3-eigenvalue-E.svg" alt="" width="32" height="32" class="mb-2 opacity-70" />
               <p class="text-sm text-blue-300 font-medium">Composable Algebra</p>
               <p class="text-xs text-gray-400">The 8-layer architecture that the 7 Fano-mapped instruments emerge from</p>
             </a>
@@ -329,7 +337,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
               <p class="text-xs text-gray-400">D109's "Musical" instrument was named for D38's semantic Fano labels</p>
             </a>
             <a href="/research/algebraic-repair" class="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors border border-gray-700/30">
-              <span class="text-2xl mb-2 block">🎬</span>
+              <img src="/logo/concept-4-perturbation-ring.svg" alt="" width="32" height="32" class="mb-2 opacity-70" />
               <p class="text-sm text-yellow-300 font-medium">Algebraic Repair</p>
               <p class="text-xs text-gray-400">Spectral surgery and repair both search for structure-preserving transforms — one on protein graphs, the other on video frames</p>
             </a>

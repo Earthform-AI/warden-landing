@@ -11,7 +11,8 @@ const recentHighlights = highlights.slice(0, 5); // show top 5
 const threads = [
   {
     slug: 'composable-algebra',
-    icon: '🔢',
+    icon: '',
+    iconSvg: '/logo/concept-3-eigenvalue-E.svg',
     color: 'blue',
     title: 'Composable Non-Associative Algebra',
     subtitle: 'Making octonions composable through decision-boundary transforms',
@@ -22,7 +23,8 @@ const threads = [
   },
   {
     slug: 'protein-analysis',
-    icon: '🧬',
+    icon: '',
+    iconSvg: '/logo/concept-1-fiedler.svg',
     color: 'green',
     title: 'Spectral Protein Structure Analysis',
     subtitle: 'Unsupervised protein decomposition via graph Laplacian spectroscopy',
@@ -44,7 +46,8 @@ const threads = [
   },
   {
     slug: 'algebraic-repair',
-    icon: '🎬',
+    icon: '',
+    iconSvg: '/logo/concept-4-perturbation-ring.svg',
     color: 'yellow',
     title: 'Algebraic Video Repair',
     subtitle: 'Corruption = misapplied automorphism → repair = inverse group search',
@@ -120,7 +123,10 @@ const threads = [
               <div class={`relative bg-gray-900/60 rounded-2xl p-8 border border-gray-700/50 hover:border-${thread.color}-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] h-full`}>
                 <!-- Icon & Title -->
                 <div class="flex items-start gap-4 mb-4">
-                  <span class="text-4xl">{thread.icon}</span>
+                  {thread.iconSvg
+                    ? <img src={thread.iconSvg} alt="" width="40" height="40" class="flex-shrink-0 mt-1" />
+                    : <span class="text-4xl">{thread.icon}</span>
+                  }
                   <div>
                     <h3 class={`text-xl font-bold text-${thread.color}-300 group-hover:text-${thread.color}-200 transition-colors mb-1`}>
                       {thread.title}
