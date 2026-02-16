@@ -4,7 +4,7 @@
 export const hero = {
   title: "Earthform Research Lab",
   subtitle: "We study non-associative algebra, spectral protein analysis, and Fano-structured protocols. Our goal is universal architectures — systems that learn what hardware they're in and what they should do, starting from a soft identity.",
-  quote: "111 experiments. 4 research threads. Real benchmarks, real math, no black boxes.",
+  quote: "91 experiments. 4 research threads. Real benchmarks, real math, no black boxes.",
   cta: {
     text: "Read Our Research",
     link: "/research"
@@ -72,6 +72,7 @@ export const nav = {
   links: [
     { label: "Home", href: "/" },
     { label: "Research", href: "/research" },
+    { label: "Papers", href: "/papers" },
     { label: "About", href: "/mission" },
     { label: "Contact", href: "/#join" }
   ]
@@ -127,19 +128,19 @@ export const footer = {
 
 export const meta = {
   title: "Earthform Research Lab",
-  description: "Research lab exploring non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 111+ experiments, real benchmarks, open research.",
+  description: "Research lab exploring non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments, real benchmarks, open research.",
   keywords: "earthform, octonion algebra, Fano plane, PSL(2,7), spectral protein analysis, IBP-ENM, composable algebra, algebraic error correction, ChordSpeak, research lab",
   author: "Earthform Research Lab",
   url: "https://warden-landing.vercel.app",
 
   openGraph: {
     title: "Earthform Research Lab",
-    description: "Non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 111+ experiments with real benchmarks."
+    description: "Non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments with real benchmarks."
   },
 
   twitter: {
     title: "Earthform Research Lab",
-    description: "Non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 111+ experiments with real benchmarks."
+    description: "Non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments with real benchmarks."
   },
 
   images: {

@@ -12,16 +12,16 @@ const { origin, method, findings, direction, closing } = missionCopy;
   <head>
     <meta charset="utf-8" />
     <title>About | Earthform Research Lab</title>
-    <meta name="description" content="How Earthform started, how we work, and what we've found — 111 experiments across non-associative algebra, protein analysis, music theory, and algebraic repair." />
+    <meta name="description" content="Research overview: non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. Methodology, results, and current direction." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="About | Earthform Research Lab" />
-    <meta property="og:description" content="How Earthform started, how we work, and what we've found." />
+    <meta property="og:description" content="Research overview: methodology, results, and current direction." />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="About | Earthform Research Lab" />
-    <meta property="twitter:description" content="How Earthform started, how we work, and what we've found." />
+    <meta property="twitter:description" content="Research overview: methodology, results, and current direction." />
     <meta name="keywords" content="earthform, research lab, non-associative algebra, octonions, fano plane, protein analysis, composable architecture" />
     <meta name="author" content={meta.author} />
     <link rel="canonical" href={meta.url + "/mission"} />
@@ -32,7 +32,7 @@ const { origin, method, findings, direction, closing } = missionCopy;
     <main class="pt-20">
 
       <!-- ═══════════════════════════════════════════ -->
-      <!-- SECTION 1: ORIGIN STORY                     -->
+      <!-- SECTION 1: WHAT WE STUDY                    -->
       <!-- ═══════════════════════════════════════════ -->
       <section class="py-24 relative">
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
@@ -42,24 +42,17 @@ const { origin, method, findings, direction, closing } = missionCopy;
             {missionCopy.title}
           </h1>
 
+          <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">{origin.heading}</h2>
+
           <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
             {origin.paragraphs.map((p: string) => (
               <p>{p}</p>
             ))}
           </div>
 
-          <!-- Father's quote -->
-          <blockquote class="my-12 border-l-4 border-blue-500/60 pl-6 py-4">
-            <p class="text-2xl md:text-3xl font-light italic text-blue-200 leading-relaxed">
-              &ldquo;{origin.quote}&rdquo;
-            </p>
-          </blockquote>
-
-          <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
-            {origin.afterQuote.map((p: string, i: number) => (
-              <p class={i === origin.afterQuote.length - 1 ? "text-blue-200 font-medium" : ""}>
-                {p}
-              </p>
+          <div class="space-y-6 text-lg text-gray-300 leading-relaxed mt-6">
+            {origin.afterQuote.map((p: string) => (
+              <p>{p}</p>
             ))}
           </div>
         </div>
@@ -86,16 +79,11 @@ const { origin, method, findings, direction, closing } = missionCopy;
               </div>
             ))}
           </div>
-
-          <blockquote class="border-l-4 border-green-500/60 pl-6 py-2">
-            <p class="text-lg italic text-green-200">&ldquo;{method.quote}&rdquo;</p>
-            <p class="text-sm text-gray-500 mt-2">{method.attribution}</p>
-          </blockquote>
         </div>
       </section>
 
       <!-- ═══════════════════════════════════════════ -->
-      <!-- SECTION 3: WHAT WE'VE FOUND                 -->
+      <!-- SECTION 3: RESULTS                          -->
       <!-- ═══════════════════════════════════════════ -->
       <section class="py-24">
         <div class="max-w-4xl mx-auto px-4">

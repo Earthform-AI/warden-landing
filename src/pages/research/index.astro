@@ -1,8 +1,12 @@
 ---
 import { meta, footer, nav } from '../../site.config';
+import { papers } from '../../papers.config';
+import { highlights } from '../../experiments.config';
 import { TechNavigation } from '../../components/TechNavigation.tsx';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+
+const recentHighlights = highlights.slice(0, 5); // show top 5
 
 const threads = [
   {
@@ -56,13 +60,13 @@ const threads = [
   <head>
     <meta charset="utf-8" />
     <title>Research | Earthform Research Lab</title>
-    <meta name="description" content="Four research threads exploring composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 111+ experiments with real benchmarks." />
+    <meta name="description" content="Four research threads exploring composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments with real benchmarks." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Research | Earthform Research Lab" />
-    <meta property="og:description" content="Four research threads: composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction." />
+    <meta property="og:description" content="Four research threads: composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments." />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Research | Earthform Research Lab" />
     <meta name="keywords" content="octonion algebra, Fano plane, protein spectral analysis, IBP-ENM, ChordSpeak, algebraic repair, PSL(2,7)" />
@@ -77,7 +81,7 @@ const threads = [
         <!-- Header -->
         <div class="text-center mb-20">
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/40 rounded-full text-blue-300 text-sm font-medium mb-6">
-            🔬 111+ Experiments
+            🔬 91 Experiments
           </div>
           <h1 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent">
             Research
@@ -184,6 +188,74 @@ const threads = [
           </div>
         </section>
 
+        <!-- Recent Experiment Highlights -->
+        <section class="max-w-4xl mx-auto mb-16">
+          <div class="flex items-baseline justify-between mb-8">
+            <h2 class="text-2xl font-bold text-gray-200">Recent Experiments</h2>
+            <span class="text-sm text-gray-500">{highlights.length} highlighted</span>
+          </div>
+          <div class="space-y-4">
+            {recentHighlights.map((exp) => (
+              <div class="bg-gray-900/60 rounded-xl p-5 border border-gray-700/50">
+                <div class="flex items-start gap-4">
+                  <div class="shrink-0">
+                    <span class={`inline-block text-xs font-mono font-bold px-2 py-1 rounded bg-${exp.threadColor}-900/30 text-${exp.threadColor}-300 border border-${exp.threadColor}-800/40`}>
+                      {exp.id}
+                    </span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                      <h3 class="font-bold text-white text-sm">{exp.title}</h3>
+                      <span class={`text-xs px-2 py-0.5 rounded-full ${
+                        exp.status === 'confirmed' ? 'bg-green-900/30 text-green-400' :
+                        exp.status === 'promising' ? 'bg-yellow-900/30 text-yellow-400' :
+                        exp.status === 'negative' ? 'bg-red-900/30 text-red-400' :
+                        'bg-blue-900/30 text-blue-400'
+                      }`}>{exp.status}</span>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-2">{exp.summary}</p>
+                    {exp.keyResult && (
+                      <p class="text-xs text-green-300/80 font-medium">{exp.keyResult}</p>
+                    )}
+                  </div>
+                  <span class="text-xs text-gray-600 shrink-0">{exp.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Papers -->
+        {papers.length > 0 && (
+          <section class="max-w-4xl mx-auto mb-16">
+            <div class="flex items-baseline justify-between mb-8">
+              <h2 class="text-2xl font-bold text-gray-200">Papers</h2>
+              <a href="/papers" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">View all →</a>
+            </div>
+            <div class="space-y-4">
+              {papers.map((paper) => (
+                <a href="/papers" class="group block">
+                  <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50 hover:border-gray-600/80 transition-all duration-300">
+                    <div class="flex items-start justify-between gap-4">
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-2">
+                          <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-900/30 border border-blue-800/40 text-blue-300">
+                            {paper.status}
+                          </span>
+                          <span class="text-xs text-gray-500">{paper.date}</span>
+                        </div>
+                        <h3 class="font-bold text-white group-hover:text-blue-200 transition-colors mb-2">{paper.title}</h3>
+                        <p class="text-sm text-gray-400">{paper.authors.join(', ')}</p>
+                      </div>
+                      <span class="text-gray-600 group-hover:text-blue-400 transition-colors shrink-0">📄</span>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
         <!-- Notebooks & Visualizations Preview -->
         <section class="bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50 max-w-4xl mx-auto mb-16">
           <h2 class="text-2xl font-bold mb-4 text-green-200">Notebooks & Visualizations</h2>
@@ -208,8 +280,9 @@ const threads = [
           <div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-6">
             <h3 class="font-bold text-blue-200 mb-2">Current Status</h3>
             <p class="text-gray-300 text-sm leading-relaxed">
-              111+ discovery experiments completed. Code is not yet public — we're preparing manuscripts
-              and cleaning the codebase for open-source release. Join our
+              91 discovery experiments completed. Two preprints available on our
+              <a href="/papers" class="text-blue-400 hover:text-blue-300 underline">papers page</a>.
+              Code is not yet public — we're preparing the codebase for open-source release. Join our
               <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline">Discord</a>
               to follow along, or <a href="/#join" class="text-blue-400 hover:text-blue-300 underline">leave your email</a>
               to be notified when we publish.
