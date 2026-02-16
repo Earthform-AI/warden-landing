@@ -135,9 +135,7 @@ export const nav = {
   links: [
     { label: "Home", href: "/" },
     { label: "Research", href: "/research" },
-    { label: "Findings", href: "/#ecosystem" },
     { label: "About", href: "/mission" },
-    { label: "Community", href: "/#community" },
     { label: "Contact", href: "/#join" }
   ]
 };

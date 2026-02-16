@@ -14,9 +14,10 @@ interface CTAProps {
   heading: string;
   subtitle: string;
   form: CTAFormProps;
+  embedded?: boolean;
 }
 
-export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form }) => {
+export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form, embedded = false }) => {
   const [status, setStatus] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = React.useState('');
 
@@ -54,6 +55,49 @@ export const EnhancedCTASection: React.FC<CTAProps> = ({ heading, subtitle, form
       setStatus('error');
     }
   };
+
+  // Embedded mode: render just the form, no section wrapper or decorations
+  if (embedded) {
+    return (
+      <form 
+        action={form.action} 
+        method="POST" 
+        onSubmit={handleFormSubmit}
+        className="space-y-4"
+      >
+        {status === 'success' && (
+          <div className="bg-green-900/50 border border-green-500/50 rounded-lg p-3 text-green-200 text-center text-sm">
+            ✓ You're on the list. We'll be in touch.
+          </div>
+        )}
+        {status === 'error' && (
+          <div className="bg-red-900/50 border border-red-500/50 rounded-lg p-3 text-red-200 text-center text-sm">
+            {errorMsg}
+          </div>
+        )}
+        <input 
+          type="email" 
+          name="email" 
+          placeholder={form.emailPlaceholder}
+          required 
+          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm"
+        />
+        <textarea 
+          name="message" 
+          placeholder={form.messagePlaceholder}
+          rows={3}
+          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-sm"
+        />
+        <button
+          type="submit"
+          disabled={status === 'submitting' || status === 'success'}
+          className="w-full py-3 text-sm font-bold rounded-lg bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {status === 'submitting' ? 'Sending...' : status === 'success' ? 'Sent ✓' : form.submitText}
+        </button>
+      </form>
+    );
+  }
 
   return (
     <section id="join" className="py-20 bg-gradient-to-br from-gray-900 via-black to-blue-900/20 relative overflow-hidden scroll-snap-section min-h-screen flex items-center">

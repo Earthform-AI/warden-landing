@@ -1,21 +1,17 @@
 ---
-import HeroSection from '../components/HeroSection.astro'
-import MissionSection from '../components/MissionSection.astro'
-import EcosystemSection from '../components/EcosystemSection.astro'
-import CommunitySection from '../components/CommunitySection.astro'
-import CTASection from '../components/CTASection.astro'
 import { TechNavigation } from '../components/TechNavigation.tsx'
-import { TechShowcase } from '../components/TechShowcase.tsx'
-import { AdvancedRoadmapNav } from '../components/AdvancedRoadmapNav.tsx'
-import { ScrollProgressBar } from '../components/ScrollDrivenComponents.tsx'
-import { EnhancedHeroSection } from '../components/EnhancedHeroSectionV2.tsx'
 import { EnhancedCTASection } from '../components/EnhancedCTASection.tsx'
-import { ScrolltellingMissionSection, defaultMissionStories } from '../components/ScrolltellingMissionSection.tsx'
-import { InviteNominateSection } from '../components/InviteNominateSection.tsx'
-import CommunitySpotlight from '../components/CommunitySpotlight.tsx'
-import { meta, footer, nav, cta, hero } from '../site.config'
+import { meta, footer, nav, cta, hero, ecosystem, community } from '../site.config'
 import Analytics from '@vercel/analytics/astro'
 import SpeedInsights from '@vercel/speed-insights/astro'
+
+const threads = ecosystem.components;
+const slugMap: Record<string, string> = {
+  "Composable Non-Associative Algebra": "composable-algebra",
+  "Spectral Protein Analysis": "protein-analysis",
+  "Fano-Structured Music": "fano-music",
+  "Algebraic Video Repair": "algebraic-repair"
+};
 ---
 
 <html lang="en">
@@ -26,86 +22,156 @@ import SpeedInsights from '@vercel/speed-insights/astro'
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
-    
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={meta.openGraph.title} />
     <meta property="og:description" content={meta.openGraph.description} />
-    
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={meta.twitter.title} />
     <meta property="twitter:description" content={meta.twitter.description} />
-    
-    <!-- Additional SEO -->
     <meta name="keywords" content={meta.keywords} />
     <meta name="author" content={meta.author} />
     <link rel="canonical" href={meta.url} />
   </head>
   <body class="font-sans bg-black text-white">
-    <!-- Scroll Progress Bar -->
-    <ScrollProgressBar client:load />
-    
     <TechNavigation links={nav.links} client:load />
-    
-    <!-- Main Content with Scroll Snap -->
-    <main class="pt-16"> <!-- Offset for fixed navigation -->
-      <!-- Hero Section -->
-      <section id="about" class="scroll-snap-section min-h-screen">
-        <EnhancedHeroSection 
-          title={hero.title}
-          subtitle={hero.subtitle}
-          quote={hero.quote}
-          cta={hero.cta}
-          client:load 
-        />
+
+    <main>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SECTION 1: HERO — Who We Are               -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="about" class="min-h-screen flex items-center relative overflow-hidden">
+        <!-- Subtle grid background -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+
+        <div class="max-w-4xl mx-auto px-4 py-32 relative z-10 text-center">
+          <h1 class="text-4xl md:text-6xl font-extrabold mb-8 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent leading-tight">
+            {hero.title}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            {hero.subtitle}
+          </p>
+          <p class="text-sm text-gray-500 max-w-2xl mx-auto mb-10 italic">
+            {hero.quote}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={hero.cta.link} class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg transition-colors">
+              {hero.cta.text}
+              <span class="text-blue-200">→</span>
+            </a>
+            <a href="#join" class="inline-flex items-center justify-center gap-2 px-8 py-3 border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white font-medium rounded-lg transition-colors">
+              Follow Our Work
+            </a>
+          </div>
+        </div>
       </section>
-      
-      <!-- About Section -->
-      <section class="py-20 bg-gradient-to-br from-black via-gray-900 to-black scroll-snap-section min-h-screen flex items-center">
-        <div class="max-w-6xl mx-auto px-4 w-full">
-          <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent mb-4 tracking-wide">
-              Our Research Areas
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SECTION 2: RESEARCH HIGHLIGHTS              -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="research" class="py-24 bg-gradient-to-b from-black via-gray-950 to-black">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+              {ecosystem.heading}
             </h2>
-            <p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed tracking-normal">
-              Exploring universal parsing, identity-based programming, protein solver integration, and DNA-like protocols. Building architectures that achieve quality results across many contexts.
+            <p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
+              {ecosystem.subtitle}
             </p>
           </div>
-          <TechShowcase client:load />
+
+          <!-- Thread Cards -->
+          <div class="grid md:grid-cols-2 gap-6 mb-12">
+            {threads.map((thread: { name: string; icon: string; color: string; tagline: string; features: string[] }) => {
+              const slug = slugMap[thread.name] || thread.name.toLowerCase().replace(/\s+/g, '-');
+              return (
+                <a href={`/research/${slug}`} class="group block">
+                  <div class={`bg-gray-900/60 rounded-xl p-6 border border-gray-700/50 hover:border-${thread.color}-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] h-full`}>
+                    <div class="flex items-start gap-4 mb-3">
+                      <span class="text-3xl">{thread.icon}</span>
+                      <div>
+                        <h3 class={`text-lg font-bold text-${thread.color}-300 group-hover:text-${thread.color}-200 transition-colors`}>
+                          {thread.name}
+                        </h3>
+                        <p class="text-sm text-gray-400 mt-1">{thread.tagline}</p>
+                      </div>
+                    </div>
+                    <ul class="space-y-1.5 mt-4">
+                      {thread.features.map((f: string) => (
+                        <li class="flex items-center gap-2 text-sm text-gray-400">
+                          <span class={`w-1.5 h-1.5 bg-${thread.color}-400/60 rounded-full shrink-0`}></span>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+
+          <!-- Foundation callout -->
+          <div class="text-center max-w-3xl mx-auto">
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">
+              {ecosystem.footer.description}
+            </p>
+            <a href="/research" class="text-blue-400 hover:text-blue-300 text-sm font-medium underline underline-offset-4 transition-colors">
+              Read the full research overview →
+            </a>
+          </div>
         </div>
       </section>
-      
-      <!-- Mission/Values Section -->
-      <section class="scroll-snap-section min-h-screen flex items-center">
-        <MissionSection />
-      </section>
-      
-      <!-- Ecosystem Section -->
-      <section id="ecosystem" class="scroll-snap-section min-h-screen flex items-center">
-        <EcosystemSection />
-      </section>
-      
-      <!-- Community Section -->
-      <section id="community" class="scroll-snap-section min-h-screen flex items-center">
-        <CommunitySection />
-      </section>
-      
-      <!-- Enhanced CTA Section -->
-      <section id="join" class="scroll-snap-section min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-black to-blue-900/20">
-        <div class="w-full">
-          <EnhancedCTASection
-            heading={cta.heading}
-            subtitle={cta.subtitle}
-            form={cta.form}
-            client:load
-          />
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SECTION 3: JOIN / CTA                       -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="join" class="py-24 bg-gradient-to-b from-black to-gray-950">
+        <div class="max-w-4xl mx-auto px-4">
+
+          <!-- Discord + Email side by side -->
+          <div class="grid md:grid-cols-2 gap-8 items-start">
+
+            <!-- Discord Card -->
+            <div class="bg-gray-900/60 rounded-xl p-8 border border-gray-700/50 h-full flex flex-col">
+              <h2 class="text-2xl font-bold text-white mb-3">{community.heading}</h2>
+              <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                {community.description}
+              </p>
+              <a
+                href={community.discord.link}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg transition-colors"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                {community.discord.text}
+              </a>
+            </div>
+
+            <!-- Email Form Card -->
+            <div class="bg-gray-900/60 rounded-xl p-8 border border-gray-700/50 h-full">
+              <h2 class="text-2xl font-bold text-white mb-3">{cta.heading}</h2>
+              <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                {cta.subtitle}
+              </p>
+              <EnhancedCTASection
+                heading=""
+                subtitle=""
+                form={cta.form}
+                embedded={true}
+                client:load
+              />
+            </div>
+
+          </div>
+
         </div>
       </section>
+
     </main>
     <Analytics />
     <SpeedInsights />
-    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm mt-12">
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
       <div>{footer.text}</div>
       <nav class="mt-2 flex justify-center gap-4">
         {footer.links.map((link: { label: string; href: string }) => (
