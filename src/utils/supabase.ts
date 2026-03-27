@@ -98,3 +98,17 @@ export interface RegisteredDevice {
   last_seen: string;
   created_at: string;
 }
+
+// ── Soft Identity ──
+
+export type SoftIdentityKind = 'device' | 'strangeloop' | 'experiment';
+
+export interface SoftIdentity {
+  id: string;
+  label: string;
+  kind: SoftIdentityKind;
+  api_key: string;
+  adopted_by?: string;
+  adopted_at?: string;
+  created_at: string;
+}

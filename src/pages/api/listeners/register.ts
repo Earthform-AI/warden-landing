@@ -1,22 +1,46 @@
 import type { APIRoute } from 'astro';
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.SUPABASE_URL || '';
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
-/** Extract and verify the Supabase JWT from the Authorization header. */
-async function authenticateRequest(request: Request) {
+type AuthResult =
+  | { kind: 'user'; userId: string; supabase: SupabaseClient }
+  | { kind: 'soft'; softIdentityId: string; supabase: SupabaseClient }
+  | { error: string; status: number };
+
+/**
+ * Authenticate via Supabase JWT or soft-identity API key.
+ * Tries JWT first; if that fails, checks if the token is a soft identity api_key.
+ */
+async function authenticateRequest(request: Request): Promise<AuthResult> {
   const authHeader = request.headers.get('Authorization');
   if (!authHeader?.startsWith('Bearer ')) {
     return { error: 'Missing or invalid Authorization header', status: 401 };
   }
   const token = authHeader.slice(7);
   const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+  // Try Supabase JWT first
   const { data: { user }, error } = await supabase.auth.getUser(token);
-  if (error || !user) {
-    return { error: 'Invalid or expired token', status: 401 };
+  if (!error && user) {
+    return { kind: 'user', userId: user.id, supabase };
   }
-  return { user, supabase };
+
+  // Fall back to soft identity API key (64-char hex)
+  if (/^[0-9a-f]{64}$/.test(token)) {
+    const { data: identity } = await supabase
+      .from('soft_identities')
+      .select('id')
+      .eq('api_key', token)
+      .maybeSingle();
+
+    if (identity) {
+      return { kind: 'soft', softIdentityId: identity.id, supabase };
+    }
+  }
+
+  return { error: 'Invalid or expired token', status: 401 };
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -29,7 +53,7 @@ export const POST: APIRoute = async ({ request }) => {
         status: auth.status, headers,
       });
     }
-    const { user, supabase } = auth;
+    const { supabase } = auth;
 
     const body = await request.json();
     const { label, service_type, host, port, protocol_version, metadata } = body;
@@ -54,12 +78,22 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Upsert: if this user already has a listener with the same label + service_type,
+    // Build identity columns based on auth kind
+    const identityCols: Record<string, string | null> =
+      auth.kind === 'user'
+        ? { user_id: auth.userId, soft_identity_id: null }
+        : { user_id: null, soft_identity_id: auth.softIdentityId };
+
+    // Determine the owner column + value for upsert matching
+    const ownerCol = auth.kind === 'user' ? 'user_id' : 'soft_identity_id';
+    const ownerId = auth.kind === 'user' ? auth.userId : auth.softIdentityId;
+
+    // Upsert: if this identity already has a listener with the same label + service_type,
     // update it instead of creating a duplicate.
     const { data: existing } = await supabase
       .from('registered_listeners')
       .select('id')
-      .eq('user_id', user.id)
+      .eq(ownerCol, ownerId)
       .eq('label', label)
       .eq('service_type', service_type)
       .maybeSingle();
@@ -88,7 +122,7 @@ export const POST: APIRoute = async ({ request }) => {
     const { data, error } = await supabase
       .from('registered_listeners')
       .insert({
-        user_id: user.id,
+        ...identityCols,
         label,
         service_type,
         host,
