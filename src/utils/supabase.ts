@@ -108,6 +108,7 @@ export interface SoftIdentity {
   label: string;
   kind: SoftIdentityKind;
   api_key: string;
+  mesh_code?: string;
   adopted_by?: string;
   adopted_at?: string;
   created_at: string;

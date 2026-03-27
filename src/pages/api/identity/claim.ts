@@ -5,14 +5,25 @@ import { randomBytes } from 'node:crypto';
 const supabaseUrl = process.env.SUPABASE_URL || '';
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
+/** Generate a 6-char alphanumeric mesh code (e.g., "a7k3m2"). */
+function generateMeshCode(): string {
+  const chars = 'abcdefghjkmnpqrstuvwxyz23456789'; // no ambiguous chars (0/O, 1/l/I)
+  const bytes = randomBytes(6);
+  return Array.from(bytes).map(b => chars[b % chars.length]).join('');
+}
+
 /**
  * POST /api/identity/claim
  *
  * Creates a soft identity — a zero-friction API key for devices, AI processes,
  * or experiments that don't have (or don't need) a full Supabase Auth account.
  *
- * Body: { label: string, kind: 'device' | 'strangeloop' | 'experiment' }
- * Returns: { id, label, kind, api_key }
+ * Body: { label: string, kind: 'device' | 'strangeloop' | 'experiment', mesh_code?: string }
+ *
+ * If mesh_code is provided, this identity joins the existing mesh.
+ * If omitted, a new mesh_code is generated (share it with other devices to pair).
+ *
+ * Returns: { id, label, kind, api_key, mesh_code }
  *
  * No auth required — this is the zero-friction entry point.
  * The returned api_key can be used as a Bearer token for listener registration.
@@ -22,7 +33,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const body = await request.json();
-    const { label, kind } = body;
+    const { label, kind, mesh_code: providedMeshCode } = body;
 
     if (!label || typeof label !== 'string' || label.length < 1 || label.length > 200) {
       return new Response(JSON.stringify({ error: 'label is required (1-200 characters)' }), {
@@ -37,6 +48,17 @@ export const POST: APIRoute = async ({ request }) => {
       }), { status: 400, headers });
     }
 
+    // Validate mesh_code if provided (6 chars, alphanumeric)
+    const meshCode = providedMeshCode
+      ? String(providedMeshCode).toLowerCase().slice(0, 6)
+      : generateMeshCode();
+
+    if (providedMeshCode && !/^[a-z0-9]{4,8}$/.test(meshCode)) {
+      return new Response(JSON.stringify({ error: 'mesh_code must be 4-8 alphanumeric characters' }), {
+        status: 400, headers,
+      });
+    }
+
     // Generate 256-bit API key
     const apiKey = randomBytes(32).toString('hex');
 
@@ -48,8 +70,9 @@ export const POST: APIRoute = async ({ request }) => {
         label,
         kind,
         api_key: apiKey,
+        mesh_code: meshCode,
       })
-      .select('id, label, kind, api_key')
+      .select('id, label, kind, api_key, mesh_code')
       .single();
 
     if (error) {
