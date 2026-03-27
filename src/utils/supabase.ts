@@ -62,3 +62,39 @@ export interface ImpactReport {
   narrative: string;
   created_at: string;
 }
+
+// ── Earthform Coordination Service ──
+
+export interface EarthformUser {
+  id: string;
+  display_name: string;
+  strangeloop_name?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export type ListenerServiceType = 'beacon-sensor' | 'kernel' | 'bridge-endpoint';
+export type ListenerStatus = 'online' | 'offline';
+
+export interface RegisteredListener {
+  id: string;
+  user_id: string;
+  label: string;
+  service_type: ListenerServiceType;
+  host: string;
+  port: number;
+  protocol_version: string;
+  status: ListenerStatus;
+  last_heartbeat: string;
+  metadata: Record<string, unknown>;
+  created_at: string;
+}
+
+export interface RegisteredDevice {
+  id: string;
+  user_id: string;
+  device_name: string;
+  device_type: 'ios' | 'android' | 'desktop';
+  last_seen: string;
+  created_at: string;
+}
