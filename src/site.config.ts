@@ -118,7 +118,7 @@ export const community = {
 };
 
 export const footer = {
-  text: "© 2025 Earthform Research Lab. All rights reserved.",
+  text: "© 2025–2026 Earthform Research Lab. All rights reserved.",
   links: [
     { label: "Discord", href: "https://discord.gg/tMK9S68bjQ" },
     { label: "Privacy Policy", href: "/privacy" },
@@ -131,7 +131,7 @@ export const meta = {
   description: "Research lab exploring non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments, real benchmarks, open research.",
   keywords: "earthform, octonion algebra, Fano plane, PSL(2,7), spectral protein analysis, IBP-ENM, composable algebra, algebraic error correction, ChordSpeak, research lab",
   author: "Earthform Research Lab",
-  url: "https://warden-landing.vercel.app",
+  url: "https://earthform.ai",
 
   openGraph: {
     title: "Earthform Research Lab",

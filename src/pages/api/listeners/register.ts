@@ -64,7 +64,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const validTypes = ['beacon-sensor', 'kernel', 'bridge-endpoint'];
+    const validTypes = ['beacon-sensor', 'kernel', 'bridge-endpoint', 'routing-worker'];
     if (!validTypes.includes(service_type)) {
       return new Response(JSON.stringify({ error: `service_type must be one of: ${validTypes.join(', ')}` }), {
         status: 400, headers,

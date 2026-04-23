@@ -73,7 +73,7 @@ export interface EarthformUser {
   updated_at: string;
 }
 
-export type ListenerServiceType = 'beacon-sensor' | 'kernel' | 'bridge-endpoint';
+export type ListenerServiceType = 'beacon-sensor' | 'kernel' | 'bridge-endpoint' | 'routing-worker';
 export type ListenerStatus = 'online' | 'offline';
 
 export interface RegisteredListener {
