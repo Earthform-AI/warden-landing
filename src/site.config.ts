@@ -104,7 +104,6 @@ export const nav = {
     { label: "Home", href: "/" },
     { label: "Research", href: "/research" },
     { label: "Learn", href: "/learn" },
-    { label: "Papers", href: "/papers" },
     { label: "About", href: "/mission" }
   ]
 };
@@ -152,6 +151,7 @@ export const footer = {
   text: "© 2025–2026 Earthform Research Lab. All rights reserved.",
   links: [
     { label: "Learn", href: "/learn" },
+    { label: "Papers", href: "/papers" },
     { label: "Discord", href: "https://discord.gg/tMK9S68bjQ" },
     { label: "Transparency", href: "/transparency" },
     { label: "Privacy Policy", href: "/privacy" },

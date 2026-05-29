@@ -22,7 +22,6 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
   // Handle hydration
   useEffect(() => {
     setMounted(true);
-    // Always set to dark mode since we're removing the toggle
     document.documentElement.classList.add('dark');
     document.body.style.background = 'linear-gradient(135deg, #000000 0%, #0f172a 30%, #1e293b 70%, #000000 100%)';
     document.body.style.color = '#ffffff';
@@ -54,22 +53,13 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
           {/* Logo/Brand */}
           <motion.a
             href="/"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
             className="flex items-center gap-2.5 text-xl font-bold text-white no-underline"
           >
             <img src="/logo/concept-2-spectral-band.svg" alt="Earthform" width="32" height="32" className="block" />
-            <div>
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent">
-                Earthform
-              </span>
-              <motion.div
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-xs font-mono mt-0.5 text-cyan-400"
-              >
-                ◦ RESEARCH LAB
-              </motion.div>
-            </div>
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent">
+              Earthform
+            </span>
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -82,58 +72,44 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="text-sm font-medium transition-all duration-200 relative group text-gray-300 hover:text-cyan-300"
+                whileHover={{ scale: 1.05, y: -1 }}
+                className="text-sm font-medium transition-all duration-200 relative group text-gray-300 hover:text-white"
               >
-                <span className="flex items-center gap-2">
-                  {link.label === 'Roadmap' && '🗺️'}
-                  {link.label === 'Mission' && '🚀'}
-                  {link.label === 'Ecosystem' && '🤖'}
-                  {link.label === 'Community' && '💬'}
-                  {link.label === 'Join' && '⚡'}
-                  {link.label === 'Home' && '🏠'}
-                  {link.label}
-                </span>
+                {link.label}
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-green-500 origin-left"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.2 }}
                 />
-                
-                {/* Hover glow effect */}
-                <motion.div
-                  className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-blue-500/20 to-green-500/20 blur-sm"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileHover={{ opacity: 1, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                />
               </motion.a>
             ))}
 
-            {/* Research status indicator */}
-            <motion.div
+            {/* Fano-7 model indicator */}
+            <motion.a
+              href="/transparency"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.0, type: "spring" }}
-              className="flex items-center space-x-2 px-3 py-1.5 rounded-lg border bg-gray-900/50 border-gray-700/50 backdrop-blur-sm"
+              transition={{ delay: 0.8, type: "spring" }}
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center space-x-2 px-3 py-1.5 rounded-lg border bg-gray-900/50 border-gray-700/50 backdrop-blur-sm hover:border-green-500/50 transition-colors no-underline"
             >
               <motion.div
                 animate={{ 
-                  scale: [1, 1.4, 1],
+                  scale: [1, 1.3, 1],
                   opacity: [0.6, 1, 0.6]
                 }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                transition={{ duration: 2, repeat: Infinity }}
                 className="w-2 h-2 bg-green-500 rounded-full"
               />
-              <span className="text-xs font-mono text-gray-400">3 papers</span>
-            </motion.div>
+              <span className="text-xs font-mono text-gray-400">fano-7</span>
+            </motion.a>
           </div>
 
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-3 rounded-xl border-2 text-cyan-400 hover:bg-gray-800/50 border-gray-700 hover:border-cyan-500/50 backdrop-blur-sm transition-all duration-300"
+            className="md:hidden p-3 rounded-xl border-2 text-gray-300 hover:text-white hover:bg-gray-800/50 border-gray-700 hover:border-gray-500 backdrop-blur-sm transition-all duration-300"
           >
             <motion.div
               animate={{ rotate: isMenuOpen ? 180 : 0 }}
@@ -153,9 +129,9 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden border-t-2 border-cyan-500/30 bg-gray-900/95 backdrop-blur-lg"
+              className="md:hidden overflow-hidden border-t border-gray-700/50 bg-gray-900/95 backdrop-blur-lg"
             >
-              <div className="px-4 py-4 space-y-4">
+              <div className="px-4 py-4 space-y-1">
                 {links.map((link, index) => (
                   <motion.a
                     key={link.href}
@@ -164,11 +140,21 @@ export const TechNavigation: React.FC<NavProps> = ({ links = [] }) => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => handleMobileNavClick(link.href, link.label)}
-                    className="block text-sm font-medium transition-all duration-200 p-3 rounded-lg text-gray-300 hover:text-cyan-300 hover:bg-gray-800/50"
+                    className="block text-sm font-medium transition-all duration-200 p-3 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/50"
                   >
                     {link.label}
                   </motion.a>
                 ))}
+                <motion.a
+                  href="/transparency"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: links.length * 0.1 }}
+                  onClick={() => handleMobileNavClick('/transparency', 'Transparency')}
+                  className="block text-sm font-medium transition-all duration-200 p-3 rounded-lg text-gray-500 hover:text-white hover:bg-gray-800/50"
+                >
+                  Transparency
+                </motion.a>
               </div>
             </motion.div>
           )}
