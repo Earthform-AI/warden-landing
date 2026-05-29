@@ -8,17 +8,17 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Spectral Protein Structure Analysis | Earthform Research</title>
-    <meta name="description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 4.49× allosteric enrichment, 100% archetype classification. Experiments D77–D111." />
+    <title>Spectral Protein Structure Analysis | Earthform</title>
+    <meta name="description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 100% archetype classification, algebraic Fick scoring, Hamming bridge error correction. Experiments D77–D111, D152–D170." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Spectral Protein Structure Analysis | Earthform Research" />
-    <meta property="og:description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 100% archetype classification." />
+    <meta property="og:title" content="Spectral Protein Structure Analysis | Earthform" />
+    <meta property="og:description" content="IBP-ENM: unsupervised protein decomposition via graph Laplacian spectroscopy. 78% domain k-accuracy, 100% archetype classification. D77–D111, D152–D170." />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Spectral Protein Structure Analysis" />
-    <meta name="keywords" content="IBP-ENM, protein domains, spectral decomposition, graph Laplacian, Fiedler vector, CATH, DynDom, structural biology" />
+    <meta name="keywords" content="IBP-ENM, protein domains, spectral decomposition, graph Laplacian, Fiedler vector, CATH, DynDom, structural biology, Hamming bridge, sedenion, archetype classification" />
     <meta name="author" content={meta.author} />
     <link rel="canonical" href={meta.url + "/research/protein-analysis"} />
   </head>
@@ -43,7 +43,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
             </div>
             <div>
               <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-900/40 rounded-full text-green-300 text-sm font-medium mb-4">
-                🧬 Experiments D77 – D111
+                🧬 Experiments D77 – D111, D152 – D170
               </div>
               <h1 class="text-3xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-green-200 to-emerald-200 bg-clip-text text-transparent">
                 Spectral Protein Structure Analysis
@@ -278,6 +278,104 @@ import SpeedInsights from '@vercel/speed-insights/astro';
           </div>
         </section>
 
+        <!-- Phase 2: Algebraic Scoring & Bridge Refinement -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-green-200 mb-8">Phase 2: Algebraic Scoring & Bridge Refinement</h2>
+          <p class="text-gray-300 leading-relaxed mb-8">
+            D111 achieved 100% on the 12-protein benchmark. But the real test is the full 52-protein corpus
+            with production-quality scoring. Phase 2 replaced learned parameters with algebraically derived weights,
+            introduced Hamming-code error correction through Fano line structure, and ran a systematic diagnostic
+            loop to fix every failure case.
+          </p>
+
+          <div class="space-y-12">
+            <!-- D152: Algebraic Fick -->
+            <div class="border-l-2 border-green-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-500"></div>
+              <h3 class="text-lg font-bold text-green-200 mb-2">D152: Algebraic Fick Balancer</h3>
+              <p class="text-sm text-green-400/60 mb-3">Experiment 152 · Replacing Learned Parameters</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                The scoring weights in D109–D111 were empirically tuned. D152 replaced them with
+                algebraically derived sedenion-spectral weights — a √2:1 ratio with Fano coherence
+                gating (α₈). No tuning, no training. The algebra tells you what the weights should be.
+              </p>
+            </div>
+
+            <!-- D153/D158: Hamming Bridge -->
+            <div class="border-l-2 border-blue-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-500"></div>
+              <h3 class="text-lg font-bold text-blue-200 mb-2">D153 → D158: The Hamming Bridge</h3>
+              <p class="text-sm text-blue-400/60 mb-3">Experiments 153, 158 · Error Correction via Fano Lines</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Key insight: <em class="text-blue-200">the 7 instrument votes form a Hamming(7,4) codeword</em>.
+                Fano lines ARE valid codewords. When instruments disagree, the disagreement pattern
+                (syndrome) locates the erring instrument — exactly like Hamming error correction in coding theory.
+              </p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                D153 implemented the basic protocol: binarise → syndrome → locate → dampen.
+                D158 upgraded to rank-based dual-threshold detection: top-3 values identify a Fano line,
+                top-4 identify its complement. These patterns are mutually exclusive.
+              </p>
+              <div class="bg-blue-900/20 rounded-lg p-4 border border-blue-700/30">
+                <p class="text-sm text-gray-300">
+                  <span class="text-blue-400 font-mono font-bold">Hamming(7,4):</span> 7 bits (instruments), 4 data, 3 parity (Fano lines)<br/>
+                  <span class="text-blue-400 font-mono font-bold">Error location:</span> syndrome pattern → which instrument is wrong<br/>
+                  <span class="text-gray-500 italic">The same algebra that classifies proteins also error-corrects the classifier.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- D159-D166: Diagnostic Loop -->
+            <div class="border-l-2 border-yellow-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-yellow-600"></div>
+              <h3 class="text-lg font-bold text-yellow-200 mb-2">D159 – D166: The Diagnostic Loop</h3>
+              <p class="text-sm text-yellow-400/60 mb-3">Experiments 159–166 · Science Happening in Real Time</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                This is where the method proved itself through failure analysis. Each experiment
+                directly responds to the previous one's findings:
+              </p>
+              <div class="space-y-2 mb-3">
+                <p class="text-sm text-gray-400"><span class="text-yellow-400 font-mono">D159:</span> Autopsy of 22 misclassified proteins — per-instrument vote maps, margin-to-truth analysis</p>
+                <p class="text-sm text-gray-400"><span class="text-yellow-400 font-mono">D160:</span> 4 route-gated scoring variants benchmarked — structural motivation of each correction measured</p>
+                <p class="text-sm text-gray-400"><span class="text-yellow-400 font-mono">D161:</span> Instrument 4 (cooperative) validated as pivot on conflicting Fano lines</p>
+                <p class="text-sm text-gray-400"><span class="text-yellow-400 font-mono">D162:</span> Full pipeline benchmark: HammingBridge vs SedenonBridge → 30/52 → 31/52</p>
+                <p class="text-sm text-gray-400"><span class="text-yellow-400 font-mono">D163:</span> 210 "45° planes" from half-diagonal kernels tested as broader (weaker) correction</p>
+                <p class="text-sm text-gray-400"><span class="text-yellow-400 font-mono">D165:</span> Transitivity error reduced via kernel-sharing structure (336 pairs share 1 sub, 21 share 4)</p>
+                <p class="text-sm text-gray-400"><span class="text-yellow-400 font-mono">D166:</span> Musical instrument root-cause autopsy → low agreement on Fano lines 0, 1, 5</p>
+                <p class="text-sm text-gray-400"><span class="text-yellow-400 font-mono">D166b:</span> Globin catastrophe (0/10 correct) repaired — dumbbell/allosteric scatter rule weights fixed</p>
+              </div>
+              <p class="text-gray-400 text-sm italic">
+                Each line above is a separate, numbered experiment with its own hypothesis and measurable result.
+              </p>
+            </div>
+
+            <!-- D167-D170: Lens Refinement -->
+            <div class="border-l-2 border-emerald-400 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-400"></div>
+              <h3 class="text-lg font-bold text-emerald-200 mb-2">D167 – D170: Lens Refinement</h3>
+              <p class="text-sm text-emerald-400/60 mb-3">Experiments 167–170 · Surgical Post-Hoc Correction</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Final stage: targeted fixes for near-miss proteins without disturbing the rest.
+                D167 identified ROC-AUC discriminants for each archetype confusion pair.
+                D168 surgically de-gated α₈ for 4 bridge-blind proteins.
+                D169 introduced a rank-2 correction lens — post-hoc discriminant flip when top-2 margin is below threshold.
+                D170 tightened the hinge and enzyme lens gates.
+              </p>
+              <div class="bg-emerald-900/20 rounded-lg p-4 border border-emerald-700/30">
+                <p class="text-sm text-gray-300">
+                  <span class="text-emerald-400 font-mono font-bold">Full arc:</span>
+                  <strong class="text-gray-400">17%</strong> (D108) →
+                  <strong class="text-gray-300">83%</strong> (D109) →
+                  <strong class="text-gray-200">92%</strong> (D110) →
+                  <strong class="text-emerald-200">100%</strong> (D111, 12-protein) →
+                  <strong class="text-emerald-200">bridge-corrected</strong> (D152–D170, 52-protein corpus)<br/>
+                  <span class="text-gray-500 italic">Every correction is algebraically motivated — no black-box ML.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Validation Against Ground Truth -->
         <section class="mb-16">
           <h2 class="text-2xl font-bold text-green-200 mb-4">Validation Against Ground Truth</h2>
@@ -348,11 +446,11 @@ import SpeedInsights from '@vercel/speed-insights/astro';
         <section class="text-center">
           <div class="bg-green-900/20 border border-green-700/30 rounded-lg p-6">
             <p class="text-gray-300 text-sm leading-relaxed">
-              This thread comprises experiments D77 – D111 of the CAExperiments project.
+              This thread spans experiments D77–D111 and D152–D170.
               Source code: <a href="https://github.com/Earthform-AI/ibp-enm" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">github.com/Earthform-AI/ibp-enm</a>.
               Join our
               <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Discord</a>
-              to discuss the structural biology work, or <a href="/#join" class="text-green-400 hover:text-green-300 underline">leave your email</a>
+              to discuss the structural biology work, or <a href="/learn" class="text-green-400 hover:text-green-300 underline">join the Learn waitlist</a>
               for updates.
             </p>
           </div>

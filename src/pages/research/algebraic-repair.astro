@@ -8,17 +8,17 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Algebraic Video Repair | Earthform Research</title>
-    <meta name="description" content="Corruption = misapplied automorphism. Repair = inverse group search over PSL(2,7). Fano-structured error detection with spatial algebra and belief systems." />
+    <title>Algebraic Error Correction | Earthform</title>
+    <meta name="description" content="Corruption = misapplied automorphism. Repair = inverse group search over PSL(2,7). From video repair to Hamming(7,4) bridge evolution on protein classifiers. Experiments D153, D158, D162, D168." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Algebraic Video Repair | Earthform Research" />
-    <meta property="og:description" content="Group-theoretic error correction over PSL(2,7). Corruption as misapplied automorphism, repair as inverse search." />
+    <meta property="og:title" content="Algebraic Error Correction | Earthform" />
+    <meta property="og:description" content="Group-theoretic error correction over PSL(2,7). From video repair to Hamming bridge evolution on protein classifiers." />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Algebraic Video Repair" />
-    <meta name="keywords" content="PSL(2,7), Fano plane, video repair, error correction, automorphism, spatial algebra, belief algebra, streaming protocol" />
+    <meta name="keywords" content="PSL(2,7), Fano plane, video repair, error correction, automorphism, spatial algebra, Hamming bridge, sedenion, streaming protocol" />
     <meta name="author" content={meta.author} />
     <link rel="canonical" href={meta.url + "/research/algebraic-repair"} />
   </head>
@@ -37,10 +37,10 @@ import SpeedInsights from '@vercel/speed-insights/astro';
         <!-- Header -->
         <header class="mb-16">
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-900/40 rounded-full text-yellow-300 text-sm font-medium mb-6">
-            🎬 Applied Research
+            🎬 Applied Research + D153, D158, D162, D168
           </div>
           <h1 class="text-3xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-yellow-200 to-amber-200 bg-clip-text text-transparent">
-            Algebraic Video Repair
+            Algebraic Error Correction
           </h1>
           <p class="text-xl text-gray-300 leading-relaxed">
             If corruption can be modeled as one of the 168 automorphisms of PSL(2,7)
@@ -372,6 +372,71 @@ import SpeedInsights from '@vercel/speed-insights/astro';
           </p>
         </section>
 
+        <!-- Hamming Bridge Evolution -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-yellow-200 mb-8">Hamming Bridge Evolution</h2>
+          <p class="text-gray-300 leading-relaxed mb-8">
+            The Fano-structured error correction developed for video repair turned out to be
+            <em class="text-yellow-200">directly applicable</em> to the protein classification pipeline.
+            When 7 instruments vote on a protein's archetype, their agreement pattern is a
+            Hamming(7,4) codeword — and disagreements can be corrected the same way.
+          </p>
+
+          <div class="space-y-8">
+            <div class="border-l-2 border-yellow-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-yellow-600"></div>
+              <h3 class="text-lg font-bold text-yellow-200 mb-2">D153: Hamming(7,4) Foundation</h3>
+              <p class="text-sm text-yellow-400/60 mb-3">Experiment 153 · The Bridge Protocol</p>
+              <p class="text-gray-300 leading-relaxed">
+                Four-step protocol: binarise instrument votes → compute syndrome → locate erring instrument
+                → dampen its weight by 1/√2. Key insight: <em class="text-yellow-200">Fano lines ARE valid codewords</em>.
+                Three instruments agreeing along a Fano line is not just consensus — it's algebraically valid.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-yellow-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-yellow-500"></div>
+              <h3 class="text-lg font-bold text-yellow-200 mb-2">D158: Rank-Based Dual Threshold</h3>
+              <p class="text-sm text-yellow-400/60 mb-3">Experiment 158 · Sedenion Bridge</p>
+              <p class="text-gray-300 leading-relaxed">
+                The naive mean-threshold misses patterns where one strong outlier skews the average.
+                D158 replaced it with rank-based detection: top-3 ranked values identify a Fano line,
+                top-4 identify its complement. These are mutually exclusive — a pattern is either a line or a complement, never both.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-yellow-400 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-yellow-400"></div>
+              <h3 class="text-lg font-bold text-yellow-200 mb-2">D162: Production Benchmark</h3>
+              <p class="text-sm text-yellow-400/60 mb-3">Experiment 162 · Bridge vs Bridge</p>
+              <p class="text-gray-300 leading-relaxed">
+                Full pipeline benchmark: HammingBridge (mean-threshold) vs SedenonBridge (rank-based)
+                through the complete protein classification pipeline. Result: 30/52 → 31/52 accuracy.
+                One protein corrected, zero regressions.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-yellow-300 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-yellow-300"></div>
+              <h3 class="text-lg font-bold text-yellow-200 mb-2">D168: Conditional Bridge</h3>
+              <p class="text-sm text-yellow-400/60 mb-3">Experiment 168 · Surgical Gating</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Some proteins have low Fano coherence (α₈ ≤ 1/7) — the bridge is "blind" for these cases.
+                D168 tested 6 approaches to surgically de-gate the bridge for these specific proteins
+                without disturbing the rest. The bridge weight scaling was decoupled from the context boost,
+                fixing a double-gating issue.
+              </p>
+              <div class="bg-yellow-900/20 rounded-lg p-4 border border-yellow-700/30">
+                <p class="text-sm text-gray-300">
+                  <span class="text-yellow-400 font-mono font-bold">Arc:</span>
+                  Naive Hamming (D153) → Rank-based (D158) → Benchmarked (D162) → Conditional (D168)<br/>
+                  <span class="text-gray-500 italic">The technique is general — it applies to any 7-instrument voting system, not just proteins.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Connections -->
         <section class="mb-16 bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50">
           <h2 class="text-xl font-bold text-gray-200 mb-4">Connections to Other Threads</h2>
@@ -398,11 +463,12 @@ import SpeedInsights from '@vercel/speed-insights/astro';
         <section class="text-center">
           <div class="bg-yellow-900/20 border border-yellow-700/30 rounded-lg p-6">
             <p class="text-gray-300 text-sm leading-relaxed">
-              The Fano Repair project is an applied engineering application of the CAExperiments
-              algebra research. Join our
+              This thread combines applied video repair research with the Hamming bridge experiments
+              (D153, D158, D162, D168). The bridge technique generalizes to any Fano-structured voting system.
+              Join our
               <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-yellow-400 hover:text-yellow-300 underline">Discord</a>
-              to discuss, or <a href="/#join" class="text-yellow-400 hover:text-yellow-300 underline">leave your email</a>
-              to be notified when we publish the code.
+              to discuss, or <a href="/learn" class="text-yellow-400 hover:text-yellow-300 underline">join the Learn waitlist</a>
+              for updates.
             </p>
           </div>
         </section>

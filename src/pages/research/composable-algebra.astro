@@ -8,17 +8,17 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Composable Non-Associative Algebra | Earthform Research</title>
-    <meta name="description" content="Making octonions composable through decision-boundary transforms. 100% navigation success vs 14% with raw multiplication. Experiments D01–D20." />
+    <title>Composable Non-Associative Algebra | Earthform</title>
+    <meta name="description" content="Making octonions composable through decision-boundary transforms. From 8-layer architecture to Cayley-Dickson tower scaling and the Fano-7 attention model. Experiments D01–D20, D150–D173." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Composable Non-Associative Algebra | Earthform Research" />
-    <meta property="og:description" content="Making octonions composable through decision-boundary transforms. 100% navigation success vs 14% with raw multiplication." />
+    <meta property="og:title" content="Composable Non-Associative Algebra | Earthform" />
+    <meta property="og:description" content="Making octonions composable through decision-boundary transforms. From 8-layer architecture to Cayley-Dickson tower scaling and the Fano-7 attention model." />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Composable Non-Associative Algebra" />
-    <meta name="keywords" content="octonions, Fano plane, PSL(2,7), non-associative algebra, composition, group theory" />
+    <meta name="keywords" content="octonions, Fano plane, PSL(2,7), non-associative algebra, composition, group theory, Cayley-Dickson, sedenions, Fano-7, attention" />
     <meta name="author" content={meta.author} />
     <link rel="canonical" href={meta.url + "/research/composable-algebra"} />
   </head>
@@ -37,7 +37,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
         <!-- Header -->
         <header class="mb-16">
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/40 rounded-full text-blue-300 text-sm font-medium mb-6">
-            🔢 Experiments D01 – D20
+            🔢 Experiments D01 – D20, D150 – D173
           </div>
           <h1 class="text-3xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
             Composable Non-Associative Algebra
@@ -51,7 +51,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 
         <!-- Key Result Banner -->
         <div class="bg-blue-900/20 border border-blue-700/30 rounded-xl p-6 mb-16">
-          <div class="grid sm:grid-cols-3 gap-6 text-center">
+          <div class="grid sm:grid-cols-4 gap-6 text-center">
             <div>
               <p class="text-3xl font-bold text-blue-300">~100%</p>
               <p class="text-sm text-gray-400">Component transform<br/>navigation success</p>
@@ -63,6 +63,10 @@ import SpeedInsights from '@vercel/speed-insights/astro';
             <div>
               <p class="text-3xl font-bold text-blue-300">8</p>
               <p class="text-sm text-gray-400">Algebraic layers<br/>unified architecture</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-green-300">PG(4,2)</p>
+              <p class="text-sm text-gray-400">Cayley-Dickson tower<br/>scaling verified</p>
             </div>
           </div>
         </div>
@@ -279,6 +283,89 @@ import SpeedInsights from '@vercel/speed-insights/astro';
           </div>
         </section>
 
+        <!-- Phase 2: Beyond Octonions -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-blue-200 mb-8">Phase 2: Beyond Octonions</h2>
+          <p class="text-gray-300 leading-relaxed mb-8">
+            D01–D20 established composability over octonions. But the Cayley-Dickson construction doesn't stop at 8 dimensions.
+            Sedenions (16), 32-nions, 64-nions — each level gains zero divisors and new projective geometry.
+            Phase 2 asks: <em class="text-blue-200">does the composability framework scale through the tower?</em>
+            And does it lead to a practical neural architecture?
+          </p>
+
+          <div class="space-y-12">
+            <!-- D150: Fano Unification -->
+            <div class="border-l-2 border-blue-500 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-500"></div>
+              <h3 class="text-lg font-bold text-blue-200 mb-2">D150: Fano Unification</h3>
+              <p class="text-sm text-blue-400/60 mb-3">Experiment 150 · Canonical Isomorphism</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Two independent Fano plane constructions had emerged — one from the octonion multiplication table (D04),
+                one from the protein analysis carving instruments (D109). D150 established a canonical isomorphism between them,
+                proving they are the same geometry expressed in different domains. One authoritative Fano plane, used everywhere.
+              </p>
+            </div>
+
+            <!-- D154-D156: CD Tower -->
+            <div class="border-l-2 border-green-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-600"></div>
+              <h3 class="text-lg font-bold text-green-200 mb-2">D154 – D156: The Cayley-Dickson Tower</h3>
+              <p class="text-sm text-green-400/60 mb-3">Experiments 154–156 · Scaling to Higher Dimensions</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                Zero divisors appear at the sedenion level (16-dim) and multiply rapidly up the tower.
+                Each level's zero-divisor kernels form a projective geometry: sedenions give PG(2,2), 32-nions give PG(3,2),
+                64-nions give PG(4,2). D154 verified the component counts. D155 mapped kernel rank lattices to subalgebra containment.
+                D156 found a universal constant — π√(5/8) ≈ 2.4836 — the Grassmann distance from kernels to quaternionic subalgebras.
+              </p>
+              <div class="bg-green-900/20 rounded-lg p-4 border border-green-700/30">
+                <p class="text-sm text-gray-300">
+                  <span class="text-green-400 font-mono font-bold">CD Tower:</span> 𝕆 → 𝕊₁₆ → 𝕊₃₂ → 𝕊₆₄<br/>
+                  <span class="text-green-400 font-mono font-bold">Geometries:</span> PG(2,2) → PG(3,2) → PG(4,2)<br/>
+                  <span class="text-green-400 font-mono font-bold">Universal distance:</span> π√(5/8) = 2.4836
+                </p>
+              </div>
+            </div>
+
+            <!-- D157-D158: Routing -->
+            <div class="border-l-2 border-purple-600 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-purple-600"></div>
+              <h3 class="text-lg font-bold text-purple-200 mb-2">D157 – D158: Zero-Divisor Channels</h3>
+              <p class="text-sm text-purple-400/60 mb-3">Experiments 157–158 · Routing Through Algebraic Structure</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                168 zero-divisor "contained channels" classified by their angle spectra.
+                Fano line activation becomes a routing signal — each line's membership determines
+                which channels carry information. D158 replaced the mean-based Hamming syndrome with
+                a rank-based dual-threshold: top-3 values identify a Fano line, top-4 identify its complement.
+                These are mutually exclusive valid patterns.
+              </p>
+            </div>
+
+            <!-- D173: Fano-7 -->
+            <div class="border-l-2 border-green-400 pl-6 relative">
+              <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-green-400 animate-pulse"></div>
+              <h3 class="text-lg font-bold text-green-200 mb-2">D173: Fano-7 Attention Model ⭐</h3>
+              <p class="text-sm text-green-400/60 mb-3">Experiment 173 · Algebra Becomes Architecture</p>
+              <p class="text-gray-300 leading-relaxed mb-3">
+                The culmination: all of the above becomes a neural network.
+                <strong class="text-white">7 attention heads arranged on PG(2,2)</strong>, with cross-head communication
+                gated by octonion associator norms. Heads on the same Fano line share information freely;
+                heads across lines must pass through the associator gate (genuine entanglement test).
+              </p>
+              <div class="bg-green-900/20 rounded-lg p-4 border border-green-700/30 mb-3">
+                <p class="text-sm text-gray-300">
+                  <span class="text-green-400 font-mono font-bold">Convergence:</span> <strong class="text-green-200">98.6%</strong> (vs 84% standard transformer)<br/>
+                  <span class="text-green-400 font-mono font-bold">Parameters:</span> <strong class="text-green-200">205K</strong><br/>
+                  <span class="text-green-400 font-mono font-bold">Avg steps:</span> <strong class="text-green-200">38.4</strong> to converge<br/>
+                  <span class="text-green-400 font-mono font-bold">Key insight:</span> Fano structure as inductive bias outperforms dense attention
+                </p>
+              </div>
+              <p class="text-gray-400 text-sm">
+                This model now powers real infrastructure. <a href="/transparency" class="text-green-400 hover:text-green-300 underline">Read how it works →</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
         <!-- What We Learned -->
         <section class="mb-16">
           <h2 class="text-2xl font-bold text-blue-200 mb-4">What We Learned</h2>
@@ -335,11 +422,11 @@ import SpeedInsights from '@vercel/speed-insights/astro';
         <section class="text-center">
           <div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-6">
             <p class="text-gray-300 text-sm leading-relaxed">
-              This thread comprises experiments D01 – D20 of the CAExperiments project.
-              Code is not yet public. Join our
+              This thread spans experiments D01–D20 and D150–D173. Code and model weights
+              being prepared for open-source release. Join our
               <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline">Discord</a>
-              to discuss the algebra, or <a href="/#join" class="text-blue-400 hover:text-blue-300 underline">leave your email</a>
-              to be notified when we publish.
+              to discuss the algebra, or <a href="/learn" class="text-green-400 hover:text-green-300 underline">join the Learn waitlist</a>
+              to see this architecture in action.
             </p>
           </div>
         </section>
