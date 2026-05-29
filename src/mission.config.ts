@@ -1,86 +1,76 @@
-// About Page Configuration for Earthform Research Lab
-// Factual overview: what we study, how we work, what we've found.
+// About Page Configuration for Earthform
+// Identity, beliefs, what we're building, and why.
 
 export const missionCopy = {
   title: "About Earthform",
 
-  // ── Section 1: What We Study ─────────────────────────────────────────
+  // ── Section 1: Who We Are ────────────────────────────────────────────
   origin: {
-    heading: "What We Study",
+    heading: "Who We Are",
     paragraphs: [
-      "Earthform is a research lab focused on the algebraic structure of the Fano plane PG(2,2) and its applications across multiple domains.",
-      "Our core observation: the non-associativity of octonion multiplication is not a defect — it encodes path history. The associator records which boundary in the Fano plane was crossed, making it a natural recording medium for sequential decisions."
+      "Earthform is a research lab that builds AI systems grounded in algebraic structure rather than scale alone. We started with a single observation: the Fano plane — the smallest finite projective geometry — encodes a surprising amount of computational structure in its 7 points, 7 lines, and 168 symmetries.",
+      "That observation has grown into 90+ experiments, a working neural architecture (Fano-7), a learning platform, and a distributed compute protocol. All built on the same algebraic foundation."
     ],
     afterQuote: [
-      "This led to ComponentTransforms — bijective basis mappings that form a fully associative group at decision boundaries. These transforms achieve 100% navigation success where raw octonion multiplication fails 86% of the time.",
-      "We've since applied the same Fano structure to protein spectral analysis, music theory, and error correction. Four domains, one algebraic foundation. The structure works in contexts we didn't originally design it for."
+      "We're a small team. We ship experiments, measure results, and share everything we find — including the failures. The Discord is where the work happens in the open."
     ]
   },
 
-  // ── Section 2: How We Work ───────────────────────────────────────────
+  // ── Section 2: What We Believe ───────────────────────────────────────
   method: {
-    heading: "Methodology",
-    intro: "Hypothesis-driven, experiment-first research.",
-    description: "Each discovery experiment is a self-contained Python script that states a hypothesis, runs it, and reports results. Research threads emerged from the data, not from a predetermined plan.",
+    heading: "What We Believe",
+    intro: "Three principles that guide everything we build.",
+    description: "",
     principles: [
       {
-        title: "Numbered Experiments",
-        icon: "🔬",
-        text: "91 discovery scripts, each self-contained. Hypothesis in, measurement out. Research threads emerged from these experiments organically."
+        title: "Structure Over Scale",
+        icon: "🔷",
+        text: "The right inductive bias beats more parameters. Our 205K-param Fano-7 model outperforms matched-size standard transformers by 17% — not because it's bigger, but because its attention is algebraically structured."
       },
       {
-        title: "Benchmarks Over Claims",
-        icon: "📊",
-        text: "78% domain detection accuracy on 36 proteins. 100% navigation success vs 14% baseline. 4.49× allosteric site enrichment. 92% archetype classification."
+        title: "Learning Should Get Cheaper",
+        icon: "📉",
+        text: "When our system converges on how to teach something, that convergence is crystallized into a direct prediction. The first time costs real compute. The thousandth time is nearly free. Costs go down, not up."
       },
       {
-        title: "One Foundation",
-        icon: "🔢",
-        text: "The Fano plane PG(2,2), its automorphism group PSL(2,7), and the octonion algebra it encodes. Every research thread applies this same structure to a different domain."
+        title: "Prove It Or It Didn't Happen",
+        icon: "🔐",
+        text: "Every AI decision is recorded in a hash-chained ledger. Every student mastery claim is cryptographically verifiable. We don't ask you to trust the system — we give you the tools to verify it."
       }
     ]
   },
 
-  // ── Section 3: What We've Found ──────────────────────────────────────
+  // ── Section 3: What We're Building ───────────────────────────────────
   findings: {
-    heading: "Results",
-    intro: "Four research threads applying the same algebraic structure to different domains.",
+    heading: "What We're Building",
+    intro: "Three interconnected systems, all sharing the same algebraic core.",
     threads: [
       {
-        name: "Composable Algebra",
-        experiments: "D01 – D20",
-        icon: "🔢",
+        name: "Research",
+        experiments: "90+ experiments",
+        icon: "🔬",
         color: "blue",
-        summary: "Non-associative octonion algebra made composable through ComponentTransforms — bijective basis mappings that form a fully associative group at decision boundaries.",
-        result: "100% navigation success (vs 14% raw multiplication). 8-layer algebraic architecture validated.",
-        link: "/research/composable-algebra"
+        summary: "Non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. Four domains, one mathematical foundation — the Fano plane PG(2,2) and its automorphism group.",
+        result: "Real benchmarks: 98.6% convergence, 78% domain detection on 36 proteins, 100% navigation (vs 14% baseline).",
+        link: "/research"
       },
       {
-        name: "Spectral Protein Analysis",
-        experiments: "D77 – D111",
-        icon: "🧬",
+        name: "Learn",
+        experiments: "In development",
+        icon: "🎯",
         color: "green",
-        summary: "IBP-ENM: a single spectral decomposition of the protein contact network yields domain boundaries, hinge locations, and structural roles — no training data required.",
-        result: "78% k-selection accuracy across 36 proteins. 92% archetype classification. 4.49× allosteric enrichment.",
-        link: "/research/protein-analysis"
+        summary: "Verifiable education powered by the Fano-7 architecture. Mini-games, adaptive AI tutoring, and cryptographic proof of mastery. Your knowledge is yours forever — portable and independent of institutions.",
+        result: "$1/day at launch. Goal: $1/month as crystallization amortizes inference costs.",
+        link: "/learn"
       },
       {
-        name: "Fano-Structured Music",
-        experiments: "D25 – D47, D63 – D72",
-        icon: "🎵",
+        name: "Beacon Network",
+        experiments: "Phase 2",
+        icon: "🌐",
         color: "purple",
-        summary: "The Fano plane's 7 points map to 7 notes, its 168 automorphisms map to 168 harmonic transforms. ChordSpeak encodes language into music through algebraic structure.",
-        result: "Working language-music system. Acoustic file transfer protocol. Path history encoded in sound.",
-        link: "/research/fano-music"
-      },
-      {
-        name: "Algebraic Video Repair",
-        experiments: "Applied research",
-        icon: "🎬",
-        color: "yellow",
-        summary: "Corruption modeled as a misapplied automorphism — repair becomes inverse group search over PSL(2,7). Spatial algebra maps pixel gradients onto Fano structure.",
-        result: "Fano-algebraic error correction with belief algebra for disambiguation. Streaming protocol for real-time repair.",
-        link: "/research/algebraic-repair"
+        summary: "A distributed compute protocol where spare cycles become shared resources. Contributors earn credits that offset learning costs. The network itself uses Fano-structured routing.",
+        result: "Protocol live. Dashboard and contributor onboarding in development.",
+        link: "/research"
       }
     ]
   },
@@ -110,10 +100,10 @@ export const missionCopy = {
 
   // ── Section 5: CTA / Closing ─────────────────────────────────────────
   closing: {
-    heading: "Get in Touch",
-    text: "We share findings and discuss experiments in the open. If you work on related problems — algebraic structures, structural biology, music theory, or error correction — we'd welcome the conversation.",
+    heading: "Join Us",
+    text: "We're building in the open. Whether you want to learn with us, contribute to the research, or just follow along — there's a place for you.",
     cta: {
-      join: { text: "Get Updates", href: "/#join" },
+      join: { text: "Join the Waitlist", href: "/learn" },
       discord: { text: "Join the Discord", href: "https://discord.gg/tMK9S68bjQ" }
     }
   }
