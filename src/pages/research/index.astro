@@ -1,6 +1,5 @@
 ---
 import { meta, footer, nav } from '../../site.config';
-import { papers } from '../../papers.config';
 import { highlights } from '../../experiments.config';
 import { TechNavigation } from '../../components/TechNavigation.tsx';
 import Analytics from '@vercel/analytics/astro';
@@ -62,16 +61,16 @@ const threads = [
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Research | Earthform Research Lab</title>
-    <meta name="description" content="Four research threads exploring composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments with real benchmarks." />
+    <title>Research | Earthform</title>
+    <meta name="description" content="Four research threads exploring composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction — converging on the Fano-7 architecture. 90+ experiments with real benchmarks." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Research | Earthform Research Lab" />
-    <meta property="og:description" content="Four research threads: composable algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments." />
+    <meta property="og:title" content="Research | Earthform" />
+    <meta property="og:description" content="Four research threads converging on the Fano-7 architecture. 90+ experiments with real benchmarks." />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Research | Earthform Research Lab" />
+    <meta property="twitter:title" content="Research | Earthform" />
     <meta name="keywords" content="octonion algebra, Fano plane, protein spectral analysis, IBP-ENM, ChordSpeak, algebraic repair, PSL(2,7)" />
     <meta name="author" content={meta.author} />
     <link rel="canonical" href={meta.url + "/research"} />
@@ -84,15 +83,14 @@ const threads = [
         <!-- Header -->
         <div class="text-center mb-20">
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/40 rounded-full text-blue-300 text-sm font-medium mb-6">
-            🔬 91 Experiments
+            🔬 90+ Experiments → Fano-7 Model
           </div>
           <h1 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent">
             Research
           </h1>
           <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Four interconnected lines of inquiry — all emerging from the structure of the Fano plane
-            and its 168 automorphisms. Each experiment is a numbered, self-contained Python script
-            with a hypothesis and measurable results.
+            and its 168 automorphisms — converging on a trained neural architecture that uses this algebra as inductive bias.
           </p>
         </div>
 
@@ -166,31 +164,35 @@ const threads = [
           ))}
         </div>
 
-        <!-- Methodology -->
+        <!-- Where This Led: Fano-7 -->
         <section class="max-w-4xl mx-auto mb-16">
-          <h2 class="text-2xl font-bold mb-8 text-center text-gray-200">How We Work</h2>
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-4 bg-blue-900/30 rounded-full flex items-center justify-center border border-blue-700/50">
-                <span class="text-2xl">📝</span>
+          <div class="bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-2xl p-8 border border-green-700/30">
+            <h2 class="text-2xl font-bold mb-4 text-green-200">Where This Led: Fano-7</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              These four research threads converged into a single architecture — <strong class="text-white">Fano-7</strong>, a transformer variant where 7 attention heads are arranged on the projective plane and cross-head communication is gated by octonion associator norms.
+            </p>
+            <div class="grid md:grid-cols-4 gap-4 mb-4">
+              <div class="text-center py-3">
+                <div class="text-2xl font-bold text-green-300">98.6%</div>
+                <div class="text-xs text-gray-500">Convergence</div>
               </div>
-              <h3 class="font-bold text-blue-300 mb-2">Hypothesis</h3>
-              <p class="text-sm text-gray-400">Each discovery starts with a specific, testable question. The docstring at the top of every experiment file states exactly what we're testing and why.</p>
-            </div>
-            <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-4 bg-green-900/30 rounded-full flex items-center justify-center border border-green-700/50">
-                <span class="text-2xl">⚙️</span>
+              <div class="text-center py-3">
+                <div class="text-2xl font-bold text-blue-300">+17%</div>
+                <div class="text-xs text-gray-500">vs standard transformer</div>
               </div>
-              <h3 class="font-bold text-green-300 mb-2">Experiment</h3>
-              <p class="text-sm text-gray-400">Self-contained Python scripts that run the hypothesis. No hidden dependencies, no black boxes. When we benchmark, we use ground truth data from established databases (CATH, DynDom, PDB).</p>
-            </div>
-            <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-4 bg-purple-900/30 rounded-full flex items-center justify-center border border-purple-700/50">
-                <span class="text-2xl">📊</span>
+              <div class="text-center py-3">
+                <div class="text-2xl font-bold text-purple-300">205K</div>
+                <div class="text-xs text-gray-500">Parameters</div>
               </div>
-              <h3 class="font-bold text-purple-300 mb-2">Results</h3>
-              <p class="text-sm text-gray-400">Numbers, not narratives. When something works, we report accuracy, p-values, and enrichment ratios. When it doesn't, we say so and explain what we learned.</p>
+              <div class="text-center py-3">
+                <div class="text-2xl font-bold text-yellow-300">38.4</div>
+                <div class="text-xs text-gray-500">Avg steps to converge</div>
+              </div>
             </div>
+            <p class="text-gray-400 text-sm">
+              This model now powers our <a href="/learn" class="text-green-400 hover:text-green-300 underline">learning platform</a>. 
+              <a href="/transparency" class="text-blue-400 hover:text-blue-300 underline">Read how it works →</a>
+            </p>
           </div>
         </section>
 
@@ -231,67 +233,15 @@ const threads = [
           </div>
         </section>
 
-        <!-- Papers -->
-        {papers.length > 0 && (
-          <section class="max-w-4xl mx-auto mb-16">
-            <div class="flex items-baseline justify-between mb-8">
-              <h2 class="text-2xl font-bold text-gray-200">Papers</h2>
-              <a href="/papers" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">View all →</a>
-            </div>
-            <div class="space-y-4">
-              {papers.map((paper) => (
-                <a href="/papers" class="group block">
-                  <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50 hover:border-gray-600/80 transition-all duration-300">
-                    <div class="flex items-start justify-between gap-4">
-                      <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-2 mb-2">
-                          <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-900/30 border border-blue-800/40 text-blue-300">
-                            {paper.status}
-                          </span>
-                          <span class="text-xs text-gray-500">{paper.date}</span>
-                        </div>
-                        <h3 class="font-bold text-white group-hover:text-blue-200 transition-colors mb-2">{paper.title}</h3>
-                        <p class="text-sm text-gray-400">{paper.authors.join(', ')}</p>
-                      </div>
-                      <span class="text-gray-600 group-hover:text-blue-400 transition-colors shrink-0">📄</span>
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
-        )}
-
-        <!-- Notebooks & Visualizations Preview -->
-        <section class="bg-gray-900/40 rounded-2xl p-8 border border-gray-700/50 max-w-4xl mx-auto mb-16">
-          <h2 class="text-2xl font-bold mb-4 text-green-200">Notebooks & Visualizations</h2>
-          <p class="text-gray-300 leading-relaxed mb-4">
-            Alongside the discovery scripts, we maintain <strong class="text-white">25+ Jupyter notebooks</strong>
-            with interactive visualizations spanning Fano plane geometry, protein spectral decomposition,
-            3D torus simulations, parallel universe computation, and automorphism orbit plots.
-          </p>
-          <p class="text-gray-300 leading-relaxed mb-4">
-            Highlights include a <strong class="text-white">Three.js 3D Heawood Torus</strong> with real-time
-            cross-diffusion simulation, <strong class="text-white">protein B-factor correlation plots</strong>
-            benchmarked against 200 PDB structures, and <strong class="text-white">3D gear visualizations</strong>
-            of parallel universe computation where timeless universes drive their neighbors.
-          </p>
-          <p class="text-gray-400 text-sm italic">
-            These will be published alongside the code when we open-source the research.
-          </p>
-        </section>
-
         <!-- Status -->
         <section class="text-center max-w-3xl mx-auto">
           <div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-6">
-            <h3 class="font-bold text-blue-200 mb-2">Current Status</h3>
+            <h3 class="font-bold text-blue-200 mb-2">Open Research</h3>
             <p class="text-gray-300 text-sm leading-relaxed">
-              91 discovery experiments completed. Two preprints available on our
-              <a href="/papers" class="text-blue-400 hover:text-blue-300 underline">papers page</a>.
-              Code is not yet public — we're preparing the codebase for open-source release. Join our
+              90+ discovery experiments completed. Code and model weights being prepared for open-source release. Join our
               <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline">Discord</a>
-              to follow along, or <a href="/#join" class="text-blue-400 hover:text-blue-300 underline">leave your email</a>
-              to be notified when we publish.
+              to follow along, or <a href="/learn" class="text-blue-400 hover:text-blue-300 underline">join the Learn waitlist</a>
+              to be notified when the platform launches.
             </p>
           </div>
         </section>
