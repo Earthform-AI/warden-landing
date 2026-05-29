@@ -1,0 +1,189 @@
+---
+import { TechNavigation } from '../components/TechNavigation.tsx'
+import { meta, footer, nav } from '../site.config'
+import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AI Transparency — Earthform</title>
+    <meta name="description" content="How Earthform's Fano-7 architecture learns. Strange loops, crystallization, the Baldwin Effect, and verifiable convergence — explained." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AI Transparency — Earthform" />
+    <meta property="og:description" content="How our algebraic AI learns, crystallizes, and gets cheaper over time." />
+    <meta name="keywords" content="earthform AI, Fano-7 architecture, strange loop, crystallization, Baldwin Effect, algebraic attention, transparency" />
+    <link rel="canonical" href="https://earthform.ai/transparency" />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <TechNavigation links={nav.links} client:load />
+
+    <main class="max-w-4xl mx-auto px-4 py-32">
+
+      <header class="mb-16">
+        <p class="text-sm uppercase tracking-widest text-blue-400 mb-4 font-mono">Transparency</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent leading-tight">
+          How Our AI Learns
+        </h1>
+        <p class="text-lg text-gray-300 leading-relaxed">
+          We believe AI systems that interact with humans should be legible — you should be able to understand <em>what</em> they're doing and <em>why</em>. This page explains the core mechanisms behind our Fano-7 architecture.
+        </p>
+      </header>
+
+      <!-- ─── Section 1: Strange Loops ─── -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-4">1. Strange Loops: Learning Through Iteration</h2>
+        <div class="text-gray-300 text-sm leading-relaxed space-y-4">
+          <p>
+            Our system learns by running <strong class="text-white">strange loops</strong> — bounded iterative processes where each cycle's output feeds back as the next cycle's input. This isn't infinite recursion; it's controlled convergence toward a declared goal.
+          </p>
+          <p>
+            Each loop has a <strong class="text-white">state</strong> (where it is now), a <strong class="text-white">target</strong> (where it should be), and a <strong class="text-white">fitness</strong> measure (euclidean distance between them). The loop runs until fitness drops below a convergence threshold — meaning the system has found its way to the goal.
+          </p>
+          <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50 font-mono text-xs text-gray-400">
+            state[7] → perturb → measure fitness → adapt → repeat<br />
+            convergence = distance(state, target) &lt; 0.05
+          </div>
+          <p>
+            The 7-dimensional state vector isn't arbitrary — it maps to the <strong class="text-white">Fano plane PG(2,2)</strong>, the smallest finite projective plane. Seven points, seven lines, each line containing three points. This structure gives the system a natural topology for routing information between components.
+          </p>
+        </div>
+      </section>
+
+      <!-- ─── Section 2: Fano-7 Architecture ─── -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-4">2. Fano-7: Algebraic Attention</h2>
+        <div class="text-gray-300 text-sm leading-relaxed space-y-4">
+          <p>
+            Standard transformers use multi-head attention where all heads operate independently. Our <strong class="text-white">Fano-7</strong> architecture replaces this with 7 attention heads arranged on the projective plane — where cross-head communication is gated by mathematical structure.
+          </p>
+          <p>
+            Heads that share a line in the Fano plane (collinear triples) can communicate freely. Heads that don't share a line must pass through an <strong class="text-white">associator gate</strong> — a measure of how "non-associative" their interaction is. This uses octonion algebra: when ‖[a,b,c]‖ exceeds a threshold, it means the interaction is genuinely complex and worth the routing cost.
+          </p>
+          <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50">
+            <p class="text-sm text-gray-400 mb-2">Current prototype performance (205K parameters):</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-green-300">98.6%</div>
+                <div class="text-xs text-gray-500">Convergence rate</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-blue-300">+17%</div>
+                <div class="text-xs text-gray-500">vs standard transformer</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-purple-300">205K</div>
+                <div class="text-xs text-gray-500">Parameters</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-yellow-300">38.4</div>
+                <div class="text-xs text-gray-500">Avg steps to converge</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Section 3: Crystallization ─── -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-4">3. Crystallization: From Expensive to Cheap</h2>
+        <div class="text-gray-300 text-sm leading-relaxed space-y-4">
+          <p>
+            Here's the key insight that makes the system get cheaper over time: <strong class="text-white">crystallization</strong>.
+          </p>
+          <p>
+            When a strange loop converges repeatedly on similar problems, the system records the trajectory — the path from initial state to final state. After enough trajectories accumulate, it fits a <strong class="text-white">direct function</strong>: given this initial state and this target, jump directly to the answer without running the full loop.
+          </p>
+          <p>
+            This is the <strong class="text-white">Baldwin Effect</strong> applied to computation: expensive lifetime learning becomes inherited structure. The first time the system solves a problem class, it pays full computational cost. The hundredth time, it uses the crystallized shortcut and barely computes at all.
+          </p>
+          <div class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50 font-mono text-xs text-gray-400">
+            expensive: state → [40 loop iterations] → converged_state<br />
+            crystallized: state → [direct prediction] → converged_state ✓
+          </div>
+          <p>
+            Applied to education: the first time the AI figures out how to help someone understand a concept, it runs the full adaptive loop. After it's helped many students with the same concept, the effective teaching path is crystallized — and serving it costs almost nothing.
+          </p>
+        </div>
+      </section>
+
+      <!-- ─── Section 4: Fibered Coherence ─── -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-4">4. Prove Once, Use Everywhere</h2>
+        <div class="text-gray-300 text-sm leading-relaxed space-y-4">
+          <p>
+            Our latest architecture advancement borrows from <strong class="text-white">homotopy type theory</strong>: the principle of path induction. In mathematics, if you prove something at a base case and show the structure preserves it, the proof extends to all cases for free.
+          </p>
+          <p>
+            We apply this to attention coherence. During training, the model learns to maintain coherence (internal consistency) across its 7 attention heads. Once coherence converges below a threshold and stays there, we <em>stop checking it every forward pass</em> — the weights themselves are the proof that coherence is maintained.
+          </p>
+          <p>
+            This eliminates the "algebraic tax" — the computational overhead of verifying structural properties at every step. For the learning platform, it means the system can verify its own internal consistency without per-query overhead, keeping latency low and costs down.
+          </p>
+        </div>
+      </section>
+
+      <!-- ─── Section 5: The Ledger ─── -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-4">5. What We Can Prove</h2>
+        <div class="text-gray-300 text-sm leading-relaxed space-y-4">
+          <p>
+            Every decision the AI makes is recorded in a <strong class="text-white">hash-chained ledger</strong> (blake3). Each entry links to the previous one. The chain is tamper-evident: if any entry is modified after the fact, the chain breaks and verification fails.
+          </p>
+          <p>
+            This means:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-400">
+            <li>You can audit what the AI did and why at any point in its history</li>
+            <li>Every loop's struggle becomes the next loop's starting point — nothing is hidden</li>
+            <li>Crystallization decisions (when the AI decides it's "learned enough" to shortcut) are recorded and verifiable</li>
+            <li>Your proof-of-mastery credentials are anchored to a specific, auditable assessment chain</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ─── Section 6: Open Research ─── -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-4">6. Open Research</h2>
+        <div class="text-gray-300 text-sm leading-relaxed space-y-4">
+          <p>
+            This architecture emerges from 90+ experiments across four research threads. All grounded in the same algebraic structure (the Fano plane and its 168 automorphisms), applied to different domains.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 mt-6">
+            <a href="/research" class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50 hover:border-blue-500/50 transition-colors block">
+              <h3 class="text-sm font-semibold text-blue-300">Research Threads</h3>
+              <p class="text-xs text-gray-500 mt-1">Algebra, proteins, music, error correction</p>
+            </a>
+            <a href="/papers" class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50 hover:border-blue-500/50 transition-colors block">
+              <h3 class="text-sm font-semibold text-blue-300">Papers</h3>
+              <p class="text-xs text-gray-500 mt-1">Preprint manuscripts</p>
+            </a>
+            <a href="/learn" class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50 hover:border-green-500/50 transition-colors block">
+              <h3 class="text-sm font-semibold text-green-300">Learn Platform</h3>
+              <p class="text-xs text-gray-500 mt-1">How this powers human education</p>
+            </a>
+            <a href="https://discord.gg/tMK9S68bjQ" target="_blank" rel="noopener" class="bg-gray-900/60 rounded-lg p-4 border border-gray-700/50 hover:border-indigo-500/50 transition-colors block">
+              <h3 class="text-sm font-semibold text-indigo-300">Discord</h3>
+              <p class="text-xs text-gray-500 mt-1">Discuss the research with us</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <Analytics />
+    <SpeedInsights />
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link: { label: string; href: string }) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
+  </body>
+</html>

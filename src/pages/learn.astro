@@ -1,0 +1,262 @@
+---
+import { TechNavigation } from '../components/TechNavigation.tsx'
+import { meta, footer, nav } from '../site.config'
+import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Learn — Earthform</title>
+    <meta name="description" content="Verifiable education powered by algebraic AI. Learn real things, prove you know them. Games, AI tutoring, and cryptographic proof of mastery." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Learn — Earthform" />
+    <meta property="og:description" content="Verifiable education powered by algebraic AI. $1/day at launch, goal of $1/month." />
+    <meta name="keywords" content="earthform learn, AI tutoring, verifiable education, cryptographic credentials, algebraic AI, Fano-7" />
+    <link rel="canonical" href="https://earthform.ai/learn" />
+  </head>
+  <body class="font-sans bg-black text-white">
+    <TechNavigation links={nav.links} client:load />
+
+    <main>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- HERO                                        -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="min-h-[80vh] flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+
+        <div class="max-w-4xl mx-auto px-4 py-32 relative z-10 text-center">
+          <p class="text-sm uppercase tracking-widest text-green-400 mb-4 font-mono">Coming Soon</p>
+          <h1 class="text-4xl md:text-6xl font-extrabold mb-8 bg-gradient-to-r from-white via-green-200 to-blue-200 bg-clip-text text-transparent leading-tight">
+            Learn real things.<br />Prove you know them.
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10">
+            Verifiable education powered by our Fano-7 architecture — the same algebraic AI that achieves 98.6% convergence in process prediction. Games, adaptive tutoring, and cryptographic proof of mastery.
+          </p>
+          <a href="#waitlist" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-green-600 hover:bg-green-500 text-white font-medium rounded-lg transition-colors">
+            Join the Waitlist
+            <span class="text-green-200">→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THE PROBLEM                                 -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="py-20 bg-gradient-to-b from-black via-gray-950 to-black">
+        <div class="max-w-4xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-white mb-8 text-center">The Problem</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <span class="text-2xl mb-3 block">💸</span>
+              <h3 class="text-lg font-semibold text-white mb-2">Education is expensive</h3>
+              <p class="text-gray-400 text-sm">Degrees are gatekept. Tutoring costs $50–200/hour. The people who need learning most can't afford it.</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <span class="text-2xl mb-3 block">🎮</span>
+              <h3 class="text-lg font-semibold text-white mb-2">Games are engaging but teach nothing</h3>
+              <p class="text-gray-400 text-sm">Billions of hours spent on games that optimize for attention, not understanding. That engagement is wasted potential.</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-gray-700/50">
+              <span class="text-2xl mb-3 block">📜</span>
+              <h3 class="text-lg font-semibold text-white mb-2">Credentials don't mean knowledge</h3>
+              <p class="text-gray-400 text-sm">A certificate says you sat through something. It doesn't prove you understand it. There's no verification layer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- HOW IT WORKS                                -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-white mb-4 text-center">How It Works</h2>
+          <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">Five steps from material to mastery — each one verifiable.</p>
+
+          <div class="space-y-8">
+            <div class="flex gap-6 items-start">
+              <div class="w-10 h-10 rounded-full bg-green-600/20 border border-green-500/40 flex items-center justify-center shrink-0 text-green-300 font-bold">1</div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">Bring your material</h3>
+                <p class="text-gray-400 text-sm">Screencap a textbook page, paste an article, or pick from curated curricula. The system generates personalized challenges from whatever you're studying.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 items-start">
+              <div class="w-10 h-10 rounded-full bg-green-600/20 border border-green-500/40 flex items-center justify-center shrink-0 text-green-300 font-bold">2</div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">Play challenge games</h3>
+                <p class="text-gray-400 text-sm">Mini-games at every level — from chapter-wide comprehension down to individual concepts. The AI adapts difficulty in real-time using the same convergence dynamics our research models predict.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 items-start">
+              <div class="w-10 h-10 rounded-full bg-green-600/20 border border-green-500/40 flex items-center justify-center shrink-0 text-green-300 font-bold">3</div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">Get unstuck adaptively</h3>
+                <p class="text-gray-400 text-sm">When you struggle, the system doesn't just show the answer — it routes you through the specific sub-concepts you're missing, guided by algebraic attention that models how knowledge connects.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 items-start">
+              <div class="w-10 h-10 rounded-full bg-green-600/20 border border-green-500/40 flex items-center justify-center shrink-0 text-green-300 font-bold">4</div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">Master → crystallize</h3>
+                <p class="text-gray-400 text-sm">When you demonstrate mastery, it's recorded cryptographically. Your proof of knowledge is yours forever — portable, verifiable, and independent of any institution.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 items-start">
+              <div class="w-10 h-10 rounded-full bg-green-600/20 border border-green-500/40 flex items-center justify-center shrink-0 text-green-300 font-bold">5</div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">Accumulate milestones</h3>
+                <p class="text-gray-400 text-sm">Individual mastery proofs compose into curriculum-level achievements. Build a verifiable knowledge portfolio at your own pace.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- MODES                                       -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="py-20 bg-gradient-to-b from-black via-gray-950 to-black">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-white mb-12 text-center">Learning Modes</h2>
+          <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="bg-gray-900/60 rounded-xl p-5 border border-gray-700/50 text-center">
+              <span class="text-2xl mb-2 block">🎯</span>
+              <h3 class="text-sm font-semibold text-white">Mini-Games</h3>
+              <p class="text-xs text-gray-500 mt-1">Challenge-based active recall</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-xl p-5 border border-gray-700/50 text-center">
+              <span class="text-2xl mb-2 block">📖</span>
+              <h3 class="text-sm font-semibold text-white">Read With Me</h3>
+              <p class="text-xs text-gray-500 mt-1">Guided reading with inline questions</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-xl p-5 border border-gray-700/50 text-center">
+              <span class="text-2xl mb-2 block">💬</span>
+              <h3 class="text-sm font-semibold text-white">Read Then Discuss</h3>
+              <p class="text-xs text-gray-500 mt-1">Socratic dialogue after study</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-xl p-5 border border-gray-700/50 text-center">
+              <span class="text-2xl mb-2 block">🧭</span>
+              <h3 class="text-sm font-semibold text-white">Exploration</h3>
+              <p class="text-xs text-gray-500 mt-1">Follow curiosity, build connections</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-xl p-5 border border-gray-700/50 text-center">
+              <span class="text-2xl mb-2 block">✈️</span>
+              <h3 class="text-sm font-semibold text-white">Offline</h3>
+              <p class="text-xs text-gray-500 mt-1">Cached challenges, sync later</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- THE TECHNOLOGY                              -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-white mb-4 text-center">Why It Gets Cheaper Over Time</h2>
+          <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">Our AI doesn't just teach — it learns to teach better. That's why pricing goes down, not up.</p>
+
+          <div class="bg-gray-900/60 rounded-xl p-8 border border-gray-700/50 mb-8">
+            <h3 class="text-lg font-semibold text-blue-300 mb-4">Crystallized Intelligence</h3>
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              When our Fano-7 model converges on how to teach a concept effectively, that convergence is <strong class="text-white">crystallized</strong> — turned from expensive iterative computation into a direct, cheap prediction. The first time the system figures out how to help someone understand eigenvalues, it costs real computation. The thousandth time, it's nearly free.
+            </p>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              This is the same mechanism our research architecture uses to achieve 98.6% convergence across difficulty levels (easy, medium, hard, adversarial) — with 17% better per-step improvement than standard transformers. <a href="/transparency" class="text-blue-400 hover:text-blue-300 underline underline-offset-2">Read how it works →</a>
+            </p>
+          </div>
+
+          <div class="bg-gray-900/60 rounded-xl p-8 border border-gray-700/50">
+            <h3 class="text-lg font-semibold text-green-300 mb-4">Prove Once, Use Everywhere</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              Our architecture uses a principle from homotopy type theory: if you can prove something holds at a base case and the structure preserves it, it holds everywhere — without re-checking at every step. Applied to education: once the system proves it can teach a concept effectively, it doesn't need to re-derive the approach for every new student. The <em>structure</em> of effective teaching is preserved in the weights.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- PRICING                                     -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="py-20 bg-gradient-to-b from-black via-gray-950 to-black">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white mb-4">Honest Pricing</h2>
+          <p class="text-gray-400 mb-12 max-w-2xl mx-auto">As the system learns to teach better, the price drops. Our goal is $1/month. We'll get there together.</p>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-green-500/30">
+              <h3 class="text-lg font-semibold text-green-300 mb-2">Learner</h3>
+              <div class="text-3xl font-bold text-white mb-1">$1<span class="text-lg text-gray-400">/day</span></div>
+              <p class="text-xs text-gray-500 mb-4">Launch price → goal: $1/month</p>
+              <p class="text-sm text-gray-400">Full access to all modes, subjects, and verified credentials.</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-blue-500/30">
+              <h3 class="text-lg font-semibold text-blue-300 mb-2">Patron</h3>
+              <div class="text-3xl font-bold text-white mb-1">Pay what you feel</div>
+              <p class="text-xs text-gray-500 mb-4">Support the mission</p>
+              <p class="text-sm text-gray-400">Full access plus the knowledge you're helping make education accessible.</p>
+            </div>
+            <div class="bg-gray-900/60 rounded-xl p-6 border border-purple-500/30">
+              <h3 class="text-lg font-semibold text-purple-300 mb-2">Compute Contributor</h3>
+              <div class="text-3xl font-bold text-white mb-1">Earn credits</div>
+              <p class="text-xs text-gray-500 mb-4">Provide beacon compute</p>
+              <p class="text-sm text-gray-400">Contribute spare compute cycles → offset your cost. Part of our distributed network.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- WAITLIST                                     -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="waitlist" class="py-24">
+        <div class="max-w-xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white mb-4">Get Notified at Launch</h2>
+          <p class="text-gray-400 mb-8">We're building this now. Leave your email and we'll let you know when it's ready.</p>
+
+          <form action="https://formspree.io/f/mdkdpgvn" method="POST" class="space-y-4">
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Your email"
+              class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors"
+            />
+            <input type="hidden" name="_subject" value="Learn Waitlist Signup" />
+            <input type="hidden" name="source" value="learn-page" />
+            <textarea
+              name="message"
+              placeholder="What are you interested in learning? (optional)"
+              rows="3"
+              class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors resize-none"
+            ></textarea>
+            <button
+              type="submit"
+              class="w-full px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-medium rounded-lg transition-colors"
+            >
+              Join Waitlist
+            </button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+    <Analytics />
+    <SpeedInsights />
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center text-sm">
+      <div>{footer.text}</div>
+      <nav class="mt-2 flex justify-center gap-4">
+        {footer.links.map((link: { label: string; href: string }) => (
+          <a href={link.href} class="hover:text-white underline transition-all duration-150">{link.label}</a>
+        ))}
+      </nav>
+    </footer>
+  </body>
+</html>

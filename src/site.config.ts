@@ -3,13 +3,44 @@
 
 export const hero = {
   title: "Earthform Research Lab",
-  subtitle: "We study non-associative algebra, spectral protein analysis, and Fano-structured protocols. Our goal is universal architectures — systems that learn what hardware they're in and what they should do, starting from a soft identity.",
-  quote: "91 experiments. 4 research threads. Real benchmarks, real math, no black boxes.",
+  subtitle: "We build algebraic AI that learns, teaches, and proves what it knows. Research in non-associative algebra, spectral proteins, and Fano-structured protocols — becoming systems that educate.",
+  quote: "90+ experiments. A trained model. Research that teaches.",
   cta: {
     text: "Read Our Research",
     link: "/research"
+  },
+  secondaryCta: {
+    text: "Learn With Us",
+    link: "/learn"
   }
 };
+
+export const pillars = [
+  {
+    name: "Research",
+    icon: "🔬",
+    color: "blue",
+    href: "/research",
+    tagline: "Non-associative algebra, spectral proteins, music, error correction",
+    description: "90+ experiments across four interconnected threads. The Fano plane PG(2,2) and its 168 automorphisms, applied to real domains."
+  },
+  {
+    name: "Learn",
+    icon: "🎯",
+    color: "green",
+    href: "/learn",
+    tagline: "Verifiable education. Games. Real knowledge. $1/day → $1/month.",
+    description: "AI tutoring powered by our Fano-7 architecture. Crystallized intelligence means costs go down as the system gets better."
+  },
+  {
+    name: "Build",
+    icon: "🌐",
+    color: "purple",
+    href: "/research",
+    tagline: "Distributed compute. Contribute cycles, get routing done.",
+    description: "The beacon network connects spare compute into a shared resource. Contribute → earn credits → learn for less."
+  }
+];
 
 export const ecosystem = {
   heading: "Research Threads",
@@ -72,9 +103,9 @@ export const nav = {
   links: [
     { label: "Home", href: "/" },
     { label: "Research", href: "/research" },
+    { label: "Learn", href: "/learn" },
     { label: "Papers", href: "/papers" },
-    { label: "About", href: "/mission" },
-    { label: "Contact", href: "/#join" }
+    { label: "About", href: "/mission" }
   ]
 };
 
@@ -127,20 +158,20 @@ export const footer = {
 };
 
 export const meta = {
-  title: "Earthform Research Lab",
-  description: "Research lab exploring non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments, real benchmarks, open research.",
-  keywords: "earthform, octonion algebra, Fano plane, PSL(2,7), spectral protein analysis, IBP-ENM, composable algebra, algebraic error correction, ChordSpeak, research lab",
+  title: "Earthform — Algebraic AI Research & Education",
+  description: "Research lab building algebraic AI that learns, teaches, and proves what it knows. Fano-structured architectures, spectral protein analysis, verifiable education. 90+ experiments, real benchmarks.",
+  keywords: "earthform, octonion algebra, Fano plane, Fano-7, PSL(2,7), spectral protein analysis, IBP-ENM, composable algebra, algebraic error correction, ChordSpeak, AI education, verifiable learning, crystallization",
   author: "Earthform Research Lab",
   url: "https://earthform.ai",
 
   openGraph: {
-    title: "Earthform Research Lab",
-    description: "Non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments with real benchmarks."
+    title: "Earthform — Algebraic AI Research & Education",
+    description: "Algebraic AI that learns, teaches, and proves what it knows. Research becoming systems that educate."
   },
 
   twitter: {
-    title: "Earthform Research Lab",
-    description: "Non-associative algebra, spectral protein analysis, Fano-structured music, and algebraic error correction. 91 experiments with real benchmarks."
+    title: "Earthform — Algebraic AI Research & Education",
+    description: "Algebraic AI that learns, teaches, and proves what it knows. Research becoming systems that educate."
   },
 
   images: {
