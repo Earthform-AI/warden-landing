@@ -221,7 +221,7 @@ import SpeedInsights from '@vercel/speed-insights/astro'
           <h2 class="text-3xl font-bold text-white mb-4">Get Notified at Launch</h2>
           <p class="text-gray-400 mb-8">We're building this now. Leave your email and we'll let you know when it's ready.</p>
 
-          <form action="https://formspree.io/f/mdkdpgvn" method="POST" class="space-y-4">
+          <form id="waitlist-form" class="space-y-4">
             <input
               type="email"
               name="email"
@@ -229,8 +229,6 @@ import SpeedInsights from '@vercel/speed-insights/astro'
               placeholder="Your email"
               class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors"
             />
-            <input type="hidden" name="_subject" value="Learn Waitlist Signup" />
-            <input type="hidden" name="source" value="learn-page" />
             <textarea
               name="message"
               placeholder="What are you interested in learning? (optional)"
@@ -239,10 +237,11 @@ import SpeedInsights from '@vercel/speed-insights/astro'
             ></textarea>
             <button
               type="submit"
-              class="w-full px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-medium rounded-lg transition-colors"
+              class="w-full px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Join Waitlist
             </button>
+            <div id="waitlist-status" class="hidden"></div>
           </form>
         </div>
       </section>
@@ -258,5 +257,47 @@ import SpeedInsights from '@vercel/speed-insights/astro'
         ))}
       </nav>
     </footer>
+
+    <script>
+      const form = document.getElementById('waitlist-form') as HTMLFormElement;
+      const statusEl = document.getElementById('waitlist-status') as HTMLElement;
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        statusEl.className = 'hidden';
+
+        const email = (form.email as HTMLInputElement).value.trim();
+        const message = (form.querySelector('textarea[name="message"]') as HTMLTextAreaElement).value.trim();
+
+        try {
+          const res = await fetch('/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, message, source: 'learn-waitlist' }),
+          });
+
+          if (res.ok) {
+            statusEl.className = 'bg-green-900/50 border border-green-500/50 rounded-lg p-3 text-green-200 text-center text-sm';
+            statusEl.textContent = '✓ You\'re on the list. We\'ll let you know when it\'s ready.';
+            form.reset();
+            btn.textContent = 'Joined ✓';
+          } else {
+            const data = await res.json().catch(() => ({}));
+            statusEl.className = 'bg-red-900/50 border border-red-500/50 rounded-lg p-3 text-red-200 text-center text-sm';
+            statusEl.textContent = data.error || 'Something went wrong. Please try again.';
+            btn.disabled = false;
+            btn.textContent = 'Join Waitlist';
+          }
+        } catch {
+          statusEl.className = 'bg-red-900/50 border border-red-500/50 rounded-lg p-3 text-red-200 text-center text-sm';
+          statusEl.textContent = 'Network error. Please try again.';
+          btn.disabled = false;
+          btn.textContent = 'Join Waitlist';
+        }
+      });
+    </script>
   </body>
 </html>

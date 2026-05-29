@@ -6,16 +6,19 @@ export const POST: APIRoute = async ({ request }) => {
     const contentType = request.headers.get('content-type') || '';
     let email: string;
     let message: string;
+    let source: string;
 
     // Support both JSON and form-encoded submissions
     if (contentType.includes('application/json')) {
       const body = await request.json();
       email = body.email?.trim();
       message = body.message?.trim() || '';
+      source = body.source?.trim() || 'website';
     } else {
       const formData = await request.formData();
       email = (formData.get('email') as string)?.trim();
       message = (formData.get('message') as string)?.trim() || '';
+      source = (formData.get('source') as string)?.trim() || 'website';
     }
 
     if (!email) {
@@ -40,7 +43,7 @@ export const POST: APIRoute = async ({ request }) => {
       .insert({
         email,
         message: message || null,
-        source: 'website',
+        source,
       })
       .select('id')
       .single();

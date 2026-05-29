@@ -92,18 +92,18 @@ export const missionCopy = {
     steps: [
       {
         label: "Now",
-        title: "Publication & Documentation",
-        description: "Two manuscripts in review. Cleaning experiment code and preparing the research for public release."
+        title: "Fano-7 Architecture & Learning Platform",
+        description: "Training our Fano-7 model — a 205K-param transformer with algebraic attention that achieves 98.6% convergence. Building the Learn platform: verifiable education powered by crystallized intelligence."
       },
       {
         label: "Next",
-        title: "Open Source",
-        description: "Publishing the CAExperiments repository, benchmarks, and supporting code. Everything numbered, everything reproducible."
+        title: "Open Source & Public Access",
+        description: "Publishing the CAExperiments repository, model weights, and launching Learn at $1/day — with a goal of $1/month as crystallization amortizes costs."
       },
       {
         label: "Then",
-        title: "Cross-Domain Validation",
-        description: "Testing whether the Fano/ComponentTransform framework generalizes as a universal composition layer. The algebra suggests it should. The experiments are how we'll find out."
+        title: "Cross-Domain Scaling",
+        description: "Scaling Fano-7 beyond synthetic traces to real-world data: protein dynamics, educational trajectories, and distributed compute via the beacon network."
       }
     ]
   },

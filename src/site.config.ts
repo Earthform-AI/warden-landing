@@ -151,7 +151,9 @@ export const community = {
 export const footer = {
   text: "© 2025–2026 Earthform Research Lab. All rights reserved.",
   links: [
+    { label: "Learn", href: "/learn" },
     { label: "Discord", href: "https://discord.gg/tMK9S68bjQ" },
+    { label: "Transparency", href: "/transparency" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" }
   ]
